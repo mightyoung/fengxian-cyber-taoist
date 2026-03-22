@@ -1,5 +1,5 @@
 """
-MiroFish Backend - Flask应用工厂
+FengxianCyberTaoist Backend - Flask应用工厂
 """
 
 import os
@@ -27,7 +27,7 @@ def create_app(config_class=Config):
         app.json.ensure_ascii = False
     
     # 设置日志
-    logger = setup_logger('mirofish')
+    logger = setup_logger('fengxian_cyber_taoist')
     
     # 只在 reloader 子进程中打印启动信息（避免 debug 模式下打印两次）
     is_reloader_process = os.environ.get('WERKZEUG_RUN_MAIN') == 'true'
@@ -36,7 +36,7 @@ def create_app(config_class=Config):
     
     if should_log_startup:
         logger.info("=" * 50)
-        logger.info("MiroFish Backend 启动中...")
+        logger.info("FengxianCyberTaoist Backend 启动中...")
         logger.info("=" * 50)
     
     # 启用CORS
@@ -51,30 +51,41 @@ def create_app(config_class=Config):
     # 请求日志中间件
     @app.before_request
     def log_request():
-        logger = get_logger('mirofish.request')
+        logger = get_logger('fengxian_cyber_taoist.request')
         logger.debug(f"请求: {request.method} {request.path}")
         if request.content_type and 'json' in request.content_type:
             logger.debug(f"请求体: {request.get_json(silent=True)}")
     
     @app.after_request
     def log_response(response):
-        logger = get_logger('mirofish.request')
+        logger = get_logger('fengxian_cyber_taoist.request')
         logger.debug(f"响应: {response.status_code}")
         return response
     
     # 注册蓝图
     from .api import graph_bp, simulation_bp, report_bp
+    from .api import divination_bp, _divination_available
+    # knowledge_bp 在 divination_available 时从 divination.api 导入
+    if _divination_available:
+        from app.services.divination.api import knowledge_bp
+    else:
+        knowledge_bp = None
     app.register_blueprint(graph_bp, url_prefix='/api/graph')
     app.register_blueprint(simulation_bp, url_prefix='/api/simulation')
     app.register_blueprint(report_bp, url_prefix='/api/report')
+    if _divination_available and divination_bp:
+        app.register_blueprint(divination_bp, url_prefix='/api/divination')
+    if knowledge_bp:
+        # knowledge_bp has internal url_prefix='/api/divination/knowledge', so no additional prefix needed
+        app.register_blueprint(knowledge_bp)
     
     # 健康检查
     @app.route('/health')
     def health():
-        return {'status': 'ok', 'service': 'MiroFish Backend'}
+        return {'status': 'ok', 'service': 'FengxianCyberTaoist Backend'}
     
     if should_log_startup:
-        logger.info("MiroFish Backend 启动完成")
+        logger.info("FengxianCyberTaoist Backend 启动完成")
     
     return app
 

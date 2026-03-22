@@ -1,0 +1,2178 @@
+{
+  "metadata": {
+    "source": "紫云论斗数·星曜赋性 + 中州派紫微斗数深造讲义 + 王亭之注《太微赋》+ 命理学正解",
+    "total_cases": 240,
+    "extracted_date": "2026-03-21",
+    "last_extraction": "杂曜（擎羊、陀罗、火星、铃星、地空、地劫、截空、旬空、天空）特性案例扩充",
+    "source_files": [
+      "紫云论斗数_星曜赋性_第一册",
+      "紫云论斗数_星曜赋性_第二册",
+      "紫云论斗数_星曜赋性_第三册",
+      "紫云论斗数_星曜赋性_第四册",
+      "紫云论斗数_星曜赋性_第五册",
+      "中州派紫微斗数深造讲义_王亭之"
+    ]
+  },
+  "cases": [
+    {
+      "id": "STAR_001",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微禄存同宫，庚年生人",
+      "characteristics": ["帝座主星", "领导统御", "至尊之宿", "司爵禄"],
+      "interpretation": "紫微禄存同宫贵不可言，主富贵双全",
+      "keywords": ["紫微", "禄存", "同宫", "贵格"]
+    },
+    {
+      "id": "STAR_002",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微在亥坐命，壬甲年生人",
+      "characteristics": ["帝王星", "领袖群伦", "权柄意志坚定"],
+      "interpretation": "紫微亥宫为平陷宫位，非富贵之局，需加辅曜才有发展",
+      "keywords": ["紫微", "亥宫", "平陷"]
+    },
+    {
+      "id": "STAR_003",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微破军同宫，无左右无苦曜",
+      "characteristics": ["帝王星", "破军耗星", "无制化则凶恶胥吏之徒"],
+      "interpretation": "紫微破军无左右无苦曜，凶恶胥吏之徒",
+      "keywords": ["紫微", "破军", "无制化"]
+    },
+    {
+      "id": "STAR_004",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微七杀化权",
+      "characteristics": ["帝座", "七杀将星", "化权"],
+      "interpretation": "紫微七杀化权反作祸祥",
+      "keywords": ["紫微", "七杀", "化权"]
+    },
+    {
+      "id": "STAR_005",
+      "star": "紫微",
+      "palace": "迁移宫",
+      "situation": "紫微会吉于迁移宫",
+      "characteristics": ["帝座", "迁移主贵助"],
+      "interpretation": "紫微会吉于迁移，因人而贵",
+      "keywords": ["紫微", "迁移宫", "会吉"]
+    },
+    {
+      "id": "STAR_006",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "天机天梁同度于身命之地",
+      "characteristics": ["善宿", "益寿之星", "好谈论辩", "有特殊技艺", "心地善良", "有宗教信仰"],
+      "interpretation": "天机天梁同度，多为好说善辩，有特殊技艺，心地善良有宗教信仰",
+      "keywords": ["天机", "天梁", "同度", "宗教"]
+    },
+    {
+      "id": "STAR_007",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "天机太阴同度于寅申二地",
+      "characteristics": ["善宿", "探花格", "聪明"],
+      "interpretation": "天机太阴同居寅申位，为探花格，吉多可贵",
+      "keywords": ["天机", "太阴", "寅申", "探花格"]
+    },
+    {
+      "id": "STAR_008",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "天机加恶煞同宫",
+      "characteristics": ["善宿", "加恶煞"],
+      "interpretation": "天机加恶煞同宫，鸡窃狗偷",
+      "keywords": ["天机", "恶煞", "同宫"]
+    },
+    {
+      "id": "STAR_009",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "巨机酉上化吉者",
+      "characteristics": ["巨门", "天机", "酉宫", "化吉"],
+      "interpretation": "巨机酉上，纵有财官亦不荣，辛劳奔波之命",
+      "keywords": ["巨机", "酉宫", "不荣"]
+    },
+    {
+      "id": "STAR_010",
+      "star": "太阳",
+      "palace": "命宫",
+      "situation": "太阳入庙旺于卯辰巳午",
+      "characteristics": ["中天主星", "官禄主", "权贵", "日之精"],
+      "interpretation": "太阳庙旺主贵，白日生人吉，夜生人需扣分",
+      "keywords": ["太阳", "庙旺", "官禄主"]
+    },
+    {
+      "id": "STAR_011",
+      "star": "太阳",
+      "palace": "命宫",
+      "situation": "太阳在午宫，日丽中天",
+      "characteristics": ["中天主星", "专权之贵", "敌国之富"],
+      "interpretation": "太阳居午谓之日丽中天，有专权之贵，敌国之富",
+      "keywords": ["太阳", "午宫", "日丽中天"]
+    },
+    {
+      "id": "STAR_012",
+      "star": "太阳",
+      "palace": "夫妻宫",
+      "situation": "太阳坐入夫妻宫",
+      "characteristics": ["男作父星", "女作夫主"],
+      "interpretation": "太阳为父星或夫星，喜白日生人",
+      "keywords": ["太阳", "夫妻宫", "父星", "夫星"]
+    },
+    {
+      "id": "STAR_013",
+      "star": "武曲",
+      "palace": "命宫",
+      "situation": "武曲天府同宫于子午，无擎羊冲破",
+      "characteristics": ["财帛主", "将星", "刚毅果决", "高寿"],
+      "interpretation": "武曲天府同宫于子午，无擎羊冲破，主有高寿",
+      "keywords": ["武曲", "天府", "同宫", "子午", "高寿"]
+    },
+    {
+      "id": "STAR_014",
+      "star": "武曲",
+      "palace": "命宫",
+      "situation": "武曲贪狼同度",
+      "characteristics": ["财星", "将星", "金木相克"],
+      "interpretation": "武曲贪狼同度，悭吝之人；若无吉相扶，反主夭寿",
+      "keywords": ["武曲", "贪狼", "同度", "悭吝"]
+    },
+    {
+      "id": "STAR_015",
+      "star": "武曲",
+      "palace": "命宫",
+      "situation": "武曲火星同度",
+      "characteristics": ["财星", "火星", "金被火克", "寡宿"],
+      "interpretation": "武曲火星为寡宿凶格，女命不利婚姻",
+      "keywords": ["武曲", "火星", "寡宿"]
+    },
+    {
+      "id": "STAR_016",
+      "star": "武曲",
+      "palace": "财帛宫",
+      "situation": "武曲财帛宫会禄马于旺地",
+      "characteristics": ["财帛主", "将星", "禄马交驰"],
+      "interpretation": "武曲禄马交驰，发财远邑",
+      "keywords": ["武曲", "禄马", "财帛宫", "发财"]
+    },
+    {
+      "id": "STAR_017",
+      "star": "天同",
+      "palace": "命宫",
+      "situation": "天同在寅申与天梁及左右同宫",
+      "characteristics": ["福星", "益寿保生", "温和慈善", "有机枢"],
+      "interpretation": "天同最喜会同天梁及左右，天同天梁相会，不畏凶危（典故待考）",
+      "keywords": ["天同", "天梁", "不畏凶危"]
+    },
+    {
+      "id": "STAR_018",
+      "star": "天同",
+      "palace": "命宫",
+      "situation": "天同擎羊居午位，丙戊生人",
+      "characteristics": ["福星", "南斗第四星", "延寿"],
+      "interpretation": "天同擎羊居午位，丙戊生人镇边疆",
+      "keywords": ["天同", "擎羊", "午宫"]
+    },
+    {
+      "id": "STAR_019",
+      "star": "天同",
+      "palace": "疾厄宫",
+      "situation": "天同入疾厄宫",
+      "characteristics": ["福星", "主膀胱", "疝气", "水膨", "风瘫"],
+      "interpretation": "天同于病，主膀胱、疝气、水膨及风瘫之类",
+      "keywords": ["天同", "疾厄宫", "疾病"]
+    },
+    {
+      "id": "STAR_020",
+      "star": "廉贞",
+      "palace": "命宫",
+      "situation": "廉贞天相同度于子午",
+      "characteristics": ["囚宿", "次桃花", "化气曰囚", "品秩与权令"],
+      "interpretation": "廉贞最喜与天相同度，以制其恶，再逢帝座可掌权威",
+      "keywords": ["廉贞", "天相", "同度", "制恶"]
+    },
+    {
+      "id": "STAR_021",
+      "star": "廉贞",
+      "palace": "命宫",
+      "situation": "廉贞七杀同宫",
+      "characteristics": ["囚宿", "七杀将星", "积富"],
+      "interpretation": "廉贞七杀反为积富之人",
+      "keywords": ["廉贞", "七杀", "积富"]
+    },
+    {
+      "id": "STAR_022",
+      "star": "廉贞",
+      "palace": "命宫",
+      "situation": "廉贞擎羊同宫",
+      "characteristics": ["囚宿", "是非日有", "刑伤"],
+      "interpretation": "与擎羊同宫，是非日有；与七杀破军火铃同更是凶",
+      "keywords": ["廉贞", "擎羊", "同宫"]
+    },
+    {
+      "id": "STAR_023",
+      "star": "天府",
+      "palace": "命宫",
+      "situation": "天府在戍有星扶",
+      "characteristics": ["令星", "禄库", "南斗第一星", "主延寿解厄", "司权"],
+      "interpretation": "天府临戍有星扶，腰金衣紫",
+      "keywords": ["天府", "戍宫", "腰金衣紫"]
+    },
+    {
+      "id": "STAR_024",
+      "star": "天府",
+      "palace": "命宫",
+      "situation": "府相朝垣，天府天相会于身命",
+      "characteristics": ["令星", "印星", "衣禄之神", "食禄千钟"],
+      "interpretation": "府相朝垣，食禄千钟，终身福厚至三公",
+      "keywords": ["天府", "天相", "朝垣", "食禄千钟"]
+    },
+    {
+      "id": "STAR_025",
+      "star": "天府",
+      "palace": "命宫",
+      "situation": "天府武曲居财宅，更兼权禄",
+      "characteristics": ["令星", "财帛主", "南斗星主"],
+      "interpretation": "天府武曲居财宅，更兼权禄富奢翁",
+      "keywords": ["天府", "武曲", "财宅", "富奢"]
+    },
+    {
+      "id": "STAR_026",
+      "star": "太阴",
+      "palace": "命宫",
+      "situation": "太阴庙旺于子，号曰水澄桂萼",
+      "characteristics": ["田宅主", "化气曰富", "母星", "中天主星"],
+      "interpretation": "太阴居子号曰水澄桂萼，得清要之职，忠谏之材",
+      "keywords": ["太阴", "子宫", "水澄桂萼"]
+    },
+    {
+      "id": "STAR_027",
+      "star": "太阴",
+      "palace": "命宫",
+      "situation": "太阴与禄存同宫守命",
+      "characteristics": ["财星", "主一生快乐享受", "田宅主"],
+      "interpretation": "与禄存同宫守命，得辅弼合照富奢羽",
+      "keywords": ["太阴", "禄存", "同宫"]
+    },
+    {
+      "id": "STAR_028",
+      "star": "太阴",
+      "palace": "命宫",
+      "situation": "太阴擎羊同度",
+      "characteristics": ["财星", "人离财散", "母妻女之星冲破"],
+      "interpretation": "太阴擎羊谓之人离财散，主家中阴人有刑伤亡",
+      "keywords": ["太阴", "擎羊", "人离财散"]
+    },
+    {
+      "id": "STAR_029",
+      "star": "贪狼",
+      "palace": "命宫",
+      "situation": "贪狼四墓遇火铃",
+      "characteristics": ["北斗第一星", "解厄之神", "祸福之主", "化气曰桃花"],
+      "interpretation": "贪狼四墓遇火铃，豪富家资候伯贵",
+      "keywords": ["贪狼", "火铃", "四墓", "豪富"]
+    },
+    {
+      "id": "STAR_030",
+      "star": "贪狼",
+      "palace": "命宫",
+      "situation": "贪狼在辰戌丑未四墓之宫",
+      "characteristics": ["桃花之宿", "祸福之主", "根为水"],
+      "interpretation": "贪狼四墓为得地，非庙旺，辰戌丑未宫喜火铃同宫则富贵",
+      "keywords": ["贪狼", "四墓", "得地"]
+    },
+    {
+      "id": "STAR_031",
+      "star": "贪狼",
+      "palace": "命宫",
+      "situation": "贪狼七杀分守于身命",
+      "characteristics": ["桃花", "偷窃习性", "犯刑配"],
+      "interpretation": "贪狼七杀分守于身命，男有偷窃习性而犯刑配，女有偷香淫污之丑",
+      "keywords": ["贪狼", "七杀", "身命", "偷窃"]
+    },
+    {
+      "id": "STAR_032",
+      "star": "巨门",
+      "palace": "命宫",
+      "situation": "巨门在子午石中隐玉",
+      "characteristics": ["阴精之星", "化气曰暗", "是非暗昧", "隔角煞"],
+      "interpretation": "子午巨门石中隐玉，主聪明多能",
+      "keywords": ["巨门", "子午", "石中隐玉"]
+    },
+    {
+      "id": "STAR_033",
+      "star": "巨门",
+      "palace": "命宫",
+      "situation": "巨门在寅申与太阳同宫",
+      "characteristics": ["暗星", "是非", "口舌"],
+      "interpretation": "巨日寅宫立命申，先驰名誉后食禄",
+      "keywords": ["巨门", "太阳", "寅宫"]
+    },
+    {
+      "id": "STAR_034",
+      "star": "巨门",
+      "palace": "命宫",
+      "situation": "巨门羊陀于身命",
+      "characteristics": ["暗星", "疾病", "羸黄"],
+      "interpretation": "巨门羊陀于身命，疾病羸黄",
+      "keywords": ["巨门", "羊陀", "疾病"]
+    },
+    {
+      "id": "STAR_035",
+      "star": "天梁",
+      "palace": "命宫",
+      "situation": "天梁在午居庙旺",
+      "characteristics": ["南斗第二星", "司寿禄", "父母主宰", "化气曰荫"],
+      "interpretation": "梁居午地官资清显，天梁单守午宫主清贵",
+      "keywords": ["天梁", "午宫", "官资清显"]
+    },
+    {
+      "id": "STAR_036",
+      "star": "天梁",
+      "palace": "命宫",
+      "situation": "天梁天机同宫",
+      "characteristics": ["荫星", "延寿", "监察星"],
+      "interpretation": "机梁会合善谈兵，居戍亦为美论",
+      "keywords": ["天梁", "天机", "善谈兵"]
+    },
+    {
+      "id": "STAR_037",
+      "star": "天梁",
+      "palace": "命宫",
+      "situation": "天梁在巳亥与天同会合",
+      "characteristics": ["荫星", "浪荡"],
+      "interpretation": "梁同巳亥，男多浪荡，女多淫",
+      "keywords": ["天梁", "天同", "巳亥", "浪荡"]
+    },
+    {
+      "id": "STAR_038",
+      "star": "天相",
+      "palace": "命宫",
+      "situation": "天相在辰戌与紫微同宫",
+      "characteristics": ["印星", "官禄主宰", "善福", "衣食之宿"],
+      "interpretation": "紫府同宫于寅申，入命或落诸宫，俱以主孤论断",
+      "keywords": ["天相", "紫微", "同宫", "寅申"]
+    },
+    {
+      "id": "STAR_039",
+      "star": "天相",
+      "palace": "命宫",
+      "situation": "天相守命与廉贞擎羊同宫",
+      "characteristics": ["印星", "衣禄神", "刑杖难逃"],
+      "interpretation": "天相守命与廉贞擎羊同宫，刑杖难逃",
+      "keywords": ["天相", "廉贞", "擎羊", "刑杖"]
+    },
+    {
+      "id": "STAR_040",
+      "star": "七杀",
+      "palace": "命宫",
+      "situation": "七杀在寅申子午宫坐命",
+      "characteristics": ["南斗第六星", "上将之星", "成败孤辰", "司斗柄"],
+      "interpretation": "七杀寅申子午宫，一生爵禄荣昌，多辛劳独创",
+      "keywords": ["七杀", "寅申子午", "爵禄"]
+    },
+    {
+      "id": "STAR_041",
+      "star": "七杀",
+      "palace": "命宫",
+      "situation": "七杀朝斗格，七杀在午申",
+      "characteristics": ["将星", "威权", "独当一面"],
+      "interpretation": "七杀朝斗格多辛劳独创，独当一面，成就光辉",
+      "keywords": ["七杀", "朝斗格", "午申"]
+    },
+    {
+      "id": "STAR_042",
+      "star": "七杀",
+      "palace": "命宫",
+      "situation": "七杀与紫微会合无辅曜",
+      "characteristics": ["将星", "帝座", "威权", "无制化"],
+      "interpretation": "紫微七杀无辅曜制化为冷酷之徒格，需加左右昌曲魁钺始能成格",
+      "keywords": ["七杀", "紫微", "无制化"]
+    },
+    {
+      "id": "STAR_043",
+      "star": "破军",
+      "palace": "命宫",
+      "situation": "破军在子午与吉星同会",
+      "characteristics": ["北斗第七星", "司夫妻奴仆", "化气曰耗", "杀气"],
+      "interpretation": "子午破军加官进禄，主先破后成",
+      "keywords": ["破军", "子午", "加官进禄"]
+    },
+    {
+      "id": "STAR_044",
+      "star": "破军",
+      "palace": "命宫",
+      "situation": "破军贪狼逢禄马",
+      "characteristics": ["耗星", "杀气", "浪荡"],
+      "interpretation": "破军贪狼逢禄马，男多浪荡女多淫",
+      "keywords": ["破军", "贪狼", "禄马", "浪荡"]
+    },
+    {
+      "id": "STAR_045",
+      "star": "破军",
+      "palace": "命宫",
+      "situation": "破军文昌于震地遇吉",
+      "characteristics": ["耗星", "奔波劳碌"],
+      "interpretation": "破军文昌于震地，遇吉可贵，主先破后成",
+      "keywords": ["破军", "文昌", "震地"]
+    },
+    {
+      "id": "STAR_046",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微在子午宫独坐，百官朝拱",
+      "characteristics": ["帝座", "物质性", "领导力", "组织力"],
+      "interpretation": "百官朝拱的紫微物质性重，喜行破军、廉贞天府、武曲天相、七杀、天机星系，必为得志或发财之大运",
+      "keywords": ["紫微", "子午", "百官朝拱", "物质性"]
+    },
+    {
+      "id": "STAR_047",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微在子午宫独坐，在野孤君",
+      "characteristics": ["帝座", "精神性", "主观强", "决断力"],
+      "interpretation": "在野孤君的紫微精神性重，喜行太阴、太阳天梁星系，必为得名、得声誉之大运流年",
+      "keywords": ["紫微", "在野孤君", "精神性"]
+    },
+    {
+      "id": "STAR_048",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微化科在子午宫",
+      "characteristics": ["帝座", "化科", "精神性重"],
+      "interpretation": "紫微化科精神性重，主追求声誉与精神满足",
+      "keywords": ["紫微", "化科", "精神性"]
+    },
+    {
+      "id": "STAR_049",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微化权在子午宫",
+      "characteristics": ["帝座", "化权", "物质性重"],
+      "interpretation": "紫微化权物质性重，主追求权力与物质成就",
+      "keywords": ["紫微", "化权", "物质性"]
+    },
+    {
+      "id": "STAR_050",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微破军同宫于丑未",
+      "characteristics": ["帝座", "破军耗星", "变动性大"],
+      "interpretation": "紫微破军于丑未宫，主先破后成，有开创性，经行吉运可发富发贵",
+      "keywords": ["紫微", "破军", "丑未", "开创"]
+    },
+    {
+      "id": "STAR_051",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微天府同宫于寅申",
+      "characteristics": ["帝座", "天府令星", "君臣庆会"],
+      "interpretation": "紫微天府寅申同度，得百官朝拱称为君臣庆会，才擅经邦，主富贵",
+      "keywords": ["紫微", "天府", "寅申", "君臣庆会"]
+    },
+    {
+      "id": "STAR_052",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微贪狼同宫于卯酉",
+      "characteristics": ["帝座", "贪狼桃花", "领导欲强"],
+      "interpretation": "紫微贪狼卯酉同度，带粉饰意味，有领导欲而八面玲珑，主交际应酬",
+      "keywords": ["紫微", "贪狼", "卯酉", "交际"]
+    },
+    {
+      "id": "STAR_053",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微天相同宫于辰戌",
+      "characteristics": ["帝座", "天相印星", "有阻力"],
+      "interpretation": "紫微天相辰戌同度，须注意天相被夹之影响，若为刑忌夹则主贵而无权",
+      "keywords": ["紫微", "天相", "辰戌", "印星"]
+    },
+    {
+      "id": "STAR_054",
+      "star": "紫微",
+      "palace": "命宫",
+      "situation": "紫微七杀同宫于巳亥",
+      "characteristics": ["帝座", "七杀将星", "威权"],
+      "interpretation": "紫微七杀巳亥宫，较易成为良好格局，主权威与成就",
+      "keywords": ["紫微", "七杀", "巳亥", "权威"]
+    },
+    {
+      "id": "STAR_055",
+      "star": "破军",
+      "palace": "命宫",
+      "situation": "破军独坐寅申，得禄不见煞忌刑",
+      "characteristics": ["破军", "顺从性", "变动幅度小"],
+      "interpretation": "破军得禄不见煞忌刑，顺从性较大，人生变动幅度小，可在一个机构服务终身",
+      "keywords": ["破军", "寅申", "顺从性", "稳定"]
+    },
+    {
+      "id": "STAR_056",
+      "star": "破军",
+      "palace": "命宫",
+      "situation": "破军独坐寅申，不得禄见煞忌刑重",
+      "characteristics": ["破军", "叛逆性", "变动幅度大"],
+      "interpretation": "破军不得禄或见煞忌刑重，叛逆性较大，频频变换工作，人生波动大",
+      "keywords": ["破军", "叛逆性", "变动大"]
+    },
+    {
+      "id": "STAR_057",
+      "star": "破军",
+      "palace": "命宫",
+      "situation": "破军寅申与武曲天相对宫",
+      "characteristics": ["破军", "武曲天相", "对宫影响"],
+      "interpretation": "破军对宫武曲天相，武曲化禄或财荫夹印则加强顺从性；武曲化忌或刑忌夹则增加叛逆性",
+      "keywords": ["破军", "武曲天相", "对宫"]
+    },
+    {
+      "id": "STAR_058",
+      "star": "破军",
+      "palace": "命宫",
+      "situation": "破军在巳亥宫独坐",
+      "characteristics": ["破军", "巳亥宫", "变动大"],
+      "interpretation": "破军在巳亥宫较为不利，变动幅度最大，须经马鞍形运势",
+      "keywords": ["破军", "巳亥", "变动"]
+    },
+    {
+      "id": "STAR_059",
+      "star": "廉贞",
+      "palace": "命宫",
+      "situation": "廉贞天府同坐辰戌",
+      "characteristics": ["廉贞", "天府", "感情理智冲突"],
+      "interpretation": "廉贞天府辰戌同度，须注意感情与理智的冲突与调和，天府得禄或见昌曲加深感情色彩",
+      "keywords": ["廉贞", "天府", "辰戌", "感情"]
+    },
+    {
+      "id": "STAR_060",
+      "star": "廉贞",
+      "palace": "命宫",
+      "situation": "廉贞天府成空库或露库",
+      "characteristics": ["廉贞", "天府", "空库", "露库"],
+      "interpretation": "廉贞天府为空库或露库时，可削弱廉贞的感情，人际关系容易改变",
+      "keywords": ["廉贞", "天府", "空库", "露库"]
+    },
+    {
+      "id": "STAR_061",
+      "star": "廉贞",
+      "palace": "命宫",
+      "situation": "廉贞七杀同宫于丑未",
+      "characteristics": ["廉贞", "七杀", "阳刚之性"],
+      "interpretation": "廉贞七杀丑未宫，为积富之人，主武职显贵",
+      "keywords": ["廉贞", "七杀", "丑未", "积富"]
+    },
+    {
+      "id": "STAR_062",
+      "star": "廉贞",
+      "palace": "命宫",
+      "situation": "廉贞贪狼同宫于巳亥",
+      "characteristics": ["廉贞", "贪狼", "阳刚之性"],
+      "interpretation": "廉贞贪狼巳亥宫最具阳刚之性，物欲色彩强烈，若武曲天府不与禄同度则主自私",
+      "keywords": ["廉贞", "贪狼", "巳亥", "物欲"]
+    },
+    {
+      "id": "STAR_063",
+      "star": "廉贞",
+      "palace": "命宫",
+      "situation": "廉贞天相同度于子午",
+      "characteristics": ["廉贞", "天相", "制恶"],
+      "interpretation": "廉贞最喜与天相同度于子午，以制其恶，再逢帝座可掌权威",
+      "keywords": ["廉贞", "天相", "子午", "制恶"]
+    },
+    {
+      "id": "STAR_064",
+      "star": "太阴",
+      "palace": "命宫",
+      "situation": "太阴独坐巳亥，落陷收敛",
+      "characteristics": ["太阴", "收敛性", "落陷", "工于心计"],
+      "interpretation": "太阴在巳亥宫落陷，无论日夜生人均为收敛，日生人收敛程度更大，过份收敛则主工心计",
+      "keywords": ["太阴", "巳亥", "收敛", "落陷"]
+    },
+    {
+      "id": "STAR_065",
+      "star": "太阴",
+      "palace": "命宫",
+      "situation": "太阴在亥宫，夜生人发越",
+      "characteristics": ["太阴", "发射性", "夜生人"],
+      "interpretation": "亥宫太阴夜生人即为发越，日生人发越程度较小",
+      "keywords": ["太阴", "亥宫", "夜生人", "发越"]
+    },
+    {
+      "id": "STAR_066",
+      "star": "太阴",
+      "palace": "命宫",
+      "situation": "太阴化禄会昌曲于命宫",
+      "characteristics": ["太阴", "化禄", "英华内敛"],
+      "interpretation": "太阴化禄会昌曲，又会天同化权、天机化科、巨门化忌，见辅弼魁钺，为发射性与收敛性调和，主吉祥",
+      "keywords": ["太阴", "化禄", "英华内敛"]
+    },
+    {
+      "id": "STAR_067",
+      "star": "太阴",
+      "palace": "命宫",
+      "situation": "太阴过份发射",
+      "characteristics": ["太阴", "发射过甚", "虚名"],
+      "interpretation": "太阴过份发射，即使遇吉星祥曜亦仅主虚名，有富之名而无富之实，声名大而人生空虚",
+      "keywords": ["太阴", "发射", "虚名"]
+    },
+    {
+      "id": "STAR_068",
+      "star": "太阴",
+      "palace": "命宫",
+      "situation": "太阴天机同时发射性重",
+      "characteristics": ["太阴", "天机", "浮夸"],
+      "interpretation": "太阴天机二者同时发射性重，其人必流为浮夸，虚而不实",
+      "keywords": ["太阴", "天机", "浮夸"]
+    },
+    {
+      "id": "STAR_069",
+      "star": "太阴",
+      "palace": "命宫",
+      "situation": "太阴天机同时收敛性重",
+      "characteristics": ["太阴", "天机", "阴沈多计"],
+      "interpretation": "太阴天机二者同时收敛性重，其人必流为权术，阴沈多计",
+      "keywords": ["太阴", "天机", "阴沈"]
+    },
+    {
+      "id": "STAR_070",
+      "star": "贪狼",
+      "palace": "命宫",
+      "situation": "贪狼独坐子午，欲望强",
+      "characteristics": ["贪狼", "欲望强", "物欲强"],
+      "interpretation": "贪狼坐旺宫如申子辰年生人在子，寅午戌年生人在午，为欲望强的结构，主积极进取",
+      "keywords": ["贪狼", "子午", "欲望强"]
+    },
+    {
+      "id": "STAR_071",
+      "star": "贪狼",
+      "palace": "命宫",
+      "situation": "贪狼独坐子午，欲望弱",
+      "characteristics": ["贪狼", "欲望弱", "退缩"],
+      "interpretation": "贪狼欲望低，如申子辰年生人在午，寅午戌年生人在子，为欲望弱的结构，碰阻力易退缩",
+      "keywords": ["贪狼", "欲望弱"]
+    },
+    {
+      "id": "STAR_072",
+      "star": "贪狼",
+      "palace": "命宫",
+      "situation": "贪狼化权",
+      "characteristics": ["贪狼", "化权", "物欲增强"],
+      "interpretation": "贪狼化权增加欲望，偏向于物欲，主争夺权力与物质",
+      "keywords": ["贪狼", "化权", "物欲"]
+    },
+    {
+      "id": "STAR_073",
+      "star": "贪狼",
+      "palace": "命宫",
+      "situation": "贪狼化忌",
+      "characteristics": ["贪狼", "化忌", "欲望减低"],
+      "interpretation": "贪狼化忌减低欲望，见铃星陀罗及空曜等，欲望更低，甚至畏惧竞争",
+      "keywords": ["贪狼", "化忌", "欲望低"]
+    },
+    {
+      "id": "STAR_074",
+      "star": "贪狼",
+      "palace": "命宫",
+      "situation": "贪狼在子宫与擎羊同度",
+      "characteristics": ["贪狼", "擎羊", "泛水桃花"],
+      "interpretation": "贪狼在子宫与擎羊同度，称为泛水桃花，主情欲强",
+      "keywords": ["贪狼", "擎羊", "泛水桃花"]
+    },
+    {
+      "id": "STAR_075",
+      "star": "贪狼",
+      "palace": "命宫",
+      "situation": "贪狼在寅宫与陀罗同度",
+      "characteristics": ["贪狼", "陀罗", "风流采杖"],
+      "interpretation": "贪狼在寅宫与陀罗同度，或会天刑、擎羊，称为风流采杖",
+      "keywords": ["贪狼", "陀罗", "风流采杖"]
+    },
+    {
+      "id": "STAR_076",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "天机在子午独坐，上进",
+      "characteristics": ["天机", "上进", "聪明机敏"],
+      "interpretation": "天机在子午二宫独坐，上进则喜变化、策划、顾问类工作",
+      "keywords": ["天机", "子午", "上进"]
+    },
+    {
+      "id": "STAR_077",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "天机在子午独坐，下游",
+      "characteristics": ["天机", "下游", "怕变动"],
+      "interpretation": "天机在子午二宫下游，不喜变化、怕竞争、得过且过",
+      "keywords": ["天机", "下游"]
+    },
+    {
+      "id": "STAR_078",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "天机在卯酉与巨门同度",
+      "characteristics": ["天机", "巨门", "卯酉", "善辩"],
+      "interpretation": "天机巨门同度于卯酉，最为有利，主聪明善辩，有特殊技艺",
+      "keywords": ["天机", "巨门", "卯酉", "善辩"]
+    },
+    {
+      "id": "STAR_079",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "天机在辰戌与天梁同度",
+      "characteristics": ["天机", "天梁", "辰戌", "计划监察"],
+      "interpretation": "天机天梁同度于辰戌，有计划、监察、管理之意味，主善谈兵",
+      "keywords": ["天机", "天梁", "辰戌"]
+    },
+    {
+      "id": "STAR_080",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "天机在寅申与太阴同度",
+      "characteristics": ["天机", "太阴", "寅申", "机月同梁"],
+      "interpretation": "天机太阴同度于寅申，为机月同梁格，主有创业之力，但创业之力薄弱",
+      "keywords": ["天机", "太阴", "寅申", "机月同梁"]
+    },
+    {
+      "id": "STAR_081",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "天机化权于子午宫",
+      "characteristics": ["天机", "化权", "子午", "权高禄重"],
+      "interpretation": "天机在子午二宫化权，性质相当良好，可加强权富的意味",
+      "keywords": ["天机", "化权", "权富"]
+    },
+    {
+      "id": "STAR_082",
+      "star": "天机",
+      "palace": "命宫",
+      "situation": "天机化科于子午宫",
+      "characteristics": ["天机", "化科", "子午", "有名声"],
+      "interpretation": "天机在子午宫化科，必须详视其福德宫同梁的性质，影响化科的性质甚大",
+      "keywords": ["天机", "化科"]
+    },
+    {
+      "id": "STAR_083",
+      "star": "太阳",
+      "palace": "命宫",
+      "situation": "太阳在辰戌宫独坐与太阴相对",
+      "characteristics": ["太阳", "太阴", "辰戌", "光华"],
+      "interpretation": "太阳在辰戌宫与太阴正对，需要照料太阴解除阴暗，此本质尤为吃紧",
+      "keywords": ["太阳", "太阴", "辰戌"]
+    },
+    {
+      "id": "STAR_084",
+      "star": "太阳",
+      "palace": "命宫",
+      "situation": "太阳在巳亥宫独坐对宫巨门",
+      "characteristics": ["太阳", "巨门", "巳亥", "解暗"],
+      "interpretation": "太阳在巳亥宫独坐，对宫为巨门，需要解巨门之暗，三合宫为太阴及天梁",
+      "keywords": ["太阳", "巨门", "巳亥"]
+    },
+    {
+      "id": "STAR_085",
+      "star": "太阳",
+      "palace": "命宫",
+      "situation": "太阳化禄",
+      "characteristics": ["太阳", "化禄", "富贵"],
+      "interpretation": "太阳化禄主富贵，但须视原局命宫星曜来衡量富贵程度",
+      "keywords": ["太阳", "化禄", "富贵"]
+    },
+    {
+      "id": "STAR_086",
+      "star": "太阳",
+      "palace": "命宫",
+      "situation": "太阳化权化科",
+      "characteristics": ["太阳", "化权", "化科", "贵而不富"],
+      "interpretation": "太阳化权化科不如化禄，因为权科仅增加贵显而不能得富",
+      "keywords": ["太阳", "化权", "化科"]
+    },
+    {
+      "id": "STAR_087",
+      "star": "太阳",
+      "palace": "命宫",
+      "situation": "太阳在午宫日丽中天",
+      "characteristics": ["太阳", "午宫", "日丽中天", "光芒太露"],
+      "interpretation": "太阳在午宫日丽中天，光芒太露，可能成为虚浮之性，需得左辅右弼等始为沉稳",
+      "keywords": ["太阳", "午宫", "日丽中天"]
+    },
+    {
+      "id": "STAR_088",
+      "star": "太阳",
+      "palace": "命宫",
+      "situation": "太阳在子宫落陷",
+      "characteristics": ["太阳", "子宫", "落陷"],
+      "interpretation": "太阳在子宫落陷，主贵而不富，且对男性六亲有不利影响",
+      "keywords": ["太阳", "子宫", "落陷"]
+    },
+    {
+      "id": "STAR_089",
+      "star": "武曲",
+      "palace": "命宫",
+      "situation": "武曲天府同宫于子午无羊陀",
+      "characteristics": ["武曲", "天府", "子午", "高寿"],
+      "interpretation": "武曲天府同宫于子午，无擎羊冲破，主有高寿，为吉祥格",
+      "keywords": ["武曲", "天府", "子午", "高寿"]
+    },
+    {
+      "id": "STAR_090",
+      "star": "武曲",
+      "palace": "命宫",
+      "situation": "武曲贪狼同宫于丑未",
+      "characteristics": ["武曲", "贪狼", "丑未", "金木相克"],
+      "interpretation": "武曲贪狼同度于丑未，为悭吝之人，若无吉相扶反主夭寿",
+      "keywords": ["武曲", "贪狼", "悭吝"]
+    },
+    {
+      "id": "STAR_091",
+      "star": "武曲",
+      "palace": "命宫",
+      "situation": "武曲七杀同宫于寅申",
+      "characteristics": ["武曲", "七杀", "寅申", "刚烈"],
+      "interpretation": "武曲七杀寅申宫最具刚烈孤克之性，主孤克不宜见煞忌",
+      "keywords": ["武曲", "七杀", "刚烈"]
+    },
+    {
+      "id": "STAR_092",
+      "star": "武曲",
+      "palace": "命宫",
+      "situation": "武曲破军同宫于巳亥",
+      "characteristics": ["武曲", "破军", "巳亥", "躁决"],
+      "interpretation": "武曲破军巳亥宫使武曲变成躁决，常因冲动而导致失败，难贵显",
+      "keywords": ["武曲", "破军", "难贵显"]
+    },
+    {
+      "id": "STAR_093",
+      "star": "武曲",
+      "palace": "命宫",
+      "situation": "武曲化忌羊陀相夹",
+      "characteristics": ["武曲", "化忌", "羊陀夹"],
+      "interpretation": "羊陀夹武曲之忌为斗数中相当坏的结构，主事业失败或过份进取无以为继",
+      "keywords": ["武曲", "化忌", "羊陀夹"]
+    },
+    {
+      "id": "STAR_094",
+      "star": "武曲",
+      "palace": "命宫",
+      "situation": "武曲火星铃星同度",
+      "characteristics": ["武曲", "火星", "铃星", "恶性竞争"],
+      "interpretation": "武曲火铃同宫主恶性竞争、剥削掠夺、侵吞盗窃，因财被劫",
+      "keywords": ["武曲", "火星", "铃星"]
+    },
+    {
+      "id": "STAR_095",
+      "star": "天同",
+      "palace": "命宫",
+      "situation": "天同在辰戌宫有反背格局",
+      "characteristics": ["天同", "辰戌", "反背", "否极泰来"],
+      "interpretation": "天同在辰戌宫有反背格局，丁年生人化权，会太阴化禄、天机化科，禄权科会反成大贵",
+      "keywords": ["天同", "辰戌", "反背"]
+    },
+    {
+      "id": "STAR_096",
+      "star": "天同",
+      "palace": "命宫",
+      "situation": "天同在寅申与天梁同度",
+      "characteristics": ["天同", "天梁", "寅申", "平稳"],
+      "interpretation": "天同在寅申宫与天梁同度最为平稳，见吉化或禄存相对即主一生平稳发展",
+      "keywords": ["天同", "天梁", "寅申", "平稳"]
+    },
+    {
+      "id": "STAR_097",
+      "star": "天同",
+      "palace": "命宫",
+      "situation": "天同在巳亥独坐对宫天梁",
+      "characteristics": ["天同", "巳亥", "天梁", "感情"],
+      "interpretation": "天同在巳亥宫独坐对宫天梁，易发生感情困扰与波折，由是引发是非口舌",
+      "keywords": ["天同", "巳亥", "感情"]
+    },
+    {
+      "id": "STAR_098",
+      "star": "天同",
+      "palace": "命宫",
+      "situation": "天同太阴在午宫与擎羊同度",
+      "characteristics": ["天同", "太阴", "午宫", "擎羊", "马头带剑"],
+      "interpretation": "天同太阴在午宫与擎羊同度，丙戊年生人，为马头带剑格，主有权势",
+      "keywords": ["天同", "太阴", "午宫", "马头带剑"]
+    },
+    {
+      "id": "STAR_099",
+      "star": "天同",
+      "palace": "命宫",
+      "situation": "天同带禄不怕煞曜",
+      "characteristics": ["天同", "化禄", "福气"],
+      "interpretation": "天同带禄便不怕煞曜来侵，化禄为善，逢煞为祥，有禄羁縻然后始喜激发",
+      "keywords": ["天同", "化禄", "不畏煞"]
+    },
+    {
+      "id": "STAR_100",
+      "star": "天同",
+      "palace": "命宫",
+      "situation": "天同在子午与太阴同度",
+      "characteristics": ["天同", "太阴", "子午", "福气"],
+      "interpretation": "天同太阴同度于子午宫，主有福气，但需注意见煞忌时有缺陷",
+      "keywords": ["天同", "太阴", "子午"]
+    },
+    {
+      "id": "STAR_101",
+      "star": "天府",
+      "palace": "命宫",
+      "situation": "天府在辰戌独坐",
+      "characteristics": ["天府", "辰戌", "保守"],
+      "interpretation": "天府在辰戌宫独坐最保守安定，不与紫微三方四正相会",
+      "keywords": ["天府", "辰戌", "保守"]
+    },
+    {
+      "id": "STAR_102",
+      "star": "天府",
+      "palace": "命宫",
+      "situation": "天府为空库",
+      "characteristics": ["天府", "空库", "巧取豪夺"],
+      "interpretation": "当天府无禄同会时称为空库，使天府发展为巧取豪夺，税法苛难，性质变得善用手段",
+      "keywords": ["天府", "空库"]
+    },
+    {
+      "id": "STAR_103",
+      "star": "天府",
+      "palace": "命宫",
+      "situation": "天府为露库",
+      "characteristics": ["天府", "露库", "奸刁虚伪"],
+      "interpretation": "天府为四煞刑忌所冲破时称为露库，使天府平添困扰，性质变得奸刁虚伪，容易倾败",
+      "keywords": ["天府", "露库"]
+    },
+    {
+      "id": "STAR_104",
+      "star": "天府",
+      "palace": "命宫",
+      "situation": "天府与七杀相对",
+      "characteristics": ["天府", "七杀", "激发力"],
+      "interpretation": "天府在十二宫分布中必与七杀相对，此为天府激发力的源头",
+      "keywords": ["天府", "七杀", "相对"]
+    },
+    {
+      "id": "STAR_105",
+      "star": "天府",
+      "palace": "命宫",
+      "situation": "天府廉贞坐戌宫得禄存",
+      "characteristics": ["天府", "廉贞", "戌宫", "上格"],
+      "interpretation": "天府廉贞坐戌宫，在寅宫或午宫得禄存，更逢廉贞化禄或武曲化禄，称为上格",
+      "keywords": ["天府", "廉贞", "上格"]
+    },
+    {
+      "id": "STAR_106",
+      "star": "天相",
+      "palace": "命宫",
+      "situation": "天相为财荫夹印",
+      "characteristics": ["天相", "财荫夹印", "吉祥"],
+      "interpretation": "天相最喜为天同化禄或巨门化禄与天梁相夹，称为财荫夹印，主吉祥",
+      "keywords": ["天相", "财荫夹印"]
+    },
+    {
+      "id": "STAR_107",
+      "star": "天相",
+      "palace": "命宫",
+      "situation": "天相为刑忌夹印",
+      "characteristics": ["天相", "刑忌夹印", "凶险"],
+      "interpretation": "天相最忌为天同化忌或巨门化忌与天梁相夹，称为刑忌夹印，主凶险",
+      "keywords": ["天相", "刑忌夹印"]
+    },
+    {
+      "id": "STAR_108",
+      "star": "天相",
+      "palace": "命宫",
+      "situation": "天相在辰戌与紫微同宫",
+      "characteristics": ["天相", "紫微", "辰戌", "主孤"],
+      "interpretation": "紫府同宫于寅申，入命或落诸宫，俱以主孤论断",
+      "keywords": ["天相", "紫微", "主孤"]
+    },
+    {
+      "id": "STAR_109",
+      "star": "巨门",
+      "palace": "命宫",
+      "situation": "巨门在子午石中隐玉",
+      "characteristics": ["巨门", "子午", "石中隐玉", "聪明"],
+      "interpretation": "巨门在子午宫为石中隐玉，主聪明多能，不畏巨门之暗",
+      "keywords": ["巨门", "子午", "石中隐玉"]
+    },
+    {
+      "id": "STAR_110",
+      "star": "巨门",
+      "palace": "命宫",
+      "situation": "巨门在寅申与太阳同宫",
+      "characteristics": ["巨门", "太阳", "寅申", "解暗"],
+      "interpretation": "巨门在寅申与太阳同宫，需要太阳解其暗蔽，太阳在辰比在戌宫好",
+      "keywords": ["巨门", "太阳", "寅申"]
+    },
+    {
+      "id": "STAR_111",
+      "star": "巨门",
+      "palace": "命宫",
+      "situation": "巨门化忌于身命",
+      "characteristics": ["巨门", "化忌", "疾病"],
+      "interpretation": "巨门化忌于身命，主疾病羸黄，身体虚弱",
+      "keywords": ["巨门", "化忌", "疾病"]
+    },
+    {
+      "id": "STAR_112",
+      "star": "巨门",
+      "palace": "命宫",
+      "situation": "巨门在辰戌宫",
+      "characteristics": ["巨门", "辰戌", "口舌"],
+      "interpretation": "巨门在辰戌宫为入庙，仍主口舌是非，但较不忌",
+      "keywords": ["巨门", "辰戌", "口舌"]
+    },
+    {
+      "id": "STAR_113",
+      "star": "天梁",
+      "palace": "命宫",
+      "situation": "天梁在午宫入庙",
+      "characteristics": ["天梁", "午宫", "入庙", "清贵"],
+      "interpretation": "天梁在午宫居庙旺，主官资清显，为清贵之格",
+      "keywords": ["天梁", "午宫", "清贵"]
+    },
+    {
+      "id": "STAR_114",
+      "star": "天梁",
+      "palace": "命宫",
+      "situation": "天梁在巳亥与天同相会",
+      "characteristics": ["天梁", "天同", "巳亥", "浪荡"],
+      "interpretation": "天梁天同在巳亥相会，男多浪荡，女多淫荡",
+      "keywords": ["天梁", "天同", "巳亥", "浪荡"]
+    },
+    {
+      "id": "STAR_115",
+      "star": "天梁",
+      "palace": "命宫",
+      "situation": "天梁化科",
+      "characteristics": ["天梁", "化科", "清誉"],
+      "interpretation": "天梁化科主清誉，有监察、管理之才能，适合公共服务",
+      "keywords": ["天梁", "化科"]
+    },
+    {
+      "id": "STAR_116",
+      "star": "天梁",
+      "palace": "命宫",
+      "situation": "天梁在辰戌与天机相会",
+      "characteristics": ["天梁", "天机", "辰戌", "善谈兵"],
+      "interpretation": "天梁天机在辰戌相会，善谈论兵，居戌亦为美论",
+      "keywords": ["天梁", "天机", "善谈兵"]
+    },
+    {
+      "id": "STAR_117",
+      "star": "七杀",
+      "palace": "命宫",
+      "situation": "七杀在寅申子午宫坐命",
+      "characteristics": ["七杀", "寅申子午", "爵禄荣昌"],
+      "interpretation": "七杀寅申子午宫，一生爵禄荣昌，多辛劳独创",
+      "keywords": ["七杀", "寅申子午", "独创"]
+    },
+    {
+      "id": "STAR_118",
+      "star": "七杀",
+      "palace": "命宫",
+      "situation": "七杀朝斗格",
+      "characteristics": ["七杀", "朝斗格", "威权"],
+      "interpretation": "七杀在午申宫为朝斗格，多辛劳独创，独当一面，成就光辉",
+      "keywords": ["七杀", "朝斗格"]
+    },
+    {
+      "id": "STAR_119",
+      "star": "七杀",
+      "palace": "命宫",
+      "situation": "七杀与紫微无辅曜制化",
+      "characteristics": ["七杀", "紫微", "无制化", "冷酷"],
+      "interpretation": "紫微七杀无辅曜制化为冷酷之徒格，需加左右昌曲魁钺始能成格",
+      "keywords": ["七杀", "紫微", "无制化"]
+    },
+    {
+      "id": "STAR_120",
+      "star": "七杀",
+      "palace": "命宫",
+      "situation": "七杀在辰戌宫",
+      "characteristics": ["七杀", "辰戌", "变动"],
+      "interpretation": "七杀在辰戌宫为入庙所在地，需经重大转变与波动",
+      "keywords": ["七杀", "辰戌", "变动"]
+    },
+    {
+      "id": "STAR_121",
+      "star": "破军",
+      "palace": "命宫",
+      "situation": "破军在子午加官进禄",
+      "characteristics": ["破军", "子午", "加官进禄"],
+      "interpretation": "子午破军加官进禄，主先破后成，有开创机遇",
+      "keywords": ["破军", "子午", "先破后成"]
+    },
+    {
+      "id": "STAR_122",
+      "star": "破军",
+      "palace": "命宫",
+      "situation": "破军贪狼逢禄马",
+      "characteristics": ["破军", "贪狼", "禄马", "浪荡"],
+      "interpretation": "破军贪狼逢禄马，男多浪荡女多淫，主感情与物质欲望交织",
+      "keywords": ["破军", "贪狼", "禄马"]
+    },
+    {
+      "id": "STAR_123",
+      "star": "破军",
+      "palace": "命宫",
+      "situation": "破军文昌于震地遇吉",
+      "characteristics": ["破军", "文昌", "震地"],
+      "interpretation": "破军文昌于震地遇吉可贵，主先破后成",
+      "keywords": ["破军", "文昌"]
+    },
+    {
+      "id": "STAR_124",
+      "star": "紫微",
+      "palace": "财帛宫",
+      "situation": "紫微在财帛宫",
+      "characteristics": ["紫微", "财帛宫", "财源充裕"],
+      "interpretation": "紫微守财帛宫最好情形亦仅主财源充裕，并不主能积聚，偏重名誉权力非财星",
+      "keywords": ["紫微", "财帛宫"]
+    },
+    {
+      "id": "STAR_125",
+      "star": "天机",
+      "palace": "财帛宫",
+      "situation": "天机在财帛宫",
+      "characteristics": ["天机", "财帛宫", "变动"],
+      "interpretation": "天机在财帛宫主财帛有变动或波动，通常表现为财来财去难以积存，入庙较佳",
+      "keywords": ["天机", "财帛宫"]
+    },
+    {
+      "id": "STAR_126",
+      "star": "太阳",
+      "palace": "财帛宫",
+      "situation": "太阳在财帛宫会禄马",
+      "characteristics": ["太阳", "财帛宫", "禄马", "富"],
+      "interpretation": "太阳在财帛宫会禄马于旺地，发财远邑，主富",
+      "keywords": ["太阳", "财帛宫", "禄马"]
+    },
+    {
+      "id": "STAR_127",
+      "star": "武曲",
+      "palace": "财帛宫",
+      "situation": "武曲在财帛宫会禄马",
+      "characteristics": ["武曲", "财帛宫", "禄马", "发财"],
+      "interpretation": "武曲禄马交驰于财帛宫，发财远邑，主富",
+      "keywords": ["武曲", "财帛宫", "禄马"]
+    },
+    {
+      "id": "STAR_128",
+      "star": "天同",
+      "palace": "财帛宫",
+      "situation": "天同在财帛宫",
+      "characteristics": ["天同", "财帛宫", "白手兴家"],
+      "interpretation": "天同在财帛宫主白手兴家，若与孤辰同度性质尤为明显",
+      "keywords": ["天同", "财帛宫", "白手兴家"]
+    },
+    {
+      "id": "STAR_129",
+      "star": "太阴",
+      "palace": "财帛宫",
+      "situation": "太阴在财帛宫化禄",
+      "characteristics": ["太阴", "财帛宫", "化禄", "富"],
+      "interpretation": "太阴在财帛宫化禄主富，见禄存同度或对拱则富奢",
+      "keywords": ["太阴", "财帛宫", "化禄"]
+    },
+    {
+      "id": "STAR_130",
+      "star": "贪狼",
+      "palace": "财帛宫",
+      "situation": "贪狼在财帛宫化禄",
+      "characteristics": ["贪狼", "财帛宫", "化禄", "偏财"],
+      "interpretation": "贪狼在财帛宫化禄主意外之财或投机之财，不主正业",
+      "keywords": ["贪狼", "财帛宫", "化禄"]
+    },
+    {
+      "id": "STAR_131",
+      "star": "廉贞",
+      "palace": "财帛宫",
+      "situation": "廉贞在财帛宫",
+      "characteristics": ["廉贞", "财帛宫", "浮华"],
+      "interpretation": "廉贞在财帛宫吉凶诸曜交集者其人多浮华，昌曲同度亦主华而不实",
+      "keywords": ["廉贞", "财帛宫"]
+    },
+    {
+      "id": "STAR_132",
+      "star": "紫微",
+      "palace": "事业宫",
+      "situation": "紫微在事业宫",
+      "characteristics": ["紫微", "事业宫", "独当一面"],
+      "interpretation": "紫微在事业宫主独当一面，并不意味可自行经营，亦不主可为领袖",
+      "keywords": ["紫微", "事业宫"]
+    },
+    {
+      "id": "STAR_133",
+      "star": "天机",
+      "palace": "事业宫",
+      "situation": "天机在事业宫",
+      "characteristics": ["天机", "事业宫", "变动"],
+      "interpretation": "天机在事业宫主事业有变动，常转换工作或服务机构",
+      "keywords": ["天机", "事业宫"]
+    },
+    {
+      "id": "STAR_134",
+      "star": "太阳",
+      "palace": "事业宫",
+      "situation": "太阳在事业宫化忌",
+      "characteristics": ["太阳", "事业宫", "化忌", "口舌"],
+      "interpretation": "太阳会巨门化忌在事业宫，宜口舌以求财，可从事教学或法律工作",
+      "keywords": ["太阳", "事业宫", "化忌"]
+    },
+    {
+      "id": "STAR_135",
+      "star": "武曲",
+      "palace": "事业宫",
+      "situation": "武曲在事业宫",
+      "characteristics": ["武曲", "事业宫", "刚毅"],
+      "interpretation": "武曲在事业宫不忌其刚烈，主积极进取，可独当一面",
+      "keywords": ["武曲", "事业宫"]
+    },
+    {
+      "id": "STAR_136",
+      "star": "天同",
+      "palace": "事业宫",
+      "situation": "天同在事业宫",
+      "characteristics": ["天同", "事业宫", "离乡"],
+      "interpretation": "天同在事业宫往往不必见禄马，亦主宜离乡背井发展",
+      "keywords": ["天同", "事业宫"]
+    },
+    {
+      "id": "STAR_137",
+      "star": "紫微",
+      "palace": "夫妻宫",
+      "situation": "紫微在夫妻宫",
+      "characteristics": ["紫微", "夫妻宫", "伴侣尊贵"],
+      "interpretation": "紫微在夫妻宫主伴侣有尊贵气质或领导能力",
+      "keywords": ["紫微", "夫妻宫"]
+    },
+    {
+      "id": "STAR_138",
+      "star": "天机",
+      "palace": "夫妻宫",
+      "situation": "天机在夫妻宫",
+      "characteristics": ["天机", "夫妻宫", "不利"],
+      "interpretation": "天机在夫妻宫基本上不利，唯与太阴相对或同度见吉曜始主谐美",
+      "keywords": ["天机", "夫妻宫"]
+    },
+    {
+      "id": "STAR_139",
+      "star": "太阳",
+      "palace": "夫妻宫",
+      "situation": "太阳在夫妻宫",
+      "characteristics": ["太阳", "夫妻宫", "父星夫星"],
+      "interpretation": "太阳为男作父星、女作夫星，喜白日生人",
+      "keywords": ["太阳", "夫妻宫"]
+    },
+    {
+      "id": "STAR_140",
+      "star": "武曲",
+      "palace": "夫妻宫",
+      "situation": "武曲在夫妻宫",
+      "characteristics": ["武曲", "夫妻宫", "寡宿"],
+      "interpretation": "武曲在夫妻宫为寡宿，女命最嫌，古代称之为寡宿",
+      "keywords": ["武曲", "夫妻宫", "寡宿"]
+    },
+    {
+      "id": "STAR_141",
+      "star": "天同",
+      "palace": "夫妻宫",
+      "situation": "天同在夫妻宫",
+      "characteristics": ["天同", "夫妻宫", "两度姻缘"],
+      "interpretation": "天同在夫妻宫主白手兴家，移入夫妻宫则为两度姻缘，主再婚",
+      "keywords": ["天同", "夫妻宫"]
+    },
+    {
+      "id": "STAR_142",
+      "star": "廉贞",
+      "palace": "夫妻宫",
+      "situation": "廉贞在夫妻宫",
+      "characteristics": ["廉贞", "夫妻宫", "桃花"],
+      "interpretation": "廉贞为次桃花，在夫妻宫主有感情纠葛或三角关系",
+      "keywords": ["廉贞", "夫妻宫"]
+    },
+    {
+      "id": "STAR_143",
+      "star": "贪狼",
+      "palace": "夫妻宫",
+      "situation": "贪狼在夫妻宫",
+      "characteristics": ["贪狼", "夫妻宫", "桃花", "欲望"],
+      "interpretation": "贪狼在夫妻宫主配偶有桃花或物欲强",
+      "keywords": ["贪狼", "夫妻宫"]
+    },
+    {
+      "id": "STAR_144",
+      "star": "巨门",
+      "palace": "夫妻宫",
+      "situation": "巨门在夫妻宫",
+      "characteristics": ["巨门", "夫妻宫", "口舌"],
+      "interpretation": "巨门在夫妻宫主口舌是非多，易发生争吵",
+      "keywords": ["巨门", "夫妻宫"]
+    },
+    {
+      "id": "STAR_145",
+      "star": "天梁",
+      "palace": "夫妻宫",
+      "situation": "天梁在夫妻宫",
+      "characteristics": ["天梁", "夫妻宫", "荫星"],
+      "interpretation": "天梁在夫妻宫主得年长之配偶，有荫蔽之福",
+      "keywords": ["天梁", "夫妻宫"]
+    },
+    {
+      "id": "STAR_146",
+      "star": "七杀",
+      "palace": "夫妻宫",
+      "situation": "七杀在夫妻宫",
+      "characteristics": ["七杀", "夫妻宫", "刑克"],
+      "interpretation": "七杀在夫妻宫主刑克，宜晚婚或配年长之配偶",
+      "keywords": ["七杀", "夫妻宫"]
+    },
+    {
+      "id": "STAR_147",
+      "star": "破军",
+      "palace": "夫妻宫",
+      "situation": "破军在夫妻宫",
+      "characteristics": ["破军", "夫妻宫", "耗星"],
+      "interpretation": "破军在夫妻宫主有波折，先破后成或感情有变",
+      "keywords": ["破军", "夫妻宫"]
+    },
+    {
+      "id": "STAR_148",
+      "star": "紫微",
+      "palace": "迁移宫",
+      "situation": "紫微在迁移宫会吉",
+      "characteristics": ["紫微", "迁移宫", "贵助"],
+      "interpretation": "紫微在迁移宫会吉主因人而贵，出外有贵人扶助",
+      "keywords": ["紫微", "迁移宫"]
+    },
+    {
+      "id": "STAR_149",
+      "star": "天机",
+      "palace": "迁移宫",
+      "situation": "天机在迁移宫",
+      "characteristics": ["天机", "迁移宫", "变动"],
+      "interpretation": "天机在迁移宫主变动、迁居或远行，与昌曲同度见桃花主因情愫羁留",
+      "keywords": ["天机", "迁移宫"]
+    },
+    {
+      "id": "STAR_150",
+      "star": "太阳",
+      "palace": "迁移宫",
+      "situation": "太阳在迁移宫",
+      "characteristics": ["太阳", "迁移宫", "声名"],
+      "interpretation": "太阳在迁移宫主在外有声名，但须防树大招风",
+      "keywords": ["太阳", "迁移宫"]
+    },
+    {
+      "id": "STAR_151",
+      "star": "武曲",
+      "palace": "迁移宫",
+      "situation": "武曲在迁移宫化忌",
+      "characteristics": ["武曲", "迁移宫", "化忌", "流落"],
+      "interpretation": "武曲在迁移宫化忌者每主在异乡流落，见天月主染病异乡",
+      "keywords": ["武曲", "迁移宫", "化忌"]
+    },
+    {
+      "id": "STAR_152",
+      "star": "太阴",
+      "palace": "迁移宫",
+      "situation": "太阴在迁移宫",
+      "characteristics": ["太阴", "迁移宫", "在外发展"],
+      "interpretation": "太阴在迁移宫主适合在外地或海外发展",
+      "keywords": ["太阴", "迁移宫"]
+    },
+    {
+      "id": "STAR_153",
+      "star": "贪狼",
+      "palace": "迁移宫",
+      "situation": "贪狼在迁移宫",
+      "characteristics": ["贪狼", "迁移宫", "桃花"],
+      "interpretation": "贪狼在迁移宫主在外有桃花运或交际应酬",
+      "keywords": ["贪狼", "迁移宫"]
+    },
+    {
+      "id": "STAR_154",
+      "star": "紫微",
+      "palace": "福德宫",
+      "situation": "紫微在福德宫",
+      "characteristics": ["紫微", "福德宫", "精神享受"],
+      "interpretation": "紫微在福德宫主有精神方面的爱好与享受",
+      "keywords": ["紫微", "福德宫"]
+    },
+    {
+      "id": "STAR_155",
+      "star": "天机",
+      "palace": "福德宫",
+      "situation": "天机在福德宫",
+      "characteristics": ["天机", "福德宫", "思想"],
+      "interpretation": "天机在福德宫主思想活跃，多计谋策划",
+      "keywords": ["天机", "福德宫"]
+    },
+    {
+      "id": "STAR_156",
+      "star": "太阳",
+      "palace": "福德宫",
+      "situation": "太阳在福德宫",
+      "characteristics": ["太阳", "福德宫", "名誉"],
+      "interpretation": "太阳在福德宫主重视名誉声望，但须防过于计较",
+      "keywords": ["太阳", "福德宫"]
+    },
+    {
+      "id": "STAR_157",
+      "star": "武曲",
+      "palace": "福德宫",
+      "situation": "武曲在福德宫",
+      "characteristics": ["武曲", "福德宫", "刚烈"],
+      "interpretation": "武曲在福德宫不忌其刚烈，主有决断力与行动力",
+      "keywords": ["武曲", "福德宫"]
+    },
+    {
+      "id": "STAR_158",
+      "star": "天同",
+      "palace": "福德宫",
+      "situation": "天同在福德宫",
+      "characteristics": ["天同", "福德宫", "福气"],
+      "interpretation": "天同在福德宫主有福气，享受型的人生观",
+      "keywords": ["天同", "福德宫"]
+    },
+    {
+      "id": "STAR_159",
+      "star": "太阴",
+      "palace": "福德宫",
+      "situation": "太阴在福德宫",
+      "characteristics": ["太阴", "福德宫", "内敛"],
+      "interpretation": "太阴在福德宫主内敛沉潜，有艺术气质",
+      "keywords": ["太阴", "福德宫"]
+    },
+    {
+      "id": "STAR_160",
+      "star": "廉贞",
+      "palace": "福德宫",
+      "situation": "廉贞在福德宫",
+      "characteristics": ["廉贞", "福德宫", "感情理智"],
+      "interpretation": "廉贞在福德宫主感情与理智交织，易有内心矛盾",
+      "keywords": ["廉贞", "福德宫"]
+    },
+    {
+      "id": "STAR_161",
+      "star": "地空",
+      "palace": "命宫",
+      "situation": "地空独坐命宫",
+      "characteristics": ["空亡之星", "冲淡转化", "理想主义"],
+      "interpretation": "地空对同宫甲级星曜有冲淡或转化其赋性的作用，命宫有空劫代表思想超脱、不羁不肯和光同尘",
+      "keywords": ["地空", "命宫", "冲淡转化", "空亡"]
+    },
+    {
+      "id": "STAR_162",
+      "star": "地劫",
+      "palace": "命宫",
+      "situation": "地劫独坐命宫",
+      "characteristics": ["空亡之星", "波动不稳", "破坏性强"],
+      "interpretation": "地劫有波动不稳的作用，命宫坐空劫会造成脾气极不稳定，与亲情寡合",
+      "keywords": ["地劫", "命宫", "波动不稳", "空亡"]
+    },
+    {
+      "id": "STAR_163",
+      "star": "地空",
+      "palace": "命宫",
+      "situation": "紫微贪狼在酉宫坐命，地空同坐",
+      "characteristics": ["紫微", "贪狼", "地空", "欲望冲淡"],
+      "interpretation": "贪狼本为欲望甚强的组合，与地空同宫后，空劫会将原有的欲望作用冲淡，甚至转化到对神学或玄学方面的兴趣上",
+      "keywords": ["紫微", "贪狼", "地空", "转化"]
+    },
+    {
+      "id": "STAR_164",
+      "star": "地空",
+      "palace": "命宫",
+      "situation": "紫微在卯酉宫坐命，会合劫空四煞",
+      "characteristics": ["紫微", "卯酉宫", "劫空四煞", "脱俗僧道"],
+      "interpretation": "紫微在卯酉宫坐命，必须坐会劫空四煞才会是脱俗之僧，劫空在此是指地劫地空，四煞为羊陀火铃",
+      "keywords": ["紫微", "卯酉宫", "劫空四煞", "僧道"]
+    },
+    {
+      "id": "STAR_165",
+      "star": "截空",
+      "palace": "命宫",
+      "situation": "截空在命宫坐守",
+      "characteristics": ["截路空亡", "虚名虚利"],
+      "interpretation": "庚年生人化禄入命，但截空亦在命宫，多虚名虚利，若加煞亦平常之人",
+      "keywords": ["截空", "命宫", "虚名虚利"]
+    },
+    {
+      "id": "STAR_166",
+      "star": "截空",
+      "palace": "命宫",
+      "situation": "命垣逢截路空亡或旬中空亡",
+      "characteristics": ["截空", "旬空", "孤独贫寒"],
+      "interpretation": "命垣逢截路空亡或旬中空亡，主孤独贫寒",
+      "keywords": ["截空", "旬空", "孤独贫寒"]
+    },
+    {
+      "id": "STAR_167",
+      "star": "天空",
+      "palace": "命宫",
+      "situation": "天空与天府同度",
+      "characteristics": ["天空", "天府", "空库"],
+      "interpretation": "天府最宜见禄，不宜与地空、天空同度，亦不喜截空与旬空。空曜同宫即成空库，虽会合紫微亦不起作用",
+      "keywords": ["天空", "天府", "空库"]
+    },
+    {
+      "id": "STAR_168",
+      "star": "地空",
+      "palace": "命宫",
+      "situation": "紫微七杀加空亡",
+      "characteristics": ["紫微", "七杀", "空亡", "虚名受荫"],
+      "interpretation": "紫微七杀加空亡，其人祖业虽佳得受荫福，而本人并无独创建树，虚有美名也。空亡在此指的是地空地劫",
+      "keywords": ["紫微", "七杀", "空亡", "虚名受荫"]
+    },
+    {
+      "id": "STAR_169",
+      "star": "左辅",
+      "palace": "命宫",
+      "situation": "左辅右弼夹辅命宫",
+      "characteristics": ["左辅", "右弼", "夹辅", "多助力"],
+      "interpretation": "命会左辅右弼和左辅右弼夹辅命宫两者的作用有所不同，左辅右弼相夹可改善紫微破军的险阻际遇",
+      "keywords": ["左辅", "右弼", "夹辅命宫"]
+    },
+    {
+      "id": "STAR_170",
+      "star": "右弼",
+      "palace": "命宫",
+      "situation": "紫微不见左右为孤君",
+      "characteristics": ["紫微", "左辅", "右弼", "孤君"],
+      "interpretation": "紫微坐命者必须见左辅右弼才能充分发挥紫微的正面作用，紫微不见左右为孤君",
+      "keywords": ["紫微", "左辅", "右弼", "孤君"]
+    },
+    {
+      "id": "STAR_171",
+      "star": "文昌",
+      "palace": "命宫",
+      "situation": "文昌文曲入命",
+      "characteristics": ["文昌", "文曲", "聪明才智", "条理细致"],
+      "interpretation": "文昌文曲是六吉星中的成对星曜，与一个人的聪明才智、条理细致有关",
+      "keywords": ["文昌", "文曲", "聪明才智"]
+    },
+    {
+      "id": "STAR_172",
+      "star": "文曲",
+      "palace": "命宫",
+      "situation": "文昌文曲逢廉贞",
+      "characteristics": ["文昌", "文曲", "廉贞", "丧命夭寿"],
+      "interpretation": "先贤曰：文昌文曲逢廉贞，丧命夭寿",
+      "keywords": ["文昌", "文曲", "廉贞", "凶险"]
+    },
+    {
+      "id": "STAR_173",
+      "star": "天魁",
+      "palace": "命宫",
+      "situation": "天魁天钺会照三方四正",
+      "characteristics": ["天魁", "天钺", "近贵", "良好际遇"],
+      "interpretation": "天魁天钺会合三方四正，既能增强其人的领导力，同时亦主其人一生多逢良好的际遇",
+      "keywords": ["天魁", "天钺", "近贵"]
+    },
+    {
+      "id": "STAR_174",
+      "star": "天钺",
+      "palace": "命宫",
+      "situation": "天机喜见天魁天钺",
+      "characteristics": ["天机", "天魁", "天钺", "一生近贵"],
+      "interpretation": "天机喜见天魁天钺同宫或对拱，则为之一生近贵",
+      "keywords": ["天机", "天魁", "天钺", "近贵"]
+    },
+    {
+      "id": "STAR_175",
+      "star": "禄存",
+      "palace": "命宫",
+      "situation": "禄存坐入宫位",
+      "characteristics": ["禄存", "财星", "羊陀夹制"],
+      "interpretation": "禄存坐入宫位，必有擎羊陀罗分从前后宫位来夹制，因此禄存是否能发挥其正面作用，全视同宫的甲级星之旺弱而定",
+      "keywords": ["禄存", "羊陀夹制", "财星"]
+    },
+    {
+      "id": "STAR_176",
+      "star": "禄存",
+      "palace": "财帛宫",
+      "situation": "禄存与武曲同度",
+      "characteristics": ["禄存", "武曲", "财帛宫"],
+      "interpretation": "禄存有财利、财富的作用，禄存坐人财帛宫必有擎羊陀罗分从前后宫位来夹，对宫位有增强和保护作用",
+      "keywords": ["禄存", "武曲", "财帛宫"]
+    },
+    {
+      "id": "STAR_177",
+      "star": "禄存",
+      "palace": "命宫",
+      "situation": "禄存同宫必有羊陀夹",
+      "characteristics": ["禄存", "擎羊", "陀罗", "夹制"],
+      "interpretation": "禄存同度之时，必有羊陀来夹。在命宫主人自私自利，在财帛宫与事业宫则主受掣肘，在六亲宫度则主缘份不深厚",
+      "keywords": ["禄存", "羊陀夹制"]
+    },
+    {
+      "id": "STAR_178",
+      "star": "擎羊",
+      "palace": "命宫",
+      "situation": "擎羊在午宫为马头带剑",
+      "characteristics": ["擎羊", "午宫", "马头带剑", "刚强"],
+      "interpretation": "擎羊在午宫为马头带剑格，象征刀剑般的杀伤力，代表坚强意志且企图心强，利於从事对外开疆拓土的工作",
+      "keywords": ["擎羊", "午宫", "马头带剑"]
+    },
+    {
+      "id": "STAR_179",
+      "star": "擎羊",
+      "palace": "命宫",
+      "situation": "天机天梁与擎羊同宫",
+      "characteristics": ["天机", "天梁", "擎羊", "早见刑克晚见孤"],
+      "interpretation": "先贤曰：天机天梁擎羊会，早见刑克晚见孤，此为天机天梁组合的凶格",
+      "keywords": ["天机", "天梁", "擎羊", "刑克孤"]
+    },
+    {
+      "id": "STAR_180",
+      "star": "擎羊",
+      "palace": "命宫",
+      "situation": "擎羊同宫是非日有",
+      "characteristics": ["擎羊", "是非", "竞争"],
+      "interpretation": "廉贞擎羊同宫，是非曰有；擎羊易生竞争，是六煞星中最不利亲情的带凶星曜",
+      "keywords": ["擎羊", "是非", "竞争"]
+    },
+    {
+      "id": "STAR_181",
+      "star": "陀罗",
+      "palace": "命宫",
+      "situation": "陀罗在命宫",
+      "characteristics": ["陀罗", "拖延", "出错", "停滞"],
+      "characteristic": "陀罗使计划延缓甚至因此出错，命宫见陀罗代表做事拖延、意志不坚定",
+      "keywords": ["陀罗", "拖延", "出错"]
+    },
+    {
+      "id": "STAR_182",
+      "star": "陀罗",
+      "palace": "命宫",
+      "situation": "武曲与陀罗同度",
+      "characteristics": ["武曲", "陀罗", "刚烈孤克"],
+      "interpretation": "擎羊、陀罗最易加强武曲的刚烈与孤克，武曲不宜受其会照，当武曲化忌时甚畏羊陀相夹，羊陀夹武曲之忌为斗数中相当坏的结构",
+      "keywords": ["武曲", "陀罗", "刚烈"]
+    },
+    {
+      "id": "STAR_183",
+      "star": "火星",
+      "palace": "命宫",
+      "situation": "火星铃星夹制天机",
+      "characteristics": ["火星", "铃星", "天机", "多劳多虑"],
+      "interpretation": "天机最畏火星、铃星夹制，火星铃星令人心思不定，多劳多虑而少实际效果",
+      "keywords": ["火星", "铃星", "天机", "多劳多虑"]
+    },
+    {
+      "id": "STAR_184",
+      "star": "火星",
+      "palace": "命宫",
+      "situation": "武曲火星为寡宿凶格",
+      "characteristics": ["武曲", "火星", "寡宿", "凶格"],
+      "interpretation": "传统论命最不喜女命武曲坐守，主要肇因于武曲的寡宿作用，特别是武曲加会火星时更甚",
+      "keywords": ["武曲", "火星", "寡宿凶格"]
+    },
+    {
+      "id": "STAR_185",
+      "star": "火星",
+      "palace": "命宫",
+      "situation": "武曲火铃同宫因财被劫",
+      "characteristics": ["武曲", "火星", "铃星", "因财被劫"],
+      "interpretation": "武曲真正畏惧的是火星与铃星，同度或会照主恶性竞争、主剥削掠夺、主侵吞盗窃，古人说武曲火铃同宫因财被劫",
+      "keywords": ["武曲", "火星", "铃星", "因财被劫"]
+    },
+    {
+      "id": "STAR_186",
+      "star": "铃星",
+      "palace": "命宫",
+      "situation": "铃星在命宫",
+      "characteristics": ["铃星", "刚烈", "收发"],
+      "interpretation": "铃星和火星为成对的星曜，铃星五行亦属火，故武曲会合铃星时亦有类似火星的作用，带刚烈之性",
+      "keywords": ["铃星", "刚烈"]
+    },
+    {
+      "id": "STAR_187",
+      "star": "铃星",
+      "palace": "命宫",
+      "situation": "天同不喜铃星",
+      "characteristics": ["天同", "铃星", "逆境"],
+      "interpretation": "天同不喜火星，尤其不喜铃星，这两颗煞曜带刚烈之性，恰与天同之优柔相反，气质冲突，故遇之多主逆境",
+      "keywords": ["天同", "铃星", "逆境"]
+    },
+    {
+      "id": "STAR_188",
+      "star": "地劫",
+      "palace": "命宫",
+      "situation": "天机与地劫同宫",
+      "characteristics": ["天机", "地劫", "变动"],
+      "interpretation": "地劫令人的变动易流为空想，天机有谋臣的性质，见地劫则主其人虽成见甚深但思想超脱",
+      "keywords": ["天机", "地劫", "空想"]
+    },
+    {
+      "id": "STAR_189",
+      "star": "地空",
+      "palace": "命宫",
+      "situation": "廉贞与地空地劫同宫",
+      "characteristics": ["廉贞", "地空", "地劫", "阳刚"],
+      "interpretation": "若见地空地劫，则不宜廉贞阳刚。倘有禄同会之时，廉贞的阴柔尚可因空劫而变成理想，若廉贞无禄，其阳刚则易因空劫而变成盲目行动或固执",
+      "keywords": ["廉贞", "地空", "地劫", "理想"]
+    },
+    {
+      "id": "STAR_190",
+      "star": "天马",
+      "palace": "命宫",
+      "situation": "天梁与天马同度",
+      "characteristics": ["天梁", "天马", "飘荡"],
+      "interpretation": "天梁本有掉臂独行的色彩，见天马便变成不羁、浪荡。古人说：天梁天马陷，飘荡无疑",
+      "keywords": ["天梁", "天马", "飘荡"]
+    },
+    {
+      "id": "STAR_191",
+      "star": "天马",
+      "palace": "命宫",
+      "situation": "天同天梁不喜天马",
+      "characteristics": ["天同", "天梁", "天马", "浮荡无根"],
+      "interpretation": "对于天马，天同天梁同度或天同对拱天梁的情形下则不喜，因为同梁已带有人生观欠积极的色彩，再见天马便嫌浮荡无根，变成纯理想而欠实际",
+      "keywords": ["天同", "天梁", "天马", "浮荡"]
+    },
+    {
+      "id": "STAR_192",
+      "star": "天马",
+      "palace": "财帛宫",
+      "situation": "禄存天马同宫坐守",
+      "characteristics": ["禄存", "天马", "财帛", "动财"],
+      "interpretation": "先贤曰：假如人命逢武曲庙地，得禄存天马同处，或对方来合，或分处于财官二宫来朝，离乡远出，必有得意且财旺异常",
+      "keywords": ["禄存", "天马", "财帛"]
+    },
+    {
+      "id": "STAR_193",
+      "star": "天使",
+      "palace": "命宫",
+      "situation": "太阳与天使同度",
+      "characteristics": ["太阳", "天使", "发射太过"],
+      "interpretation": "太阳入庙之时不宜过多碰到带发射性质的星曜，如天马、铃星、火星、天伤、天使、孤辰、寡宿等，否则太阳的光与热扩散太过，更易流为空虚而欠沉实",
+      "keywords": ["太阳", "天使", "发射"]
+    },
+    {
+      "id": "STAR_194",
+      "star": "天使",
+      "palace": "命宫",
+      "situation": "太阴与天使同宫",
+      "characteristics": ["太阴", "天使", "收敛"],
+      "interpretation": "当太阴落陷、化忌之时或与主潜藏收敛的星曜如陀罗、铃星、天刑、咸池、大耗、天虚、阴煞等会合时，若遇发射的星曜如天使则不为英华内敛，反主内涵空虚不实",
+      "keywords": ["太阴", "天使", "空虚"]
+    },
+    {
+      "id": "STAR_195",
+      "star": "左辅",
+      "palace": "命宫",
+      "situation": "左辅右弼增加稳定",
+      "characteristics": ["左辅", "右弼", "稳定", "持续"],
+      "interpretation": "左辅右弼有稳定、持续的作用，对命造的想法及行事有增稳的作用，使做事能稳紮稳打而不会冲过头",
+      "keywords": ["左辅", "右弼", "稳定"]
+    },
+    {
+      "id": "STAR_196",
+      "star": "右弼",
+      "palace": "命宫",
+      "situation": "贪狼见左右",
+      "characteristics": ["贪狼", "左辅", "右弼", "增加顺从"],
+      "interpretation": "文昌文曲二曜同时会合破军可以增加顺从性，若单见者不是；贪狼见左右则可增加其顺从性",
+      "keywords": ["贪狼", "左辅", "右弼", "顺从"]
+    },
+    {
+      "id": "STAR_197",
+      "star": "天魁",
+      "palace": "命宫",
+      "situation": "坐贵向贵",
+      "characteristics": ["天魁", "天钺", "坐贵向贵"],
+      "interpretation": "命宫有天魁，迁移宫有天钺，或反之，称为坐贵向贵，是极佳的宫位配置",
+      "keywords": ["天魁", "天钺", "坐贵向贵"]
+    },
+    {
+      "id": "STAR_198",
+      "star": "天钺",
+      "palace": "命宫",
+      "situation": "紫微喜见天魁天钺",
+      "characteristics": ["紫微", "天魁", "天钺", "领导力"],
+      "interpretation": "紫微亦喜见天魁天钺会合三方四正，既能增强其人的领导力，同时亦主其人一生多逢良好的际遇",
+      "keywords": ["紫微", "天魁", "天钺"]
+    },
+    {
+      "id": "STAR_199",
+      "star": "文昌",
+      "palace": "命宫",
+      "situation": "太阳会文昌于官禄",
+      "characteristics": ["太阳", "文昌", "官禄", "贵显"],
+      "interpretation": "《全集·注解太微赋》云：太阳会文昌于官禄，皇殿首班之贵",
+      "keywords": ["太阳", "文昌", "官禄贵"]
+    },
+    {
+      "id": "STAR_200",
+      "star": "文曲",
+      "palace": "命宫",
+      "situation": "破军文曲同宫",
+      "characteristics": ["破军", "文曲", "贫士"],
+      "interpretation": "古人说：破军昌曲同宫，一生贫士。唯寅宫的破军独坐有吉曜时喜见昌曲，古人说破军昌曲同宫于寅主贵",
+      "keywords": ["破军", "文曲", "贫士"]
+    },
+    {
+      "id": "STAR_201",
+      "star": "禄存",
+      "palace": "事业宫",
+      "situation": "禄存与天相同度",
+      "characteristics": ["禄存", "天相", "事业宫", "受掣肘"],
+      "interpretation": "禄存同度之时必有羊陀来夹，在事业宫则主受掣肘，做事受到阻碍或限制",
+      "keywords": ["禄存", "天相", "事业宫"]
+    },
+    {
+      "id": "STAR_202",
+      "star": "地空",
+      "palace": "身宫",
+      "situation": "身宫有空劫坐守",
+      "characteristics": ["身宫", "地空", "地劫", "不稳定"],
+      "interpretation": "命身宫皆有空劫同坐，空劫除有冲淡转化作用外亦有波动不稳的作用，命身皆有空劫同坐代表一生起伏不定",
+      "keywords": ["身宫", "地空", "地劫", "波动"]
+    },
+    {
+      "id": "STAR_203",
+      "star": "擎羊",
+      "palace": "事业宫",
+      "situation": "太阳在辰宫擎羊同坐命宫",
+      "characteristics": ["太阳", "擎羊", "辰宫", "不利亲情"],
+      "interpretation": "太阳在辰坐命，乙年生人，擎羊同坐命宫，不但不利亲情，且太阴化忌在迁移宫来照会更凶",
+      "keywords": ["太阳", "擎羊", "辰宫"]
+    },
+    {
+      "id": "STAR_204",
+      "star": "陀罗",
+      "palace": "疾厄宫",
+      "situation": "陀罗在疾厄宫",
+      "characteristics": ["陀罗", "疾厄宫", "目疾", "拖延"],
+      "interpretation": "遇陀罗亦生目疾，尤以天同太阴星系为然，陀罗代表慢性拖延性质的煞星",
+      "keywords": ["陀罗", "疾厄宫", "目疾"]
+    },
+    {
+      "id": "STAR_205",
+      "star": "火星",
+      "palace": "命宫",
+      "situation": "廉贞火星于陷空之地",
+      "characteristics": ["廉贞", "火星", "陷空", "投河自缢"],
+      "interpretation": "先贤曰：廉贞同火星于陷空之地，主投河自缢",
+      "keywords": ["廉贞", "火星", "陷空", "凶险"]
+    },
+    {
+      "id": "STAR_206",
+      "star": "铃星",
+      "palace": "命宫",
+      "situation": "天相守命遇火铃冲破",
+      "characteristics": ["天相", "铃星", "火星", "残疾"],
+      "interpretation": "古人说：天相守命，遇火铃冲破，残疾",
+      "keywords": ["天相", "火星", "铃星", "残疾"]
+    },
+    {
+      "id": "STAR_207",
+      "star": "地空",
+      "palace": "命宫",
+      "situation": "空劫夹制紫贪",
+      "characteristics": ["紫微", "贪狼", "地空", "地劫", "火贪"],
+      "interpretation": "紫贪在酉坐命寅时生人，地空在酉同坐，若有火星或铃星来会照紫贪，则因火贪或铃贪成格，不一定不好，反而主灵活应变",
+      "keywords": ["紫微", "贪狼", "地空", "火贪"]
+    },
+    {
+      "id": "STAR_208",
+      "star": "截空",
+      "palace": "命宫",
+      "situation": "辰戌宫无正星有空劫截空",
+      "characteristics": ["截空", "旬空", "辰戌宫", "僧道"],
+      "interpretation": "假使人命立于辰或戌宫而无星入命，对宫有天机天梁会照，无煞有言亦是富贵，但若命垣逢截路空亡或旬中空亡主孤独贫寒，仅宜出家为僧道",
+      "keywords": ["截空", "旬空", "辰戌宫", "僧道"]
+    },
+    {
+      "id": "STAR_209",
+      "star": "擎羊",
+      "palace": "命宫",
+      "situation": "午宫坐命擎羊同度",
+      "characteristics": ["午宫", "擎羊", "马头带剑", "镇卫边疆"],
+      "interpretation": "午宫坐命，擎羊同度，即是马头带箭又名马头带剑，主其人敢闯敢冲，适合军警或边疆工作",
+      "keywords": ["擎羊", "午宫", "马头带剑"]
+    },
+    {
+      "id": "STAR_210",
+      "star": "擎羊",
+      "palace": "命宫",
+      "situation": "天同擎羊居午位",
+      "characteristics": ["天同", "擎羊", "午宫", "南斗第四星"],
+      "interpretation": "天同擎羊居午位，丙戊生人镇边疆，先贤以此为边疆立功之命",
+      "keywords": ["天同", "擎羊", "午宫", "边疆"]
+    },
+    {
+      "id": "STAR_211",
+      "star": "擎羊",
+      "palace": "命宫",
+      "situation": "贪狼居子与擎羊同度",
+      "characteristics": ["贪狼", "擎羊", "子宫", "泛水桃花"],
+      "interpretation": "贪狼居子与擎羊同度，成泛水桃花格局，主才艺但婚姻不佳，可能成为艺人",
+      "keywords": ["贪狼", "擎羊", "泛水桃花"]
+    },
+    {
+      "id": "STAR_212",
+      "star": "擎羊",
+      "palace": "命宫",
+      "situation": "七杀破军专依羊铃为虐",
+      "characteristics": ["七杀", "破军", "擎羊", "铃星", "凶虐"],
+      "interpretation": "七杀破军二星最畏羊铃来夹或同宫，否则专依羊铃为虐，作威作福",
+      "keywords": ["七杀", "破军", "擎羊", "铃星"]
+    },
+    {
+      "id": "STAR_213",
+      "star": "陀罗",
+      "palace": "命宫",
+      "situation": "陀罗坐命宫",
+      "characteristics": ["陀罗", "辛金", "北斗助星", "是非刑克"],
+      "interpretation": "陀罗坐命宫主个性固执顽强不服输，做事激烈恒成恒破，此生易犯小人多是非，始终有不顺感受",
+      "keywords": ["陀罗", "命宫", "固执"]
+    },
+    {
+      "id": "STAR_214",
+      "star": "陀罗",
+      "palace": "命宫",
+      "situation": "命宫无正曜仅有陀罗",
+      "characteristics": ["陀罗", "无正曜", "孤寡破祖", "巧艺"],
+      "interpretation": "若命宫无正曜星则主孤寡破祖巧艺之辈，较无大成就",
+      "keywords": ["陀罗", "无正曜", "孤寡"]
+    },
+    {
+      "id": "STAR_215",
+      "star": "陀罗",
+      "palace": "命宫",
+      "situation": "女命陀罗与巨门坐命宫",
+      "characteristics": ["陀罗", "巨门", "女命", "婚姻不顺"],
+      "interpretation": "女命不宜陀罗星与巨门星坐命宫，表此生婚姻感情不顺，若逢后天行运乖违时恐有落入风尘界之憾",
+      "keywords": ["陀罗", "巨门", "女命", "婚姻"]
+    },
+    {
+      "id": "STAR_216",
+      "star": "陀罗",
+      "palace": "疾厄宫",
+      "situation": "陀罗在疾厄宫与文昌文曲同宫",
+      "characteristics": ["陀罗", "文昌", "文曲", "坐骨神经痛"],
+      "interpretation": "陀罗星与文昌或文曲同宫，即坐骨神经痛，俗称骨刺",
+      "keywords": ["陀罗", "文昌", "文曲", "骨刺"]
+    },
+    {
+      "id": "STAR_217",
+      "star": "陀罗",
+      "palace": "事业宫",
+      "situation": "陀罗星在官禄宫",
+      "characteristics": ["陀罗", "官禄宫", "事业", "辛苦劳累"],
+      "interpretation": "陀罗在官禄宫表事业多艰辛，工作多变动，往往在职不久，最忌陀罗星同宫必主辛苦劳累运势乖违",
+      "keywords": ["陀罗", "官禄宫", "事业"]
+    },
+    {
+      "id": "STAR_218",
+      "star": "火星",
+      "palace": "命宫",
+      "situation": "火星在命宫庙旺",
+      "characteristics": ["火星", "阳火", "庙旺", "增强影响力"],
+      "interpretation": "火星为阳火，在命宫庙旺之地能增强同宫星曜的影响力，表现为果断有力",
+      "keywords": ["火星", "庙旺", "阳火"]
+    },
+    {
+      "id": "STAR_219",
+      "star": "火星",
+      "palace": "命宫",
+      "situation": "廉贞火星于陷空之地",
+      "characteristics": ["廉贞", "火星", "陷空", "投河自缢"],
+      "interpretation": "先贤曰：廉贞同火星于陷空之地，主投河自缢，为极凶之格",
+      "keywords": ["廉贞", "火星", "陷空", "凶格"]
+    },
+    {
+      "id": "STAR_220",
+      "star": "火星",
+      "palace": "命宫",
+      "situation": "武曲火星同度",
+      "characteristics": ["武曲", "火星", "财星", "寡宿"],
+      "interpretation": "武曲火星为寡宿凶格，金被火克，女命不利婚姻",
+      "keywords": ["武曲", "火星", "寡宿"]
+    },
+    {
+      "id": "STAR_221",
+      "star": "火星",
+      "palace": "财帛宫",
+      "situation": "火星在财帛宫",
+      "characteristics": ["火星", "财帛宫", "寡宿", "财不聚"],
+      "interpretation": "火星入财帛宫主财来财去难以聚财，属过路财神之象",
+      "keywords": ["火星", "财帛宫", "财不聚"]
+    },
+    {
+      "id": "STAR_222",
+      "star": "铃星",
+      "palace": "命宫",
+      "situation": "铃星在命宫",
+      "characteristics": ["铃星", "阴火", "增强", "是非暗入"],
+      "interpretation": "铃星为阴火，在命宫能增强同宫星曜影响力但带有暗入是非的特性",
+      "keywords": ["铃星", "命宫", "是非"]
+    },
+    {
+      "id": "STAR_223",
+      "star": "铃星",
+      "palace": "命宫",
+      "situation": "天相守命遇火铃冲破",
+      "characteristics": ["天相", "铃星", "火星", "残疾"],
+      "interpretation": "古人说：天相守命遇火铃冲破，主残疾",
+      "keywords": ["天相", "火铃", "残疾"]
+    },
+    {
+      "id": "STAR_224",
+      "star": "铃星",
+      "palace": "命宫",
+      "situation": "贪狼铃星同居寅宫",
+      "characteristics": ["贪狼", "铃星", "寅宫", "风流彩杖"],
+      "interpretation": "贪狼铃星同居寅宫，成风流彩杖格局，男命易受情困但聪明有才艺",
+      "keywords": ["贪狼", "铃星", "风流彩杖"]
+    },
+    {
+      "id": "STAR_225",
+      "star": "地空",
+      "palace": "命宫",
+      "situation": "地空守命宫",
+      "characteristics": ["地空", "阴火", "虚空", "不成正道"],
+      "interpretation": "地空守命主作事虚空，成败多端，不行正道之象",
+      "keywords": ["地空", "命宫", "虚空"]
+    },
+    {
+      "id": "STAR_226",
+      "star": "地空",
+      "palace": "命宫",
+      "situation": "金空则鸣火空则发",
+      "characteristics": ["地空", "金空则鸣", "火空则发", "吉祥"],
+      "interpretation": "金空则鸣、火空则发，水空则泛，二限逢之反为福论",
+      "keywords": ["地空", "金空则鸣", "火空则发"]
+    },
+    {
+      "id": "STAR_227",
+      "star": "地空",
+      "palace": "财帛宫",
+      "situation": "地空在财帛宫",
+      "characteristics": ["地空", "财帛宫", "耗煞", "贫贱"],
+      "interpretation": "天空地劫为耗煞，若值财帛宫必受贫贱之苦，财来财去不聚财",
+      "keywords": ["地空", "财帛宫", "贫贱"]
+    },
+    {
+      "id": "STAR_228",
+      "star": "地空",
+      "palace": "福德宫",
+      "situation": "地空在福德宫",
+      "characteristics": ["地空", "福德宫", "耗煞", "精神空虚"],
+      "interpretation": "地空入福德宫主精神空虚，人生缺乏目标和动力",
+      "keywords": ["地空", "福德宫", "空虚"]
+    },
+    {
+      "id": "STAR_229",
+      "star": "地劫",
+      "palace": "命宫",
+      "situation": "地劫守命宫",
+      "characteristics": ["地劫", "阳火", "飘泊", "劳碌"],
+      "interpretation": "地劫守命主作事疏空，不行正道，一生多飘泊劳碌，有正星同度于庙地则为祸较轻",
+      "keywords": ["地劫", "命宫", "飘泊"]
+    },
+    {
+      "id": "STAR_230",
+      "star": "地劫",
+      "palace": "命宫",
+      "situation": "空劫夹命为败局",
+      "characteristics": ["地空", "地劫", "夹命", "败局"],
+      "interpretation": "空劫忌入空亡则不以孤论，若空劫夹命则成败局，一生成败多端",
+      "keywords": ["地空", "地劫", "夹命", "败局"]
+    },
+    {
+      "id": "STAR_231",
+      "star": "地劫",
+      "palace": "迁移宫",
+      "situation": "地劫在迁移宫",
+      "characteristics": ["地劫", "迁移宫", "奔波", "不聚财"],
+      "interpretation": "地劫在迁移宫表出外奔波劳碌，事倍功半，财来财去难以积蓄",
+      "keywords": ["地劫", "迁移宫", "奔波"]
+    },
+    {
+      "id": "STAR_232",
+      "star": "截空",
+      "palace": "命宫",
+      "situation": "天马与截空同宫",
+      "characteristics": ["天马", "截空", "空马", "奔波"],
+      "interpretation": "天马与截空同宫为空马，主奔波劳碌，劳而少成，或频频转工总不理想",
+      "keywords": ["天马", "截空", "空马"]
+    },
+    {
+      "id": "STAR_233",
+      "star": "截空",
+      "palace": "命宫",
+      "situation": "截空命宫逢庚年生人",
+      "characteristics": ["截空", "庚年", "虚名虚利"],
+      "interpretation": "庚生人化禄入命，但截空亦在命宫，多虚名虚利，若加煞亦平常之人",
+      "keywords": ["截空", "庚年", "虚名"]
+    },
+    {
+      "id": "STAR_234",
+      "star": "截空",
+      "palace": "命宫",
+      "situation": "日月同度于疾厄宫有截空",
+      "characteristics": ["太阳", "太阴", "截空", "驼背", "眼瞎"],
+      "interpretation": "日月同度于丑或未之疾厄宫而本命单守于子或午宫却有截空于命垣必主眼瞎或驼背之残疾",
+      "keywords": ["日月", "截空", "残疾"]
+    },
+    {
+      "id": "STAR_235",
+      "star": "旬空",
+      "palace": "命宫",
+      "situation": "天马与旬空同宫",
+      "characteristics": ["天马", "旬空", "空亡", "远行"],
+      "interpretation": "天马与旬空同宫为空马，若空马宫垣星曜吉美则主于外乡白手兴家",
+      "keywords": ["天马", "旬空", "远行"]
+    },
+    {
+      "id": "STAR_236",
+      "star": "旬空",
+      "palace": "命宫",
+      "situation": "机梁守照命宫空逢旬空",
+      "characteristics": ["天机", "天梁", "旬空", "孤独贫寒"],
+      "interpretation": "机梁守照身命空偏宜僧道，若命垣逢旬中空亡主孤独贫寒仅宜出家为僧道",
+      "keywords": ["天机", "天梁", "旬空", "僧道"]
+    },
+    {
+      "id": "STAR_237",
+      "star": "天空",
+      "palace": "命宫",
+      "situation": "天空在命宫",
+      "characteristics": ["天空", "空亡", "财库", "忌空亡"],
+      "interpretation": "金星专司财库最怕空亡，天空属空亡星入命主一生起伏较大成败不定",
+      "keywords": ["天空", "命宫", "财库"]
+    },
+    {
+      "id": "STAR_238",
+      "star": "天空",
+      "palace": "命宫",
+      "situation": "贪守空而财源不聚",
+      "characteristics": ["贪狼", "天空", "财源", "不聚"],
+      "interpretation": "贪守空而财源不聚，指贪狼星与空曜同宫时财源难以聚集",
+      "keywords": ["贪狼", "天空", "财源"]
+    },
+    {
+      "id": "STAR_239",
+      "star": "六煞",
+      "palace": "命宫",
+      "situation": "六煞入命宫",
+      "characteristics": ["擎羊", "陀罗", "火星", "铃星", "地空", "地劫", "六煞"],
+      "interpretation": "六煞入命宫增加动荡和不稳定性，具体吉凶视同宫主星性质及庙旺程度而定",
+      "keywords": ["六煞", "命宫", "动荡"]
+    },
+    {
+      "id": "STAR_240",
+      "star": "羊陀夹忌",
+      "palace": "命宫",
+      "situation": "羊陀夹忌格局",
+      "characteristics": ["擎羊", "陀罗", "夹忌", "刑囚夹印"],
+      "interpretation": "羊陀夹忌为刑囚夹印，天相与禄存同度必有羊陀来夹即非全美，但若天相会天府禄存便可化解",
+      "keywords": ["羊陀", "夹忌", "刑囚夹印"]
+    }
+  ]
+}

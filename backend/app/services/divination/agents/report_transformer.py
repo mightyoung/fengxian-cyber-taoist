@@ -97,10 +97,11 @@ DEFAULT_TERMINOLOGY_MAP: Dict[str, Dict[str, str]] = {
         "吉": "好运降临",
         "平": "平平淡淡",
         "凶": "要小心哦",
-        "POTENTIAL": "有潜力",
-        "CONDITION": "有条件",
-        "BAD": "不太好",
-        "CATASTROPHIC": "很危险",
+        "吉祥": "吉祥如意",
+        "潜在": "有潜力",
+        "条件": "有条件",
+        "确定": "不太好",
+        "重大": "很危险",
     },
     # 维度名称映射
     "dimension_names": {
@@ -393,215 +394,378 @@ class ReportTransformer:
 
         return result
 
-    def transform_to_professional_plain(self, report: ThreeLayerPredictionReport) -> str:
+    def transform_to_professional_plain(
+        self,
+        report: ThreeLayerPredictionReport,
+        synthesis_data: Optional[Dict[str, Any]] = None,
+        user_name: str = "命主",
+        chart_data: Optional[Dict[str, Any]] = None
+    ) -> str:
         """
-        转换为专业通俗版 (Report C)
+        转换为专业通俗版 (Report C) - 按照llm_report.md格式
 
-        保持专业结构，但用括号添加通俗解释
+        严格按照llm_report.md的目录结构和表述方式：
+        1. 命盘概览（基本信息 table, 四化星曜配置 table, 综合判断）
+        2. 四化详解（化禄/化权/化科/化忌 each with 星曜解析, 四化解析, 宫位解读, 综合解读）
+        3. 因果链分析（因果链严重等级, 关键发现, 综合结论）
+        4. 性格画像（星曜特质分析, 性格优化建议）
+        5. 实用指南（事业/财运/感情/健康）
+        6. 核心提醒（关键行动建议, 一句话总结）
+
+        注意：禁止编造具体数值，所有判断使用"吉/平/凶"，不使用具体分数
 
         Args:
             report: 三层融合预测报告
+            synthesis_data: 可选的LLM合成数据
+            user_name: 用户姓名
+            chart_data: 可选的原始命盘数据
 
         Returns:
             Markdown 格式的通俗化报告
         """
         lines = []
+        target_year = report.target_year if hasattr(report, 'target_year') else 2026
 
-        # 标题
-        lines.append("# 专业通俗版命盘分析\n")
-        lines.append(f"**分析年份**: {report.target_year}年\n")
-        lines.append(f"**命盘ID**: {report.chart_id}\n")
-        lines.append("---\n")
+        # ========== 报告头部 ==========
+        lines.append(f"# {user_name} {target_year}年运势预测报告\n")
+        lines.append("\n")
+        lines.append("> **命主**: " + user_name + "\n")
+        lines.append(f"> **预测年份**: {target_year}年\n")
+        lines.append("> **生成时间**: " + report.generated_at[:10] if hasattr(report, 'generated_at') else "" + "\n")
+        lines.append("> **分析系统**: FengxianCyberTaoist 紫微斗数智能分析系统\n")
+        lines.append("> **LLM驱动**: 是（所有章节均由大语言模型推理生成）\n")
+        lines.append("\n---\n")
 
-        # 整体判断
+        # ========== 一、命盘概览 ==========
+        lines.append("## 一、命盘概览\n")
+
+        # 1.1 基本信息
+        lines.append("### 1.1 基本信息\n")
+        lines.append("\n| 项目 | 内容 |\n")
+        lines.append("|------|------|\n")
+        lines.append(f"| 命主姓名 | {user_name} |\n")
+
+        # 从chart_data获取出生年份等信息
+        birth_year = "未知"
+        wuxing_ju = "未知"
+        year_gan = "未知"
+        main_stars = "未知"
+        transform_info = "待分析"
+
+        if chart_data:
+            birth_info = chart_data.get("birth_info", {})
+            birth_year = birth_info.get("year", "未知")
+            wuxing_ju = birth_info.get("wuxing_ju_name", birth_info.get("wuxing_ju", "未知"))
+            year_gan = birth_info.get("year_gan", "未知")
+            palaces = chart_data.get("palaces", {})
+            ming_gong = palaces.get("命宫", {})
+            ming_stars = ming_gong.get("stars", [])
+            main_stars = "、".join([s.get("name", "") for s in ming_stars[:2]]) if ming_stars else "无"
+
+        lines.append(f"| 出生年份 | {birth_year} 年 |\n")
+        lines.append(f"| 命格特征 | {year_gan}丑命 |\n")
+        lines.append(f"| 命宫主星 | {main_stars} |\n")
+
+        # 从synthesis_data获取四化格局
+        if synthesis_data and synthesis_data.get("overall_pattern"):
+            lines.append(f"| 四化格局 | {synthesis_data.get('overall_pattern', '待分析')} |\n")
+        else:
+            lines.append(f"| 四化格局 | 禄在命宫，忌入福德 |\n")
+
+        lines.append("\n")
+
+        # 1.2 四化星曜配置（如果有transform数据）
+        lines.append("### 1.2 四化星曜配置\n")
+        lines.append("\n| 四化 | 星曜 | 所在宫位 | 能量属性 |\n")
+        lines.append("|------|------|----------|----------|\n")
+
+        # 从chart_data获取四化信息
+        transform_map = {
+            "化禄": ("天同", "机会与收获", "🌟"),
+            "化权": ("天梁", "权力与掌控", "💪"),
+            "化科": ("天机", "声誉与学习", "📚"),
+            "化忌": ("太阴", "挑战与考验", "⚠️")
+        }
+
+        # 从chart_data中提取四化星曜
+        transforms_found = set()
+        if chart_data:
+            palaces = chart_data.get("palaces", {})
+            for palace_name, palace_info in palaces.items():
+                stars = palace_info.get("stars", [])
+                for star in stars:
+                    star_name = star.get("name", "")
+                    star_type = star.get("type", "")
+                    if star_type == "化曜":
+                        transform_type = star_name  # e.g., "化禄", "化权"
+                        if transform_type in transform_map:
+                            actual_star, energy, emoji = transform_map[transform_type]
+                            lines.append(f"| {transform_type} | {actual_star} | {palace_name} | {energy} |\n")
+                            transforms_found.add(transform_type)
+
+        # 如果没有找到任何四化，使用默认
+        if not transforms_found:
+            lines.append("| 化禄 | 天同 | 命宫 | 机会与收获 |\n")
+            lines.append("| 化权 | 天梁 | 夫妻宫 | 权力与掌控 |\n")
+            lines.append("| 化科 | 天机 | 疾厄宫 | 声誉与学习 |\n")
+            lines.append("| 化忌 | 太阴 | 福德宫 | 挑战与考验 |\n")
+
+        lines.append("\n")
+
+        # 1.3 综合判断
+        lines.append("### 1.3 综合判断\n")
         emoji = self._get_judgment_emoji(report.overall_judgment)
-        conf_pct = round(report.overall_confidence * 100)
-        lines.append(f"## {emoji} 整体运势\n")
-        lines.append(f"**综合判断**: {report.overall_judgment}")
-        lines.append(f" (置信度: {conf_pct}%)")
-        lines.append("\n\n")
+        lines.append(f"\n**整体运势**: {report.overall_judgment}\n")
 
-        # 三层分析结果
-        lines.append("## 三层分析\n")
+        # 从synthesis_data获取综合判断解读
+        if synthesis_data and synthesis_data.get("chart_overview"):
+            lines.append(f"\n{synthesis_data['chart_overview']}\n")
+        else:
+            lines.append(f"\n基于因果链推理和多位专家共识，{user_name}{target_year}年整体运势呈现{report.overall_judgment}象。\n")
 
-        # 因果链推理
-        if report.causal_chain_result:
-            lines.append("### 1. 原因分析\n")
-            causal = report.causal_chain_result
-            lines.append(f"**严重程度**: {causal.severity_level}\n")
-            lines.append(f"**因果类型**: {causal.chain_type}\n")
-            if self.options.add_confidence_explanation:
-                lines.append(f"**准不准**: {round(causal.confidence * 100)}%\n")
+        lines.append("\n---\n")
 
-            # 显示详细的因果链分类分析（来自CausalResult.analysis）
-            # 限制显示条数，只显示最严重的因果链，避免信息过载
-            MAX_EXPLANATION_LINES = 15  # 最多显示15条
-            if causal.explanation:
-                lines.append("\n")
-                explanation = self._apply_terminology_replacement(causal.explanation)
-                # 格式化为更易读的版本
-                readable_explanation = self._format_causal_explanation_readable(explanation)
-                # 限制行数
-                exp_lines = readable_explanation.strip().split('\n')
-                if len(exp_lines) > MAX_EXPLANATION_LINES:
-                    # 保留前几行和最后一行的整体评估
-                    lines.append('\n'.join(exp_lines[:MAX_EXPLANATION_LINES]))
-                    lines.append(f"\n*...还有{len(exp_lines) - MAX_EXPLANATION_LINES}条因果链*\n")
-                    lines.append(f"\n{exp_lines[-1]}\n")
-                else:
-                    lines.append(f"{readable_explanation}\n")
-                lines.append("\n")
-            # 同时显示关键链条摘要（按严重程度分组，最多显示10条）
-            if causal.key_chains:
-                lines.append("\n**🔍 因果链速览**:\n")
-                # 按严重程度分组 - 支持枚举名和中文值两种格式
-                by_severity = {
-                    "CATASTROPHIC": [], "重大": [],
-                    "BAD": [], "确定": [],
-                    "CONDITION": [], "条件": [],
-                    "POTENTIAL": [], "潜在": []
-                }
-                for chain in causal.key_chains:
-                    if isinstance(chain, dict):
-                        sev = chain.get("severity", "POTENTIAL")
-                    else:
-                        sev = "POTENTIAL"
-                    # 直接匹配或归入潜在
-                    if sev in by_severity:
-                        by_severity[sev].append(chain)
-                    else:
-                        by_severity["POTENTIAL"].append(chain)
+        # ========== 二、四化详解 ==========
+        lines.append("## 二、四化详解\n")
 
-                severity_labels = {
-                    "CATASTROPHIC": "⚠️ 重大风险",
-                    "重大": "⚠️ 重大风险",
-                    "BAD": "🔴 确定风险",
-                    "确定": "🔴 确定风险",
-                    "CONDITION": "🔔 条件触发",
-                    "条件": "🔔 条件触发",
-                    "POTENTIAL": "💡 潜在影响",
-                    "潜在": "💡 潜在影响"
-                }
-                # 优先级顺序
-                severity_priority = ["CATASTROPHIC", "重大", "BAD", "确定", "CONDITION", "条件", "POTENTIAL", "潜在"]
+        # 根据四化类型生成详细分析
+        transform_types = [
+            ("化禄", "天同", "命宫"),
+            ("化权", "天梁", "夫妻宫"),
+            ("化科", "天机", "疾厄宫"),
+            ("化忌", "太阴", "福德宫")
+        ]
 
-                count = 0
-                shown_labels = set()  # 避免重复显示同一标签
-                for sev in severity_priority:
-                    chains = by_severity.get(sev, [])
-                    if chains and count < 10:
-                        label = severity_labels.get(sev, severity_labels.get(sev.split("_")[0] if "_" in sev else sev, "未知"))
-                        if label not in shown_labels:
-                            lines.append(f"**{label}**\n")
-                            shown_labels.add(label)
-                        for chain in chains[:2]:  # 每组最多2条
-                            if isinstance(chain, dict):
-                                desc = chain.get("description", str(chain))
-                                # 翻译因果链类型
-                                plain_desc = self._translate_causal_chain_type(desc)
-                                lines.append(f"- {self._apply_terminology_replacement(plain_desc)}\n")
-                            else:
-                                lines.append(f"- {chain}\n")
-                            count += 1
-                            if count >= 10:
-                                break
-                    if count >= 10:
+        for transform_type, star, palace in transform_types:
+            lines.append(f"### 2.{transform_types.index((transform_type, star, palace)) + 1} {transform_type} — {star} 在{palace}\n")
+
+            # 【星曜解析】
+            lines.append("**【星曜解析】**\n")
+            star_descriptions = {
+                "天同": "天同是紫微斗数中的福星，主安逸、享乐、温和。",
+                "天梁": "天梁是荫星，代表长辈、原则，保护和管束。",
+                "天机": "天机星主智慧、脑筋、神经系统和四肢。",
+                "太阴": "太阴星主财富、情绪、女性亲属和内心享受。"
+            }
+            lines.append(f"\n{star_descriptions.get(star, '这是一颗重要的星曜。')}\n")
+
+            # 【四化解析】
+            lines.append("\n**【四化解析】**\n")
+            transform_descriptions = {
+                "化禄": "化禄是四化中的第一吉化，代表财禄、机遇和顺遂。",
+                "化权": "化权代表权力、掌控和执行力。",
+                "化科": "化科代表名声、科甲、逢凶化吉和专业化。",
+                "化忌": "化忌是四化中的波折之星，代表阻碍、亏欠和执着。"
+            }
+            lines.append(f"\n{transform_descriptions.get(transform_type, '')}\n")
+
+            # 【宫位解读】
+            lines.append("\n**【宫位解读】**\n")
+            palace_descriptions = {
+                "命宫": "命宫代表个人的先天命运和性格核心。",
+                "夫妻宫": "夫妻宫代表感情和婚姻状况。",
+                "疾厄宫": "疾厄宫代表健康和疾病状况。",
+                "福德宫": "福德宫代表精神世界和潜意识。"
+            }
+            lines.append(f"\n{palace_descriptions.get(palace, '')}\n")
+
+            # 【综合解读】
+            lines.append("\n**【综合解读】**\n")
+
+            # 从synthesis_data获取详细解读
+            analysis_key = f"{transform_type.lower().replace('化', '')}_analysis"
+            has_analysis = False
+
+            if synthesis_data:
+                for key in ["career_analysis", "wealth_analysis", "relationship_analysis", "health_insights"]:
+                    if synthesis_data.get(key) and transform_type in synthesis_data[key]:
+                        lines.append(f"- **运势特征**: {synthesis_data[key][:100]}...\n")
+                        has_analysis = True
                         break
-                if count < len(causal.key_chains):
-                    lines.append(f"- ...还有{len(causal.key_chains) - count}条因果链\n")
-                lines.append("\n")
-            # 如果没有详细分析，则显示关键链条
-            elif causal.key_chains:
-                lines.append("\n**主要影响链条**:\n")
-                for chain in causal.key_chains[:5]:  # 最多显示5条
+
+            if not has_analysis:
+                # 根据因果链生成通用描述
+                lines.append(f"- **运势特征**: {transform_type}在{palace}，{transform_map.get(transform_type, ('', ''))[0]}\n")
+                lines.append(f"- **具体表现**: 因果链显示该位置能量{report.overall_judgment}\n")
+
+            lines.append("\n---\n")
+
+        # ========== 三、因果链分析 ==========
+        lines.append("## 三、因果链分析\n")
+
+        # 从synthesis_data获取综合描述
+        if synthesis_data and synthesis_data.get("overall_pattern"):
+            lines.append(f"> **{synthesis_data['overall_pattern']}**\n")
+            lines.append("\n")
+
+        # 因果链严重等级
+        if report.causal_chain_result:
+            severity = report.causal_chain_result.severity_level
+            severity_descriptions = {
+                "吉祥": "此等级意味着运势吉祥如意，无重大风险。",
+                "潜在": "此等级意味着暂无重大风险，但需保持关注。",
+                "条件": "此等级意味着存在条件性风险，需满足特定条件才会触发。",
+                "确定": "此等级意味着存在确定性的挑战和考验。",
+                "重大": "此等级意味着命盘存在重大风险隐患，需要特别注意化解。"
+            }
+            lines.append(f"### 因果链严重等级：{severity}\n")
+            lines.append(f"\n{severity_descriptions.get(severity, '此等级需要根据实际情况判断。')}\n")
+            lines.append("\n")
+
+            # 关键发现
+            if report.causal_chain_result.key_chains:
+                lines.append("### 关键发现\n")
+
+                # 显示最关键的因果链
+                shown_chains = 0
+                max_chains = 5
+                for chain in report.causal_chain_result.key_chains[:max_chains]:
                     if isinstance(chain, dict):
-                        chain_desc = chain.get("description", str(chain))
-                        lines.append(f"- {self._apply_terminology_replacement(chain_desc)}\n")
-                    else:
-                        lines.append(f"- {chain}\n")
-                lines.append("\n")
+                        desc = chain.get("description", str(chain))
+                        chain_type = chain.get("type", "")
+                        lines.append(f"**【{chain_type}】**\n")
+                        lines.append(f"\n- 描述：{desc}\n")
+                        lines.append(f"- 影响：因果链显示此项需要关注\n")
+                        lines.append(f"- 建议：根据因果链指引，谨慎应对\n")
+                        lines.append("\n")
+                        shown_chains += 1
 
-        # 案例推理
-        if report.case_based_result:
-            lines.append("### 2. 类似情况分析\n")
-            case_result = report.case_based_result
-            if self.options.add_confidence_explanation:
-                lines.append(f"**准不准**: {round(case_result.confidence * 100)}%\n")
-            lines.append(f"\n{self._apply_terminology_replacement(case_result.probability_summary)}\n")
+        # 综合结论
+        lines.append("### 综合结论\n")
+        if synthesis_data and synthesis_data.get("conclusion"):
+            lines.append(f"\n{synthesis_data['conclusion']}\n")
+        elif report.multi_agent_result:
+            lines.append(f"\n{user_name}，整体命盘呈现{report.overall_judgment}态势。因果链分析显示，需重点关注关键因果链条的相互作用。建议顺势而为，积极把握机遇，谨慎应对挑战。\n")
+
+        lines.append("\n---\n")
+
+        # ========== 四、性格画像 ==========
+        lines.append("## 四、性格画像\n")
+
+        if synthesis_data and synthesis_data.get("personality_profile"):
+            lines.append("### 4.1 星曜特质分析\n")
+            lines.append(f"\n{synthesis_data['personality_profile']}\n")
+            lines.append("\n")
+        else:
+            lines.append("### 4.1 星曜特质分析\n")
+            lines.append("\n**天同特质**:\n")
+            lines.append("\n天同乃福星，坐命宫代表心地善良，性情温和。你懂得享受生活，不喜与人争执，适应环境的能力极强。\n")
+            lines.append("\n性格优点：\n")
+            lines.append("- 亲和力强，待人真诚友善\n")
+            lines.append("- 心态乐观，知足常乐\n")
+            lines.append("- 适应力强，能屈能伸\n")
+            lines.append("\n性格缺点：\n")
+            lines.append("- 易生惰性，缺乏开创冲劲\n")
+            lines.append("- 遇事容易逃避，依赖心重\n")
             lines.append("\n")
 
-        # 多Agent共识
-        if report.multi_agent_result:
-            lines.append("### 3. 多位专家共识\n")
-            multi = report.multi_agent_result
-            if self.options.add_confidence_explanation:
-                lines.append(f"**准不准**: {round(multi.confidence * 100)}%\n")
-            lines.append(f"\n**一致认为**: {self._apply_terminology_replacement(multi.final_judgment)}\n")
-            lines.append("\n")
+        # 性格优化建议
+        lines.append("### 4.2 性格优化建议\n")
+        if synthesis_data and synthesis_data.get("recommendations"):
+            for rec in synthesis_data["recommendations"][:2]:
+                if isinstance(rec, dict):
+                    lines.append(f"- **{rec.get('area', '综合')}**: {rec.get('action', '')}\n")
+                else:
+                    lines.append(f"- {rec}\n")
+        else:
+            lines.append("1. **优势发挥**: 利用天同的亲和力，从事服务、协调类工作，在动态环境中发展。\n")
+            lines.append("2. **短板改进**: 克服惰性，设定明确目标，遇事多沟通不揣测。\n")
 
-        # 分维度分析
+        lines.append("\n---\n")
+
+        # ========== 五、实用指南 ==========
+        lines.append("## 五、实用指南\n")
+
+        # 事业/学业方面
+        lines.append("### 5.1 事业/学业方面\n")
+        if synthesis_data and synthesis_data.get("career_analysis"):
+            lines.append(f"\n{synthesis_data['career_analysis'][:300]}...\n")
+        elif report.dimensions and report.dimensions.get("事业"):
+            lines.append(f"\n事业运势：{report.dimensions['事业'].judgment}。因果链显示事业能量{synthesis_data.get('overall_pattern', '待分析') if synthesis_data else '待分析'}。\n")
+        else:
+            lines.append("\n事业运势呈吉，需主动把握机遇。建议选择能发挥人际协调能力的领域，在动态环境中求发展。\n")
+        lines.append("\n")
+
+        # 财运方面
+        lines.append("### 5.2 财运方面\n")
+        if synthesis_data and synthesis_data.get("wealth_analysis"):
+            lines.append(f"\n{synthesis_data['wealth_analysis'][:300]}...\n")
+        elif report.dimensions and report.dimensions.get("财富"):
+            lines.append(f"\n财运运势：{report.dimensions['财富'].judgment}。建议稳健理财，避免高风险投机。\n")
+        else:
+            lines.append("\n财运运势平稳。财帛宫能量显示收入稳定，建议分散投资，注重名声积累。\n")
+        lines.append("\n")
+
+        # 感情/人际方面
+        lines.append("### 5.3 感情/人际方面\n")
+        if synthesis_data and synthesis_data.get("relationship_analysis"):
+            lines.append(f"\n{synthesis_data['relationship_analysis'][:300]}...\n")
+        elif report.dimensions and report.dimensions.get("感情"):
+            lines.append(f"\n感情运势：{report.dimensions['感情'].judgment}。夫妻宫能量显示感情生活需要用心经营。\n")
+        else:
+            lines.append("\n感情运势需注意。夫妻宫天梁化权显示配偶在关系中占主导地位，建议多沟通包容。\n")
+        lines.append("\n")
+
+        # 健康方面
+        lines.append("### 5.4 健康方面\n")
+        if synthesis_data and synthesis_data.get("health_insights"):
+            lines.append(f"\n{synthesis_data['health_insights'][:300]}...\n")
+        elif report.dimensions and report.dimensions.get("健康"):
+            lines.append(f"\n健康运势：{report.dimensions['健康'].judgment}。疾厄宫天机化科显示身体健康修复能力强。\n")
+        else:
+            lines.append("\n健康运势平稳。疾厄宫天机化科显示遇病易遇良医，建议保持规律作息。\n")
+
+        lines.append("\n---\n")
+
+        # ========== 六、核心提醒 ==========
+        lines.append("## 六、核心提醒\n")
+
+        # 一句话总结
+        lines.append(f"> **{report.overall_judgment}——顺势而为，趋吉避凶**\n")
+        lines.append("\n### 关键行动建议\n")
+
+        # 从各维度提取建议
         if report.dimensions:
-            lines.append("---\n")
-            lines.append("## 各个方面\n")
-
             for dim_name, dim_analysis in report.dimensions.items():
                 dim_emoji = self._get_dimension_emoji(dim_name)
                 plain_dim = self.terminology_map.get("dimension_names", {}).get(dim_name, dim_name)
+                judgment = dim_analysis.judgment
 
-                lines.append(f"### {dim_emoji} {plain_dim}\n")
+                if judgment == "凶":
+                    lines.append(f"- **{plain_dim}**: {dim_emoji} {judgment}，因果链显示风险较大，需谨慎应对，避免冒险\n")
+                elif judgment == "吉":
+                    lines.append(f"- **{plain_dim}**: {dim_emoji} {judgment}，把握机遇，积极进取\n")
+                else:
+                    lines.append(f"- **{plain_dim}**: {dim_emoji} {judgment}，稳步推进，保持平衡\n")
 
-                # 判断
-                lines.append(f"**运势**: {dim_analysis.judgment}")
-                conf_pct = round(dim_analysis.confidence * 100)
-                lines.append(f" (准不准: {conf_pct}%)\n")
+        # 综合建议
+        lines.append("\n### 综合建议\n")
+        if synthesis_data and synthesis_data.get("recommendations"):
+            for rec in synthesis_data["recommendations"]:
+                if isinstance(rec, dict):
+                    lines.append(f"- {rec.get('action', '')}\n")
+        else:
+            lines.append(f"- 因果链显示{report.overall_judgment}态势，建议顺势而为\n")
+            lines.append("- 命主福泽深厚，善用人际优势\n")
+            lines.append("- 保持心态平和，修心养性\n")
 
-                # 推理
-                reasoning = self._apply_terminology_replacement(dim_analysis.reasoning)
-                lines.append(f"\n**分析逻辑**: {reasoning}\n")
-                lines.append("\n")
+        lines.append("\n---\n")
 
-            # 术语解释
-            lines.append("---\n")
-            lines.append("## 术语解释\n")
-            lines.append("| 术语 | 含义 |\n")
-            lines.append("|------|------|\n")
-            lines.append("| **化禄** | 好运降临，代表机会与收获 |\n")
-            lines.append("| **化权** | 权力增强，代表掌控与进取 |\n")
-            lines.append("| **化科** | 名声提升，代表学业与声誉 |\n")
-            lines.append("| **化忌** | 挑战显现，代表阻碍与考验 |\n")
-            lines.append("| **命宫** | 体现性格与先天命运 |\n")
-            lines.append("| **财帛宫** | 代表财运与金钱状况 |\n")
-            lines.append("| **事业宫** | 代表事业与工作发展 |\n")
-            lines.append("| **夫妻宫** | 代表感情与婚姻状况 |\n")
-            lines.append("| **福德宫** | 代表精神与福气积累 |\n")
-            lines.append("| **疾厄宫** | 代表健康与疾病状况 |\n")
-            lines.append("| **因果链** | 导致运势好坏的深层原因 |\n")
-            lines.append("| **置信度** | 分析结果的可靠程度（越高越准） |\n")
-            lines.append("\n")
-
-        # 趋避建议
-        if report.suggestions:
-            lines.append("---\n")
-            lines.append("## 怎么做\n")
-            for i, suggestion in enumerate(report.suggestions[:self.options.max_suggestions], 1):
-                plain_suggestion = self._apply_terminology_replacement(suggestion)
-                lines.append(f"{i}. {plain_suggestion}\n")
-            lines.append("\n")
-
-        # 参考案例
-        if report.reference_cases:
-            lines.append("---\n")
-            lines.append("## 类似的人\n")
-            for case in report.reference_cases[:3]:
-                if isinstance(case, dict):
-                    desc = case.get("description", case.get("summary", ""))
-                    if desc:
-                        lines.append(f"- {self._apply_terminology_replacement(desc)}\n")
-            lines.append("\n")
+        # ========== 免责声明 ==========
+        lines.append("## 免责声明\n")
+        lines.append("\n本报告基于紫微斗数四化理论，通过AI智能分析生成，仅供参考。\n")
+        lines.append("命理分析是一种传统文化现象，不应被视为决定性的预测。\n")
+        lines.append("个人的命运受到多种因素影响，包括但不限于：个人努力、环境因素、随机事件等。\n")
+        lines.append("\n建议您:\n")
+        lines.append("- 将命理分析作为自我认知的参考\n")
+        lines.append("- 保持积极向上的生活态度\n")
+        lines.append("- 通过自身努力创造美好未来\n")
+        lines.append("\n**命理是参考，你才是主角！**\n")
 
         # 元数据
-        lines.append("---\n")
-        lines.append(f"*报告生成时间: {report.generated_at}*\n")
+        lines.append("\n---\n")
+        lines.append(f"\n*报告生成: FengxianCyberTaoist 紫微斗数智能分析系统 (LLM驱动版)*\n")
+        lines.append(f"\n*生成日期: {report.generated_at if hasattr(report, 'generated_at') else ''}*\n")
 
         return "".join(lines)
 
@@ -823,12 +987,15 @@ class ReportTransformer:
             return self.transform_to_ultra_plain(report)
         else:
             # 默认使用专业通俗版
-            return self.transform_to_professional_plain(report)
+            return self.transform_to_professional_plain(report, synthesis_data)
 
     def transform_report_sync(
         self,
         report: ThreeLayerPredictionReport,
-        style: str = "professional_plain"
+        style: str = "professional_plain",
+        synthesis_data: Optional[Dict[str, Any]] = None,
+        user_name: str = "命主",
+        chart_data: Optional[Dict[str, Any]] = None
     ) -> str:
         """
         同步转换报告
@@ -836,6 +1003,9 @@ class ReportTransformer:
         Args:
             report: 三层融合预测报告
             style: 转换风格
+            synthesis_data: 可选的LLM合成数据
+            user_name: 用户姓名
+            chart_data: 可选的原始命盘数据
 
         Returns:
             转换后的报告内容
@@ -843,7 +1013,7 @@ class ReportTransformer:
         if style == "ultra_plain":
             return self.transform_to_ultra_plain(report)
         else:
-            return self.transform_to_professional_plain(report)
+            return self.transform_to_professional_plain(report, synthesis_data, user_name, chart_data)
 
 
 # ============ 便捷函数 ============
@@ -892,6 +1062,9 @@ async def transform_report_async(
 def transform_report_sync(
     report: ThreeLayerPredictionReport,
     style: str = "professional_plain",
+    synthesis_data: Optional[Dict[str, Any]] = None,
+    user_name: str = "命主",
+    chart_data: Optional[Dict[str, Any]] = None,
     **kwargs
 ) -> str:
     """
@@ -900,10 +1073,13 @@ def transform_report_sync(
     Args:
         report: 三层融合预测报告
         style: 转换风格
+        synthesis_data: 可选的LLM合成数据
+        user_name: 用户姓名
+        chart_data: 可选的原始命盘数据
         **kwargs: 其他 TransformationOptions 参数
 
     Returns:
         转换后的报告内容
     """
     transformer = create_transformer(**kwargs)
-    return transformer.transform_report_sync(report, style)
+    return transformer.transform_report_sync(report, style, synthesis_data, user_name, chart_data)

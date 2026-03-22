@@ -1,0 +1,814 @@
+{
+  "version": "1.0",
+  "description": "紫微斗数术语通俗化映射表 - 用于生成用户友好的运势报告",
+  "last_updated": "2026-03-21",
+  "categories": {
+    "stars": [
+      {
+        "term": "天同",
+        "plain": "温和协调星",
+        "description": "代表温和、乐观、协调能力，象征生活中的协调与顺畅",
+        "example": "天同入命宫，性格温和，善于协调人际关系",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "天相",
+        "plain": "辅佐贵人星",
+        "description": "代表辅佐、稳重、有责任感，象征有贵人相助",
+        "example": "天相星拱照，容易得到他人帮助和支持",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "天梁",
+        "plain": "稳重责任星",
+        "description": "代表稳重、老练、责任心强，象征能担当重任",
+        "example": "天梁星入官禄宫，事业上有担当，能承担责任",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "太阳",
+        "plain": "热情活力星",
+        "description": "代表热情、积极、光明磊落，也与名气和领导力相关",
+        "example": "太阳星照耀，精力充沛，适合竞争性工作",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "太阴",
+        "plain": "温柔内敛星",
+        "description": "代表温柔、内敛、直觉力强，象征内心世界丰富",
+        "example": "太阴星在福德宫，内心世界丰富，注重精神生活",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "天机",
+        "plain": "智慧思考星",
+        "description": "代表智慧、思考、策划能力，也与神经系统相关",
+        "example": "天机星入疾厄宫，思维活跃，但需注意用脑过度",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "紫微",
+        "plain": "帝王尊贵星",
+        "description": "代表尊贵、领导力、权威，象征地位显赫",
+        "example": "紫微星坐田宅宫，家宅尊贵，有不动产运势",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "天府",
+        "plain": "富足储备星",
+        "description": "代表富足、稳定、储备能力，象征财运稳固",
+        "example": "天府星在田宅宫，财务状况稳定，有积蓄能力",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "武曲",
+        "plain": "刚毅决断星",
+        "description": "代表刚强、果断、行动力强，象征执行力出众",
+        "example": "武曲星入子女宫，对子女教育果断有力",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "贪狼",
+        "plain": "欲望野心星",
+        "description": "代表欲望、野心、社交能力，有桃花特质",
+        "example": "贪狼星与武曲同宫，社交活跃，人脉广泛",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "破军",
+        "plain": "变动消耗星",
+        "description": "代表变动、消耗、破旧立新，有桃花和破耗特质",
+        "example": "破军星在夫妻宫，感情变化较大，需注意烂桃花",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "廉贞",
+        "plain": "刚烈情感星",
+        "description": "代表刚烈、情感、忠诚，与感情和桃花相关",
+        "example": "廉贞星在父母宫，对父母感情深厚",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "禄存",
+        "plain": "财富积累星",
+        "description": "代表财富、积累、稳定收入，象征财运基础",
+        "example": "禄存星入命宫，命中带财，有稳定收入来源",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "地劫",
+        "plain": "破耗损失星",
+        "description": "代表破耗、意外、损失，象征财运不稳定",
+        "example": "地劫星冲照，理财需谨慎，忌冲动投资",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "天魁",
+        "plain": "天乙贵人星",
+        "description": "代表贵人相助、正面机遇，象征有贵人扶持",
+        "example": "天魁星入命宫，人生常有贵人相助",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "天钺",
+        "plain": "机遇贵人星",
+        "description": "代表机遇、助力，象征好的发展机会",
+        "example": "天钺星拱照，容易遇到好的发展机遇",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "文昌",
+        "plain": "学业文采星",
+        "description": "代表学业、文采、考试运，象征学术能力",
+        "example": "文昌星利考试，学习能力强，学业顺利",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "文曲",
+        "plain": "艺术才华星",
+        "description": "代表艺术、才华、表达能力，象征文艺天赋",
+        "example": "文曲星入命宫，具有文艺才华，口才好",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "左辅",
+        "plain": "辅助助力星",
+        "description": "代表帮助、支持、助力，象征有人协助",
+        "example": "左辅星在官禄宫，工作中有同事支持",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "右弼",
+        "plain": "和谐助力星",
+        "description": "代表和谐、辅助、润滑作用，象征人际关系顺畅",
+        "example": "右弼星拱照，人际关系和谐，办事顺利",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "擎羊",
+        "plain": "冲动煞星",
+        "description": "代表冲动、阻碍、冲突，需注意克制",
+        "example": "擎羊星冲照，做事易冲动，需谨慎行事",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "陀罗",
+        "plain": "拖延煞星",
+        "description": "代表拖延、困扰、阻碍，象征做事有阻碍",
+        "example": "陀罗星在财帛宫，理财易有拖延或困扰",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "火星",
+        "plain": "急躁煞星",
+        "description": "代表急躁、冲动、突发状况，象征突发变化",
+        "example": "火星冲照，脾气急躁，易有突发状况",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "铃星",
+        "plain": "隐忍煞星",
+        "description": "代表隐忍、暗流、小人，象征暗中阻碍",
+        "example": "铃星在迁移宫，外出需注意暗中小人",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "空劫",
+        "plain": "空无煞星",
+        "description": "代表空无、波动、不稳定，象征财运起伏大",
+        "example": "空劫星双见，财运波动大，开销难控制",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "七杀",
+        "plain": "冲锋挑战星",
+        "description": "代表冲锋、挑战、魄力，适合开创性工作",
+        "example": "七杀星入迁移宫，外出发展敢于挑战",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "巨门",
+        "plain": "口才洞察星",
+        "description": "代表口才、洞察、言语能力",
+        "example": "巨门星在仆役宫，善于表达，人际洞察力强",
+        "emotion_tag": "neutral"
+      }
+    ],
+    "palaces": [
+      {
+        "term": "命宫",
+        "plain": "核心自我宫",
+        "description": "代表个人的核心性格、天赋和整体命运走向",
+        "example": "命宫星曜旺盛，整体运势较强",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "兄弟宫",
+        "plain": "人脉社交宫",
+        "description": "代表兄弟姐妹、同事朋友、人际关系和助力",
+        "example": "兄弟宫化权，人脉广泛，易得他人支持",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "夫妻宫",
+        "plain": "感情婚姻宫",
+        "description": "代表恋爱、婚姻、配偶关系和感情运势",
+        "example": "夫妻宫有破军，感情变化大，需注意烂桃花",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "子女宫",
+        "plain": "子女福气宫",
+        "description": "代表子女缘分、桃花运、创作能力和福气",
+        "example": "子女宫星曜佳，子女缘分好，有文艺天赋",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "财帛宫",
+        "plain": "财富收入宫",
+        "description": "代表财运、收入、理财能力和物质生活",
+        "example": "财帛宫太阳星，财运热情积极，但需谨慎理财",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "疾厄宫",
+        "plain": "健康体质宫",
+        "description": "代表健康状况、体质、疾病和精神状态",
+        "example": "疾厄宫天机星，需注意神经系统和睡眠",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "迁移宫",
+        "plain": "外出机遇宫",
+        "description": "代表外出、迁移、远行、社交名声和外在际遇",
+        "example": "迁移宫化科，外出有利，名声提升",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "仆役宫",
+        "plain": "下属人缘宫",
+        "description": "代表下属、晚辈、合作关系和人缘",
+        "example": "仆役宫星曜佳，合作伙伴可靠，人缘好",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "官禄宫",
+        "plain": "事业学业宫",
+        "description": "代表事业、学业、工作运势和事业发展",
+        "example": "官禄宫天同天梁，事业稳步发展，有责任心",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "田宅宫",
+        "plain": "房产家运宫",
+        "description": "代表房产、不动产、家运和家庭关系",
+        "example": "田宅宫紫微天府，家宅尊贵，有置产运势",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "福德宫",
+        "plain": "精神福气宫",
+        "description": "代表精神世界、福气、享受和内在修养",
+        "example": "福德宫太阴星，注重精神生活，内心世界丰富",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "父母宫",
+        "plain": "父母文书宫",
+        "description": "代表父母关系、文书学历、名声和车船交通",
+        "example": "父母宫廉贞星，与父母感情深厚，学历有成就",
+        "emotion_tag": "neutral"
+      }
+    ],
+    "transforms": [
+      {
+        "term": "化禄",
+        "plain": "财运机遇",
+        "description": "代表财运、机遇、收获和享受，象征积极正面的发展",
+        "example": "化禄入命宫，命中带财，财运亨通",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "化权",
+        "plain": "权力掌控",
+        "description": "代表权力、掌控、竞争和执行力，象征能力得到认可",
+        "example": "化权入兄弟宫，人际影响力增强，有话语权",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "化科",
+        "plain": "名声学业",
+        "description": "代表名声、学业、文采和声誉，象征才华得到展现",
+        "example": "化科入迁移宫，外出有利，名声提升",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "化忌",
+        "plain": "阻碍变动",
+        "description": "代表阻碍、变动、烦恼和考验，象征需要特别注意",
+        "example": "化忌入命宫，需特别注意，忌禄同宫有祸福相依",
+        "emotion_tag": "negative"
+      }
+    ],
+    "patterns": [
+      {
+        "term": "禄忌同宫",
+        "plain": "福祸相依格局",
+        "description": "财运与阻碍同在一宫，得失参半，有得有失",
+        "example": "禄忌同宫于命宫，祸福相依，决策需谨慎",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "贪武同行",
+        "plain": "财官双美格局",
+        "description": "贪狼武曲同宫，财运与事业俱佳",
+        "example": "贪武同行于子女宫，财运佳，行动力强",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "紫府同宫",
+        "plain": "尊贵富足格局",
+        "description": "紫微天府同宫，地位尊贵，财运稳固",
+        "example": "紫府同宫于田宅宫，家运富足，不动产运势佳",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "同梁拱照",
+        "plain": "温和责任格局",
+        "description": "天同天梁相互拱照，为人温和有责任心",
+        "example": "同梁拱照官禄宫，事业稳步发展，有担当",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "杀破狼",
+        "plain": "动荡变化格局",
+        "description": "七杀破军贪狼三星组合，代表重大变动",
+        "example": "杀破狼格在迁移宫，外出发展变动大，机遇与挑战并存",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "日月并明",
+        "plain": "光明磊落格局",
+        "description": "太阳太阴同宫或对望，象征光明磊落",
+        "example": "日月并明于命宫，性格开朗，行事正大光明",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "马落空亡",
+        "plain": "奔波劳碌格局",
+        "description": "天马星遇空劫，代表奔波但收获有限",
+        "example": "马落空亡于迁移宫，外出奔波，劳碌命",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "官星照临",
+        "plain": "事业亨通格局",
+        "description": "官禄宫得吉星拱照，事业顺利",
+        "example": "官星照临官禄宫，事业发展顺遂，有升迁机会",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "财星入库",
+        "plain": "积累财富格局",
+        "description": "财帛宫得禄存星照守，财运稳定有积累",
+        "example": "财星入库财帛宫，善于理财，积蓄可观",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "桃花犯主",
+        "plain": "感情纷扰格局",
+        "description": "桃花星过旺，感情生活复杂",
+        "example": "桃花犯主于夫妻宫，感情纠葛多，需慎防烂桃花",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "羊陀夹忌",
+        "plain": "困境考验格局",
+        "description": "擎羊陀罗夹着化忌，象征困境和考验",
+        "example": "羊陀夹忌冲照，面临考验，需坚韧面对",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "火铃夹命",
+        "plain": "冲动风险格局",
+        "description": "火星铃星夹着命宫，象征冲动和风险",
+        "example": "火铃夹命宫，脾气急躁，做事冲动易出错",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "左右同宫",
+        "plain": "左右逢源格局",
+        "description": "左辅右弼同宫或拱照，象征处处得助",
+        "example": "左右同宫于兄弟宫，人脉广泛，处处遇贵人",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "昌曲入命",
+        "plain": "文采飞扬格局",
+        "description": "文昌文曲入命宫，象征才华横溢",
+        "example": "昌曲入命宫，学业优秀，表达能力强",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "魁钺交驰",
+        "plain": "贵人相助格局",
+        "description": "天魁天钺星交相辉映，贵人运旺盛",
+        "example": "魁钺交驰于迁移宫，外出多得贵人相助",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "杀居迁移",
+        "plain": "外出闯荡格局",
+        "description": "七杀星在迁移宫，适合在外发展",
+        "example": "杀居迁移宫，在外闯荡有魄力，适合创业",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "铃昌陀武",
+        "plain": "动荡不安格局",
+        "description": "铃星昌盛陀罗武曲组合，象征内心不安",
+        "example": "铃昌陀武入疾厄宫，精神压力较大，需调适",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "三合拱照",
+        "plain": "三方汇聚格局",
+        "description": "三方四正星曜汇聚，力量集中",
+        "example": "三合拱照命宫，整体运势增强，力量汇聚",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "四煞汇聚",
+        "plain": "凶险动荡格局",
+        "description": "四颗煞星同时汇聚，象征较大挑战",
+        "example": "四煞汇聚于某宫，该宫位运势波动大，需谨慎",
+        "emotion_tag": "negative"
+      }
+    ],
+    "fortune": [
+      {
+        "term": "事业高峰期",
+        "plain": "事业发展最佳时期",
+        "description": "事业运势最强的时间段，适合全力以赴",
+        "example": "3月事业高峰期，宜全力冲刺",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "财运波动期",
+        "plain": "财务状况不稳定",
+        "description": "财运起伏较大，投资理财需谨慎",
+        "example": "7-8月财运波动期，宜保守理财",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "感情考验期",
+        "plain": "感情关系需要用心经营",
+        "description": "感情运势下行，需多沟通理解",
+        "example": "11-12月感情考验期，多沟通避免冲动",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "机遇出现期",
+        "plain": "好的发展机会来临",
+        "description": "有利时机出现，宜积极把握",
+        "example": "9月新机遇出现，积极把握",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "调整期",
+        "plain": "需要休整和规划",
+        "description": "运势平稳但需要沉淀和规划",
+        "example": "6月调整期，总结经验，规划未来",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "稳定期",
+        "plain": "运势平稳顺利",
+        "description": "各方面运势平稳，无大波澜",
+        "example": "2月运势稳定，稳步推进即可",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "收获期",
+        "plain": "努力获得回报",
+        "description": "之前付出开始有回报，宜收获成果",
+        "example": "10月收获期，检验成果，享受回报",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "烂桃花",
+        "plain": "不利的感情纠葛",
+        "description": "带来麻烦的异性关系，需警惕",
+        "example": "破军星带来烂桃花干扰感情",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "贵人运",
+        "plain": "得到他人帮助",
+        "description": "有贵人相助，做事顺利",
+        "example": "天魁天钺星带来贵人运",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "冲劲足",
+        "plain": "行动力强",
+        "description": "执行力强，办事效率高",
+        "example": "武曲星带来冲劲，做事果断有力",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "注意休息",
+        "plain": "防止过度劳累",
+        "description": "天机星影响，需防失眠和神经衰弱",
+        "example": "天机星入疾厄宫，需注意精神压力和睡眠",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "分散投资",
+        "plain": "理财要分散风险",
+        "description": "忌星影响下，避免集中投资",
+        "example": "忌星影响下，宜分散投资降低风险",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "保守理财",
+        "plain": "理财以稳健为主",
+        "description": "高波动期宜守为主，不宜冒险",
+        "example": "7-8月高波动期，以守为主",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "人脉经营",
+        "plain": "重视人际关系的维护",
+        "description": "兄弟宫化权，人际关系是成功关键",
+        "example": "兄弟宫化权，宜用心经营人脉",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "烂桃花劫",
+        "plain": "感情上的劫难",
+        "description": "因感情纠葛带来的麻烦和伤害",
+        "example": "破军桃花劫，防感情纠纷",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "精神压力",
+        "plain": "心理负担较重",
+        "description": "工作生活压力影响精神状态",
+        "example": "天机星影响，需调节精神状态",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "吉祥方位",
+        "plain": "有利的方向",
+        "description": "对运势有帮助的地理方位",
+        "example": "东南方、正南方为有利方位",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "贵人方位",
+        "plain": "容易遇到贵人的方向",
+        "description": "在哪个方向更容易得到帮助",
+        "example": "东方、南方为贵人方位",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "流年",
+        "plain": "本年度运势",
+        "description": "当年的整体运势走向",
+        "example": "2026流年运势分析",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "大运",
+        "plain": "十年阶段运势",
+        "description": "较长周期的运势阶段",
+        "example": "2026-2035大运分析",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "冲",
+        "plain": "相冲对立的运势",
+        "description": "两个星曜或宫位相冲，象征对立变动",
+        "example": "某星曜冲命宫，该方向变化大，需注意",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "拱",
+        "plain": "相互支持的运势",
+        "description": "星曜相互拱照，象征相互支持帮助",
+        "example": "吉星拱照命宫，处处得贵人相助",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "坐",
+        "plain": "星曜入驻某宫",
+        "description": "主星落入某宫位，象征该方面运势强",
+        "example": "紫微星坐田宅宫，不动产运势佳",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "守",
+        "plain": "星曜守护某宫",
+        "description": "星曜守护某宫，象征该方面稳定",
+        "example": "禄存星守财帛宫，财运稳定有积累",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "照",
+        "plain": "星曜照耀影响",
+        "description": "星曜照射某宫，带来影响",
+        "example": "太阳星照耀迁移宫，外出运势佳",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "会",
+        "plain": "星曜相会聚",
+        "description": "多颗星曜相会，力量汇聚",
+        "example": "吉星会于官禄宫，事业运势大旺",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "陷",
+        "plain": "星曜落入弱宫",
+        "description": "星曜落入失势之宫，力量减弱",
+        "example": "某星曜落陷，该方面运势较弱",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "旺",
+        "plain": "星曜得势状态",
+        "description": "星曜处于旺盛状态，力量增强",
+        "example": "某星曜入旺宫，该方面运势旺盛",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "得地",
+        "plain": "星曜得位",
+        "description": "星曜处于有利位置，发挥最佳状态",
+        "example": "太阳星得地，光芒四射，运势旺盛",
+        "emotion_tag": "positive"
+      },
+      {
+        "term": "不得地",
+        "plain": "星曜失位",
+        "description": "星曜处于不利位置，难以发挥作用",
+        "example": "某星曜不得地，该方面运势受限",
+        "emotion_tag": "negative"
+      },
+      {
+        "term": "五行局",
+        "plain": "命盘五行属性",
+        "description": "火六局、水二局等，代表命盘五行归属",
+        "example": "五行局为火六局，命中带火性特质",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "年干",
+        "plain": "出生年天干",
+        "description": "十天干之一，甲乙丙丁等",
+        "example": "年干为丙，代表热情积极的特质",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "年支",
+        "plain": "出生年地支",
+        "description": "十二地支之一，子丑寅卯等",
+        "example": "年支为子，代表智慧灵活的特质",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "三方四正",
+        "plain": "命盘核心区域",
+        "description": "指与命宫相关的三个宫位加命宫本身",
+        "example": "三方四正星曜旺盛，整体格局佳",
+        "emotion_tag": "neutral"
+      },
+      {
+        "term": "身宫",
+        "plain": "后天运势宫",
+        "description": "代表后天努力所获，与命宫共同影响人生",
+        "example": "身宫星曜与命宫配合，影响后天成就",
+        "emotion_tag": "neutral"
+      }
+    ]
+  },
+  "emotion_keywords": {
+    "positive": [
+      "好运",
+      "顺利",
+      "亨通",
+      "吉祥",
+      "贵人",
+      "机遇",
+      "收获",
+      "高峰",
+      "上升",
+      "富足",
+      "稳定",
+      "和谐",
+      "圆满",
+      "喜悦",
+      "充沛",
+      "旺盛",
+      "突出",
+      "倍增",
+      "化解",
+      "得助",
+      "吉利",
+      "顺畅",
+      "光明",
+      "精彩",
+      "有利",
+      "得势"
+    ],
+    "negative": [
+      "注意",
+      "小心",
+      "谨慎",
+      "避免",
+      "波动",
+      "下行",
+      "考验",
+      "阻碍",
+      "变动",
+      "破耗",
+      "烂桃花",
+      "冲动",
+      "急躁",
+      "困扰",
+      "破财",
+      "劳碌",
+      "压力",
+      "纠葛",
+      "劫难",
+      "煞星",
+      "凶险",
+      "低迷",
+      "损失",
+      "挫折",
+      "纠纷",
+      "灾祸"
+    ],
+    "neutral": [
+      "平稳",
+      "中性",
+      "调和",
+      "适中",
+      "均衡",
+      "阶段",
+      "周期",
+      "调整",
+      "沉淀",
+      "观望",
+      "保守",
+      "分散",
+      "从容",
+      "中立",
+      "平淡",
+      "常规"
+    ]
+  },
+  "transformation_rules": {
+    "prefixes": {
+      "注意": "需要留意",
+      "警惕": "应当防范",
+      "谨防": "小心避免",
+      "把握": "积极争取",
+      "适宜": "推荐尝试",
+      "宜": "适合进行",
+      "忌": "最好不要"
+    },
+    "suffixes": {
+      "旺盛": "状态很好",
+      "不足": "需要加强",
+      "过旺": "需要调和",
+      "平稳": "保持现状",
+      "波动": "起伏不定",
+      "亨通": "一切顺利"
+    },
+    "sentiment_phrases": {
+      "optimistic": [
+        "把握时机",
+        "全力以赴",
+        "积极进取",
+        "顺势而为",
+        "乘势而上"
+      ],
+      "cautious": [
+        "谨慎行事",
+        "三思而后行",
+        "稳扎稳打",
+        "步步为营",
+        "见好就收"
+      ],
+      "warning": [
+        "避开风险",
+        "避免冒险",
+        "不要冲动",
+        "谨言慎行",
+        "以守为主"
+      ]
+    }
+  }
+}

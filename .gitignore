@@ -9,9 +9,11 @@ Thumbs.db
 .env.development
 .env.test
 .env.production
+.env.prod
 
 # Python
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 *.so
@@ -58,3 +60,14 @@ backend/uploads/
 
 # Docker 数据
 data/
+
+# 生成报告输出目录
+backend/reports/
+reports/
+
+# 文档目录
+docs/
+
+# 数据源目录
+data_source/
+backend/data_source/mlx/

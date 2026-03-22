@@ -1,5 +1,5 @@
 """
-MiroFish Backend 启动入口
+FengxianCyberTaoist Backend 启动入口
 """
 
 import os
@@ -41,8 +41,8 @@ def main():
     port = int(os.environ.get('FLASK_PORT', 5001))
     debug = Config.DEBUG
     
-    # 启动服务
-    app.run(host=host, port=port, debug=debug, threaded=True)
+    # 启动服务 (debug=Config.DEBUG 会自动重载，但长请求时可能重载导致超时)
+    app.run(host=host, port=port, debug=Config.DEBUG, threaded=True)
 
 
 if __name__ == '__main__':

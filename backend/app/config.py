@@ -7,7 +7,7 @@ import os
 from dotenv import load_dotenv
 
 # 加载项目根目录的 .env 文件
-# 路径: MiroFish/.env (相对于 backend/app/config.py)
+# 路径: FengxianCyberTaoist/.env (相对于 backend/app/config.py)
 project_root_env = os.path.join(os.path.dirname(__file__), '../../.env')
 
 if os.path.exists(project_root_env):
@@ -21,16 +21,25 @@ class Config:
     """Flask配置类"""
     
     # Flask配置
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'mirofish-secret-key')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
     
     # JSON配置 - 禁用ASCII转义，让中文直接显示（而不是 \uXXXX 格式）
     JSON_AS_ASCII = False
     
-    # LLM配置（统一使用OpenAI格式）
-    LLM_API_KEY = os.environ.get('LLM_API_KEY')
-    LLM_BASE_URL = os.environ.get('LLM_BASE_URL', 'https://api.openai.com/v1')
-    LLM_MODEL_NAME = os.environ.get('LLM_MODEL_NAME', 'gpt-4o-mini')
+    # LLM配置（统一使用OpenAI格式，支持多种provider）
+    # 优先读取 QWEN 配置（阿里云通义千问）
+    _model_name = os.environ.get('MODEL_NAME') or os.environ.get('LLM_MODEL_NAME') or 'qwen-plus'
+    _api_key = os.environ.get('QWEN_API_KEY') or os.environ.get('LLM_API_KEY') or os.environ.get('DEEPSEEK_API_KEY')
+    # 根据模型名选择对应的 base URL
+    if 'qwen' in _model_name.lower():
+        _base_url = os.environ.get('QWEN_BASE_URL') or os.environ.get('DASHSCOPE_BASE_URL') or 'https://dashscope.aliyuncs.com/compatible-mode/v1'
+    else:
+        _base_url = os.environ.get('QWEN_BASE_URL') or os.environ.get('LLM_BASE_URL') or os.environ.get('DEEPSEEK_BASE_URL') or 'https://api.openai.com/v1'
+
+    LLM_API_KEY = _api_key
+    LLM_BASE_URL = _base_url
+    LLM_MODEL_NAME = _model_name
     
     # Zep配置
     ZEP_API_KEY = os.environ.get('ZEP_API_KEY')
@@ -62,7 +71,30 @@ class Config:
     REPORT_AGENT_MAX_TOOL_CALLS = int(os.environ.get('REPORT_AGENT_MAX_TOOL_CALLS', '5'))
     REPORT_AGENT_MAX_REFLECTION_ROUNDS = int(os.environ.get('REPORT_AGENT_MAX_REFLECTION_ROUNDS', '2'))
     REPORT_AGENT_TEMPERATURE = float(os.environ.get('REPORT_AGENT_TEMPERATURE', '0.5'))
-    
+
+    # Redis缓存配置
+    REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
+    REDIS_PORT = int(os.environ.get('REDIS_PORT', 6379))
+    REDIS_DB = int(os.environ.get('REDIS_DB', 2))
+    REDIS_PASSWORD = os.environ.get('REDIS_PASSWORD', None)
+
+    # S3 Storage配置
+    S3_ENDPOINT_URL = os.environ.get('S3_ENDPOINT_URL', '')
+    S3_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME', 'fengxian_cyber_taoist-reports')
+    S3_REGION_NAME = os.environ.get('S3_REGION_NAME', 'us-east-1')
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
+
+    # Vector Database (pgvector)
+    # Uses separate database 'fengxian_cyber_taoist_vectors' for vector storage
+    _base_db_url = os.environ.get('DATABASE_URL', '')
+    if '/bs_generator_db' in _base_db_url:
+        VECTOR_DB_URL = _base_db_url.replace('/bs_generator_db', '/fengxian_cyber_taoist_vectors')
+    elif '/intelligence_db' in _base_db_url:
+        VECTOR_DB_URL = _base_db_url.replace('/intelligence_db', '/fengxian_cyber_taoist_vectors')
+    else:
+        VECTOR_DB_URL = os.environ.get('VECTOR_DB_URL', '')
+
     @classmethod
     def validate(cls):
         """验证必要配置"""

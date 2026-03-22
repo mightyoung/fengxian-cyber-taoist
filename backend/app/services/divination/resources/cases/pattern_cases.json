@@ -1,0 +1,8243 @@
+{
+  "cases": [
+    {
+      "case_id": "PAT_001",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "辅弼夹帝",
+      "input": {
+        "main_star": "紫微",
+        "palace": "丑宫或未宫",
+        "auxiliary_stars": [
+          "左辅",
+          "右弼"
+        ],
+        "arrangement": "夹紫微"
+      },
+      "output": {
+        "interpretation": "辅弼夹帝为上品。紫微在丑、未二宫，必为紫微破军星系。得左辅右弼相夹，可以将动荡不安的本质化为开创力。亦即可以一方面稳守，一方面更新，是故称为上品。",
+        "formation_conditions": [
+          "紫微星在丑宫或未宫",
+          "左辅右弼夹紫微",
+          "紫微破军星系"
+        ],
+        "keywords": [
+          "开创",
+          "稳定",
+          "更新",
+          "上品",
+          "领导"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_002",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "马头带箭",
+      "input": {
+        "main_star": "七杀",
+        "palace": "午宫",
+        "malefic_stars": [
+          "擎羊"
+        ],
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "马头带箭主人生多挫折，少际遇，不过却主权威。喜行廉贞化禄、武曲化禄、天同化禄的宫垣，即往往为人生发越振奋的关键。于中年很难得志，在古代譬为镇卫边疆，如汉将军李广终身不得封侯。",
+        "formation_conditions": [
+          "七杀独坐命宫",
+          "擎羊同度",
+          "坐命于午宫"
+        ],
+        "keywords": [
+          "挫折",
+          "权威",
+          "边疆",
+          "劳碌",
+          "怀才不遇"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_003",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "禄逢冲破",
+      "input": {
+        "transform": "化禄",
+        "palace": "任何宫位",
+        "malefic_condition": "对宫见化忌",
+        "arrangement": "冲破"
+      },
+      "output": {
+        "interpretation": "禄逢冲破，吉处藏凶。化禄最忌冲破，禄存次之。所谓冲破即对宫见化忌。原局化禄受大限化忌冲破最为吃紧。吉处藏凶，尤不宜妄行取财，对投机自然十分不利，即使竞争求财，亦主决策错误，或资金不继。",
+        "formation_conditions": [
+          "化禄于某宫",
+          "对宫化忌冲破",
+          "原局与大限相互冲破"
+        ],
+        "keywords": [
+          "吉凶",
+          "破财",
+          "决策错误",
+          "投资",
+          "波折"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_004",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "泛水桃花",
+      "input": {
+        "main_star": "贪狼",
+        "palace": "子宫或亥宫",
+        "malefic_stars": [
+          "擎羊",
+          "陀罗"
+        ],
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "贪狼居子，与擎羊同度；贪狼居亥，与陀罗同度，即成泛水桃花格局。成此格局的贪狼，夫妻宫一定不好。如贪狼居子，夫妻宫必见武曲化忌；贪狼居亥，夫妻宫必为无禄的天府。古代女命以此为不吉祥，飘泊难定。然而，却是才艺的星系组合。",
+        "formation_conditions": [
+          "贪狼在子与擎羊同度",
+          "或贪狼在亥与陀罗同度",
+          "仅有羊陀会照则不是"
+        ],
+        "keywords": [
+          "桃花",
+          "婚姻",
+          "飘泊",
+          "才艺",
+          "女命"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_005",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "阳梁昌禄格",
+      "input": {
+        "main_stars": [
+          "太阳",
+          "天梁",
+          "文昌",
+          "禄存"
+        ],
+        "palace": "命宫",
+        "arrangement": "同会"
+      },
+      "output": {
+        "interpretation": "命宫见太阳、天梁、文昌、禄存，称为阳梁昌禄格，尤主科名得意，古人认为是状元之命。利于科名考试，功名得意。太阳会文昌，不一定要在官禄宫才利科名考试。",
+        "formation_conditions": [
+          "命宫有太阳",
+          "命宫有天梁",
+          "命宫有文昌",
+          "命宫有禄存"
+        ],
+        "keywords": [
+          "科名",
+          "考试",
+          "状元",
+          "功名",
+          "文昌"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_006",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "君臣庆会",
+      "input": {
+        "main_star": "紫微",
+        "auxiliary_stars": [
+          "左辅",
+          "右弼",
+          "文曲",
+          "文昌"
+        ],
+        "palace": "命宫",
+        "arrangement": "同会或冲照"
+      },
+      "output": {
+        "interpretation": "君指主曜，尤指紫微。臣指辅佐八曜以及一些对星。所谓庆会即是同度、冲照、相会。君臣庆会的格局，利于开创，同时亦主有声誉，而且不畏宵小作梗，由是说为才擅经邦。",
+        "formation_conditions": [
+          "紫微与辅佐诸星同会",
+          "或冲照相会",
+          "前后相夹亦为庆会"
+        ],
+        "keywords": [
+          "开创",
+          "声誉",
+          "经邦",
+          "辅佐",
+          "领导"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_007",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "刑囚夹印",
+      "input": {
+        "main_star": "天相",
+        "malefic_stars": [
+          "天梁",
+          "廉贞",
+          "擎羊",
+          "陀罗"
+        ],
+        "palace": "命宫",
+        "arrangement": "夹印"
+      },
+      "output": {
+        "interpretation": "印指天相，刑指天梁、擎羊，囚指廉贞、陀罗。所以天相与禄存同度，必有羊陀来夹即非全美。逢此命格的人多给人诿过于自己，或受人误会，以致招惹是非。故逢此命格的人，应该主动解释，否则愈怕开罪人，愈易开罪人。",
+        "formation_conditions": [
+          "天相坐命",
+          "天梁或廉贞来夹",
+          "或羊陀相夹"
+        ],
+        "keywords": [
+          "是非",
+          "误会",
+          "招惹",
+          "吃亏",
+          "刑伤"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_008",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "日月夹财",
+      "input": {
+        "main_stars": [
+          "太阳",
+          "太阴"
+        ],
+        "palace": "夹财宫",
+        "wealth_star": "武曲或天府",
+        "arrangement": "夹"
+      },
+      "output": {
+        "interpretation": "日月夹财的正格是紫微在已亥的星系。以武曲为财星故。另一个结构是紫微在子午的星系，命宫在辰戌，太阴在已亥独坐。借对宫太阳天梁安星亦为日月夹财。以命宫天府为财星。凡日月夹财，由于正曜星系的性质，往往有感情与理智、情欲与物欲的冲突，故不可一概而论，或偏于权力，或偏于财富。",
+        "formation_conditions": [
+          "武曲贪狼在丑为命宫",
+          "太阴天同在子，太阳巨门在寅",
+          "或紫微在子午，命宫在辰戌"
+        ],
+        "keywords": [
+          "财权",
+          "理智",
+          "情欲",
+          "物欲",
+          "冲突"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_009",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天罗地网",
+      "input": {
+        "main_star": "任何星曜",
+        "palace": "辰宫或戌宫",
+        "arrangement": "落网"
+      },
+      "output": {
+        "interpretation": "辰为天罗，戌为地网。命身临此，主一生多困境，挣扎奋斗难出头。吉曜入网，反多优秀表现；凶曜入网，则困难重重。",
+        "formation_conditions": [
+          "命宫或身宫在辰",
+          "命宫或身宫在戌",
+          "与星曜组合判断吉凶"
+        ],
+        "keywords": [
+          "困境",
+          "挣扎",
+          "奋斗",
+          "难出头",
+          "天罗地网"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "PAT_010",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "火贪格",
+      "input": {
+        "main_stars": [
+          "贪狼",
+          "火星"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "贪狼与火星同宫，名为火贪格。主人有突发运势，意外惊喜，财禄骤至。火贪格主爆发，多为横财格，利于投机冒险，但来得快去也快。",
+        "formation_conditions": [
+          "贪狼与火星同宫",
+          "命宫或迁移宫见之"
+        ],
+        "keywords": [
+          "横财",
+          "爆发",
+          "突发",
+          "投机",
+          "意外"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_011",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "铃贪格",
+      "input": {
+        "main_stars": [
+          "贪狼",
+          "铃星"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "贪狼与铃星同宫，名为铃贪格。与火贪格类似，主突发运势，但铃贪多为缓慢进展，先苦后甘。铃贪格之人中年后才发越，晚景佳。",
+        "formation_conditions": [
+          "贪狼与铃星同宫",
+          "命宫或迁移宫见之"
+        ],
+        "keywords": [
+          "横财",
+          "先苦后甘",
+          "中年发越",
+          "晚景",
+          "缓慢"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_012",
+      "agent": "PatternAgent",
+      "type": "中性格",
+      "name": "机昌同宫",
+      "input": {
+        "main_stars": [
+          "天机",
+          "文昌"
+        ],
+        "palace": "命宫或官禄宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "天机与文昌同宫，主人聪明好学，学术出色，文章盖世。但若天机化忌，则为钻牛角尖，想太多反为困扰。",
+        "formation_conditions": [
+          "天机与文昌同宫",
+          "命宫或官禄宫见之"
+        ],
+        "keywords": [
+          "聪明",
+          "学术",
+          "文章",
+          "好学",
+          "研究"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_013",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "杀破狼格",
+      "input": {
+        "main_stars": [
+          "七杀",
+          "破军",
+          "贪狼"
+        ],
+        "palace": "命宫三方",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "七杀、破军、贪狼三星在命宫三方会照，为杀破狼格局，主人生多变动，大起大落。古代将此格与军事将领相关，现代多与创业、投资、竞争相关。",
+        "formation_conditions": [
+          "七杀、破军、贪狼在命宫三方",
+          "任何一宫独坐亦可"
+        ],
+        "keywords": [
+          "变动",
+          "大落",
+          "开创",
+          "竞争",
+          "起伏"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_014",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "文桂武科",
+      "input": {
+        "main_stars": [
+          "文昌",
+          "天机"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫或会照"
+      },
+      "output": {
+        "interpretation": "文昌与天机同会，主聪明才智，文武双全。利于学术研究、考试升学、文学创作。天机主机动、策划，文昌主文采，合则为才华洋溢之格。",
+        "formation_conditions": [
+          "文昌与天机同宫",
+          "或命宫三方会照"
+        ],
+        "keywords": [
+          "聪明",
+          "才华",
+          "学术",
+          "文采",
+          "策划"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_015",
+      "agent": "PatternAgent",
+      "type": "中性格",
+      "name": "紫微天相",
+      "input": {
+        "main_stars": [
+          "紫微",
+          "天相"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "紫微与天相同宫，主人有领导力，稳重内敛，有责任感。紫微为帝君，天相为印星，象征权力与秩序。但需左辅右弼相扶，否则独坐孤僻。",
+        "formation_conditions": [
+          "紫微与天相同宫",
+          "命宫见之"
+        ],
+        "keywords": [
+          "领导",
+          "稳重",
+          "责任",
+          "印星",
+          "秩序"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_016",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "府相朝垣",
+      "input": {
+        "main_stars": [
+          "天府",
+          "天相"
+        ],
+        "palace": "命宫三方",
+        "arrangement": "会照或冲照"
+      },
+      "output": {
+        "interpretation": "天府、天相在命宫三方会照，主人有实力、有靠山，理财能力强。天府为财库，天相为印星，象征有实权与财富，利于从商或管理岗位。",
+        "formation_conditions": [
+          "天府在命宫或对宫",
+          "天相在三方会照或冲照"
+        ],
+        "keywords": [
+          "理财",
+          "实权",
+          "财富",
+          "从商",
+          "管理"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_017",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "羊刃交驰",
+      "input": {
+        "malefic_stars": [
+          "擎羊",
+          "陀罗"
+        ],
+        "palace": "命宫三方",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "擎羊、陀罗在命宫三方会照，主人个性刚烈，多波折，易有血光之灾。羊陀为刀剑之曜，主伤害与冲突，逢之需谨慎处理人际关系。",
+        "formation_conditions": [
+          "擎羊与陀罗在命宫三方",
+          "命宫有煞曜会照"
+        ],
+        "keywords": [
+          "刚烈",
+          "血光",
+          "冲突",
+          "波折",
+          "伤害"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_018",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "文星拱命",
+      "input": {
+        "main_stars": [
+          "文昌",
+          "文曲"
+        ],
+        "palace": "命宫三方",
+        "arrangement": "拱命"
+      },
+      "output": {
+        "interpretation": "文昌、文曲在命宫三方拱命，主人文学出众，思维敏捷，口才了得。文星拱命利于考试、演讲、教学、写作等文字相关行业。",
+        "formation_conditions": [
+          "文昌或文曲在命宫三方",
+          "与命宫有情"
+        ],
+        "keywords": [
+          "文学",
+          "口才",
+          "考试",
+          "写作",
+          "演讲"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_019",
+      "agent": "PatternAgent",
+      "type": "中性格",
+      "name": "巨火同宫",
+      "input": {
+        "main_stars": [
+          "巨门",
+          "火星"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "巨门与火星同宫，主人固执己见，口舌是非多。巨门主口才，火星主冲动，二者同宫易因言语冲动惹祸。需学会沉默寡言，避免无谓争执。",
+        "formation_conditions": [
+          "巨门与火星同宫",
+          "命宫见之"
+        ],
+        "keywords": [
+          "固执",
+          "口舌",
+          "是非",
+          "冲动",
+          "争执"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_020",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "禄马佩印",
+      "input": {
+        "main_stars": [
+          "禄存",
+          "天马",
+          "天相"
+        ],
+        "palace": "命宫",
+        "arrangement": "同会"
+      },
+      "output": {
+        "interpretation": "禄存、天马、天相在命宫同会，主人财官双美，财运亨通，利于远方求财。禄马佩印为远方发达之格，利于迁移、远行、跨国发展。",
+        "formation_conditions": [
+          "禄存与天马同宫或会照",
+          "天相在命宫或三方"
+        ],
+        "keywords": [
+          "远方",
+          "财运",
+          "迁移",
+          "跨国",
+          "发财"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_021",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "空曜临命",
+      "input": {
+        "malefic_stars": [
+          "地空",
+          "截空",
+          "旬空"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "地空、截空、旬空等空曜临命，主人理想主义，不切实际，多空想少行动。空曜临命之人应脚踏实地，从小处着手，避免好高骛远。",
+        "formation_conditions": [
+          "地空或截空或旬空在命宫",
+          "与主星同宫"
+        ],
+        "keywords": [
+          "空想",
+          "不切实际",
+          "理想主义",
+          "少行动",
+          "虚幻"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_022",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "三奇嘉会",
+      "input": {
+        "transform_stars": [
+          "化禄",
+          "化权",
+          "化科"
+        ],
+        "palace": "命宫三方",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "化禄、化权、化科三星在命宫三方会照，为三奇嘉会格，主富贵双全，吉祥如意。三奇格为紫微斗数中最吉之格，主人运势亨通，多贵人多助。",
+        "formation_conditions": [
+          "化禄在命宫或三方",
+          "化权在命宫或三方",
+          "化科在命宫或三方"
+        ],
+        "keywords": [
+          "富贵",
+          "吉祥",
+          "贵人多助",
+          "三奇",
+          "亨通"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_023",
+      "agent": "PatternAgent",
+      "type": "中性格",
+      "name": "武曲天府",
+      "input": {
+        "main_stars": [
+          "武曲",
+          "天府"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "武曲与天府同宫，主人刚毅果断，理财能力强。武曲为财星，天府为财库，二者同宫象征掌握财权，利于从商或金融行业。",
+        "formation_conditions": [
+          "武曲与天府同宫",
+          "命宫见之"
+        ],
+        "keywords": [
+          "刚毅",
+          "理财",
+          "财权",
+          "从商",
+          "金融"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_024",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "日照巨门",
+      "input": {
+        "main_stars": [
+          "太阳",
+          "巨门"
+        ],
+        "palace": "命宫或迁移宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "太阳与巨门同宫或同会，主人能言善道，口才出众，太阳照巨门，巨门的暗被太阳化解，反而能发挥巨门的优点。利于外交、谈判、教学。",
+        "formation_conditions": [
+          "太阳与巨门同宫",
+          "或命宫、迁移宫会照"
+        ],
+        "keywords": [
+          "口才",
+          "外交",
+          "谈判",
+          "教学",
+          "太阳"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "PAT_025",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_star": "紫微",
+        "condition": "紫微天府同宫于丑未",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "紫府同宫格：紫微破军星系，得左辅右弼相夹，可以将动荡不安的本质化为开创力。",
+        "keywords": [
+          "紫府同宫格",
+          "紫微",
+          "吉格",
+          "紫微破军星系"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_026",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_star": "天机",
+        "condition": "紫微天府同宫于丑未",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "紫府同宫格：紫微破军星系，得左辅右弼相夹，可以将动荡不安的本质化为开创力。",
+        "keywords": [
+          "紫府同宫格",
+          "天机",
+          "吉格",
+          "紫微破军星系"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_027",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "紫微天府同宫于丑未",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "紫府同宫格：紫微破军星系，得左辅右弼相夹，可以将动荡不安的本质化为开创力。",
+        "keywords": [
+          "紫府同宫格",
+          "太阳",
+          "吉格",
+          "紫微破军星系"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_028",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "紫微天府同宫于丑未",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "紫府同宫格：紫微破军星系，得左辅右弼相夹，可以将动荡不安的本质化为开创力。",
+        "keywords": [
+          "紫府同宫格",
+          "武曲",
+          "吉格",
+          "紫微破军星系"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_029",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_star": "天同",
+        "condition": "紫微天府同宫于丑未",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "紫府同宫格：紫微破军星系，得左辅右弼相夹，可以将动荡不安的本质化为开创力。",
+        "keywords": [
+          "紫府同宫格",
+          "天同",
+          "吉格",
+          "紫微破军星系"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_030",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫微七杀格",
+      "input": {
+        "main_star": "紫微",
+        "condition": "紫微与七杀同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫微七杀格：紫微七杀反作祸祥，若无辅曜制化则为冷酷之徒。",
+        "keywords": [
+          "紫微七杀格",
+          "紫微",
+          "凶格",
+          "紫微七杀反作祸祥"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_031",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫微七杀格",
+      "input": {
+        "main_star": "天机",
+        "condition": "紫微与七杀同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫微七杀格：紫微七杀反作祸祥，若无辅曜制化则为冷酷之徒。",
+        "keywords": [
+          "紫微七杀格",
+          "天机",
+          "凶格",
+          "紫微七杀反作祸祥"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_032",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫微七杀格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "紫微与七杀同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫微七杀格：紫微七杀反作祸祥，若无辅曜制化则为冷酷之徒。",
+        "keywords": [
+          "紫微七杀格",
+          "太阳",
+          "凶格",
+          "紫微七杀反作祸祥"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_033",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫微七杀格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "紫微与七杀同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫微七杀格：紫微七杀反作祸祥，若无辅曜制化则为冷酷之徒。",
+        "keywords": [
+          "紫微七杀格",
+          "武曲",
+          "凶格",
+          "紫微七杀反作祸祥"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_034",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫微七杀格",
+      "input": {
+        "main_star": "天同",
+        "condition": "紫微与七杀同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫微七杀格：紫微七杀反作祸祥，若无辅曜制化则为冷酷之徒。",
+        "keywords": [
+          "紫微七杀格",
+          "天同",
+          "凶格",
+          "紫微七杀反作祸祥"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_035",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微破军格",
+      "input": {
+        "main_star": "紫微",
+        "condition": "紫微破军同宫于丑未",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "紫微破军格：动荡不安的本质，需加左右才有发展。",
+        "keywords": [
+          "紫微破军格",
+          "紫微",
+          "中格",
+          "动荡不安的本质"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_036",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微破军格",
+      "input": {
+        "main_star": "天机",
+        "condition": "紫微破军同宫于丑未",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "紫微破军格：动荡不安的本质，需加左右才有发展。",
+        "keywords": [
+          "紫微破军格",
+          "天机",
+          "中格",
+          "动荡不安的本质"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_037",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微破军格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "紫微破军同宫于丑未",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "紫微破军格：动荡不安的本质，需加左右才有发展。",
+        "keywords": [
+          "紫微破军格",
+          "太阳",
+          "中格",
+          "动荡不安的本质"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_038",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微破军格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "紫微破军同宫于丑未",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "紫微破军格：动荡不安的本质，需加左右才有发展。",
+        "keywords": [
+          "紫微破军格",
+          "武曲",
+          "中格",
+          "动荡不安的本质"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_039",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微破军格",
+      "input": {
+        "main_star": "天同",
+        "condition": "紫微破军同宫于丑未",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "紫微破军格：动荡不安的本质，需加左右才有发展。",
+        "keywords": [
+          "紫微破军格",
+          "天同",
+          "中格",
+          "动荡不安的本质"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_040",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "百官朝拱格",
+      "input": {
+        "main_star": "紫微",
+        "condition": "紫微坐命，有众星环绕",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "百官朝拱格：帝座受百官朝拱，主贵，有领导力。",
+        "keywords": [
+          "百官朝拱格",
+          "紫微",
+          "吉格",
+          "帝座受百官朝拱"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_041",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "百官朝拱格",
+      "input": {
+        "main_star": "天机",
+        "condition": "紫微坐命，有众星环绕",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "百官朝拱格：帝座受百官朝拱，主贵，有领导力。",
+        "keywords": [
+          "百官朝拱格",
+          "天机",
+          "吉格",
+          "帝座受百官朝拱"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_042",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "百官朝拱格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "紫微坐命，有众星环绕",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "百官朝拱格：帝座受百官朝拱，主贵，有领导力。",
+        "keywords": [
+          "百官朝拱格",
+          "太阳",
+          "吉格",
+          "帝座受百官朝拱"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_043",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "百官朝拱格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "紫微坐命，有众星环绕",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "百官朝拱格：帝座受百官朝拱，主贵，有领导力。",
+        "keywords": [
+          "百官朝拱格",
+          "武曲",
+          "吉格",
+          "帝座受百官朝拱"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_044",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "百官朝拱格",
+      "input": {
+        "main_star": "天同",
+        "condition": "紫微坐命，有众星环绕",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "百官朝拱格：帝座受百官朝拱，主贵，有领导力。",
+        "keywords": [
+          "百官朝拱格",
+          "天同",
+          "吉格",
+          "帝座受百官朝拱"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_045",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "君臣不庆格",
+      "input": {
+        "main_star": "紫微",
+        "condition": "紫微遇空劫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "君臣不庆格：紫微遇空劫，理想太高，不切实际。",
+        "keywords": [
+          "君臣不庆格",
+          "紫微",
+          "凶格",
+          "紫微遇空劫"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_046",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "君臣不庆格",
+      "input": {
+        "main_star": "天机",
+        "condition": "紫微遇空劫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "君臣不庆格：紫微遇空劫，理想太高，不切实际。",
+        "keywords": [
+          "君臣不庆格",
+          "天机",
+          "凶格",
+          "紫微遇空劫"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_047",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "君臣不庆格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "紫微遇空劫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "君臣不庆格：紫微遇空劫，理想太高，不切实际。",
+        "keywords": [
+          "君臣不庆格",
+          "太阳",
+          "凶格",
+          "紫微遇空劫"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_048",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "君臣不庆格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "紫微遇空劫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "君臣不庆格：紫微遇空劫，理想太高，不切实际。",
+        "keywords": [
+          "君臣不庆格",
+          "武曲",
+          "凶格",
+          "紫微遇空劫"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_049",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "君臣不庆格",
+      "input": {
+        "main_star": "天同",
+        "condition": "紫微遇空劫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "君臣不庆格：紫微遇空劫，理想太高，不切实际。",
+        "keywords": [
+          "君臣不庆格",
+          "天同",
+          "凶格",
+          "紫微遇空劫"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_050",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机天梁格",
+      "input": {
+        "main_star": "天机",
+        "condition": "天机天梁同度于卯酉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机天梁格：善宿组合，好谈论辩，有特殊技艺，心地善良有宗教信仰。",
+        "keywords": [
+          "天机天梁格",
+          "天机",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_051",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机天梁格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "天机天梁同度于卯酉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机天梁格：善宿组合，好谈论辩，有特殊技艺，心地善良有宗教信仰。",
+        "keywords": [
+          "天机天梁格",
+          "太阳",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_052",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机天梁格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "天机天梁同度于卯酉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机天梁格：善宿组合，好谈论辩，有特殊技艺，心地善良有宗教信仰。",
+        "keywords": [
+          "天机天梁格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_053",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机太阴格",
+      "input": {
+        "main_star": "天机",
+        "condition": "天机太阴同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机太阴格：探花格，聪明机敏，善于谋略。",
+        "keywords": [
+          "天机太阴格",
+          "天机",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_054",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机太阴格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "天机太阴同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机太阴格：探花格，聪明机敏，善于谋略。",
+        "keywords": [
+          "天机太阴格",
+          "太阳",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_055",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机太阴格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "天机太阴同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机太阴格：探花格，聪明机敏，善于谋略。",
+        "keywords": [
+          "天机太阴格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_056",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "机梁交战格",
+      "input": {
+        "main_star": "天机",
+        "condition": "天机天梁于辰戌相冲",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "机梁交战格：理想与现实冲突，多变动、奔波。",
+        "keywords": [
+          "机梁交战格",
+          "天机",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_057",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "机梁交战格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "天机天梁于辰戌相冲",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "机梁交战格：理想与现实冲突，多变动、奔波。",
+        "keywords": [
+          "机梁交战格",
+          "太阳",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_058",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "机梁交战格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "天机天梁于辰戌相冲",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "机梁交战格：理想与现实冲突，多变动、奔波。",
+        "keywords": [
+          "机梁交战格",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_059",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天机加恶煞",
+      "input": {
+        "main_star": "天机",
+        "condition": "天机与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天机加恶煞：天机加恶煞同宫，鸡窃狗偷。",
+        "keywords": [
+          "天机加恶煞",
+          "天机",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_060",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天机加恶煞",
+      "input": {
+        "main_star": "太阳",
+        "condition": "天机与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天机加恶煞：天机加恶煞同宫，鸡窃狗偷。",
+        "keywords": [
+          "天机加恶煞",
+          "太阳",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_061",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天机加恶煞",
+      "input": {
+        "main_star": "武曲",
+        "condition": "天机与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天机加恶煞：天机加恶煞同宫，鸡窃狗偷。",
+        "keywords": [
+          "天机加恶煞",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_062",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "日丽中天格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "太阳居午宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "日丽中天格：太阳居午谓之日丽中天，有专权之贵，敌国之富。",
+        "keywords": [
+          "日丽中天格",
+          "太阳",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_063",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "日丽中天格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "太阳居午宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "日丽中天格：太阳居午谓之日丽中天，有专权之贵，敌国之富。",
+        "keywords": [
+          "日丽中天格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_064",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "日丽中天格",
+      "input": {
+        "main_star": "天同",
+        "condition": "太阳居午宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "日丽中天格：太阳居午谓之日丽中天，有专权之贵，敌国之富。",
+        "keywords": [
+          "日丽中天格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_065",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "太阳普照格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "太阳入庙旺于卯辰巳午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "太阳普照格：太阳庙旺主贵，白日生人吉，夜生人需扣分。",
+        "keywords": [
+          "太阳普照格",
+          "太阳",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_066",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "太阳普照格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "太阳入庙旺于卯辰巳午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "太阳普照格：太阳庙旺主贵，白日生人吉，夜生人需扣分。",
+        "keywords": [
+          "太阳普照格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_067",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "太阳普照格",
+      "input": {
+        "main_star": "天同",
+        "condition": "太阳入庙旺于卯辰巳午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "太阳普照格：太阳庙旺主贵，白日生人吉，夜生人需扣分。",
+        "keywords": [
+          "太阳普照格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_068",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "日失光辉格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "太阳落陷于酉戌亥子",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "日失光辉格：太阳落陷，多是非纠纷，贵而不实。",
+        "keywords": [
+          "日失光辉格",
+          "太阳",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_069",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "日失光辉格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "太阳落陷于酉戌亥子",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "日失光辉格：太阳落陷，多是非纠纷，贵而不实。",
+        "keywords": [
+          "日失光辉格",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_070",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "日失光辉格",
+      "input": {
+        "main_star": "天同",
+        "condition": "太阳落陷于酉戌亥子",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "日失光辉格：太阳落陷，多是非纠纷，贵而不实。",
+        "keywords": [
+          "日失光辉格",
+          "天同",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_071",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "太阳会羊陀",
+      "input": {
+        "main_star": "太阳",
+        "condition": "太阳与擎羊陀罗同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "太阳会羊陀：太阳会羊陀，个性刚强，多是非竞争。",
+        "keywords": [
+          "太阳会羊陀",
+          "太阳",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_072",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "太阳会羊陀",
+      "input": {
+        "main_star": "武曲",
+        "condition": "太阳与擎羊陀罗同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "太阳会羊陀：太阳会羊陀，个性刚强，多是非竞争。",
+        "keywords": [
+          "太阳会羊陀",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_073",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "太阳会羊陀",
+      "input": {
+        "main_star": "天同",
+        "condition": "太阳与擎羊陀罗同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "太阳会羊陀：太阳会羊陀，个性刚强，多是非竞争。",
+        "keywords": [
+          "太阳会羊陀",
+          "天同",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_074",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲天府格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "武曲天府同宫于子午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲天府格：武曲天府同宫于子午，无擎羊冲破，主有高寿。",
+        "keywords": [
+          "武曲天府格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_075",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲天府格",
+      "input": {
+        "main_star": "天同",
+        "condition": "武曲天府同宫于子午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲天府格：武曲天府同宫于子午，无擎羊冲破，主有高寿。",
+        "keywords": [
+          "武曲天府格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_076",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲天府格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "武曲天府同宫于子午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲天府格：武曲天府同宫于子午，无擎羊冲破，主有高寿。",
+        "keywords": [
+          "武曲天府格",
+          "廉贞",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_077",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲贪狼格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "武曲贪狼同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲贪狼格：武曲贪狼同度，悭吝之人；若无吉相扶，反主夭寿。",
+        "keywords": [
+          "武曲贪狼格",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_078",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲贪狼格",
+      "input": {
+        "main_star": "天同",
+        "condition": "武曲贪狼同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲贪狼格：武曲贪狼同度，悭吝之人；若无吉相扶，反主夭寿。",
+        "keywords": [
+          "武曲贪狼格",
+          "天同",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_079",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲贪狼格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "武曲贪狼同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲贪狼格：武曲贪狼同度，悭吝之人；若无吉相扶，反主夭寿。",
+        "keywords": [
+          "武曲贪狼格",
+          "廉贞",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_080",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲火星格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "武曲火星同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲火星格：武曲火星为寡宿凶格，女命不利婚姻。",
+        "keywords": [
+          "武曲火星格",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_081",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲火星格",
+      "input": {
+        "main_star": "天同",
+        "condition": "武曲火星同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲火星格：武曲火星为寡宿凶格，女命不利婚姻。",
+        "keywords": [
+          "武曲火星格",
+          "天同",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_082",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲火星格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "武曲火星同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲火星格：武曲火星为寡宿凶格，女命不利婚姻。",
+        "keywords": [
+          "武曲火星格",
+          "廉贞",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_083",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲七杀格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "武曲七杀同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲七杀格：武曲七杀，权禄双美，财运亨通。",
+        "keywords": [
+          "武曲七杀格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_084",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲七杀格",
+      "input": {
+        "main_star": "天同",
+        "condition": "武曲七杀同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲七杀格：武曲七杀，权禄双美，财运亨通。",
+        "keywords": [
+          "武曲七杀格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_085",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲七杀格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "武曲七杀同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲七杀格：武曲七杀，权禄双美，财运亨通。",
+        "keywords": [
+          "武曲七杀格",
+          "廉贞",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_086",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同天梁格",
+      "input": {
+        "main_star": "天同",
+        "condition": "天同天梁同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同天梁格：天同最喜会同天梁及左右，天同天梁相会，不畏凶危。",
+        "keywords": [
+          "天同天梁格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_087",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同天梁格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "天同天梁同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同天梁格：天同最喜会同天梁及左右，天同天梁相会，不畏凶危。",
+        "keywords": [
+          "天同天梁格",
+          "廉贞",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_088",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同天梁格",
+      "input": {
+        "main_star": "天府",
+        "condition": "天同天梁同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同天梁格：天同最喜会同天梁及左右，天同天梁相会，不畏凶危。",
+        "keywords": [
+          "天同天梁格",
+          "天府",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_089",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同太阴格",
+      "input": {
+        "main_star": "天同",
+        "condition": "天同太阴同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同太阴格：福星组合，温和慈善，有福有寿。",
+        "keywords": [
+          "天同太阴格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_090",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同太阴格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "天同太阴同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同太阴格：福星组合，温和慈善，有福有寿。",
+        "keywords": [
+          "天同太阴格",
+          "廉贞",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_091",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同太阴格",
+      "input": {
+        "main_star": "天府",
+        "condition": "天同太阴同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同太阴格：福星组合，温和慈善，有福有寿。",
+        "keywords": [
+          "天同太阴格",
+          "天府",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_092",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "天同擎羊格",
+      "input": {
+        "main_star": "天同",
+        "condition": "天同擎羊居午位",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "天同擎羊格：天同擎羊居午位，丙戊生人镇边疆。",
+        "keywords": [
+          "天同擎羊格",
+          "天同",
+          "中格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_093",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "天同擎羊格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "天同擎羊居午位",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "天同擎羊格：天同擎羊居午位，丙戊生人镇边疆。",
+        "keywords": [
+          "天同擎羊格",
+          "廉贞",
+          "中格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_094",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "天同擎羊格",
+      "input": {
+        "main_star": "天府",
+        "condition": "天同擎羊居午位",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "天同擎羊格：天同擎羊居午位，丙戊生人镇边疆。",
+        "keywords": [
+          "天同擎羊格",
+          "天府",
+          "中格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_095",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天同四煞格",
+      "input": {
+        "main_star": "天同",
+        "condition": "天同与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天同四煞格：福星被煞星破坏，多劳碌奔波。",
+        "keywords": [
+          "天同四煞格",
+          "天同",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_096",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天同四煞格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "天同与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天同四煞格：福星被煞星破坏，多劳碌奔波。",
+        "keywords": [
+          "天同四煞格",
+          "廉贞",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_097",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天同四煞格",
+      "input": {
+        "main_star": "天府",
+        "condition": "天同与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天同四煞格：福星被煞星破坏，多劳碌奔波。",
+        "keywords": [
+          "天同四煞格",
+          "天府",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_098",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼入庙格",
+      "input": {
+        "main_star": "贪狼",
+        "condition": "贪狼居辰戌丑未四墓宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼入庙格：贪狼四墓为得地，非庙旺，喜火铃同宫则富贵。",
+        "keywords": [
+          "贪狼入庙格",
+          "贪狼",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_099",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼入庙格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "贪狼居辰戌丑未四墓宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼入庙格：贪狼四墓为得地，非庙旺，喜火铃同宫则富贵。",
+        "keywords": [
+          "贪狼入庙格",
+          "巨门",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_100",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼入庙格",
+      "input": {
+        "main_star": "天相",
+        "condition": "贪狼居辰戌丑未四墓宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼入庙格：贪狼四墓为得地，非庙旺，喜火铃同宫则富贵。",
+        "keywords": [
+          "贪狼入庙格",
+          "天相",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_101",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼火铃格",
+      "input": {
+        "main_star": "贪狼",
+        "condition": "贪狼四墓遇火铃",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼火铃格：贪狼四墓遇火铃，豪富家资候伯贵。",
+        "keywords": [
+          "贪狼火铃格",
+          "贪狼",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_102",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼火铃格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "贪狼四墓遇火铃",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼火铃格：贪狼四墓遇火铃，豪富家资候伯贵。",
+        "keywords": [
+          "贪狼火铃格",
+          "巨门",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_103",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼火铃格",
+      "input": {
+        "main_star": "天相",
+        "condition": "贪狼四墓遇火铃",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼火铃格：贪狼四墓遇火铃，豪富家资候伯贵。",
+        "keywords": [
+          "贪狼火铃格",
+          "天相",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_104",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "贪狼七杀格",
+      "input": {
+        "main_star": "贪狼",
+        "condition": "贪狼七杀分守身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "贪狼七杀格：男有偷窃习性而犯刑配，女有偷香淫污之丑。",
+        "keywords": [
+          "贪狼七杀格",
+          "贪狼",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_105",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "贪狼七杀格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "贪狼七杀分守身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "贪狼七杀格：男有偷窃习性而犯刑配，女有偷香淫污之丑。",
+        "keywords": [
+          "贪狼七杀格",
+          "巨门",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_106",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "贪狼七杀格",
+      "input": {
+        "main_star": "天相",
+        "condition": "贪狼七杀分守身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "贪狼七杀格：男有偷窃习性而犯刑配，女有偷香淫污之丑。",
+        "keywords": [
+          "贪狼七杀格",
+          "天相",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_107",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "泛水桃花格",
+      "input": {
+        "main_star": "贪狼",
+        "condition": "贪狼与桃花星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "泛水桃花格：贪狼遇桃花，桃花犯主，情感复杂。",
+        "keywords": [
+          "泛水桃花格",
+          "贪狼",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_108",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "泛水桃花格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "贪狼与桃花星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "泛水桃花格：贪狼遇桃花，桃花犯主，情感复杂。",
+        "keywords": [
+          "泛水桃花格",
+          "巨门",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_109",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "泛水桃花格",
+      "input": {
+        "main_star": "天相",
+        "condition": "贪狼与桃花星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "泛水桃花格：贪狼遇桃花，桃花犯主，情感复杂。",
+        "keywords": [
+          "泛水桃花格",
+          "天相",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_110",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "石中隐玉格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "巨门在子午石中隐玉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "石中隐玉格：子午巨门石中隐玉，主聪明多能。",
+        "keywords": [
+          "石中隐玉格",
+          "巨门",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_111",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "石中隐玉格",
+      "input": {
+        "main_star": "天相",
+        "condition": "巨门在子午石中隐玉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "石中隐玉格：子午巨门石中隐玉，主聪明多能。",
+        "keywords": [
+          "石中隐玉格",
+          "天相",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_112",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "石中隐玉格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "巨门在子午石中隐玉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "石中隐玉格：子午巨门石中隐玉，主聪明多能。",
+        "keywords": [
+          "石中隐玉格",
+          "天梁",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_113",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "巨日同宫格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "巨门太阳同宫于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "巨日同宫格：巨日寅宫立命申，先驰名誉后食禄。",
+        "keywords": [
+          "巨日同宫格",
+          "巨门",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_114",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "巨日同宫格",
+      "input": {
+        "main_star": "天相",
+        "condition": "巨门太阳同宫于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "巨日同宫格：巨日寅宫立命申，先驰名誉后食禄。",
+        "keywords": [
+          "巨日同宫格",
+          "天相",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_115",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "巨日同宫格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "巨门太阳同宫于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "巨日同宫格：巨日寅宫立命申，先驰名誉后食禄。",
+        "keywords": [
+          "巨日同宫格",
+          "天梁",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_116",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门羊陀格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "巨门羊陀于身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门羊陀格：巨门羊陀于身命，疾病羸黄。",
+        "keywords": [
+          "巨门羊陀格",
+          "巨门",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_117",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门羊陀格",
+      "input": {
+        "main_star": "天相",
+        "condition": "巨门羊陀于身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门羊陀格：巨门羊陀于身命，疾病羸黄。",
+        "keywords": [
+          "巨门羊陀格",
+          "天相",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_118",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门羊陀格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "巨门羊陀于身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门羊陀格：巨门羊陀于身命，疾病羸黄。",
+        "keywords": [
+          "巨门羊陀格",
+          "天梁",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_119",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门会煞格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "巨门与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门会煞格：巨门遇煞，是非纠纷，口舌频发。",
+        "keywords": [
+          "巨门会煞格",
+          "巨门",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_120",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门会煞格",
+      "input": {
+        "main_star": "天相",
+        "condition": "巨门与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门会煞格：巨门遇煞，是非纠纷，口舌频发。",
+        "keywords": [
+          "巨门会煞格",
+          "天相",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_121",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门会煞格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "巨门与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门会煞格：巨门遇煞，是非纠纷，口舌频发。",
+        "keywords": [
+          "巨门会煞格",
+          "天梁",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_122",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "梁居午地格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "天梁在午居庙旺",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "梁居午地格：梁居午地官资清显，天梁单守午宫主清贵。",
+        "keywords": [
+          "梁居午地格",
+          "天梁",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_123",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "梁居午地格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "天梁在午居庙旺",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "梁居午地格：梁居午地官资清显，天梁单守午宫主清贵。",
+        "keywords": [
+          "梁居午地格",
+          "七杀",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_124",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "梁居午地格",
+      "input": {
+        "main_star": "破军",
+        "condition": "天梁在午居庙旺",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "梁居午地格：梁居午地官资清显，天梁单守午宫主清贵。",
+        "keywords": [
+          "梁居午地格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_125",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "机梁会合格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "天机天梁同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "机梁会合格：机梁会合善谈兵，居戍亦为美论。",
+        "keywords": [
+          "机梁会合格",
+          "天梁",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_126",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "机梁会合格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "天机天梁同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "机梁会合格：机梁会合善谈兵，居戍亦为美论。",
+        "keywords": [
+          "机梁会合格",
+          "七杀",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_127",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "机梁会合格",
+      "input": {
+        "main_star": "破军",
+        "condition": "天机天梁同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "机梁会合格：机梁会合善谈兵，居戍亦为美论。",
+        "keywords": [
+          "机梁会合格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_128",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "梁同巳亥格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "天梁在巳亥与天同会合",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "梁同巳亥格：梁同巳亥，男多浪荡，女多淫。",
+        "keywords": [
+          "梁同巳亥格",
+          "天梁",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_129",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "梁同巳亥格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "天梁在巳亥与天同会合",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "梁同巳亥格：梁同巳亥，男多浪荡，女多淫。",
+        "keywords": [
+          "梁同巳亥格",
+          "七杀",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_130",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "梁同巳亥格",
+      "input": {
+        "main_star": "破军",
+        "condition": "天梁在巳亥与天同会合",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "梁同巳亥格：梁同巳亥，男多浪荡，女多淫。",
+        "keywords": [
+          "梁同巳亥格",
+          "破军",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_131",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天梁遇荫格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "天梁遇左辅右弼",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天梁遇荫格：天梁遇辅弼，有贵人与解厄之力。",
+        "keywords": [
+          "天梁遇荫格",
+          "天梁",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_132",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天梁遇荫格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "天梁遇左辅右弼",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天梁遇荫格：天梁遇辅弼，有贵人与解厄之力。",
+        "keywords": [
+          "天梁遇荫格",
+          "七杀",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_133",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天梁遇荫格",
+      "input": {
+        "main_star": "破军",
+        "condition": "天梁遇左辅右弼",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天梁遇荫格：天梁遇辅弼，有贵人与解厄之力。",
+        "keywords": [
+          "天梁遇荫格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_134",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "杀居旺宫格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "七杀在寅申子午宫坐命",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "杀居旺宫格：七杀寅申子午宫，一生爵禄荣昌，多辛劳独创。",
+        "keywords": [
+          "杀居旺宫格",
+          "七杀",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_135",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "杀居旺宫格",
+      "input": {
+        "main_star": "破军",
+        "condition": "七杀在寅申子午宫坐命",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "杀居旺宫格：七杀寅申子午宫，一生爵禄荣昌，多辛劳独创。",
+        "keywords": [
+          "杀居旺宫格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_136",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "七杀朝斗格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "七杀在午申朝斗",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "七杀朝斗格：七杀朝斗格多辛劳独创，独当一面，成就光辉。",
+        "keywords": [
+          "七杀朝斗格",
+          "七杀",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_137",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "七杀朝斗格",
+      "input": {
+        "main_star": "破军",
+        "condition": "七杀在午申朝斗",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "七杀朝斗格：七杀朝斗格多辛劳独创，独当一面，成就光辉。",
+        "keywords": [
+          "七杀朝斗格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_138",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "马头带箭格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "七杀坐命午宫遇擎羊",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "马头带箭格：马头带箭主人生多挫折，少际遇，不过却主权威。",
+        "keywords": [
+          "马头带箭格",
+          "七杀",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_139",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "马头带箭格",
+      "input": {
+        "main_star": "破军",
+        "condition": "七杀坐命午宫遇擎羊",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "马头带箭格：马头带箭主人生多挫折，少际遇，不过却主权威。",
+        "keywords": [
+          "马头带箭格",
+          "破军",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_140",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫杀无制格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "紫微七杀无辅曜制化",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫杀无制格：紫微七杀无辅曜制化为冷酷之徒格。",
+        "keywords": [
+          "紫杀无制格",
+          "七杀",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_141",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫杀无制格",
+      "input": {
+        "main_star": "破军",
+        "condition": "紫微七杀无辅曜制化",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫杀无制格：紫微七杀无辅曜制化为冷酷之徒格。",
+        "keywords": [
+          "紫杀无制格",
+          "破军",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_142",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "破军子午格",
+      "input": {
+        "main_star": "破军",
+        "condition": "破军在子午与吉星同会",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "破军子午格：子午破军加官进禄，主先破后成。",
+        "keywords": [
+          "破军子午格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_143",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "破军贪狼格",
+      "input": {
+        "main_star": "破军",
+        "condition": "破军贪狼逢禄马",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "破军贪狼格：破军贪狼逢禄马，男多浪荡女多淫。",
+        "keywords": [
+          "破军贪狼格",
+          "破军",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_144",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "破军文昌格",
+      "input": {
+        "main_star": "破军",
+        "condition": "破军文昌于震地遇吉",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "破军文昌格：破军文昌于震地，遇吉可贵，主先破后成。",
+        "keywords": [
+          "破军文昌格",
+          "破军",
+          "中格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_145",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "破军四煞格",
+      "input": {
+        "main_star": "破军",
+        "condition": "破军与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "破军四煞格：破军遇煞，冲动激进，多波折。",
+        "keywords": [
+          "破军四煞格",
+          "破军",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_146",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_stars": [
+          "紫微",
+          "天府"
+        ],
+        "palace": "丑宫或未宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "紫微天府同宫于丑未二宫，为紫府同宫格。紫微为北极之星，天府为南斗之主，二星同宫主大贵。唯须左辅右弼相夹方为完美，否则只是中品。此格主事业成功，可得贵人相助，权柄显赫。",
+        "keywords": [
+          "紫府同宫",
+          "大贵",
+          "权柄",
+          "贵人",
+          "丑未"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_147",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天府朝垣格",
+      "input": {
+        "main_stars": [
+          "天府"
+        ],
+        "palace": "戌宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "天府坐戌宫独守命宫，为天府朝垣格。天府在戌为入庙，与紫微相会于事业宫，主有权贵。此格主田宅丰厚，产业丰盈，善于理财守成。",
+        "keywords": [
+          "天府朝垣",
+          "田宅",
+          "理财",
+          "守成",
+          "戌宫"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_148",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼入庙格",
+      "input": {
+        "main_stars": [
+          "贪狼"
+        ],
+        "palace": "寅宫或申宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "贪狼星独坐寅申二宫，为贪狼入庙格。贪狼为欲望之星，入庙主有作为。此格主社交能力强，善于交际，人脉广泛。喜遇火铃同度主爆发，唯忌水火交济则多波折。",
+        "keywords": [
+          "贪狼入庙",
+          "社交",
+          "人脉",
+          "欲望",
+          "寅申"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_149",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "君臣庆会",
+      "input": {
+        "main_stars": [
+          "紫微"
+        ],
+        "palace": "辰戌二宫",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "紫微与左辅右弼同宫或会照，为君臣庆会格。紫微为北极帝星，左辅右弼为辅弼之臣，会合主能得到得力助手。此格主贵气逼人，事业上有忠诚可靠的伙伴扶持。",
+        "keywords": [
+          "君臣庆会",
+          "贵气",
+          "助手",
+          "忠诚",
+          "辰戌"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_150",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "日月夹财",
+      "input": {
+        "main_stars": [
+          "太阳",
+          "太阴"
+        ],
+        "palace": "财帛宫",
+        "arrangement": "夹"
+      },
+      "output": {
+        "interpretation": "太阳太阴夹持财帛宫，为日月夹财格。日月为明主财，夹财帛宫主财富丰厚。此格主财源广进，易得意外之财，但须注意理财，不宜投机。",
+        "keywords": [
+          "日月夹财",
+          "财富",
+          "财源",
+          "理财",
+          "夹宫"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_151",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "阳梁昌禄",
+      "input": {
+        "main_stars": [
+          "太阳",
+          "天梁",
+          "文昌"
+        ],
+        "palace": "官禄宫",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "太阳天梁文昌会聚官禄宫，为阳梁昌禄格。此格主功名显达，考试运佳，利于从政或学术发展。天梁为荫星，得太阳照拂能逢凶化吉，文昌主文化学历。",
+        "keywords": [
+          "阳梁昌禄",
+          "功名",
+          "考试",
+          "学术",
+          "官禄"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_152",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "府相朝垣",
+      "input": {
+        "main_stars": [
+          "天府",
+          "天相"
+        ],
+        "palace": "命宫三方",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "天府天相来会命宫三方，为府相朝垣格。天府天相为土星系列，主田宅与爵禄。此格主有田产房产之运，晚年丰裕，利于从商或管理岗位。",
+        "keywords": [
+          "府相朝垣",
+          "田宅",
+          "爵禄",
+          "商管",
+          "丰裕"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_153",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "禄马佩印",
+      "input": {
+        "main_stars": [
+          "禄存",
+          "天马"
+        ],
+        "palace": "官禄宫",
+        "arrangement": "同宫或会照"
+      },
+      "output": {
+        "interpretation": "禄存与天马同宫或会照官禄宫，为禄马佩印格。禄存主财禄，天马主动荡，佩印主有功名证书。此格主财官双美，利于创业或出外发展，财富与地位兼得。",
+        "keywords": [
+          "禄马佩印",
+          "财官",
+          "创业",
+          "外出发展",
+          "财富地位"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_154",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "三奇嘉会",
+      "input": {
+        "main_stars": [
+          "化禄",
+          "化权",
+          "化科"
+        ],
+        "palace": "命宫三方四正",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "化禄化权化科三星会聚于命宫三方四正，为三奇嘉会格。此为紫微斗数中最上等格局，主位高权重，功名显赫。须注意化忌冲破则格局减等。",
+        "keywords": [
+          "三奇嘉会",
+          "功名",
+          "权位",
+          "上等格局",
+          "禄权科忌"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_155",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "火贪格",
+      "input": {
+        "main_stars": [
+          "火星",
+          "贪狼"
+        ],
+        "palace": "命宫或财帛宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "火星与贪狼同宫，为火贪格。贪狼遇火为爆发组合，主一朝得志，利于投机冒险、突发横财。唯火性刚烈，需防冲动误事。此格喜见铃星会合成「火贪铃贪」，主更大富贵。",
+        "keywords": [
+          "火贪格",
+          "爆发",
+          "横财",
+          "投机",
+          "冲动"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_156",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "铃贪格",
+      "input": {
+        "main_stars": [
+          "铃星",
+          "贪狼"
+        ],
+        "palace": "命宫或财帛宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "铃星与贪狼同宫，为铃贪格。铃贪为爆发之格，主突然发达，利益骤获。此格比火贪更为隐忍而持久，利于长期投资或技术专精领域。",
+        "keywords": [
+          "铃贪格",
+          "突然发达",
+          "技术专精",
+          "隐忍",
+          "持久"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_157",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "财印夹库",
+      "input": {
+        "main_stars": [
+          "武曲",
+          "天相"
+        ],
+        "palace": "田宅宫",
+        "arrangement": "夹"
+      },
+      "output": {
+        "interpretation": "武曲天相夹持田宅宫，为财印夹库格。武曲为财星，天相为印星，夹田宅主仓库丰盈。此格主置产运气佳，宜投资不动产或收藏保值。",
+        "keywords": [
+          "财印夹库",
+          "田宅",
+          "置产",
+          "不动产",
+          "保值"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_158",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "左右夹命",
+      "input": {
+        "main_stars": [
+          "左辅",
+          "右弼"
+        ],
+        "palace": "命宫",
+        "arrangement": "夹"
+      },
+      "output": {
+        "interpretation": "左辅右弼夹持命宫，为左右夹命格。此格主有人扶持，行事顺畅。左右为吉辅星，夹命宫主左右逢源，贵人运佳，利于团队合作或仕途发展。",
+        "keywords": [
+          "左右夹命",
+          "贵人",
+          "辅佐",
+          "团队",
+          "仕途"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_159",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天乙拱命",
+      "input": {
+        "main_stars": [
+          "天魁",
+          "天钺"
+        ],
+        "palace": "命宫三方",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "天魁天钺会照命宫三方，为天乙拱命格。魁钺为贵人星，主得有权势者相助。此格主考试功名佳，仕途顺利，易得长辈或上司提携。",
+        "keywords": [
+          "天乙拱命",
+          "贵人",
+          "考试",
+          "仕途",
+          "提携"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_160",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "文星拱命",
+      "input": {
+        "main_stars": [
+          "文昌",
+          "文曲"
+        ],
+        "palace": "命宫三方",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "文昌文曲会照命宫三方，为文星拱命格。此格主文化素养高，利于学术、艺术、演艺发展。昌曲主才艺与声誉，得之则才华出众。",
+        "keywords": [
+          "文星拱命",
+          "才艺",
+          "学术",
+          "艺术",
+          "声誉"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_161",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "马头带箭",
+      "input": {
+        "main_stars": [
+          "七杀",
+          "擎羊"
+        ],
+        "palace": "午宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "七杀与擎羊同宫于午地，为马头带箭格。此格主人生多挫折、怀才不遇，虽有权威但难得志。古代比作镇守边疆之将，如李广终身未封侯。行运遇化禄可解。",
+        "keywords": [
+          "马头带箭",
+          "挫折",
+          "怀才不遇",
+          "权威",
+          "边疆"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_162",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "泛水桃花",
+      "input": {
+        "main_stars": [
+          "贪狼"
+        ],
+        "palace": "子宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "贪狼独坐子宫，为泛水桃花格。贪狼为欲望之星，子为水地，泛水主沉溺酒色。此格主易受感情困扰，桃花过旺招灾，宜修身养性以化解。",
+        "keywords": [
+          "泛水桃花",
+          "桃花",
+          "酒色",
+          "感情困扰",
+          "子宫"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_163",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "刑囚夹印",
+      "input": {
+        "main_stars": [
+          "廉贞",
+          "擎羊",
+          "天相"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫或夹"
+      },
+      "output": {
+        "interpretation": "廉贞与擎羊同宫或相夹天相，为刑囚夹印格。廉贞化囚，擎羊为刑星，天相为印星被夹，主牢狱之灾或法律纠纷。此格最忌触犯法律。",
+        "keywords": [
+          "刑囚夹印",
+          "牢狱",
+          "法律纠纷",
+          "刑灾",
+          "廉贞"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_164",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "羊刃交驰",
+      "input": {
+        "main_stars": [
+          "擎羊",
+          "陀罗"
+        ],
+        "palace": "命宫或迁移宫",
+        "arrangement": "交驰"
+      },
+      "output": {
+        "interpretation": "擎羊与陀罗一前一后或交错于命宫迁移宫，为羊刃交驰格。此格主劳碌奔波，是非不断，易有意外灾祸或慢性疾病。需防小人，远离是非之地。",
+        "keywords": [
+          "羊刃交驰",
+          "劳碌",
+          "是非",
+          "意外灾祸",
+          "小人"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_165",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天罗地网",
+      "input": {
+        "main_stars": [
+          "巨门",
+          "陀罗"
+        ],
+        "palace": "辰宫或戌宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "巨门与陀罗同宫于辰戌，为天罗地网格。辰为天罗，戌为地网，巨门为暗星。此格主运势受阻，发展受限，多口舌是非。宜低调行事，勿强出头。",
+        "keywords": [
+          "天罗地网",
+          "受阻",
+          "口舌是非",
+          "低调",
+          "辰戌"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_166",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "空曜临命",
+      "input": {
+        "main_stars": [
+          "地空",
+          "地劫"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "地空地劫同临命宫，为空曜临命格。空劫为耗损之星，主财来财去，事业成空。此格宜从事精神层面或公益事业，不宜追求物质。",
+        "keywords": [
+          "空曜临命",
+          "耗损",
+          "财来财去",
+          "精神层面",
+          "公益"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_167",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨火同宫",
+      "input": {
+        "main_stars": [
+          "巨门",
+          "火星"
+        ],
+        "palace": "命宫或财帛宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "巨门与火星同宫，为巨火同宫格。巨门主口舌，火星主冲动，此格主易因冲动而惹祸，或因口舌招灾。易发生意外或人际冲突。",
+        "keywords": [
+          "巨火同宫",
+          "口舌",
+          "冲动",
+          "意外",
+          "人际冲突"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_168",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "铃火同宫",
+      "input": {
+        "main_stars": [
+          "铃星",
+          "巨门"
+        ],
+        "palace": "命宫或财帛宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "铃星与巨门同宫，为铃火同宫格。此格比巨火同宫更为阴险，主暗中招灾，易遭小人陷害或暗中报复。心理压力较大，易患神经衰弱。",
+        "keywords": [
+          "铃火同宫",
+          "暗中招灾",
+          "小人陷害",
+          "心理压力",
+          "神经衰弱"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_169",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "擎羊入命",
+      "input": {
+        "main_stars": [
+          "擎羊"
+        ],
+        "palace": "命宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "擎羊独坐命宫，为擎羊入命格。擎羊为刑星，主意外灾祸、手术血光。此格命主性刚冲动，易与人争斗，宜修身养性，避免危险活动。",
+        "keywords": [
+          "擎羊入命",
+          "刑灾",
+          "意外",
+          "血光",
+          "刚冲动"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_170",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "陀罗入命",
+      "input": {
+        "main_stars": [
+          "陀罗"
+        ],
+        "palace": "命宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "陀罗独坐命宫，为陀罗入命格。陀罗为暗星，主拖延、纠缠、慢性疾病。此格命主常有拖延习惯，运势受阻，需有恒心毅力才能成功。",
+        "keywords": [
+          "陀罗入命",
+          "拖延",
+          "纠缠",
+          "慢性疾病",
+          "阻碍"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_171",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "劫空夹命",
+      "input": {
+        "main_stars": [
+          "地空",
+          "地劫"
+        ],
+        "palace": "命宫",
+        "arrangement": "夹"
+      },
+      "output": {
+        "interpretation": "地空地劫夹持命宫，为劫空夹命格。此格主财库空虚，付出多收获少，投资破财。事业宜稳定，不宜投机冒险。",
+        "keywords": [
+          "劫空夹命",
+          "财库空虚",
+          "破财",
+          "投资损失",
+          "稳定"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_172",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "杀破狼居命",
+      "input": {
+        "main_stars": [
+          "七杀",
+          "破军",
+          "贪狼"
+        ],
+        "palace": "命宫",
+        "arrangement": "分守命宫三方"
+      },
+      "output": {
+        "interpretation": "七杀破军贪狼分守命宫三方，为杀破狼居命格。此格主人生大变动，命运起伏剧烈，为「动荡」之象。吉则成就非凡，凶则一生漂泊。",
+        "keywords": [
+          "杀破狼",
+          "大变动",
+          "动荡",
+          "起伏",
+          "漂泊"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_173",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "机昌同宫",
+      "input": {
+        "main_stars": [
+          "天机",
+          "文昌"
+        ],
+        "palace": "命宫或财帛宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "天机与文昌同宫，为机昌同宫格。天机主机变，文昌主才学，此格主聪明好学，利于学术研究或技术专精。唯天机化忌则多思虑，需防神经衰弱。",
+        "keywords": [
+          "机昌同宫",
+          "聪明",
+          "学术",
+          "技术",
+          "才学"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_174",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微天相",
+      "input": {
+        "main_stars": [
+          "紫微",
+          "天相"
+        ],
+        "palace": "辰宫或戌宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "紫微天相同宫于辰戌，为紫微天相格。紫微为帝星，天相为印星，此格主有权柄但需依仗他人。须左辅右弼相会方有作为，否则仅为中品。",
+        "keywords": [
+          "紫微天相",
+          "权柄",
+          "印星",
+          "依仗",
+          "辰戌"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_175",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "武曲天府",
+      "input": {
+        "main_stars": [
+          "武曲",
+          "天府"
+        ],
+        "palace": "子午二宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "武曲天府同宫于子午，为武曲天府格。武曲为财星，天府为府库，此格主财务平稳，善于理财。唯需防羊陀会照则格局减等。",
+        "keywords": [
+          "武曲天府",
+          "财务",
+          "理财",
+          "子午",
+          "储财"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_176",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "日照巨门",
+      "input": {
+        "main_stars": [
+          "太阳",
+          "巨门"
+        ],
+        "palace": "命宫或迁移宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "太阳与巨门同宫于命宫或迁移宫，为日照巨门格。太阳照巨门，化解了巨门的暗，能发挥其优点。此格主能言善辩，利于外交、谈判、教学。",
+        "keywords": [
+          "日照巨门",
+          "口才",
+          "外交",
+          "谈判",
+          "教学"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_177",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "杀破狼",
+      "input": {
+        "main_stars": [
+          "七杀",
+          "破军",
+          "贪狼"
+        ],
+        "palace": "命宫三方四正",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "七杀破军贪狼会聚命宫三方四正，为经典杀破狼格。此格主人生必有重大变动，命运多起伏。成就高低取决于命宫主星及辅佐吉星。",
+        "keywords": [
+          "杀破狼",
+          "重大变动",
+          "命运起伏",
+          "开创",
+          "变革"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_178",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "机梁同宫",
+      "input": {
+        "main_stars": [
+          "天机",
+          "天梁"
+        ],
+        "palace": "辰宫或戌宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "天机天梁同宫于辰戌，为机梁同宫格。天机主策划，天梁主荫庇，此格主有策划能力，可得长辈荫庇。唯天机化忌则多思虑不安。",
+        "keywords": [
+          "机梁同宫",
+          "策划",
+          "荫庇",
+          "长辈",
+          "辰戌"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_179",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "武曲贪狼",
+      "input": {
+        "main_stars": [
+          "武曲",
+          "贪狼"
+        ],
+        "palace": "丑未二宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "武曲贪狼同宫于丑未，为武曲贪狼格。武曲为财星，贪狼为欲望之星，此格主有财运但带投机性。利于商业、演艺、社交场合。",
+        "keywords": [
+          "武曲贪狼",
+          "财运",
+          "投机",
+          "商业",
+          "演艺"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_180",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "廉贞天府",
+      "input": {
+        "main_stars": [
+          "廉贞",
+          "天府"
+        ],
+        "palace": "申宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "廉贞天府同宫于申，为廉贞天府格。廉贞为次桃花星，天府为府库，此格主有桃花但能自制。财务上有一定积累，唯防化忌破耗。",
+        "keywords": [
+          "廉贞天府",
+          "桃花",
+          "财务",
+          "自制",
+          "申宫"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_181",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "天机巨门",
+      "input": {
+        "main_stars": [
+          "天机",
+          "巨门"
+        ],
+        "palace": "卯宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "天机巨门同宫于卯，为天机巨门格。此格主善于思考，但口舌是非较多。利于学术研究或技术工作，不宜从事需要调和人事的职位。",
+        "keywords": [
+          "天机巨门",
+          "思考",
+          "口舌是非",
+          "学术研究",
+          "技术"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_182",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "太阳太阴",
+      "input": {
+        "main_stars": [
+          "太阳",
+          "太阴"
+        ],
+        "palace": "丑宫或未宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "太阳太阴同宫于丑未，为日月同宫格。此格主性格温和，阴阳调和。利于稳定发展，适宜服务行业或与女性相关的业务。",
+        "keywords": [
+          "日月同宫",
+          "阴阳调和",
+          "温和",
+          "稳定",
+          "服务"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_183",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼会照",
+      "input": {
+        "main_stars": [
+          "贪狼"
+        ],
+        "palace": "命宫三方",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "贪狼星会照命宫三方，为贪狼会照格。此格主社交能力强，人脉广泛。喜与火星、铃星同会，主突发横财；与空劫同会则主耗损。",
+        "keywords": [
+          "贪狼会照",
+          "社交",
+          "人脉",
+          "横财",
+          "消耗"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_184",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "七杀朝斗",
+      "input": {
+        "main_stars": [
+          "七杀"
+        ],
+        "palace": "命宫",
+        "arrangement": "寅宫或申宫"
+      },
+      "output": {
+        "interpretation": "七杀星坐守寅申命宫，为七杀朝斗格。七杀在寅申为入庙，主有权势。此格主开创力强，适合竞争激烈的行业，如军警、法律、商业。",
+        "keywords": [
+          "七杀朝斗",
+          "权势",
+          "开创",
+          "竞争",
+          "军警"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_185",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "破军水海",
+      "input": {
+        "main_stars": [
+          "破军",
+          "太阴"
+        ],
+        "palace": "子午二宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "破军与太阴同宫于子午，为破军水海格。破军主变革，太阴主水，此格主财运与变革并存。利于投资或创业，但需防大起大落。",
+        "keywords": [
+          "破军水海",
+          "财运",
+          "变革",
+          "投资",
+          "子午"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_186",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "禄存独坐",
+      "input": {
+        "main_stars": [
+          "禄存"
+        ],
+        "palace": "命宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "禄存星独坐命宫，为禄存独坐格。禄存为正财星，主稳定收入。此格主勤劳致富，宜上班或专业技能工作，不宜投机。",
+        "keywords": [
+          "禄存独坐",
+          "正财",
+          "稳定",
+          "勤劳致富",
+          "专业"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_187",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "刑耗会命",
+      "input": {
+        "main_stars": [
+          "廉贞",
+          "擎羊"
+        ],
+        "palace": "命宫",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "廉贞与擎羊会照命宫，为刑耗会命格。此格主有牢狱之灾或法律纠纷，灾祸常因酒色财气。必须遵纪守法，远离是非。",
+        "keywords": [
+          "刑耗会命",
+          "牢狱",
+          "法律纠纷",
+          "酒色财气",
+          "灾祸"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_188",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "四煞会命",
+      "input": {
+        "main_stars": [
+          "火星",
+          "铃星",
+          "擎羊",
+          "陀罗"
+        ],
+        "palace": "命宫",
+        "arrangement": "会聚"
+      },
+      "output": {
+        "interpretation": "四煞星同时会聚命宫，为四煞会命格。此格为凶格之最，主命途多舛，是非灾祸不断。需靠后天修德或宗教信仰化解。",
+        "keywords": [
+          "四煞会命",
+          "凶格",
+          "灾祸",
+          "修德",
+          "宗教"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_189",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "巨门陀罗",
+      "input": {
+        "main_stars": [
+          "巨门",
+          "陀罗"
+        ],
+        "palace": "辰宫或戌宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "巨门与陀罗同宫于辰戌，为巨门陀罗格。此格主暗滞难伸，人际受阻。口舌是非多，宜保守行事，不宜强出头。",
+        "keywords": [
+          "巨门陀罗",
+          "暗滞",
+          "人际受阻",
+          "口舌",
+          "保守"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_190",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "天同巨门",
+      "input": {
+        "main_stars": [
+          "天同",
+          "巨门"
+        ],
+        "palace": "丑宫或未宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "天同巨门同宫于丑未，为天同巨门格。天同化解巨门的刚性，巨门给予天同一定的攻击力。此格主有福气但需防口舌。",
+        "keywords": [
+          "天同巨门",
+          "福气",
+          "口舌",
+          "化解",
+          "丑未"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_191",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同独坐",
+      "input": {
+        "main_stars": [
+          "天同"
+        ],
+        "palace": "亥宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "天同星独坐亥宫，为天同入庙格。天同为福星，亥宫为水地，此格主福泽深厚，一生平稳。唯不利竞争，需靠人脉发展。",
+        "keywords": [
+          "天同独坐",
+          "福泽",
+          "平稳",
+          "人脉",
+          "亥宫"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_192",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天梁独坐",
+      "input": {
+        "main_stars": [
+          "天梁"
+        ],
+        "palace": "午宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "天梁星独坐午宫，为天梁架构格。天梁为荫星，午宫为太阳居地，此格主得长辈荫庇，利于仕途或专业发展。",
+        "keywords": [
+          "天梁独坐",
+          "荫庇",
+          "仕途",
+          "专业发展",
+          "午宫"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_193",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "太阴独坐",
+      "input": {
+        "main_stars": [
+          "太阴"
+        ],
+        "palace": "酉宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "太阴星独坐酉宫，为太阴落陷格。太阴主财与女性，酉宫为金地，此格主财务或感情上有一定基础，但需防过于保守。",
+        "keywords": [
+          "太阴独坐",
+          "财务",
+          "女性",
+          "保守",
+          "酉宫"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_194",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "太阳独坐",
+      "input": {
+        "main_stars": [
+          "太阳"
+        ],
+        "palace": "卯宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "太阳星独坐卯宫，为太阳入庙格。太阳主贵气与名望，卯宫为木地，此格主名望显达，利于仕途或需要抛头露面的行业。",
+        "keywords": [
+          "太阳独坐",
+          "贵气",
+          "名望",
+          "仕途",
+          "卯宫"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_195",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "天机独坐",
+      "input": {
+        "main_stars": [
+          "天机"
+        ],
+        "palace": "巳宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "天机星独坐巳宫，为天机入庙格。天机主智谋与变动，巳宫为火地，此格主思维活跃，适合策划或研究工作。唯防思虑过度。",
+        "keywords": [
+          "天机独坐",
+          "智谋",
+          "策划",
+          "研究",
+          "巳宫"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_196",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲独坐",
+      "input": {
+        "main_stars": [
+          "武曲"
+        ],
+        "palace": "辰宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "武曲星独坐辰宫，为武曲入庙格。武曲为财星，此格主财源稳定，利于金融、财务或技术行业。性格刚直，宜从事专业性工作。",
+        "keywords": [
+          "武曲独坐",
+          "财源",
+          "金融",
+          "财务",
+          "专业"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_197",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "廉贞独坐",
+      "input": {
+        "main_stars": [
+          "廉贞"
+        ],
+        "palace": "卯宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "廉贞星独坐卯宫，为廉贞落陷格。廉贞为次桃花星，此格主桃花较旺，需防感情纠纷。利于公关、娱乐行业。",
+        "keywords": [
+          "廉贞独坐",
+          "桃花",
+          "公关",
+          "娱乐",
+          "卯宫"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_198",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天府独坐",
+      "input": {
+        "main_stars": [
+          "天府"
+        ],
+        "palace": "戌宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "天府星独坐戌宫，为天府入库格。天府为府库之星，此格主有积蓄，善于理财。适合管理、财务或不动产相关行业。",
+        "keywords": [
+          "天府独坐",
+          "府库",
+          "积蓄",
+          "理财",
+          "管理"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_199",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天相独坐",
+      "input": {
+        "main_stars": [
+          "天相"
+        ],
+        "palace": "丑宫或未宫",
+        "arrangement": "独坐"
+      },
+      "output": {
+        "interpretation": "天相星独坐丑未宫，为天相入庙格。天相为印星，此格主有权印，适合仕途或管理岗位。唯需防左右相会方可成格。",
+        "keywords": [
+          "天相独坐",
+          "印星",
+          "权印",
+          "仕途",
+          "管理"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_200",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "贪狼四煞会",
+      "input": {
+        "main_stars": [
+          "贪狼",
+          "火星",
+          "铃星",
+          "擎羊",
+          "陀罗"
+        ],
+        "palace": "命宫",
+        "arrangement": "会聚"
+      },
+      "output": {
+        "interpretation": "贪狼与四煞星会聚命宫，为贪狼四煞会格。此格主欲望强烈但多灾祸，易因贪欲招灾。易有意外或慢性疾病，宜修身养性。",
+        "keywords": [
+          "贪狼四煞会",
+          "欲望",
+          "灾祸",
+          "意外",
+          "修身"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_201",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "科权禄会",
+      "input": {
+        "main_stars": [
+          "化科",
+          "化权",
+          "化禄"
+        ],
+        "palace": "命宫三方四正",
+        "arrangement": "会聚"
+      },
+      "output": {
+        "interpretation": "化科化权化禄会聚命宫三方四正，为科权禄会格。此格为三奇格之变，主功名显达，财禄丰盈。唯化忌冲破则格局减等。",
+        "keywords": [
+          "科权禄会",
+          "功名",
+          "财禄",
+          "三奇",
+          "显达"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_202",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "日月照壁",
+      "input": {
+        "main_stars": [
+          "太阳",
+          "太阴"
+        ],
+        "palace": "田宅宫",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "太阳太阴会照田宅宫，为日月照壁格。此格主有不动产或祖产，利于房产相关投资。家庭关系较为和谐，唯需防子女拖累。",
+        "keywords": [
+          "日月照壁",
+          "田宅",
+          "不动产",
+          "祖产",
+          "房产"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_203",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "财荫夹印",
+      "input": {
+        "main_stars": [
+          "武曲",
+          "天相"
+        ],
+        "palace": "财帛宫",
+        "arrangement": "夹"
+      },
+      "output": {
+        "interpretation": "武曲天相夹持财帛宫，为财荫夹印格。此格主财源稳定，印星护财。利于专业技能生财，不利投机。",
+        "keywords": [
+          "财荫夹印",
+          "财源",
+          "稳定",
+          "专业",
+          "技能"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_204",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "忌星冲命",
+      "input": {
+        "main_stars": [
+          "化忌"
+        ],
+        "palace": "命宫",
+        "arrangement": "冲照"
+      },
+      "output": {
+        "interpretation": "化忌星冲照命宫，为忌星冲命格。此格主运势受阻，事业发展有阻碍。需靠后天努力化解，积极进修可减轻影响。",
+        "keywords": [
+          "忌星冲命",
+          "阻碍",
+          "运势受阻",
+          "积极",
+          "进修"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_205",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "左右同宫",
+      "input": {
+        "main_stars": [
+          "左辅",
+          "右弼"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "左辅右弼同宫于命宫，为左右同宫格。此格主有人相助，行事顺畅。左右为吉辅星，得之则贵人运佳，利于团队合作。",
+        "keywords": [
+          "左右同宫",
+          "贵人",
+          "相助",
+          "团队合作",
+          "顺畅"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_206",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "魁钺同宫",
+      "input": {
+        "main_stars": [
+          "天魁",
+          "天钺"
+        ],
+        "palace": "命宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "天魁天钺同宫于命宫，为魁钺同宫格。此格主有突发事件时的贵人相助，考试运佳。利于仕途发展或需要证书的专业。",
+        "keywords": [
+          "魁钺同宫",
+          "贵人",
+          "考试",
+          "仕途",
+          "证书"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_207",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "昌曲夹命",
+      "input": {
+        "main_stars": [
+          "文昌",
+          "文曲"
+        ],
+        "palace": "命宫",
+        "arrangement": "夹"
+      },
+      "output": {
+        "interpretation": "文昌文曲夹持命宫，为昌曲夹命格。此格主才华出众，利于文化、艺术、学术领域。唯防清高孤僻，不善交际。",
+        "keywords": [
+          "昌曲夹命",
+          "才华",
+          "文化",
+          "学术",
+          "艺术"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_208",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "铃昌陀武",
+      "input": {
+        "main_stars": [
+          "铃星",
+          "文昌",
+          "陀罗",
+          "武曲"
+        ],
+        "palace": "命宫或财帛宫",
+        "arrangement": "会聚"
+      },
+      "output": {
+        "interpretation": "铃星文昌陀罗武曲会聚，为铃昌陀武格。此格主因财生灾或因才惹祸，易有慢性疾病或精神困扰。需防意外和口舌。",
+        "keywords": [
+          "铃昌陀武",
+          "因财生灾",
+          "慢性疾病",
+          "精神困扰",
+          "口舌"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_209",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "石中隐珠",
+      "input": {
+        "main_stars": [
+          "巨门",
+          "太阳"
+        ],
+        "palace": "午宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "巨门与太阳同宫于午，为石中隐珠格。太阳照巨门，化解其暗，此格主外表平凡但内在有才华。利于需要隐藏实力的工作。",
+        "keywords": [
+          "石中隐珠",
+          "隐藏实力",
+          "才华",
+          "外表平凡",
+          "午宫"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_210",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "马落空亡",
+      "input": {
+        "main_stars": [
+          "天马",
+          "地空"
+        ],
+        "palace": "迁移宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "天马与地空同宫于迁移宫，为马落空亡格。此格主外出发展受阻，运势虚浮，付出多收获少。宜稳定发展，不宜远行。",
+        "keywords": [
+          "马落空亡",
+          "外出受阻",
+          "虚浮",
+          "远行",
+          "稳定"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_211",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "双禄朝垣",
+      "input": {
+        "main_stars": [
+          "化禄",
+          "禄存"
+        ],
+        "palace": "官禄宫或财帛宫",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "化禄与禄存会照官禄宫或财帛宫，为双禄朝垣格。此格主财官双美，利于创业或担任管理职位。财务状况佳，收入丰厚。",
+        "keywords": [
+          "双禄朝垣",
+          "财官双美",
+          "创业",
+          "管理",
+          "丰厚收入"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_212",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "忌冲三方",
+      "input": {
+        "main_stars": [
+          "化忌"
+        ],
+        "palace": "命宫三方",
+        "arrangement": "冲照"
+      },
+      "output": {
+        "interpretation": "化忌星冲照命宫三方，为忌冲三方格。此格主事业发展受阻，财运有损耗。需防桃色纠纷或投资失误，宜稳健行事。",
+        "keywords": [
+          "忌冲三方",
+          "事业受阻",
+          "财运损耗",
+          "桃色纠纷",
+          "稳健"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_213",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "荫获印星",
+      "input": {
+        "main_stars": [
+          "天梁",
+          "天相"
+        ],
+        "palace": "命宫或官禄宫",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "天梁与天相会照命宫或官禄宫，为荫获印星格。天梁为荫星，天相为印星，此格主得长辈荫庇，利于仕途发展。",
+        "keywords": [
+          "荫获印星",
+          "长辈荫庇",
+          "仕途",
+          "印星",
+          "天梁"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_214",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "七杀破军",
+      "input": {
+        "main_stars": [
+          "七杀",
+          "破军"
+        ],
+        "palace": "命宫或迁移宫",
+        "arrangement": "会照"
+      },
+      "output": {
+        "interpretation": "七杀破军会照命宫迁移宫，为杀破聚会格。此格主人生有重大变革，命运起伏大。利于开创性事业，需有心理准备面对变动。",
+        "keywords": [
+          "七杀破军",
+          "重大变革",
+          "命运起伏",
+          "开创性",
+          "变动"
+        ]
+      },
+      "source": "《太微赋》"
+    },
+    {
+      "case_id": "PAT_215",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "武曲破军",
+      "input": {
+        "main_stars": [
+          "武曲",
+          "破军"
+        ],
+        "palace": "丑未二宫",
+        "arrangement": "同宫"
+      },
+      "output": {
+        "interpretation": "武曲破军同宫于丑未，为武曲破军格。武曲为财星，破军主变革，此格主财务上有较大变动，利于冒险创业。唯防大起大落。",
+        "keywords": [
+          "武曲破军",
+          "财务变动",
+          "冒险创业",
+          "大起大落",
+          "丑未"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_025",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_star": "紫微",
+        "condition": "紫微天府同宫于丑未",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "紫府同宫格：紫微破军星系，得左辅右弼相夹，可以将动荡不安的本质化为开创力。",
+        "keywords": [
+          "紫府同宫格",
+          "紫微",
+          "吉格",
+          "紫微破军星系"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_026",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_star": "天机",
+        "condition": "紫微天府同宫于丑未",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "紫府同宫格：紫微破军星系，得左辅右弼相夹，可以将动荡不安的本质化为开创力。",
+        "keywords": [
+          "紫府同宫格",
+          "天机",
+          "吉格",
+          "紫微破军星系"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_027",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "紫微天府同宫于丑未",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "紫府同宫格：紫微破军星系，得左辅右弼相夹，可以将动荡不安的本质化为开创力。",
+        "keywords": [
+          "紫府同宫格",
+          "太阳",
+          "吉格",
+          "紫微破军星系"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_028",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "紫微天府同宫于丑未",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "紫府同宫格：紫微破军星系，得左辅右弼相夹，可以将动荡不安的本质化为开创力。",
+        "keywords": [
+          "紫府同宫格",
+          "武曲",
+          "吉格",
+          "紫微破军星系"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_029",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_star": "天同",
+        "condition": "紫微天府同宫于丑未",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "紫府同宫格：紫微破军星系，得左辅右弼相夹，可以将动荡不安的本质化为开创力。",
+        "keywords": [
+          "紫府同宫格",
+          "天同",
+          "吉格",
+          "紫微破军星系"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_030",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫微七杀格",
+      "input": {
+        "main_star": "紫微",
+        "condition": "紫微与七杀同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫微七杀格：紫微七杀反作祸祥，若无辅曜制化则为冷酷之徒。",
+        "keywords": [
+          "紫微七杀格",
+          "紫微",
+          "凶格",
+          "紫微七杀反作祸祥"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_031",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫微七杀格",
+      "input": {
+        "main_star": "天机",
+        "condition": "紫微与七杀同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫微七杀格：紫微七杀反作祸祥，若无辅曜制化则为冷酷之徒。",
+        "keywords": [
+          "紫微七杀格",
+          "天机",
+          "凶格",
+          "紫微七杀反作祸祥"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_032",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫微七杀格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "紫微与七杀同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫微七杀格：紫微七杀反作祸祥，若无辅曜制化则为冷酷之徒。",
+        "keywords": [
+          "紫微七杀格",
+          "太阳",
+          "凶格",
+          "紫微七杀反作祸祥"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_033",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫微七杀格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "紫微与七杀同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫微七杀格：紫微七杀反作祸祥，若无辅曜制化则为冷酷之徒。",
+        "keywords": [
+          "紫微七杀格",
+          "武曲",
+          "凶格",
+          "紫微七杀反作祸祥"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_034",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫微七杀格",
+      "input": {
+        "main_star": "天同",
+        "condition": "紫微与七杀同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫微七杀格：紫微七杀反作祸祥，若无辅曜制化则为冷酷之徒。",
+        "keywords": [
+          "紫微七杀格",
+          "天同",
+          "凶格",
+          "紫微七杀反作祸祥"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_035",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微破军格",
+      "input": {
+        "main_star": "紫微",
+        "condition": "紫微破军同宫于丑未",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "紫微破军格：动荡不安的本质，需加左右才有发展。",
+        "keywords": [
+          "紫微破军格",
+          "紫微",
+          "中格",
+          "动荡不安的本质"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_036",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微破军格",
+      "input": {
+        "main_star": "天机",
+        "condition": "紫微破军同宫于丑未",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "紫微破军格：动荡不安的本质，需加左右才有发展。",
+        "keywords": [
+          "紫微破军格",
+          "天机",
+          "中格",
+          "动荡不安的本质"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_037",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微破军格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "紫微破军同宫于丑未",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "紫微破军格：动荡不安的本质，需加左右才有发展。",
+        "keywords": [
+          "紫微破军格",
+          "太阳",
+          "中格",
+          "动荡不安的本质"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_038",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微破军格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "紫微破军同宫于丑未",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "紫微破军格：动荡不安的本质，需加左右才有发展。",
+        "keywords": [
+          "紫微破军格",
+          "武曲",
+          "中格",
+          "动荡不安的本质"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_039",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "紫微破军格",
+      "input": {
+        "main_star": "天同",
+        "condition": "紫微破军同宫于丑未",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "紫微破军格：动荡不安的本质，需加左右才有发展。",
+        "keywords": [
+          "紫微破军格",
+          "天同",
+          "中格",
+          "动荡不安的本质"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_040",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "百官朝拱格",
+      "input": {
+        "main_star": "紫微",
+        "condition": "紫微坐命，有众星环绕",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "百官朝拱格：帝座受百官朝拱，主贵，有领导力。",
+        "keywords": [
+          "百官朝拱格",
+          "紫微",
+          "吉格",
+          "帝座受百官朝拱"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_041",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "百官朝拱格",
+      "input": {
+        "main_star": "天机",
+        "condition": "紫微坐命，有众星环绕",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "百官朝拱格：帝座受百官朝拱，主贵，有领导力。",
+        "keywords": [
+          "百官朝拱格",
+          "天机",
+          "吉格",
+          "帝座受百官朝拱"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_042",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "百官朝拱格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "紫微坐命，有众星环绕",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "百官朝拱格：帝座受百官朝拱，主贵，有领导力。",
+        "keywords": [
+          "百官朝拱格",
+          "太阳",
+          "吉格",
+          "帝座受百官朝拱"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_043",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "百官朝拱格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "紫微坐命，有众星环绕",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "百官朝拱格：帝座受百官朝拱，主贵，有领导力。",
+        "keywords": [
+          "百官朝拱格",
+          "武曲",
+          "吉格",
+          "帝座受百官朝拱"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_044",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "百官朝拱格",
+      "input": {
+        "main_star": "天同",
+        "condition": "紫微坐命，有众星环绕",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "百官朝拱格：帝座受百官朝拱，主贵，有领导力。",
+        "keywords": [
+          "百官朝拱格",
+          "天同",
+          "吉格",
+          "帝座受百官朝拱"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_045",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "君臣不庆格",
+      "input": {
+        "main_star": "紫微",
+        "condition": "紫微遇空劫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "君臣不庆格：紫微遇空劫，理想太高，不切实际。",
+        "keywords": [
+          "君臣不庆格",
+          "紫微",
+          "凶格",
+          "紫微遇空劫"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_046",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "君臣不庆格",
+      "input": {
+        "main_star": "天机",
+        "condition": "紫微遇空劫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "君臣不庆格：紫微遇空劫，理想太高，不切实际。",
+        "keywords": [
+          "君臣不庆格",
+          "天机",
+          "凶格",
+          "紫微遇空劫"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_047",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "君臣不庆格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "紫微遇空劫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "君臣不庆格：紫微遇空劫，理想太高，不切实际。",
+        "keywords": [
+          "君臣不庆格",
+          "太阳",
+          "凶格",
+          "紫微遇空劫"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_048",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "君臣不庆格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "紫微遇空劫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "君臣不庆格：紫微遇空劫，理想太高，不切实际。",
+        "keywords": [
+          "君臣不庆格",
+          "武曲",
+          "凶格",
+          "紫微遇空劫"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_049",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "君臣不庆格",
+      "input": {
+        "main_star": "天同",
+        "condition": "紫微遇空劫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "君臣不庆格：紫微遇空劫，理想太高，不切实际。",
+        "keywords": [
+          "君臣不庆格",
+          "天同",
+          "凶格",
+          "紫微遇空劫"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_050",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机天梁格",
+      "input": {
+        "main_star": "天机",
+        "condition": "天机天梁同度于卯酉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机天梁格：善宿组合，好谈论辩，有特殊技艺，心地善良有宗教信仰。",
+        "keywords": [
+          "天机天梁格",
+          "天机",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_051",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机天梁格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "天机天梁同度于卯酉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机天梁格：善宿组合，好谈论辩，有特殊技艺，心地善良有宗教信仰。",
+        "keywords": [
+          "天机天梁格",
+          "太阳",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_052",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机天梁格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "天机天梁同度于卯酉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机天梁格：善宿组合，好谈论辩，有特殊技艺，心地善良有宗教信仰。",
+        "keywords": [
+          "天机天梁格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_053",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机太阴格",
+      "input": {
+        "main_star": "天机",
+        "condition": "天机太阴同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机太阴格：探花格，聪明机敏，善于谋略。",
+        "keywords": [
+          "天机太阴格",
+          "天机",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_054",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机太阴格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "天机太阴同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机太阴格：探花格，聪明机敏，善于谋略。",
+        "keywords": [
+          "天机太阴格",
+          "太阳",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_055",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天机太阴格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "天机太阴同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天机太阴格：探花格，聪明机敏，善于谋略。",
+        "keywords": [
+          "天机太阴格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_056",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "机梁交战格",
+      "input": {
+        "main_star": "天机",
+        "condition": "天机天梁于辰戌相冲",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "机梁交战格：理想与现实冲突，多变动、奔波。",
+        "keywords": [
+          "机梁交战格",
+          "天机",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_057",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "机梁交战格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "天机天梁于辰戌相冲",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "机梁交战格：理想与现实冲突，多变动、奔波。",
+        "keywords": [
+          "机梁交战格",
+          "太阳",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_058",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "机梁交战格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "天机天梁于辰戌相冲",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "机梁交战格：理想与现实冲突，多变动、奔波。",
+        "keywords": [
+          "机梁交战格",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_059",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天机加恶煞",
+      "input": {
+        "main_star": "天机",
+        "condition": "天机与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天机加恶煞：天机加恶煞同宫，鸡窃狗偷。",
+        "keywords": [
+          "天机加恶煞",
+          "天机",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_060",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天机加恶煞",
+      "input": {
+        "main_star": "太阳",
+        "condition": "天机与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天机加恶煞：天机加恶煞同宫，鸡窃狗偷。",
+        "keywords": [
+          "天机加恶煞",
+          "太阳",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_061",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天机加恶煞",
+      "input": {
+        "main_star": "武曲",
+        "condition": "天机与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天机加恶煞：天机加恶煞同宫，鸡窃狗偷。",
+        "keywords": [
+          "天机加恶煞",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_062",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "日丽中天格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "太阳居午宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "日丽中天格：太阳居午谓之日丽中天，有专权之贵，敌国之富。",
+        "keywords": [
+          "日丽中天格",
+          "太阳",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_063",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "日丽中天格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "太阳居午宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "日丽中天格：太阳居午谓之日丽中天，有专权之贵，敌国之富。",
+        "keywords": [
+          "日丽中天格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_064",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "日丽中天格",
+      "input": {
+        "main_star": "天同",
+        "condition": "太阳居午宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "日丽中天格：太阳居午谓之日丽中天，有专权之贵，敌国之富。",
+        "keywords": [
+          "日丽中天格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_065",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "太阳普照格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "太阳入庙旺于卯辰巳午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "太阳普照格：太阳庙旺主贵，白日生人吉，夜生人需扣分。",
+        "keywords": [
+          "太阳普照格",
+          "太阳",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_066",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "太阳普照格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "太阳入庙旺于卯辰巳午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "太阳普照格：太阳庙旺主贵，白日生人吉，夜生人需扣分。",
+        "keywords": [
+          "太阳普照格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_067",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "太阳普照格",
+      "input": {
+        "main_star": "天同",
+        "condition": "太阳入庙旺于卯辰巳午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "太阳普照格：太阳庙旺主贵，白日生人吉，夜生人需扣分。",
+        "keywords": [
+          "太阳普照格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_068",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "日失光辉格",
+      "input": {
+        "main_star": "太阳",
+        "condition": "太阳落陷于酉戌亥子",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "日失光辉格：太阳落陷，多是非纠纷，贵而不实。",
+        "keywords": [
+          "日失光辉格",
+          "太阳",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_069",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "日失光辉格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "太阳落陷于酉戌亥子",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "日失光辉格：太阳落陷，多是非纠纷，贵而不实。",
+        "keywords": [
+          "日失光辉格",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_070",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "日失光辉格",
+      "input": {
+        "main_star": "天同",
+        "condition": "太阳落陷于酉戌亥子",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "日失光辉格：太阳落陷，多是非纠纷，贵而不实。",
+        "keywords": [
+          "日失光辉格",
+          "天同",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_071",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "太阳会羊陀",
+      "input": {
+        "main_star": "太阳",
+        "condition": "太阳与擎羊陀罗同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "太阳会羊陀：太阳会羊陀，个性刚强，多是非竞争。",
+        "keywords": [
+          "太阳会羊陀",
+          "太阳",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_072",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "太阳会羊陀",
+      "input": {
+        "main_star": "武曲",
+        "condition": "太阳与擎羊陀罗同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "太阳会羊陀：太阳会羊陀，个性刚强，多是非竞争。",
+        "keywords": [
+          "太阳会羊陀",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_073",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "太阳会羊陀",
+      "input": {
+        "main_star": "天同",
+        "condition": "太阳与擎羊陀罗同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "太阳会羊陀：太阳会羊陀，个性刚强，多是非竞争。",
+        "keywords": [
+          "太阳会羊陀",
+          "天同",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_074",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲天府格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "武曲天府同宫于子午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲天府格：武曲天府同宫于子午，无擎羊冲破，主有高寿。",
+        "keywords": [
+          "武曲天府格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_075",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲天府格",
+      "input": {
+        "main_star": "天同",
+        "condition": "武曲天府同宫于子午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲天府格：武曲天府同宫于子午，无擎羊冲破，主有高寿。",
+        "keywords": [
+          "武曲天府格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_076",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲天府格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "武曲天府同宫于子午",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲天府格：武曲天府同宫于子午，无擎羊冲破，主有高寿。",
+        "keywords": [
+          "武曲天府格",
+          "廉贞",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_077",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲贪狼格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "武曲贪狼同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲贪狼格：武曲贪狼同度，悭吝之人；若无吉相扶，反主夭寿。",
+        "keywords": [
+          "武曲贪狼格",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_078",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲贪狼格",
+      "input": {
+        "main_star": "天同",
+        "condition": "武曲贪狼同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲贪狼格：武曲贪狼同度，悭吝之人；若无吉相扶，反主夭寿。",
+        "keywords": [
+          "武曲贪狼格",
+          "天同",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_079",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲贪狼格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "武曲贪狼同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲贪狼格：武曲贪狼同度，悭吝之人；若无吉相扶，反主夭寿。",
+        "keywords": [
+          "武曲贪狼格",
+          "廉贞",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_080",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲火星格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "武曲火星同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲火星格：武曲火星为寡宿凶格，女命不利婚姻。",
+        "keywords": [
+          "武曲火星格",
+          "武曲",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_081",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲火星格",
+      "input": {
+        "main_star": "天同",
+        "condition": "武曲火星同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲火星格：武曲火星为寡宿凶格，女命不利婚姻。",
+        "keywords": [
+          "武曲火星格",
+          "天同",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_082",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "武曲火星格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "武曲火星同度",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "武曲火星格：武曲火星为寡宿凶格，女命不利婚姻。",
+        "keywords": [
+          "武曲火星格",
+          "廉贞",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_083",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲七杀格",
+      "input": {
+        "main_star": "武曲",
+        "condition": "武曲七杀同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲七杀格：武曲七杀，权禄双美，财运亨通。",
+        "keywords": [
+          "武曲七杀格",
+          "武曲",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_084",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲七杀格",
+      "input": {
+        "main_star": "天同",
+        "condition": "武曲七杀同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲七杀格：武曲七杀，权禄双美，财运亨通。",
+        "keywords": [
+          "武曲七杀格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_085",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "武曲七杀格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "武曲七杀同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "武曲七杀格：武曲七杀，权禄双美，财运亨通。",
+        "keywords": [
+          "武曲七杀格",
+          "廉贞",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_086",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同天梁格",
+      "input": {
+        "main_star": "天同",
+        "condition": "天同天梁同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同天梁格：天同最喜会同天梁及左右，天同天梁相会，不畏凶危。",
+        "keywords": [
+          "天同天梁格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_087",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同天梁格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "天同天梁同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同天梁格：天同最喜会同天梁及左右，天同天梁相会，不畏凶危。",
+        "keywords": [
+          "天同天梁格",
+          "廉贞",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_088",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同天梁格",
+      "input": {
+        "main_star": "天府",
+        "condition": "天同天梁同度于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同天梁格：天同最喜会同天梁及左右，天同天梁相会，不畏凶危。",
+        "keywords": [
+          "天同天梁格",
+          "天府",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_089",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同太阴格",
+      "input": {
+        "main_star": "天同",
+        "condition": "天同太阴同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同太阴格：福星组合，温和慈善，有福有寿。",
+        "keywords": [
+          "天同太阴格",
+          "天同",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_090",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同太阴格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "天同太阴同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同太阴格：福星组合，温和慈善，有福有寿。",
+        "keywords": [
+          "天同太阴格",
+          "廉贞",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_091",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天同太阴格",
+      "input": {
+        "main_star": "天府",
+        "condition": "天同太阴同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天同太阴格：福星组合，温和慈善，有福有寿。",
+        "keywords": [
+          "天同太阴格",
+          "天府",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_092",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "天同擎羊格",
+      "input": {
+        "main_star": "天同",
+        "condition": "天同擎羊居午位",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "天同擎羊格：天同擎羊居午位，丙戊生人镇边疆。",
+        "keywords": [
+          "天同擎羊格",
+          "天同",
+          "中格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_093",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "天同擎羊格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "天同擎羊居午位",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "天同擎羊格：天同擎羊居午位，丙戊生人镇边疆。",
+        "keywords": [
+          "天同擎羊格",
+          "廉贞",
+          "中格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_094",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "天同擎羊格",
+      "input": {
+        "main_star": "天府",
+        "condition": "天同擎羊居午位",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "天同擎羊格：天同擎羊居午位，丙戊生人镇边疆。",
+        "keywords": [
+          "天同擎羊格",
+          "天府",
+          "中格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_095",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天同四煞格",
+      "input": {
+        "main_star": "天同",
+        "condition": "天同与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天同四煞格：福星被煞星破坏，多劳碌奔波。",
+        "keywords": [
+          "天同四煞格",
+          "天同",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_096",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天同四煞格",
+      "input": {
+        "main_star": "廉贞",
+        "condition": "天同与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天同四煞格：福星被煞星破坏，多劳碌奔波。",
+        "keywords": [
+          "天同四煞格",
+          "廉贞",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_097",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天同四煞格",
+      "input": {
+        "main_star": "天府",
+        "condition": "天同与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "天同四煞格：福星被煞星破坏，多劳碌奔波。",
+        "keywords": [
+          "天同四煞格",
+          "天府",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_098",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼入庙格",
+      "input": {
+        "main_star": "贪狼",
+        "condition": "贪狼居辰戌丑未四墓宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼入庙格：贪狼四墓为得地，非庙旺，喜火铃同宫则富贵。",
+        "keywords": [
+          "贪狼入庙格",
+          "贪狼",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_099",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼入庙格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "贪狼居辰戌丑未四墓宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼入庙格：贪狼四墓为得地，非庙旺，喜火铃同宫则富贵。",
+        "keywords": [
+          "贪狼入庙格",
+          "巨门",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_100",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼入庙格",
+      "input": {
+        "main_star": "天相",
+        "condition": "贪狼居辰戌丑未四墓宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼入庙格：贪狼四墓为得地，非庙旺，喜火铃同宫则富贵。",
+        "keywords": [
+          "贪狼入庙格",
+          "天相",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_101",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼火铃格",
+      "input": {
+        "main_star": "贪狼",
+        "condition": "贪狼四墓遇火铃",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼火铃格：贪狼四墓遇火铃，豪富家资候伯贵。",
+        "keywords": [
+          "贪狼火铃格",
+          "贪狼",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_102",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼火铃格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "贪狼四墓遇火铃",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼火铃格：贪狼四墓遇火铃，豪富家资候伯贵。",
+        "keywords": [
+          "贪狼火铃格",
+          "巨门",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_103",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "贪狼火铃格",
+      "input": {
+        "main_star": "天相",
+        "condition": "贪狼四墓遇火铃",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "贪狼火铃格：贪狼四墓遇火铃，豪富家资候伯贵。",
+        "keywords": [
+          "贪狼火铃格",
+          "天相",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_104",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "贪狼七杀格",
+      "input": {
+        "main_star": "贪狼",
+        "condition": "贪狼七杀分守身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "贪狼七杀格：男有偷窃习性而犯刑配，女有偷香淫污之丑。",
+        "keywords": [
+          "贪狼七杀格",
+          "贪狼",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_105",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "贪狼七杀格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "贪狼七杀分守身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "贪狼七杀格：男有偷窃习性而犯刑配，女有偷香淫污之丑。",
+        "keywords": [
+          "贪狼七杀格",
+          "巨门",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_106",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "贪狼七杀格",
+      "input": {
+        "main_star": "天相",
+        "condition": "贪狼七杀分守身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "贪狼七杀格：男有偷窃习性而犯刑配，女有偷香淫污之丑。",
+        "keywords": [
+          "贪狼七杀格",
+          "天相",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_107",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "泛水桃花格",
+      "input": {
+        "main_star": "贪狼",
+        "condition": "贪狼与桃花星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "泛水桃花格：贪狼遇桃花，桃花犯主，情感复杂。",
+        "keywords": [
+          "泛水桃花格",
+          "贪狼",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_108",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "泛水桃花格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "贪狼与桃花星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "泛水桃花格：贪狼遇桃花，桃花犯主，情感复杂。",
+        "keywords": [
+          "泛水桃花格",
+          "巨门",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_109",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "泛水桃花格",
+      "input": {
+        "main_star": "天相",
+        "condition": "贪狼与桃花星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "泛水桃花格：贪狼遇桃花，桃花犯主，情感复杂。",
+        "keywords": [
+          "泛水桃花格",
+          "天相",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_110",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "石中隐玉格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "巨门在子午石中隐玉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "石中隐玉格：子午巨门石中隐玉，主聪明多能。",
+        "keywords": [
+          "石中隐玉格",
+          "巨门",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_111",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "石中隐玉格",
+      "input": {
+        "main_star": "天相",
+        "condition": "巨门在子午石中隐玉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "石中隐玉格：子午巨门石中隐玉，主聪明多能。",
+        "keywords": [
+          "石中隐玉格",
+          "天相",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_112",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "石中隐玉格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "巨门在子午石中隐玉",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "石中隐玉格：子午巨门石中隐玉，主聪明多能。",
+        "keywords": [
+          "石中隐玉格",
+          "天梁",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_113",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "巨日同宫格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "巨门太阳同宫于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "巨日同宫格：巨日寅宫立命申，先驰名誉后食禄。",
+        "keywords": [
+          "巨日同宫格",
+          "巨门",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_114",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "巨日同宫格",
+      "input": {
+        "main_star": "天相",
+        "condition": "巨门太阳同宫于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "巨日同宫格：巨日寅宫立命申，先驰名誉后食禄。",
+        "keywords": [
+          "巨日同宫格",
+          "天相",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_115",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "巨日同宫格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "巨门太阳同宫于寅申",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "巨日同宫格：巨日寅宫立命申，先驰名誉后食禄。",
+        "keywords": [
+          "巨日同宫格",
+          "天梁",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_116",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门羊陀格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "巨门羊陀于身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门羊陀格：巨门羊陀于身命，疾病羸黄。",
+        "keywords": [
+          "巨门羊陀格",
+          "巨门",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_117",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门羊陀格",
+      "input": {
+        "main_star": "天相",
+        "condition": "巨门羊陀于身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门羊陀格：巨门羊陀于身命，疾病羸黄。",
+        "keywords": [
+          "巨门羊陀格",
+          "天相",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_118",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门羊陀格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "巨门羊陀于身命",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门羊陀格：巨门羊陀于身命，疾病羸黄。",
+        "keywords": [
+          "巨门羊陀格",
+          "天梁",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_119",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门会煞格",
+      "input": {
+        "main_star": "巨门",
+        "condition": "巨门与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门会煞格：巨门遇煞，是非纠纷，口舌频发。",
+        "keywords": [
+          "巨门会煞格",
+          "巨门",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_120",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门会煞格",
+      "input": {
+        "main_star": "天相",
+        "condition": "巨门与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门会煞格：巨门遇煞，是非纠纷，口舌频发。",
+        "keywords": [
+          "巨门会煞格",
+          "天相",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_121",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "巨门会煞格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "巨门与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "巨门会煞格：巨门遇煞，是非纠纷，口舌频发。",
+        "keywords": [
+          "巨门会煞格",
+          "天梁",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_122",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "梁居午地格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "天梁在午居庙旺",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "梁居午地格：梁居午地官资清显，天梁单守午宫主清贵。",
+        "keywords": [
+          "梁居午地格",
+          "天梁",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_123",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "梁居午地格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "天梁在午居庙旺",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "梁居午地格：梁居午地官资清显，天梁单守午宫主清贵。",
+        "keywords": [
+          "梁居午地格",
+          "七杀",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_124",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "梁居午地格",
+      "input": {
+        "main_star": "破军",
+        "condition": "天梁在午居庙旺",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "梁居午地格：梁居午地官资清显，天梁单守午宫主清贵。",
+        "keywords": [
+          "梁居午地格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_125",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "机梁会合格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "天机天梁同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "机梁会合格：机梁会合善谈兵，居戍亦为美论。",
+        "keywords": [
+          "机梁会合格",
+          "天梁",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_126",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "机梁会合格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "天机天梁同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "机梁会合格：机梁会合善谈兵，居戍亦为美论。",
+        "keywords": [
+          "机梁会合格",
+          "七杀",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_127",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "机梁会合格",
+      "input": {
+        "main_star": "破军",
+        "condition": "天机天梁同宫",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "机梁会合格：机梁会合善谈兵，居戍亦为美论。",
+        "keywords": [
+          "机梁会合格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_128",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "梁同巳亥格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "天梁在巳亥与天同会合",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "梁同巳亥格：梁同巳亥，男多浪荡，女多淫。",
+        "keywords": [
+          "梁同巳亥格",
+          "天梁",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_129",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "梁同巳亥格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "天梁在巳亥与天同会合",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "梁同巳亥格：梁同巳亥，男多浪荡，女多淫。",
+        "keywords": [
+          "梁同巳亥格",
+          "七杀",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_130",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "梁同巳亥格",
+      "input": {
+        "main_star": "破军",
+        "condition": "天梁在巳亥与天同会合",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "梁同巳亥格：梁同巳亥，男多浪荡，女多淫。",
+        "keywords": [
+          "梁同巳亥格",
+          "破军",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_131",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天梁遇荫格",
+      "input": {
+        "main_star": "天梁",
+        "condition": "天梁遇左辅右弼",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天梁遇荫格：天梁遇辅弼，有贵人与解厄之力。",
+        "keywords": [
+          "天梁遇荫格",
+          "天梁",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_132",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天梁遇荫格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "天梁遇左辅右弼",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天梁遇荫格：天梁遇辅弼，有贵人与解厄之力。",
+        "keywords": [
+          "天梁遇荫格",
+          "七杀",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_133",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天梁遇荫格",
+      "input": {
+        "main_star": "破军",
+        "condition": "天梁遇左辅右弼",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "天梁遇荫格：天梁遇辅弼，有贵人与解厄之力。",
+        "keywords": [
+          "天梁遇荫格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_134",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "杀居旺宫格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "七杀在寅申子午宫坐命",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "杀居旺宫格：七杀寅申子午宫，一生爵禄荣昌，多辛劳独创。",
+        "keywords": [
+          "杀居旺宫格",
+          "七杀",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_135",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "杀居旺宫格",
+      "input": {
+        "main_star": "破军",
+        "condition": "七杀在寅申子午宫坐命",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "杀居旺宫格：七杀寅申子午宫，一生爵禄荣昌，多辛劳独创。",
+        "keywords": [
+          "杀居旺宫格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_136",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "七杀朝斗格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "七杀在午申朝斗",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "七杀朝斗格：七杀朝斗格多辛劳独创，独当一面，成就光辉。",
+        "keywords": [
+          "七杀朝斗格",
+          "七杀",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_137",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "七杀朝斗格",
+      "input": {
+        "main_star": "破军",
+        "condition": "七杀在午申朝斗",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "七杀朝斗格：七杀朝斗格多辛劳独创，独当一面，成就光辉。",
+        "keywords": [
+          "七杀朝斗格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_138",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "马头带箭格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "七杀坐命午宫遇擎羊",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "马头带箭格：马头带箭主人生多挫折，少际遇，不过却主权威。",
+        "keywords": [
+          "马头带箭格",
+          "七杀",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_139",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "马头带箭格",
+      "input": {
+        "main_star": "破军",
+        "condition": "七杀坐命午宫遇擎羊",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "马头带箭格：马头带箭主人生多挫折，少际遇，不过却主权威。",
+        "keywords": [
+          "马头带箭格",
+          "破军",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_140",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫杀无制格",
+      "input": {
+        "main_star": "七杀",
+        "condition": "紫微七杀无辅曜制化",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫杀无制格：紫微七杀无辅曜制化为冷酷之徒格。",
+        "keywords": [
+          "紫杀无制格",
+          "七杀",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_141",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "紫杀无制格",
+      "input": {
+        "main_star": "破军",
+        "condition": "紫微七杀无辅曜制化",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "紫杀无制格：紫微七杀无辅曜制化为冷酷之徒格。",
+        "keywords": [
+          "紫杀无制格",
+          "破军",
+          "凶格"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "PAT_142",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "破军子午格",
+      "input": {
+        "main_star": "破军",
+        "condition": "破军在子午与吉星同会",
+        "pattern_type": "吉格"
+      },
+      "output": {
+        "interpretation": "破军子午格：子午破军加官进禄，主先破后成。",
+        "keywords": [
+          "破军子午格",
+          "破军",
+          "吉格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_143",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "破军贪狼格",
+      "input": {
+        "main_star": "破军",
+        "condition": "破军贪狼逢禄马",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "破军贪狼格：破军贪狼逢禄马，男多浪荡女多淫。",
+        "keywords": [
+          "破军贪狼格",
+          "破军",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_144",
+      "agent": "PatternAgent",
+      "type": "中格",
+      "name": "破军文昌格",
+      "input": {
+        "main_star": "破军",
+        "condition": "破军文昌于震地遇吉",
+        "pattern_type": "中格"
+      },
+      "output": {
+        "interpretation": "破军文昌格：破军文昌于震地，遇吉可贵，主先破后成。",
+        "keywords": [
+          "破军文昌格",
+          "破军",
+          "中格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_145",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "破军四煞格",
+      "input": {
+        "main_star": "破军",
+        "condition": "破军与煞星同宫",
+        "pattern_type": "凶格"
+      },
+      "output": {
+        "interpretation": "破军四煞格：破军遇煞，冲动激进，多波折。",
+        "keywords": [
+          "破军四煞格",
+          "破军",
+          "凶格"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "PAT_216",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "禄存独座",
+      "input": {
+        "main_star": "禄存",
+        "palace": "命宫",
+        "condition": "禄存在命宫",
+        "arrangement": "独座"
+      },
+      "output": {
+        "interpretation": "禄存为财星，独坐命宫主财气随身，禀性温和。唯需注意羊陀夹宫或会照，形成财库。",
+        "formation_conditions": [
+          "禄存坐命宫",
+          "无化忌冲破",
+          "无煞星同宫"
+        ],
+        "keywords": [
+          "财星",
+          "温和",
+          "财库",
+          "积聚"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_217",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "禄存田宅",
+      "input": {
+        "main_star": "禄存",
+        "palace": "田宅宫",
+        "condition": "禄存在田宅宫",
+        "arrangement": "独座"
+      },
+      "output": {
+        "interpretation": "主有祖业或自置产业，财库丰厚。逢化禄或吉星更佳。",
+        "formation_conditions": [
+          "禄存坐田宅宫",
+          "无化忌冲破",
+          "无煞星同宫"
+        ],
+        "keywords": [
+          "祖业",
+          "产业",
+          "财库",
+          "不动置"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_218",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "禄存财帛",
+      "input": {
+        "main_star": "禄存",
+        "palace": "财帛宫",
+        "condition": "禄存在财帛宫",
+        "arrangement": "独座"
+      },
+      "output": {
+        "interpretation": "财星入库，理财能力佳，善储蓄。唯需注意钱财外露易招小人。",
+        "formation_conditions": [
+          "禄存坐财帛宫",
+          "无化忌冲破",
+          "无煞星同宫"
+        ],
+        "keywords": [
+          "理财",
+          "储蓄",
+          "财库",
+          "小人"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_219",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "羊陀夹禄",
+      "input": {
+        "malefic_stars": [
+          "擎羊",
+          "陀罗"
+        ],
+        "palace": "命宫",
+        "condition": "羊陀夹命宫",
+        "arrangement": "夹制"
+      },
+      "output": {
+        "interpretation": "羊陀夹禄为凶兆，夹制禄存主财运受阻，奔波劳碌。唯夹制之力需有化忌或煞星才会显凶。",
+        "formation_conditions": [
+          "羊陀夹命宫",
+          "禄存或吉星被夹",
+          "逢化忌或煞星显凶"
+        ],
+        "keywords": [
+          "夹制",
+          "受阻",
+          "劳碌",
+          "财运"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_220",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "羊陀夹财",
+      "input": {
+        "malefic_stars": [
+          "擎羊",
+          "陀罗"
+        ],
+        "palace": "财帛宫",
+        "condition": "羊陀夹财帛宫",
+        "arrangement": "夹制"
+      },
+      "output": {
+        "interpretation": "财帛被夹，主财来财去，不易聚财。理财需保守，以免破财。",
+        "formation_conditions": [
+          "羊陀夹财帛宫",
+          "禄存或吉星被夹",
+          "逢化忌或煞星显凶"
+        ],
+        "keywords": [
+          "破财",
+          "不聚财",
+          "消耗",
+          "财务"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_221",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "羊陀夹印",
+      "input": {
+        "malefic_stars": [
+          "擎羊",
+          "陀罗"
+        ],
+        "palace": "官禄宫",
+        "condition": "羊陀夹官禄宫",
+        "arrangement": "夹制"
+      },
+      "output": {
+        "interpretation": "官禄被夹，主事业受阻，职位难升。需保守行事，避免与人竞争。",
+        "formation_conditions": [
+          "羊陀夹官禄宫",
+          "禄存或吉星被夹",
+          "逢化忌或煞星显凶"
+        ],
+        "keywords": [
+          "事业",
+          "受阻",
+          "竞争",
+          "职位"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_222",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "火星入命",
+      "input": {
+        "malefic_stars": [
+          "火星"
+        ],
+        "palace": "命宫",
+        "condition": "火星在命宫",
+        "arrangement": "独坐或会照"
+      },
+      "output": {
+        "interpretation": "火星为浮荡之星，入命宫主性格刚烈，急躁不安。逢吉星可化解其凶性。",
+        "formation_conditions": [
+          "火星在命宫",
+          "无紫微天府化解",
+          "逢化忌更凶"
+        ],
+        "keywords": [
+          "刚烈",
+          "急躁",
+          "浮荡",
+          "变动"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_223",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "铃星入命",
+      "input": {
+        "malefic_stars": [
+          "铃星"
+        ],
+        "palace": "命宫",
+        "condition": "铃星在命宫",
+        "arrangement": "独坐或会照"
+      },
+      "output": {
+        "interpretation": "铃星主暗发性，入命宫主外柔内刚，有突发之财。唯须注意意外灾祸。",
+        "formation_conditions": [
+          "铃星在命宫",
+          "无紫微天府化解",
+          "逢化忌更凶"
+        ],
+        "keywords": [
+          "暗发",
+          "突发",
+          "外柔内刚",
+          "意外"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_224",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "火铃夹命",
+      "input": {
+        "malefic_stars": [
+          "火星/铃星"
+        ],
+        "palace": "命宫",
+        "condition": "火星/铃星在命宫",
+        "arrangement": "独坐或会照"
+      },
+      "output": {
+        "interpretation": "火铃夹命为凶兆，主一生多变动，飘荡不定。唯紫微天府可化解其凶性。",
+        "formation_conditions": [
+          "火星/铃星在命宫",
+          "无紫微天府化解",
+          "逢化忌更凶"
+        ],
+        "keywords": [
+          "变动",
+          "飘荡",
+          "不稳定",
+          "奔波"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_225",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "火星照壁",
+      "input": {
+        "malefic_stars": [
+          "火星"
+        ],
+        "palace": "田宅宫",
+        "condition": "火星在田宅宫",
+        "arrangement": "独坐或会照"
+      },
+      "output": {
+        "interpretation": "火星照田宅，主家宅不宁，或有火灾、意外之灾。宜注意居家安全。",
+        "formation_conditions": [
+          "火星在田宅宫",
+          "无紫微天府化解",
+          "逢化忌更凶"
+        ],
+        "keywords": [
+          "家宅",
+          "火灾",
+          "意外",
+          "不宁"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_226",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "铃星守财",
+      "input": {
+        "malefic_stars": [
+          "铃星"
+        ],
+        "palace": "财帛宫",
+        "condition": "铃星在财帛宫",
+        "arrangement": "独坐或会照"
+      },
+      "output": {
+        "interpretation": "铃星守财帛宫，主有意外之财，但财来财去，不易积聚。",
+        "formation_conditions": [
+          "铃星在财帛宫",
+          "无紫微天府化解",
+          "逢化忌更凶"
+        ],
+        "keywords": [
+          "意外之财",
+          "不聚财",
+          "波动",
+          "理财"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_227",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "紫府同宫格",
+      "input": {
+        "main_stars": [
+          "紫微",
+          "天府"
+        ],
+        "palace": "命宫",
+        "condition": "紫微、天府在命宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "紫府同宫，主贵而且吉。紫微为帝星，天府为财库，二星同宫主有权有势，财福兼收。",
+        "formation_conditions": [
+          "紫微、天府在命宫",
+          "符合格局要求"
+        ],
+        "keywords": [
+          "权贵",
+          "财富",
+          "福气",
+          "双星"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_228",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "机月同梁格",
+      "input": {
+        "main_stars": [
+          "天机",
+          "太阴",
+          "天同",
+          "天梁"
+        ],
+        "palace": "命宫或迁移宫",
+        "condition": "天机、太阴、天同、天梁在命宫或迁移宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "机月同梁，四星聚会，主聪明机巧，擅长策划。为公务员或企业策划人才之上选。",
+        "formation_conditions": [
+          "天机、太阴、天同、天梁在命宫或迁移宫",
+          "符合格局要求"
+        ],
+        "keywords": [
+          "聪明",
+          "策划",
+          "公务员",
+          "机巧"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_229",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "杀破狼格",
+      "input": {
+        "main_stars": [
+          "七杀",
+          "破军",
+          "贪狼"
+        ],
+        "palace": "命宫或迁移宫",
+        "condition": "七杀、破军、贪狼在命宫或迁移宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "杀破狼为变动之星，三星同宫或相会，主一生多变动，但能开创大业。为大改革家或企业家的格局。",
+        "formation_conditions": [
+          "七杀、破军、贪狼在命宫或迁移宫",
+          "符合格局要求"
+        ],
+        "keywords": [
+          "变动",
+          "开创",
+          "改革",
+          "企业家"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_230",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "府相朝垣",
+      "input": {
+        "main_stars": [
+          "天府",
+          "天相"
+        ],
+        "palace": "命宫",
+        "condition": "天府、天相在命宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "天府天相为左右宰相，二星在命宫或相会于三方，主有贵气，仕途顺利。",
+        "formation_conditions": [
+          "天府、天相在命宫",
+          "符合格局要求"
+        ],
+        "keywords": [
+          "贵气",
+          "仕途",
+          "宰相",
+          "辅助"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_231",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "文梁振纪",
+      "input": {
+        "main_stars": [
+          "文昌",
+          "天梁"
+        ],
+        "palace": "命宫",
+        "condition": "文昌、天梁在命宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "文昌为文星，天梁为荫星，二星相会主聪明慈善，有科名功名。",
+        "formation_conditions": [
+          "文昌、天梁在命宫",
+          "符合格局要求"
+        ],
+        "keywords": [
+          "科名",
+          "慈善",
+          "聪明",
+          "功名"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_232",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天罗地网",
+      "input": {
+        "main_stars": [
+          "天网"
+        ],
+        "palace": "辰宫或戌宫",
+        "condition": "天网在辰宫或戌宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "天罗地网指辰戌二宫为天罗地网之星入宫，主命运受阻，多灾难或法律纠纷。",
+        "formation_conditions": [
+          "天网在辰宫或戌宫",
+          "符合格局要求"
+        ],
+        "keywords": [
+          "受阻",
+          "灾难",
+          "纠纷",
+          "限制"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_233",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "双忌冲破",
+      "input": {
+        "main_stars": [
+          "化忌"
+        ],
+        "palace": "命宫或财帛宫",
+        "condition": "化忌在命宫或财帛宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "双忌冲破指两个化忌同时冲破某宫，主破财严重，或有重大灾祸。",
+        "formation_conditions": [
+          "化忌在命宫或财帛宫",
+          "符合格局要求"
+        ],
+        "keywords": [
+          "破财",
+          "灾祸",
+          "双重",
+          "冲破"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_234",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "空劫夹命",
+      "input": {
+        "main_stars": [
+          "地空",
+          "地劫"
+        ],
+        "palace": "命宫",
+        "condition": "地空、地劫在命宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "空劫夹命主一生钱财不聚，虚耗多耗散。或有僧道之缘。",
+        "formation_conditions": [
+          "地空、地劫在命宫",
+          "符合格局要求"
+        ],
+        "keywords": [
+          "耗散",
+          "不聚财",
+          "空虚",
+          "僧道"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_235",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "刑囚夹印",
+      "input": {
+        "main_stars": [
+          "天相",
+          "天梁",
+          "廉贞",
+          "擎羊",
+          "陀罗"
+        ],
+        "palace": "命宫或疾厄宫",
+        "condition": "天相、天梁、廉贞、擎羊、陀罗在命宫或疾厄宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "天相被天梁、廉贞、羊陀夹制，主有刑灾、诉讼、伤病之灾。",
+        "formation_conditions": [
+          "天相、天梁、廉贞、擎羊、陀罗在命宫或疾厄宫",
+          "符合格局要求"
+        ],
+        "keywords": [
+          "刑灾",
+          "诉讼",
+          "伤病",
+          "夹制"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_236",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "贪狼陷疾",
+      "input": {
+        "main_stars": [
+          "贪狼"
+        ],
+        "palace": "疾厄宫",
+        "condition": "贪狼在疾厄宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "贪狼陷于疾厄宫，主有暗疾或慢性病，或有桃花纠纷导致的身体损耗。",
+        "formation_conditions": [
+          "贪狼在疾厄宫",
+          "符合格局要求"
+        ],
+        "keywords": [
+          "暗疾",
+          "慢性病",
+          "桃花",
+          "损耗"
+        ]
+      },
+      "source": "紫微斗数经典格局"
+    },
+    {
+      "case_id": "PAT_262",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "红鸾入命",
+      "input": {
+        "main_stars": [
+          "红鸾"
+        ],
+        "palace": "命宫",
+        "condition": "红鸾在命宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "红鸾星入命主有桃花运和喜庆之事。",
+        "formation_conditions": [
+          "红鸾在命宫"
+        ],
+        "keywords": [
+          "桃花",
+          "喜庆",
+          "婚姻",
+          "红鸾"
+        ]
+      },
+      "source": "紫微斗数桃花格局"
+    },
+    {
+      "case_id": "PAT_263",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "天喜入命",
+      "input": {
+        "main_stars": [
+          "天喜"
+        ],
+        "palace": "命宫",
+        "condition": "天喜在命宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "天喜星入命主有喜庆之事和添丁之喜。",
+        "formation_conditions": [
+          "天喜在命宫"
+        ],
+        "keywords": [
+          "添丁",
+          "喜庆",
+          "婚姻",
+          "天喜"
+        ]
+      },
+      "source": "紫微斗数桃花格局"
+    },
+    {
+      "case_id": "PAT_264",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "咸池桃花",
+      "input": {
+        "main_stars": [
+          "咸池"
+        ],
+        "palace": "命宫或夫妻宫",
+        "condition": "咸池在命宫或夫妻宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "咸池为桃花煞星，主有桃花劫或感情纠纷。",
+        "formation_conditions": [
+          "咸池在命宫或夫妻宫"
+        ],
+        "keywords": [
+          "桃花劫",
+          "纠纷",
+          "破财",
+          "咸池"
+        ]
+      },
+      "source": "紫微斗数桃花格局"
+    },
+    {
+      "case_id": "PAT_265",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "天姚风流",
+      "input": {
+        "main_stars": [
+          "天姚"
+        ],
+        "palace": "命宫",
+        "condition": "天姚在命宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "天姚星主有风流才艺，但易有感情纠纷或外遇。",
+        "formation_conditions": [
+          "天姚在命宫"
+        ],
+        "keywords": [
+          "风流",
+          "才艺",
+          "外遇",
+          "天姚"
+        ]
+      },
+      "source": "紫微斗数桃花格局"
+    },
+    {
+      "case_id": "PAT_266",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "桃花滚浪",
+      "input": {
+        "main_stars": [
+          "贪狼",
+          "太阴",
+          "天姚",
+          "红鸾"
+        ],
+        "palace": "命宫或夫妻宫",
+        "condition": "贪狼、太阴、天姚、红鸾在命宫或夫妻宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "多颗桃花星聚会主有复杂的感情生活。",
+        "formation_conditions": [
+          "贪狼、太阴、天姚、红鸾在命宫或夫妻宫"
+        ],
+        "keywords": [
+          "桃花",
+          "复杂",
+          "纠纷",
+          "多情"
+        ]
+      },
+      "source": "紫微斗数桃花格局"
+    },
+    {
+      "case_id": "PAT_267",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "文昌文科",
+      "input": {
+        "main_stars": [
+          "文昌",
+          "化科"
+        ],
+        "palace": "命宫或官禄宫",
+        "condition": "文昌、化科在命宫或官禄宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "文昌化科主有科名功名，利考试和学术。",
+        "formation_conditions": [
+          "文昌、化科在命宫或官禄宫"
+        ],
+        "keywords": [
+          "科名",
+          "考试",
+          "学术",
+          "文昌"
+        ]
+      },
+      "source": "紫微斗数科名格局"
+    },
+    {
+      "case_id": "PAT_268",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "文曲科名",
+      "input": {
+        "main_stars": [
+          "文曲",
+          "化科"
+        ],
+        "palace": "命宫或官禄宫",
+        "condition": "文曲、化科在命宫或官禄宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "文曲化科主有艺术科名，利文艺创作和学术。",
+        "formation_conditions": [
+          "文曲、化科在命宫或官禄宫"
+        ],
+        "keywords": [
+          "艺术",
+          "文艺",
+          "学术",
+          "文曲"
+        ]
+      },
+      "source": "紫微斗数科名格局"
+    },
+    {
+      "case_id": "PAT_269",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "魁钺及第",
+      "input": {
+        "main_stars": [
+          "天魁",
+          "天钺"
+        ],
+        "palace": "命宫或迁移宫",
+        "condition": "天魁、天钺在命宫或迁移宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "魁钺及第主有贵人助考，利科举考试和仕途。",
+        "formation_conditions": [
+          "天魁、天钺在命宫或迁移宫"
+        ],
+        "keywords": [
+          "贵人",
+          "科举",
+          "仕途",
+          "魁钺"
+        ]
+      },
+      "source": "紫微斗数科名格局"
+    },
+    {
+      "case_id": "PAT_270",
+      "agent": "PatternAgent",
+      "type": "吉格",
+      "name": "三元及第",
+      "input": {
+        "main_stars": [
+          "化禄",
+          "化权",
+          "化科"
+        ],
+        "palace": "命宫或官禄宫",
+        "condition": "化禄、化权、化科在命宫或官禄宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "三元及第指禄权科三元齐全，主功名显达，富贵双全。",
+        "formation_conditions": [
+          "化禄、化权、化科在命宫或官禄宫"
+        ],
+        "keywords": [
+          "功名",
+          "富贵",
+          "三元",
+          "及第"
+        ]
+      },
+      "source": "紫微斗数科名格局"
+    },
+    {
+      "case_id": "PAT_271",
+      "agent": "PatternAgent",
+      "type": "凶格",
+      "name": "科星被破",
+      "input": {
+        "main_stars": [
+          "文昌",
+          "文曲",
+          "化忌"
+        ],
+        "palace": "官禄宫",
+        "condition": "文昌、文曲、化忌在官禄宫",
+        "arrangement": "同宫或相会"
+      },
+      "output": {
+        "interpretation": "科星被化忌冲破主有功名但难持久，或考试失利。",
+        "formation_conditions": [
+          "文昌、文曲、化忌在官禄宫"
+        ],
+        "keywords": [
+          "考试",
+          "失利",
+          "破败",
+          "功名"
+        ]
+      },
+      "source": "紫微斗数科名格局"
+    }
+  ]
+}

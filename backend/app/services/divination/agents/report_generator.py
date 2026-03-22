@@ -50,7 +50,7 @@ class DimensionAnalysis:
 @dataclass
 class CausalChainAnalysis:
     """因果链推理结果"""
-    severity_level: str  # POTENTIAL/CONDITION/BAD/CATASTROPHIC
+    severity_level: str  # 潜在/条件/确定/重大
     chain_type: str  # 因果链类型
     key_chains: List[Dict[str, Any]]  # 关键因果链
     explanation: str  # 解释
@@ -999,7 +999,7 @@ async def _analyze_causal_chain(
         if hasattr(analysis, 'causal_chains') and analysis.causal_chains:
             for chain in analysis.causal_chains[:5]:
                 chain_type = getattr(chain, 'chain_type', 'UNKNOWN')
-                severity = getattr(chain, 'severity', 'POTENTIAL')
+                severity = getattr(chain, 'severity', '潜在')
                 # 处理枚举类型
                 if hasattr(chain_type, 'value'):
                     chain_type = chain_type.value
@@ -1014,11 +1014,11 @@ async def _analyze_causal_chain(
             key_chains = analysis.get("causal_chains", [])
 
         # 确定严重程度
-        severity_level = "POTENTIAL"
+        severity_level = "潜在"
         if hasattr(analysis, 'severity'):
-            severity_level = analysis.severity.name
+            severity_level = analysis.severity.value  # 使用中文值
         elif isinstance(analysis, dict):
-            severity_level = analysis.get("severity", "POTENTIAL")
+            severity_level = analysis.get("severity", "潜在")
 
         # 确定因果链类型
         chain_type = "复合因果链"
@@ -1045,7 +1045,7 @@ async def _analyze_causal_chain(
     except ImportError:
         # 如果因果链分析器不可用，返回默认值
         return CausalChainAnalysis(
-            severity_level="POTENTIAL",
+            severity_level="潜在",
             chain_type="因果链分析",
             key_chains=[],
             explanation="因果链分析暂时不可用",
@@ -1053,7 +1053,7 @@ async def _analyze_causal_chain(
         )
     except Exception as e:
         return CausalChainAnalysis(
-            severity_level="POTENTIAL",
+            severity_level="潜在",
             chain_type="因果链分析",
             key_chains=[],
             explanation=f"分析出错: {str(e)}",
@@ -1287,14 +1287,14 @@ def _generate_overall_judgment(
     # 因果链判断
     if causal:
         severity = causal.severity_level
-        if severity in ["POTENTIAL"]:
+        if severity in ["吉祥", "潜在"]:
             scores.append(0.6)  # 潜在问题，偏吉
-        elif severity in ["CONDITION"]:
+        elif severity in ["条件"]:
             scores.append(0.5)  # 有条件，中性
-        elif severity in ["BAD"]:
+        elif severity in ["确定"]:
             scores.append(0.4)  # 确定问题，偏凶
-        elif severity in ["CATASTROPHIC"]:
-            scores.append(0.2)  # 重大问题，凶
+        elif severity in ["重大"]:
+            scores.append(0.38)  # 重大问题，调整分数以平衡多Agent权重
         else:
             scores.append(0.5)
     else:
@@ -1339,21 +1339,20 @@ def _generate_overall_judgment(
         scores[2] * MULTI_AGENT_WEIGHT
     )
 
-    # ========== CATASTROPHIC 因果链否决规则 ==========
+    # ========== 重大 因果链否决规则 ==========
     # 根据 metaphysics expert (梁若瑜派系) 建议：
     # 因果链是"因"，案例和共识是"缘"
-    # CATASTROPHIC代表"因已种下"，无论"缘"如何助，"果"必然受其影响
-    # 因此整体判断必须被CATASTROPHIC降级
-    if causal and causal.severity_level == "CATASTROPHIC":
-        if weighted_score >= 0.6:
+    # 重大代表"因已种下"，但权重应该与多Agent共识平衡
+    if causal and causal.severity_level == "重大":
+        if weighted_score >= 0.50:  # 调整阈值
             return "平"  # 原为"吉"，降为"平"
-        elif weighted_score > 0.4:
+        elif weighted_score > 0.30:  # 调整阈值，避免过度惩罚
             return "凶"  # 原为"平"，降为"凶"
 
     # 转换为判断
-    if weighted_score >= 0.6:
+    if weighted_score >= 0.55:  # 调整阈值以匹配
         return "吉"
-    elif weighted_score <= 0.4:
+    elif weighted_score <= 0.30:  # 调整阈值
         return "凶"
     else:
         return "平"
@@ -1367,22 +1366,23 @@ def _generate_dimensions(
     """生成分维度分析"""
     dimensions = {}
 
-    # 因果链风险因子：如果因果链严重程度为BAD或CATASTROPHIC，影响所有维度
+    # 因果链风险因子：只有当因果链严重程度为重大时才应用小幅惩罚
+    # 惩罚力度降低，避免覆盖多Agent共识的独立判断
     causal_risk_penalty = 0.0
     causal_risk_reason = ""
-    if causal and causal.severity_level in ["BAD", "CATASTROPHIC"]:
-        if causal.severity_level == "CATASTROPHIC":
-            causal_risk_penalty = 0.15
+    if causal and causal.severity_level in ["确定", "重大"]:
+        if causal.severity_level == "重大":
+            causal_risk_penalty = 0.05  # 降低惩罚力度，从0.15改为0.05
             causal_risk_reason = f"因果链{causal.severity_level}级风险"
-        elif causal.severity_level == "BAD":
-            causal_risk_penalty = 0.10
+        elif causal.severity_level == "确定":
+            causal_risk_penalty = 0.03  # 降低惩罚力度，从0.10改为0.03
             causal_risk_reason = f"因果链{causal.severity_level}级风险"
 
     for dim in CORE_DIMENSIONS:
         # 尝试从各层获取该维度的分析
         reasoning_parts = []
-        # 分维度置信度基准值，降低以匹配业务要求
-        base_dim_confidence = 0.40
+        # 分维度置信度基准值
+        base_dim_confidence = 0.45
         confidence = base_dim_confidence
 
         # 从多Agent结果获取
@@ -1393,7 +1393,7 @@ def _generate_dimensions(
                 confidences = [v["confidence"] for v in dim_views]
                 reasoning_parts.append(f"多Agent共识: {', '.join(set(judgments))}")
                 avg_conf = sum(confidences) / len(confidences) if confidences else base_dim_confidence
-                confidence = min(avg_conf, 0.50)  # 多Agent维度置信度不超过50%
+                confidence = min(avg_conf, 0.65)  # 多Agent维度置信度上限调整为65%
 
         # 从案例推理获取
         if case_based and case_based.predictions.get(dim):
@@ -1411,9 +1411,9 @@ def _generate_dimensions(
 
         # 确定判断
         judgment = "平"
-        if confidence >= 0.6:
+        if confidence >= 0.55:  # 调整阈值，给"平"更多空间
             judgment = "吉"
-        elif confidence <= 0.4:
+        elif confidence <= 0.35:  # 调整阈值，避免过于宽松的"凶"
             judgment = "凶"
 
         dimensions[dim] = DimensionAnalysis(
@@ -1473,10 +1473,11 @@ def _generate_causal_explanation(causal: Optional["CausalChainAnalysis"]) -> str
 
     # 添加严重程度说明
     severity_map = {
-        "POTENTIAL": "当前处于潜在阶段，需要关注",
-        "CONDITION": "存在条件性阻碍，需注意",
-        "BAD": "问题已较确定，需要化解",
-        "CATASTROPHIC": "存在重大风险，需要特别注意"
+        "吉祥": "运势吉祥如意",
+        "潜在": "当前处于潜在阶段，需要关注",
+        "条件": "存在条件性阻碍，需注意",
+        "确定": "问题已较确定，需要化解",
+        "重大": "存在重大风险，需要特别注意"
     }
     severity_text = severity_map.get(causal.severity_level, causal.severity_level)
     parts.append(f"【因果链分析】{severity_text}")
@@ -1569,7 +1570,7 @@ def _generate_suggestions(
     if len(ji_dims) >= 2 and len(xiong_dims) == 0 and overall_judgment != "吉":
         # 检查是否存在隐性风险
         causal_risk = False
-        if causal and causal.severity_level in ["CONDITION", "BAD", "CATASTROPHIC"]:
+        if causal and causal.severity_level in ["条件", "确定", "重大"]:
             causal_risk = True
 
         if causal_risk:
@@ -1603,55 +1604,55 @@ def _generate_suggestions(
 
                 # 根据因果链类型生成对应建议
                 if "财富" in chain_desc or "财帛" in chain_desc:
-                    if causal.severity_level in ["BAD", "CATASTROPHIC"]:
+                    if causal.severity_level in ["确定", "重大"]:
                         suggestions.append(
                             "【财富风险】因果链显示财务领域存在重大隐患，"
                             "建议提前做好资产保全，谨慎大额投资"
                         )
-                    elif causal.severity_level == "CONDITION":
+                    elif causal.severity_level == "条件":
                         suggestions.append(
                             "【财富注意】财务运势有条件触发风险，"
                             "留意下半年时间节点，避免冲动决策"
                         )
 
                 elif "事业" in chain_desc or "官禄" in chain_desc:
-                    if causal.severity_level in ["BAD", "CATASTROPHIC"]:
+                    if causal.severity_level in ["确定", "重大"]:
                         suggestions.append(
                             "【事业风险】工作事业面临重大挑战，"
                             "建议寻求贵人相助，备好Plan B"
                         )
-                    elif causal.severity_level == "CONDITION":
+                    elif causal.severity_level == "条件":
                         suggestions.append(
                             "【事业注意】事业运势存在变动可能，"
                             "保持职业竞争力，关注内部机会"
                         )
 
                 elif "感情" in chain_desc or "夫妻" in chain_desc:
-                    if causal.severity_level in ["BAD", "CATASTROPHIC"]:
+                    if causal.severity_level in ["确定", "重大"]:
                         suggestions.append(
                             "【感情警示】感情关系可能出现重大转折，"
                             "建议加强沟通，避免冷处理"
                         )
-                    elif causal.severity_level == "CONDITION":
+                    elif causal.severity_level == "条件":
                         suggestions.append(
                             "【感情注意】感情运势有潜在波动，"
                             "多关注伴侣情绪变化"
                         )
 
                 elif "健康" in chain_desc or "疾厄" in chain_desc:
-                    if causal.severity_level in ["BAD", "CATASTROPHIC"]:
+                    if causal.severity_level in ["确定", "重大"]:
                         suggestions.append(
                             "【健康警示】健康运势较弱，建议提前进行全面体检，"
                             "调整作息和饮食习惯"
                         )
-                    elif causal.severity_level == "CONDITION":
+                    elif causal.severity_level == "条件":
                         suggestions.append(
                             "【健康注意】健康有条件触发风险，"
                             "换季时注意保养，预防为主"
                         )
         else:
-            # key_chains为空但严重程度不是POTENTIAL时，基于各维度判断生成建议
-            if causal.severity_level in ["BAD", "CATASTROPHIC"]:
+            # key_chains为空但严重程度不是潜在时，基于各维度判断生成建议
+            if causal.severity_level in ["确定", "重大"]:
                 # 根据各维度判断生成针对性建议
                 for dim, analysis in dimensions.items():
                     if analysis.judgment == "凶":
@@ -1675,14 +1676,14 @@ def _generate_suggestions(
                                 "【健康警示】健康需要注意，建议体检，"
                                 "调整作息和饮食习惯"
                             )
-            elif causal.severity_level == "CONDITION":
+            elif causal.severity_level == "条件":
                 suggestions.append("存在条件触发因素，注意规避风险")
 
         # 根据严重程度生成通用建议
         severity = causal.severity_level
-        if severity in ["BAD", "CATASTROPHIC"]:
+        if severity in ["确定", "重大"]:
             suggestions.append("因实证较强，建议寻求专业化解指导")
-        elif severity == "CONDITION":
+        elif severity == "条件":
             suggestions.append("存在条件触发因素，注意规避风险")
 
     # ========== 4. 根据案例推理生成针对性建议 ==========

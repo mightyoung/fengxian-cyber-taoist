@@ -1,33 +1,97 @@
 """
 业务服务模块
+
+Note: For testing purposes, this module uses lazy imports to avoid
+dependency chain issues with zep_cloud and other external services.
+Import from specific submodules directly when testing.
 """
 
+# Lazy import for weasyprint-dependent modules (macOS may not have libgobject)
+try:
+    from .report_service import ReportService, get_report_service, ReportFormat, ReportType, ReportStatus, Report
+except (ImportError, OSError):
+    # WeasyPrint not available (missing libgobject on macOS)
+    ReportService = None
+    get_report_service = None
+    ReportFormat = None
+    ReportType = None
+    ReportStatus = None
+    Report = None
+
+# Lazy import for zep_cloud-dependent modules (only needed at runtime, not for tests)
+try:
+    from .graph_builder import GraphBuilderService
+except ImportError:
+    GraphBuilderService = None
+
+try:
+    from .zep_entity_reader import ZepEntityReader, EntityNode, FilteredEntities
+except ImportError:
+    ZepEntityReader = None
+    EntityNode = None
+    FilteredEntities = None
+
+try:
+    from .zep_graph_memory_updater import (
+        ZepGraphMemoryUpdater,
+        ZepGraphMemoryManager,
+        AgentActivity
+    )
+except ImportError:
+    ZepGraphMemoryUpdater = None
+    ZepGraphMemoryManager = None
+    AgentActivity = None
+
+try:
+    from .oasis_profile_generator import OasisProfileGenerator, OasisAgentProfile
+except ImportError:
+    OasisProfileGenerator = None
+    OasisAgentProfile = None
+
+# Non-lazy imports for modules without external dependencies
 from .ontology_generator import OntologyGenerator
-from .graph_builder import GraphBuilderService
 from .text_processor import TextProcessor
-from .zep_entity_reader import ZepEntityReader, EntityNode, FilteredEntities
-from .oasis_profile_generator import OasisProfileGenerator, OasisAgentProfile
-from .simulation_manager import SimulationManager, SimulationState, SimulationStatus
-from .simulation_config_generator import (
-    SimulationConfigGenerator, 
-    SimulationParameters,
-    AgentActivityConfig,
-    TimeSimulationConfig,
-    EventConfig,
-    PlatformConfig
-)
-from .simulation_runner import (
-    SimulationRunner,
-    SimulationRunState,
-    RunnerStatus,
-    AgentAction,
-    RoundSummary
-)
-from .zep_graph_memory_updater import (
-    ZepGraphMemoryUpdater,
-    ZepGraphMemoryManager,
-    AgentActivity
-)
+
+# Lazy import for simulation modules (depend on zep_cloud indirectly)
+try:
+    from .simulation_manager import SimulationManager, SimulationState, SimulationStatus
+except ImportError:
+    SimulationManager = None
+    SimulationState = None
+    SimulationStatus = None
+
+try:
+    from .simulation_config_generator import (
+        SimulationConfigGenerator,
+        SimulationParameters,
+        AgentActivityConfig,
+        TimeSimulationConfig,
+        EventConfig,
+        PlatformConfig
+    )
+except ImportError:
+    SimulationConfigGenerator = None
+    SimulationParameters = None
+    AgentActivityConfig = None
+    TimeSimulationConfig = None
+    EventConfig = None
+    PlatformConfig = None
+
+try:
+    from .simulation_runner import (
+        SimulationRunner,
+        SimulationRunState,
+        RunnerStatus,
+        AgentAction,
+        RoundSummary
+    )
+except ImportError:
+    SimulationRunner = None
+    SimulationRunState = None
+    RunnerStatus = None
+    AgentAction = None
+    RoundSummary = None
+
 from .simulation_ipc import (
     SimulationIPCClient,
     SimulationIPCServer,
@@ -38,31 +102,33 @@ from .simulation_ipc import (
 )
 
 __all__ = [
-    'OntologyGenerator', 
-    'GraphBuilderService', 
+    # 'ReportService', 'get_report_service', 'ReportFormat', 'ReportType', 'ReportStatus', 'Report'
+    # (lazy-loaded, may be None if weasyprint unavailable)
+    'OntologyGenerator',
+    'GraphBuilderService',  # May be None if zep_cloud unavailable
     'TextProcessor',
-    'ZepEntityReader',
-    'EntityNode',
-    'FilteredEntities',
-    'OasisProfileGenerator',
-    'OasisAgentProfile',
-    'SimulationManager',
-    'SimulationState',
-    'SimulationStatus',
-    'SimulationConfigGenerator',
-    'SimulationParameters',
-    'AgentActivityConfig',
-    'TimeSimulationConfig',
-    'EventConfig',
-    'PlatformConfig',
-    'SimulationRunner',
-    'SimulationRunState',
-    'RunnerStatus',
-    'AgentAction',
-    'RoundSummary',
-    'ZepGraphMemoryUpdater',
-    'ZepGraphMemoryManager',
-    'AgentActivity',
+    'ZepEntityReader',  # May be None if zep_cloud unavailable
+    'EntityNode',  # May be None if zep_cloud unavailable
+    'FilteredEntities',  # May be None if zep_cloud unavailable
+    'OasisProfileGenerator',  # May be None if zep_cloud unavailable
+    'OasisAgentProfile',  # May be None if zep_cloud unavailable
+    'SimulationManager',  # May be None if zep_cloud unavailable
+    'SimulationState',  # May be None if zep_cloud unavailable
+    'SimulationStatus',  # May be None if zep_cloud unavailable
+    'SimulationConfigGenerator',  # May be None if zep_cloud unavailable
+    'SimulationParameters',  # May be None if zep_cloud unavailable
+    'AgentActivityConfig',  # May be None if zep_cloud unavailable
+    'TimeSimulationConfig',  # May be None if zep_cloud unavailable
+    'EventConfig',  # May be None if zep_cloud unavailable
+    'PlatformConfig',  # May be None if zep_cloud unavailable
+    'SimulationRunner',  # May be None if zep_cloud unavailable
+    'SimulationRunState',  # May be None if zep_cloud unavailable
+    'RunnerStatus',  # May be None if zep_cloud unavailable
+    'AgentAction',  # May be None if zep_cloud unavailable
+    'RoundSummary',  # May be None if zep_cloud unavailable
+    'ZepGraphMemoryUpdater',  # May be None if zep_cloud unavailable
+    'ZepGraphMemoryManager',  # May be None if zep_cloud unavailable
+    'AgentActivity',  # May be None if zep_cloud unavailable
     'SimulationIPCClient',
     'SimulationIPCServer',
     'IPCCommand',

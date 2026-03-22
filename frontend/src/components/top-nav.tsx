@@ -1,0 +1,123 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  LayoutGrid,
+  Sparkles,
+  Users,
+  FileText,
+  MessageCircle,
+  Menu,
+  X,
+} from "lucide-react";
+import { useState } from "react";
+import { ThemeToggle } from "./theme-toggle";
+
+const navItems = [
+  {
+    title: "命盘",
+    href: "/birth-chart",
+    icon: LayoutGrid,
+  },
+  {
+    title: "模拟",
+    href: "/simulation",
+    icon: Sparkles,
+  },
+  {
+    title: "图谱",
+    href: "/graph",
+    icon: Users,
+  },
+  {
+    title: "报告",
+    href: "/report",
+    icon: FileText,
+  },
+  {
+    title: "交互",
+    href: "/chat",
+    icon: MessageCircle,
+  },
+];
+
+export function TopNav() {
+  const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between px-4">
+        {/* Logo */}
+        <Link href="/" className="flex items-center space-x-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent">
+            <Sparkles className="h-5 w-5 text-accent-foreground" />
+          </div>
+          <span className="font-heading text-xl font-bold">FengxianCyberTaoist</span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-1">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md transition-colors",
+                  isActive
+                    ? "bg-accent/10 text-accent"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                )}
+              >
+                <Icon className="h-4 w-4" />
+                {item.title}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Right side actions */}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-border">
+          <nav className="container px-4 py-4 flex flex-col space-y-1">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = pathname.startsWith(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={cn(
+                    "flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md transition-colors",
+                    isActive
+                      ? "bg-accent/10 text-accent"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  )}
+                >
+                  <Icon className="h-4 w-4" />
+                  {item.title}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}

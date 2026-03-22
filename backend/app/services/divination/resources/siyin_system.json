@@ -1,0 +1,625 @@
+{
+  "sixty_star_systems": [
+    {
+      "id": "ZS_001",
+      "name": "紫微独坐子午",
+      "main_star": "紫微",
+      "secondary_stars": [],
+      "palace_requirements": "子、午宫",
+      "characteristics": "紫微本身既有精神方面的本质（主观强，在爱恶方面有特殊个性，必有精神方面的消遣与爱好，有决断力），亦有物质方面的性质（爱好物质享受，有领导力，有组织力）。需注意精神与物质的平衡。",
+      "positive_aspects": ["领导力", "贵气", "决断力", "组织力"],
+      "negative_aspects": ["孤僻", "固执", "物质欲过重"]
+    },
+    {
+      "id": "ZS_002",
+      "name": "破军独坐寅申",
+      "main_star": "破军",
+      "secondary_stars": [],
+      "palace_requirements": "寅、申宫",
+      "characteristics": "破军独坐于此宫，叛逆性与顺从性是判断关键。必须掌握其是叛逆还是顺从的本质，才能了解命宫特点。运势如马鞍形，必须经过反复，当其运势上升之时，必然会遭受挫折，转而向下，然后又再次上升。",
+      "positive_aspects": ["开创力", "变革力", "适应力"],
+      "negative_aspects": ["叛逆", "动荡", "反复"]
+    },
+    {
+      "id": "ZS_003",
+      "name": "廉贞天府辰戌",
+      "main_star": "廉贞",
+      "secondary_stars": ["天府"],
+      "palace_requirements": "辰、戌宫",
+      "characteristics": "廉贞天府于辰、戌二宫同度，对宫必为七杀独坐。需注意感情与理智的冲突与调和。廉贞本身已带有感情与理智冲突矛盾的星曜，它是次桃花，但是它亦贞，因此便难为桃花亦不淫滥。",
+      "positive_aspects": ["理智", "感情平衡"],
+      "negative_aspects": ["感情用事", "理智与感情冲突"]
+    },
+    {
+      "id": "ZS_004",
+      "name": "太阴独坐巳亥",
+      "main_star": "太阴",
+      "secondary_stars": [],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "太阴于巳亥二宫独坐，必与天机相对；会合太阳天梁；借星安宫的天同巨门。须注意其发射性与收敛性二者，以何者较为偏重。太阴以收敛为佳，所以发射性重的太阴，不如收敛性重的太阴，但亦不宜过份收敛。",
+      "positive_aspects": ["收敛", "沉潜", "内敛"],
+      "negative_aspects": ["过份收敛", "权术阴谋", "心计"]
+    },
+    {
+      "id": "ZS_005",
+      "name": "贪狼独坐子午",
+      "main_star": "贪狼",
+      "secondary_stars": [],
+      "palace_requirements": "子、午宫",
+      "characteristics": "贪狼独坐子午，对宫为紫微独坐。三合宫为破军独坐、七杀独坐。须分别它的欲望强弱。当欲望强烈时，又须分别为对物欲的强烈，抑或是对情欲的强烈。",
+      "positive_aspects": ["欲望", "进取心", "竞争力"],
+      "negative_aspects": ["物欲过深", "情欲过重", "不择手段"]
+    },
+    {
+      "id": "ZS_006",
+      "name": "天同巨门丑未",
+      "main_star": "天同",
+      "secondary_stars": ["巨门"],
+      "palace_requirements": "丑、未宫",
+      "characteristics": "天同巨门坐丑未二宫，三合宫天机独坐。及借星安宫的太阳天梁。必须注意此星系的感情色彩，是明明抑或阴暗，因为巨门为暗曜，天同为情绪之星，二曜同宫，即成情绪或感情上的阴暗面。",
+      "positive_aspects": ["明朗", "情感平衡"],
+      "negative_aspects": ["阴暗面", "疑忌", "感情困扰"]
+    },
+    {
+      "id": "ZS_007",
+      "name": "武曲天相寅申",
+      "main_star": "武曲",
+      "secondary_stars": ["天相"],
+      "palace_requirements": "寅、申宫",
+      "characteristics": "武曲天相坐寅二宫，对宫必为破军。会照紫微独坐，及廉贞天府。须注意刚柔的配合与调和。武曲性刚，天天性柔，二者同在一个宫度，必须刚柔互济，然后始成佳构，若过刚过柔，都可能出现缺点。",
+      "positive_aspects": ["刚柔并济", "协调平衡"],
+      "negative_aspects": ["过刚则折", "过柔则弱"]
+    },
+    {
+      "id": "ZS_008",
+      "name": "太阳天梁卯酉",
+      "main_star": "太阳",
+      "secondary_stars": ["天梁"],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "太阳天梁同于卯酉二宫，必与太阴相会，并对宫无正曜。须分别其为祥和抑为孤忌。两种性质的分别很大，因此影响运程亦大。",
+      "positive_aspects": ["祥和", "贵显", "声誉"],
+      "negative_aspects": ["孤忌", "六亲别离"]
+    },
+    {
+      "id": "ZS_009",
+      "name": "七杀独坐辰戌",
+      "main_star": "七杀",
+      "secondary_stars": [],
+      "palace_requirements": "辰、戌宫",
+      "characteristics": "七杀独坐辰戌，对宫必为廉贞天府，三合宫会贪狼独坐，破军独坐。须注意其本质为理想或幻想，庸陋。有理想的七杀，喜行七杀，破军、贪狼独坐的运限、流年，若见佐吉曜，可成理想的转变。",
+      "positive_aspects": ["理想", "开创力", "管理能力"],
+      "negative_aspects": ["空想", "幻想", "波折"]
+    },
+    {
+      "id": "ZS_010",
+      "name": "天机独坐巳亥",
+      "main_star": "天机",
+      "secondary_stars": [],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "天机独坐于巳亥二宫。必与太阴相对。三合宫为天同巨门，有借星安宫的太阳天梁。须注意其机变与机谋的分别，而且有计划的性质，比机变要踏实得多。",
+      "positive_aspects": ["机变", "计划力", "应变能力"],
+      "negative_aspects": ["机诈", "多虑", "计划难实现"]
+    },
+    {
+      "id": "ZS_011",
+      "name": "紫微破军丑未",
+      "main_star": "紫微",
+      "secondary_stars": ["破军"],
+      "palace_requirements": "丑、未宫",
+      "characteristics": "紫微破军于丑未二宫同度，对宫必为天相。三合宫为廉贞贪狼及武曲七杀。此星系组合由于兼涉及杀破狼三曜，星曜性质又强烈。因此对四化异常敏感。须注意其动荡与安定的区别。",
+      "positive_aspects": ["开创力", "变革力", "进取"],
+      "negative_aspects": ["动荡", "叛逆", "人际关系改变"]
+    },
+    {
+      "id": "ZS_012",
+      "name": "天府独坐卯酉",
+      "main_star": "天府",
+      "secondary_stars": [],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "天府独坐卯酉，与武曲七杀相对。三合宫为天相独坐，及借星安宫的廉贞贪狼。十二宫的天府，以独坐卯酉二宫时最为安定、保守。因为这两宫垣不与紫微在三方四正相会。",
+      "positive_aspects": ["安定", "保守", "持重"],
+      "negative_aspects": ["过于保守", "小心谨慎"]
+    },
+    {
+      "id": "ZS_013",
+      "name": "太阴独坐辰戌",
+      "main_star": "太阴",
+      "secondary_stars": [],
+      "palace_requirements": "辰、戌宫",
+      "characteristics": "太阴于辰戌二宫独坐，对宫为太阳。三合宫为天机及天同天梁。由于与太阳相对的关系，辰戌二宫独坐的太阴基本有良好性质，古人称为日月拱照。但戌宫太阳落陷，因而辰宫的太阴亦较戌宫者为暗晦。",
+      "positive_aspects": ["日月拱照", "良好性质"],
+      "negative_aspects": ["暗晦", "目标不明确", "盲动"]
+    },
+    {
+      "id": "ZS_014",
+      "name": "廉贞贪狼巳亥",
+      "main_star": "廉贞",
+      "secondary_stars": ["贪狼"],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "廉贞贪狼坐已亥，对宫无正曜。三合宫会武曲七杀，及紫微破军。须注意感情与物欲的区别。廉贞主感情，贪狼主欲望。若廉贞强则此星系带感情性；若贪狼强则带物欲性。",
+      "positive_aspects": ["感情丰富", "物欲追求"],
+      "negative_aspects": ["感情与物欲冲突", "桃花性质"]
+    },
+    {
+      "id": "ZS_015",
+      "name": "巨门独坐子午",
+      "main_star": "巨门",
+      "secondary_stars": [],
+      "palace_requirements": "子、午宫",
+      "characteristics": "巨门独坐子午，必与天机相对。三合宫会太阳，及借星安宫的天同天梁。若见禄、权吉化，又不见煞，则称为石中隐玉，主其人英华内敛，可成大业。若有煞曜同度，特别是擎羊，则疑忌重重。",
+      "positive_aspects": ["英华内敛", "才华", "沉潜"],
+      "negative_aspects": ["疑忌", "内心阴暗", "是非口舌"]
+    },
+    {
+      "id": "ZS_016",
+      "name": "天相独坐丑未",
+      "main_star": "天相",
+      "secondary_stars": [],
+      "palace_requirements": "丑、未宫",
+      "characteristics": "天相在丑未二宫独坐，对宫为紫微破军，三合宫为天府，及借星安宫的廉贞贪狼。须注意其气质之优雅或庸俗。因为凡天相在命宫的人，必带僚幕的气质，若优雅则尚不失其独立性，若庸俗则不过为官场附庸。",
+      "positive_aspects": ["优雅", "独立", "参谋能力"],
+      "negative_aspects": ["庸俗", "附庸", "缺乏独立"]
+    },
+    {
+      "id": "ZS_017",
+      "name": "天同天梁寅申",
+      "main_star": "天同",
+      "secondary_stars": ["天梁"],
+      "palace_requirements": "寅、申宫",
+      "characteristics": "天同天梁在寅申二宫同度，对宫无正曜，会天机独坐、太阴独坐，成机月同梁格局而且纯粹。须分别其为带浪漫色彩，抑或带原则纪律。二者有截然不同的分别，对行藏出处影响甚大。",
+      "positive_aspects": ["浪漫", "原则", "纪律"],
+      "negative_aspects": ["浪漫过重", "原则性过强"]
+    },
+    {
+      "id": "ZS_018",
+      "name": "武曲七杀卯酉",
+      "main_star": "武曲",
+      "secondary_stars": ["七杀"],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "武曲七杀坐卯酉二宫，对宫天府。三合宫位为紫微破军、廉贞贪狼。须注意其为决断，抑或短虑。决断与短虑其实只一线之差，决断者多留有余地，而短虑者则多薄情。",
+      "positive_aspects": ["决断", "果断", "理财能力"],
+      "negative_aspects": ["短虑", "薄情", "人际关系孤立"]
+    },
+    {
+      "id": "ZS_019",
+      "name": "太阳独坐辰戌",
+      "main_star": "太阳",
+      "secondary_stars": [],
+      "palace_requirements": "辰、戌宫",
+      "characteristics": "太阳独坐辰戌，对宫为太阴。三合宫为巨门独坐，及天同天梁。须注意其有无受拖累剥削。因为此星系的太阳，既需照料巨门，解其暗蔽；又需照顾天梁，解其孤忌。",
+      "positive_aspects": ["光华", "照耀", "责任感"],
+      "negative_aspects": ["受拖累", "负担重", "波折"]
+    },
+    {
+      "id": "ZS_020",
+      "name": "天机独坐子午",
+      "main_star": "天机",
+      "secondary_stars": [],
+      "palace_requirements": "子、午宫",
+      "characteristics": "天机独坐子午，对宫为巨门。三合宫会太阴及天同天梁。须分别其刚柔。性刚的天机，擅长机变，擅长计划；若阴柔的天机，则擅长权变以谋私利。",
+      "positive_aspects": ["机变", "计划力", "开创力"],
+      "negative_aspects": ["权术", "私心", "阴柔"]
+    },
+    {
+      "id": "ZS_021",
+      "name": "紫微天府寅申",
+      "main_star": "紫微",
+      "secondary_stars": ["天府"],
+      "palace_requirements": "寅、申宫",
+      "characteristics": "紫微天府在寅申同度，对宫为七杀，三合宫会武曲独坐，及廉贞天相。须注意其为主动，抑或被动。属于主动性质的紫微天府则攻守咸宜，若带被动色彩，则反易进退失据。",
+      "positive_aspects": ["攻守咸宜", "主动", "开创"],
+      "negative_aspects": ["被动", "进退失据", "矛盾"]
+    },
+    {
+      "id": "ZS_022",
+      "name": "太阴独坐卯酉",
+      "main_star": "太阴",
+      "secondary_stars": [],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "太阴于卯酉宫独坐，对宫为天同，于三合宫的太阳独坐，及天梁独坐相对。须注意其意志为坚强，抑为薄弱。尤其是女命，太阴坐酉，有招蜂惹蝶之性，倘如意志薄弱，则人生便多由自己一物造成的困扰。",
+      "positive_aspects": ["意志坚强", "自主"],
+      "negative_aspects": ["意志薄弱", "感情困扰", "招蜂惹蝶"]
+    },
+    {
+      "id": "ZS_023",
+      "name": "贪狼独坐辰戌",
+      "main_star": "贪狼",
+      "secondary_stars": [],
+      "palace_requirements": "辰、戌宫",
+      "characteristics": "贪狼独坐辰戌二宫，对宫为武曲独坐，会七杀独坐及破军独坐。此星曜组合，正曜单纯，纯粹带物色彩。须注意其为坚忍，抑为躁进。",
+      "positive_aspects": ["物欲追求", "坚忍"],
+      "negative_aspects": ["躁进", "物欲过强"]
+    },
+    {
+      "id": "ZS_024",
+      "name": "巨门独坐巳亥",
+      "main_star": "巨门",
+      "secondary_stars": [],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "巨门独坐已亥，对宫为太阳，三合宫会天同独坐及天机独坐。须分别其为深沉，抑为冲动。深沉者虽偏向于理智仍有感情色彩，冲动者偏向于感情，仍有理智色彩。",
+      "positive_aspects": ["深沉", "理智", "冲动"],
+      "negative_aspects": ["冲动", "感情用事", "口舌是非"]
+    },
+    {
+      "id": "ZS_025",
+      "name": "廉贞天相子午",
+      "main_star": "廉贞",
+      "secondary_stars": ["天相"],
+      "palace_requirements": "子、午宫",
+      "characteristics": "廉贞天相同宫于子午，与破军相对。三合宫相公为紫微天府，及武曲独坐。须详其为刚毅，抑为脆弱。廉贞天相本身具有甚深之感情色彩，但在三方会合的却尽属物质性的星曜，因此为内心感情与外间环境的冲突。",
+      "positive_aspects": ["刚毅", "适应力"],
+      "negative_aspects": ["脆弱", "感情与理智冲突"]
+    },
+    {
+      "id": "ZS_026",
+      "name": "天梁独坐丑未",
+      "main_star": "天梁",
+      "secondary_stars": [],
+      "palace_requirements": "丑、未宫",
+      "characteristics": "天梁在丑未二宫独坐，对宫为天机。三台宫所会为太阴独坐、太阳独坐。须注意分别其为正直，抑为精明。正直是具有原则持以律己，兼亦用以律人；精明则只是善于观察别人的缺点。",
+      "positive_aspects": ["正直", "原则性", "荫庇"],
+      "negative_aspects": ["精明", "挑剔", "孤克"]
+    },
+    {
+      "id": "ZS_027",
+      "name": "七杀独坐寅申",
+      "main_star": "七杀",
+      "secondary_stars": [],
+      "palace_requirements": "寅、申宫",
+      "characteristics": "七杀独坐寅申，必须紫微天府相对，三合宫会合贪狼独坐，及破军独坐。须分别其为孤高，抑为威权。孤高的七杀表面亦似威权，但却是故作崖岸，并不令人心服；而威权者虽不和光同尘，似落落寡合，但却受人敬畏。",
+      "positive_aspects": ["威权", "管理能力", "机遇"],
+      "negative_aspects": ["孤高", "波折", "劳碌"]
+    },
+    {
+      "id": "ZS_028",
+      "name": "天同独坐卯酉",
+      "main_star": "天同",
+      "secondary_stars": [],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "天同独坐卯酉，对宫为太阴。三合宫为巨门独坐，及天机独坐。须注意其为精神空虚，抑为充实。精神空虚为本星系的最大缺点。无论男女，皆可能因此沈沦，或至生疾病，能白手成家的天同，必定精神充实。",
+      "positive_aspects": ["精神充实", "自立", "福泽"],
+      "negative_aspects": ["精神空虚", "沈沦", "依赖"]
+    },
+    {
+      "id": "ZS_029",
+      "name": "武曲独坐辰戌",
+      "main_star": "武曲",
+      "secondary_stars": [],
+      "palace_requirements": "辰、戌宫",
+      "characteristics": "武曲独坐辰戌，对宫为贪狼。三会宫所会为紫微天府及廉贞天相。须分别其为因循抑或进取。武曲落天罗地网，所以刚克之性受到压抑。须视其人生奋斗之心如何，因而循苟且者不过藉一艺谋生，而奋发进取却可以发迹变泰。",
+      "positive_aspects": ["进取", "刚毅", "奋斗"],
+      "negative_aspects": ["因循", "苟且", "刚克"]
+    },
+    {
+      "id": "ZS_030",
+      "name": "太阳独坐巳亥",
+      "main_star": "太阳",
+      "secondary_stars": [],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "太阳在巳亥宫独坐，对宫为巨门，三合宫为太阴独坐及天梁独坐。已宫的太阳较积极，亥宫的太阳较消极；已宫的太阳不易招惹是非，亥宫者易招非。须注意因星曜会合而生的改变。",
+      "positive_aspects": ["积极", "光华"],
+      "negative_aspects": ["消极", "招惹是非"]
+    },
+    {
+      "id": "ZS_031",
+      "name": "破军独坐子午",
+      "main_star": "破军",
+      "secondary_stars": [],
+      "palace_requirements": "子、午宫",
+      "characteristics": "破军独坐子午两宫，对宫为廉贞天相，三合宫会七杀独坐，贪狼独坐。破军在此二宫，可成英星入庙之格，亦可成破军暗曜之格。须分别其为顽嚣与果敢的分别。",
+      "positive_aspects": ["果敢", "开创", "英星入庙"],
+      "negative_aspects": ["顽嚣", "破坏力", "反复"]
+    },
+    {
+      "id": "ZS_032",
+      "name": "天机独坐丑未",
+      "main_star": "天机",
+      "secondary_stars": [],
+      "palace_requirements": "丑、未宫",
+      "characteristics": "天机独坐丑未，与天梁相对。三合宫为巨门独坐，及天同独坐。须分别其为上进，抑为下游。天机于丑未宫本为弱宫，必须得禄，然后始为上进。",
+      "positive_aspects": ["上进", "智慧", "计划"],
+      "negative_aspects": ["下游", "飘荡", "心术"]
+    },
+    {
+      "id": "ZS_033",
+      "name": "紫微贪狼卯酉",
+      "main_star": "紫微",
+      "secondary_stars": ["贪狼"],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "紫微贪狼于卯、酉二宫同度，对宫无星，三合宫会廉贞七杀，及武曲破军。紫微贪狼这系星曜，属于纯欲望型。因为不但紫贪本身具有欲望性质，所会的武破亦有强烈的物欲色彩。",
+      "positive_aspects": ["欲望", "主动", "积极"],
+      "negative_aspects": ["物欲过强", "不择手段", "色欲"]
+    },
+    {
+      "id": "ZS_034",
+      "name": "天府独坐辰戌",
+      "main_star": "天府",
+      "secondary_stars": [],
+      "palace_requirements": "辰、戌宫",
+      "characteristics": "天府独坐辰戌，对宫为紫微七杀，三合宫会天相独坐，及借星安宫的武曲贪狼。须分别其为祥和抑为权术。祥和的天府表面视之无甚重大建树，其实不知不觉间已建立事功；权术者则每多腾挪变化。",
+      "positive_aspects": ["祥和", "稳定", "守成"],
+      "negative_aspects": ["权术", "多思多虑", "钻牛角尖"]
+    },
+    {
+      "id": "ZS_035",
+      "name": "太阴太阳丑未",
+      "main_star": "太阴",
+      "secondary_stars": ["太阳"],
+      "palace_requirements": "丑、未宫",
+      "characteristics": "太阴太阳于丑未二宫同度，对宫无正曜，三合宫为天梁独坐，及借星安宫的天机巨门。太阴太阳同度的宫垣，坐不如向。须分别其为开朗，抑为沈郁。太阳的光热足以解天梁的孤忌，则属于开朗。",
+      "positive_aspects": ["开朗", "光华", "解孤"],
+      "negative_aspects": ["沈郁", "孤忌", "阴暗"]
+    },
+    {
+      "id": "ZS_036",
+      "name": "贪狼独坐寅申",
+      "main_star": "贪狼",
+      "secondary_stars": [],
+      "palace_requirements": "寅、申宫",
+      "characteristics": "贪狼独坐寅申，与廉贞相对，三合宫为破军独坐，及七杀独坐。寅申二宫贪狼的性质相反。在寅宫主早发，但中年晚年须防破败；在申宫早年不利，中年发迹，发迹后亦须防破败。",
+      "positive_aspects": ["早发或迟发", "物欲", "交际"],
+      "negative_aspects": ["破败", "色欲", "物欲"]
+    },
+    {
+      "id": "ZS_037",
+      "name": "天机巨门卯酉",
+      "main_star": "天机",
+      "secondary_stars": ["巨门"],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "天机巨门于卯酉二宫同度，对宫无正曜，三合宫为天同独坐，及借星安宫的太阳太阴。须分别其为稳重，抑为浮薄。古人说的天机巨门为破荡，则是浮薄的天机巨门而言。",
+      "positive_aspects": ["稳重", "才能", "机变"],
+      "negative_aspects": ["浮薄", "多疑", "破荡"]
+    },
+    {
+      "id": "ZS_038",
+      "name": "紫微七杀巳亥",
+      "main_star": "紫微",
+      "secondary_stars": ["七杀"],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "紫微七杀同度于巳亥二宫，对宫为天府，三合宫为武曲贪狼，以及廉贞破军。这组星系属于纯物质性的结构，星曜会合强烈，因此往往吉凶击于一线。须区分为权威及横霸。",
+      "positive_aspects": ["权威", "物质力", "权力"],
+      "negative_aspects": ["横霸", "极端", "挫折"]
+    },
+    {
+      "id": "ZS_039",
+      "name": "廉贞破军卯酉",
+      "main_star": "廉贞",
+      "secondary_stars": ["破军"],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "廉贞破军于卯酉宫同度，对宫为天相，三合宫为紫微七杀，以及武曲贪狼，星单曜组合非常强烈。凡廉贞破军守命，最宜从事公职。须分别其为奉公，抑或私利。",
+      "positive_aspects": ["奉公", "服务", "开创"],
+      "negative_aspects": ["私利", "横发横破", "私心"]
+    },
+    {
+      "id": "ZS_040",
+      "name": "天府独坐巳亥",
+      "main_star": "天府",
+      "secondary_stars": [],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "天府在巳亥宫独坐，对宫为紫微七杀，三合宫会天相独坐，及借星安宫的武曲贪狼。须视其为祥和抑为权术。祥和的天府表面视之无甚重大建树，权术者则每多腾挪变化。",
+      "positive_aspects": ["祥和", "稳定", "保守"],
+      "negative_aspects": ["权术", "多忧", "钻营"]
+    },
+    {
+      "id": "ZS_041",
+      "name": "天同太阴子午",
+      "main_star": "天同",
+      "secondary_stars": ["太阴"],
+      "palace_requirements": "子、午宫",
+      "characteristics": "天同太阴于子午二宫同度，对宫无正曜，三合宫所会为天机天梁，及借星安宫的太阳巨门。须分别其为积极，抑或消极。古人称为志高与志卑。",
+      "positive_aspects": ["积极", "志高", "奋斗"],
+      "negative_aspects": ["消极", "志卑", "颓废"]
+    },
+    {
+      "id": "ZS_042",
+      "name": "武曲贪狼丑未",
+      "main_star": "武曲",
+      "secondary_stars": ["贪狼"],
+      "palace_requirements": "丑、未宫",
+      "characteristics": "武曲贪狼于丑未二宫同度，对宫无正曜，三合宫会廉贞破军，及紫微七杀。这组星系，性质亦非常强烈，权欲之心甚重。须分别其为欲望，抑为野心。",
+      "positive_aspects": ["欲望", "进取", "行动力"],
+      "negative_aspects": ["野心", "权欲", "损害他人"]
+    },
+    {
+      "id": "ZS_043",
+      "name": "太阳巨门寅申",
+      "main_star": "太阳",
+      "secondary_stars": ["巨门"],
+      "palace_requirements": "寅、申宫",
+      "characteristics": "太阳巨门坐寅申二宫，对宫无正曜，三合宫亦无正曜，都要借星安宫，得会天同太阴与天机天梁。此二宫垣的太阳巨门，由于三方均无正曜，故主孤立无援。须分别其为得助，抑为孤立。",
+      "positive_aspects": ["得助", "孤立", "口才"],
+      "negative_aspects": ["孤立", "无援", "是非"]
+    },
+    {
+      "id": "ZS_044",
+      "name": "天相独坐卯酉",
+      "main_star": "天相",
+      "secondary_stars": [],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "天相独坐卯酉，对宫为廉贞破军，三合相会为天府独坐，及借星安宫的武曲贪狼。廉贞破军对天相的影响，不如武破之强烈。须分别其为正值，抑为徇私。",
+      "positive_aspects": ["正值", "正直", "原则"],
+      "negative_aspects": ["徇私", "无原则", "照顾友情"]
+    },
+    {
+      "id": "ZS_045",
+      "name": "天机天梁辰戌",
+      "main_star": "天机",
+      "secondary_stars": ["天梁"],
+      "palace_requirements": "辰、戌宫",
+      "characteristics": "天机天梁坐辰戌二宫，对宫无正曜，三合宫会天同太阴，及借星安宫之太阳巨门。须分别其为尖刻，抑为明断。天机主敏感变动，天梁则主原则纪律，若二者性格调和，则为明断的本质。",
+      "positive_aspects": ["明断", "敏感", "原则"],
+      "negative_aspects": ["尖刻", "过份反应", "冲突"]
+    },
+    {
+      "id": "ZS_046",
+      "name": "紫微天相辰戌",
+      "main_star": "紫微",
+      "secondary_stars": ["天相"],
+      "palace_requirements": "辰、戌宫",
+      "characteristics": "紫微天相在辰戌二宫同度，对宫为破军，三合宫为武曲天府及廉贞独坐。紫微于十二宫分布，以在辰、戌二宫为最弱，即使诸吉齐拱，人生必有缺憾。须分别其为有情，抑或无情。",
+      "positive_aspects": ["有情", "感情"],
+      "negative_aspects": ["无情", "急功近利", "缺憾"]
+    },
+    {
+      "id": "ZS_047",
+      "name": "天梁独坐巳亥",
+      "main_star": "天梁",
+      "secondary_stars": [],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "天梁独坐已亥，对宫为天同，三合宫为太阳太阴，及借星安宫的天机巨门。所会的星曜皆多动荡，而天梁本身又落陷地。须分别其为浮荡，抑为稳定。",
+      "positive_aspects": ["稳定", "荫庇", "清廉"],
+      "negative_aspects": ["浮荡", "波动", "孤克"]
+    },
+    {
+      "id": "ZS_048",
+      "name": "七杀独坐子午",
+      "main_star": "七杀",
+      "secondary_stars": [],
+      "palace_requirements": "子、午宫",
+      "characteristics": "七杀在子、午二宫独坐，对宫为武曲天府同度，三合宫所会为破军独坐及贪狼独坐。子午的七杀，相对而言为强格，尤其是午宫的七杀，见吉即为雄宿干元格。须分别其为权威，抑为克忌。",
+      "positive_aspects": ["权威", "刚强", "管理"],
+      "negative_aspects": ["克忌", "刑克", "灾祸"]
+    },
+    {
+      "id": "ZS_049",
+      "name": "廉贞独坐寅申",
+      "main_star": "廉贞",
+      "secondary_stars": [],
+      "palace_requirements": "寅、申宫",
+      "characteristics": "廉贞在寅中二宫独会，对宫必为贪狼，三合宫所会为紫微天相及武曲天府。须详其为敏感，抑为踏实。敏感的廉贞一般带艺术气质，重视精神生活；踏实的廉贞，即使重视精神生活，亦必以物质享受为基础。",
+      "positive_aspects": ["敏感", "艺术气质", "踏实"],
+      "negative_aspects": ["敏感过重", "空想", "敏感"]
+    },
+    {
+      "id": "ZS_050",
+      "name": "破军独坐辰戌",
+      "main_star": "破军",
+      "secondary_stars": [],
+      "palace_requirements": "辰、戌宫",
+      "characteristics": "破军于辰戊二宫独坐，对宫为紫微天相，三合宫所会者为贪狼独坐，七杀独坐。破军最弱于天罗地网，一般情形下不主吉利。须分别其本质偏枯，抑为调和。",
+      "positive_aspects": ["调和", "得禄"],
+      "negative_aspects": ["偏枯", "波折", "缺憾"]
+    },
+    {
+      "id": "ZS_051",
+      "name": "天同独坐已亥",
+      "main_star": "天同",
+      "secondary_stars": [],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "天同在巳亥二宫独坐，对宫为天梁，三合宫为天机巨门同度；以及借星安宫的太阳太阴同度。须分别其为意志薄弱，抑为意志坚强。天同化权，则不必见煞亦主意志坚强。",
+      "positive_aspects": ["意志坚强", "毅力"],
+      "negative_aspects": ["意志薄弱", "依赖", "飘荡"]
+    },
+    {
+      "id": "ZS_052",
+      "name": "武曲天府子午",
+      "main_star": "武曲",
+      "secondary_stars": ["天府"],
+      "palace_requirements": "子、午宫",
+      "characteristics": "武曲天府同度于子午二宫，对宫为七杀。三合宫所会为廉贞独坐，及紫微天相。武曲及天府均为财星，然而武曲主行动，天府则为府库，故武曲善生财，而天府则仅有储财之力。须分别其为擅发生财，抑或擅长理财。",
+      "positive_aspects": ["统筹", "理财", "生财"],
+      "negative_aspects": ["偏弊", "不擅理财"]
+    },
+    {
+      "id": "ZS_053",
+      "name": "太阳太阴丑未",
+      "main_star": "太阳",
+      "secondary_stars": ["太阴"],
+      "palace_requirements": "丑、未宫",
+      "characteristics": "太阴太阳于丑未二宫同度，对宫无正曜，三合宫为天梁独坐，及借星安宫的天机巨门。须分别其为开朗，抑为沈郁。太阳的光热足以解天梁的孤忌，则此格局的太阴太阳便属于开朗。",
+      "positive_aspects": ["开朗", "日月拱照"],
+      "negative_aspects": ["沈郁", "阴暗", "孤忌"]
+    },
+    {
+      "id": "ZS_054",
+      "name": "贪狼独坐寅申",
+      "main_star": "贪狼",
+      "secondary_stars": [],
+      "palace_requirements": "寅、申宫",
+      "characteristics": "贪狼独坐寅申，与廉贞相对，三合宫为破军独坐，及七杀独坐。寅申二宫贪狼的性质相反。在寅宫主早发，但中年晚年须防破败；在申宫早年不利，中年发迹，发迹后亦须防破败。须注意其为物质欲强，抑或情欲强。",
+      "positive_aspects": ["物欲", "早发或迟发"],
+      "negative_aspects": ["破败", "情欲", "波折"]
+    },
+    {
+      "id": "ZS_055",
+      "name": "天机巨门卯酉",
+      "main_star": "天机",
+      "secondary_stars": ["巨门"],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "天机巨门于卯酉二宫同度，对宫无正曜，三合宫为天同独坐，及借星安宫的太阳太阴。须分别其为稳重，抑为浮薄。得禄、权、科会者为稳重的结构。",
+      "positive_aspects": ["稳重", "有禄权科"],
+      "negative_aspects": ["浮薄", "火铃破坏"]
+    },
+    {
+      "id": "ZS_056",
+      "name": "紫微七杀巳亥",
+      "main_star": "紫微",
+      "secondary_stars": ["七杀"],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "紫微七杀同度于巳亥二宫，对宫为天府，三合宫为武曲贪狼，以及廉贞破军。这组星系属于纯物质性的结构。须区分为权威与横霸。权威者多正途发展；横霸者则往往易误入歧途。",
+      "positive_aspects": ["权威", "物质力"],
+      "negative_aspects": ["横霸", "挫折", "灾病"]
+    },
+    {
+      "id": "ZS_057",
+      "name": "廉贞破军卯酉",
+      "main_star": "廉贞",
+      "secondary_stars": ["破军"],
+      "palace_requirements": "卯、酉宫",
+      "characteristics": "廉贞破军于卯酉宫同度，对宫为天相，三合宫为紫微七杀，以及武曲贪狼，星曜组合非常强烈。须分别其为奉公，抑或私利。廉贞化禄，则为理想高，有政见；廉贞化忌则纯为私利。",
+      "positive_aspects": ["奉公", "服务", "理想"],
+      "negative_aspects": ["私利", "横发横破", "私心"]
+    },
+    {
+      "id": "ZS_058",
+      "name": "天府独坐巳亥",
+      "main_star": "天府",
+      "secondary_stars": [],
+      "palace_requirements": "巳、亥宫",
+      "characteristics": "天府在巳亥宫独坐，对宫为紫微七杀，三合宫会天相独坐，及借星安宫的武曲贪狼。须视其为祥和抑为权术。祥和的天府脚踏实地；权术者则每多腾挪变化，但结果却一无所得。",
+      "positive_aspects": ["祥和", "脚踏实地", "建立事功"],
+      "negative_aspects": ["权术", "多忧", "无所得"]
+    },
+    {
+      "id": "ZS_059",
+      "name": "天同太阴子午",
+      "main_star": "天同",
+      "secondary_stars": ["太阴"],
+      "palace_requirements": "子、午宫",
+      "characteristics": "天同太阴于子午二宫同度，对宫无正曜，三合宫所会为天机天梁，及借星安宫的太阳巨门。须分别其为积极，抑或消极。在午宫较为积极，所以喜擎羊同度；在子则不喜擎羊同度。",
+      "positive_aspects": ["积极", "马头带剑", "奋斗"],
+      "negative_aspects": ["消极", "志卑", "颓废"]
+    },
+    {
+      "id": "ZS_060",
+      "name": "武曲贪狼丑未",
+      "main_star": "武曲",
+      "secondary_stars": ["贪狼"],
+      "palace_requirements": "丑、未宫",
+      "characteristics": "武曲贪狼于丑未二宫同度，对宫无正曜，三合宫会廉贞破军，及紫微七杀。须分别其为欲望，抑为野心。欲望人人皆有，因为不伤害到别人，所以反成为人生鞭策的力量。野心则往往损人利己。",
+      "positive_aspects": ["欲望", "鞭策", "进取"],
+      "negative_aspects": ["野心", "权欲", "损人利己"]
+    }
+  ],
+  "metadata": {
+    "source": "中州派紫微斗数深造讲义 - 王亭之",
+    "total_count": 60,
+    "grouping": {
+      "第一组_紫微独坐子午": ["紫微独坐", "破军独坐", "廉贞天府", "太阴独坐", "贪狼独坐", "天同巨门", "武曲天相", "太阳天梁", "七杀独坐", "天机独坐"],
+      "第二组_紫微坐丑未": ["紫微破军", "天府独坐", "太阴独坐", "廉贞贪狼", "巨门独坐", "天相独坐", "天同天梁", "武曲七杀", "太阳独坐", "天机独坐"],
+      "第三组_紫微在寅申": ["紫微天府", "太阳独坐", "贪狼独坐", "巨门独坐", "廉贞天相", "天梁独坐", "七杀独坐", "天同独坐", "武曲独坐", "太阳独坐"],
+      "第四组_紫微在卯酉": ["紫微贪狼", "天府独坐", "太阴独坐", "廉贞七杀", "巨门独坐", "天相独坐", "天同天梁", "武曲破军", "太阳独坐", "天机独坐"],
+      "第五组_紫微在辰戌": ["紫微天相", "天梁独坐", "七杀独坐", "廉贞独坐", "破军独坐", "天同独坐", "武曲天府", "太阴太阳", "贪狼独坐", "天机巨门"],
+      "第六组_紫微在巳亥": ["紫微七杀", "廉贞破军", "天府独坐", "天同太阴", "武曲贪狼", "太阳巨门", "天相独坐", "天机天梁"]
+    },
+    "key_concepts": {
+      "精神与物质平衡": "紫微独坐需注意精神与物质的平衡，会合不同星曜会影响紫微的精神性或物质性",
+      "叛逆与顺从": "破军独坐需判断其叛逆性与顺从性，叛逆性愈强人生变动幅度愈大",
+      "感情与理智": "廉贞天府需注意感情与理智的冲突与调和",
+      "发射与收敛": "太阴独坐需注意其发射性与收敛性的平衡",
+      "决断与短虑": "武曲七杀需判断其为决断或短虑",
+      "祥和与孤忌": "太阳天梁需分别其为祥和抑为孤忌",
+      "权威与横霸": "紫微七杀需区分为权威及横霸"
+    }
+  }
+}

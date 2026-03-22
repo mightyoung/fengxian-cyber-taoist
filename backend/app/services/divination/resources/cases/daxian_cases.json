@@ -1,0 +1,1877 @@
+{
+  "metadata": {
+    "source": "《命理学正解》紫云派大限研究",
+    "total_cases": 80,
+    "extracted_date": "2026-03-20"
+  },
+  "cases": [
+    {
+      "case_id": "DX_001",
+      "agent": "TimingAgent",
+      "type": "大限阶段",
+      "name": "大限命宫-第一大限",
+      "input": {
+        "dadian_number": 1,
+        "age_range": "2-11岁",
+        "palace": "命宫",
+        "zodiac_type": "阳男阴女顺行"
+      },
+      "output": {
+        "interpretation": "阳男阴女，第一大限在命宫。命宫主内在本质、自我认知、人生核心方向。此限少年时期奠定命主基本性格与人生定位",
+        "keywords": [
+          "大限",
+          "命宫",
+          "少年",
+          "本质",
+          "定位"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "DX_002",
+      "agent": "TimingAgent",
+      "type": "大限阶段",
+      "name": "大限命宫-第二大限",
+      "input": {
+        "dadian_number": 2,
+        "age_range": "12-21岁",
+        "palace": "父母宫",
+        "zodiac_type": "阳男阴女顺行"
+      },
+      "output": {
+        "interpretation": "阳男阴女，第二大限在父母宫。父母宫主依赖、学习、教育背景。此限命主经历求学阶段，受父母影响较大",
+        "keywords": [
+          "大限",
+          "父母宫",
+          "求学",
+          "教育",
+          "依赖"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "DX_003",
+      "agent": "TimingAgent",
+      "type": "大限阶段",
+      "name": "大限命宫-第三大限",
+      "input": {
+        "dadian_number": 3,
+        "age_range": "22-31岁",
+        "palace": "福德宫",
+        "zodiac_type": "阳男阴女顺行"
+      },
+      "output": {
+        "interpretation": "阳男阴女，第三大限在福德宫。福德宫主思想、福气、价值观。此限命主建立人生观，开始独立发展事业",
+        "keywords": [
+          "大限",
+          "福德宫",
+          "思想",
+          "事业",
+          "价值观"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "DX_004",
+      "agent": "TimingAgent",
+      "type": "大限阶段",
+      "name": "大限命宫-第四大限",
+      "input": {
+        "dadian_number": 4,
+        "age_range": "32-41岁",
+        "palace": "财帛宫",
+        "zodiac_type": "阳男阴女顺行"
+      },
+      "output": {
+        "interpretation": "阳男阴女，第四大限在财帛宫。财帛宫主财运、理财能力、物质需求。此限命主进入事业高峰期，财运为重心",
+        "keywords": [
+          "大限",
+          "财帛宫",
+          "财运",
+          "事业高峰",
+          "物质"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "DX_005",
+      "agent": "TimingAgent",
+      "type": "大限阶段",
+      "name": "大限命宫-第五大限",
+      "input": {
+        "dadian_number": 5,
+        "age_range": "42-51岁",
+        "palace": "子女宫",
+        "zodiac_type": "阳男阴女顺行"
+      },
+      "output": {
+        "interpretation": "阳男阴女，第五大限在子女宫。子女宫主子女、晚辈、合伙事业。此限命主子女成长，或发展合作事业",
+        "keywords": [
+          "大限",
+          "子女宫",
+          "子女",
+          "合伙",
+          "传承"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "DX_006",
+      "agent": "TimingAgent",
+      "type": "大限阶段",
+      "name": "大限命宫-第六大限",
+      "input": {
+        "dadian_number": 6,
+        "age_range": "52-61岁",
+        "palace": "田宅宫",
+        "zodiac_type": "阳男阴女顺行"
+      },
+      "output": {
+        "interpretation": "阳男阴女，第六大限在田宅宫。田宅宫主不动产、家产、祖业。此限命主关注家庭财产，或置产安居",
+        "keywords": [
+          "大限",
+          "田宅宫",
+          "不动产",
+          "家产",
+          "安居"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "DX_007",
+      "agent": "TimingAgent",
+      "type": "大限阶段",
+      "name": "大限命宫-第一大限逆行",
+      "input": {
+        "dadian_number": 1,
+        "age_range": "2-11岁",
+        "palace": "命宫",
+        "zodiac_type": "阴男阳女逆行"
+      },
+      "output": {
+        "interpretation": "阴男阳女，第一大限仍在命宫。此限为人生基础阶段，与父母宫大限相邻，需注意亲子关系",
+        "keywords": [
+          "大限",
+          "命宫",
+          "逆行",
+          "基础",
+          "亲子"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "DX_008",
+      "agent": "TimingAgent",
+      "type": "大限阶段",
+      "name": "大限命宫-第二大限逆行",
+      "input": {
+        "dadian_number": 2,
+        "age_range": "12-21岁",
+        "palace": "兄弟宫",
+        "zodiac_type": "阴男阳女逆行"
+      },
+      "output": {
+        "interpretation": "阴男阳女，第二大限在兄弟宫。兄弟宫主兄弟姐妹、同辈关系、合伙人。此限命主与兄弟姊妹或合伙人关系为重心",
+        "keywords": [
+          "大限",
+          "兄弟宫",
+          "同辈",
+          "合伙",
+          "竞争"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "DX_009",
+      "agent": "TimingAgent",
+      "type": "大限阶段",
+      "name": "大限命宫-第三大限逆行",
+      "input": {
+        "dadian_number": 3,
+        "age_range": "22-31岁",
+        "palace": "夫妻宫",
+        "zodiac_type": "阴男阳女逆行"
+      },
+      "output": {
+        "interpretation": "阴男阳女，第三大限在夫妻宫。夫妻宫主婚姻、配偶、情感。此限命主进入适婚年龄，婚姻感情为重心",
+        "keywords": [
+          "大限",
+          "夫妻宫",
+          "婚姻",
+          "配偶",
+          "情感"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "DX_010",
+      "agent": "TimingAgent",
+      "type": "大限阶段",
+      "name": "大限命宫-第四大限逆行",
+      "input": {
+        "dadian_number": 4,
+        "age_range": "32-41岁",
+        "palace": "子女宫",
+        "zodiac_type": "阴男阳女逆行"
+      },
+      "output": {
+        "interpretation": "阴男阳女，第四大限在子女宫。子女宫主子女、晚辈、创新事业。此限命主子嗣或开创事业为重心",
+        "keywords": [
+          "大限",
+          "子女宫",
+          "子女",
+          "创新",
+          "开创"
+        ]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "DX_011",
+      "agent": "TimingAgent",
+      "type": "大限四化",
+      "name": "大限化禄-财帛宫",
+      "input": {
+        "dadian_number": 4,
+        "age_range": "32-41岁",
+        "transform": "化禄",
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "大限化禄入财帛宫，主该十年财运佳，有意外之财或收入增加。禄主财禄、收入、享受，财帛宫为财库，大限化禄加强财运",
+        "keywords": [
+          "大限四化",
+          "化禄",
+          "财帛宫",
+          "财运",
+          "收入"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_012",
+      "agent": "TimingAgent",
+      "type": "大限四化",
+      "name": "大限化忌-财帛宫",
+      "input": {
+        "dadian_number": 4,
+        "age_range": "32-41岁",
+        "transform": "化忌",
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "大限化忌入财帛宫，主该十年财务阻碍、投资失利或破财。忌主阻碍、损失、消耗，财帛宫逢忌需防财务危机",
+        "keywords": [
+          "大限四化",
+          "化忌",
+          "财帛宫",
+          "破财",
+          "阻碍"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_013",
+      "agent": "TimingAgent",
+      "type": "大限四化",
+      "name": "大限化权-官禄宫",
+      "input": {
+        "dadian_number": 5,
+        "age_range": "42-51岁",
+        "transform": "化权",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "大限化权入官禄宫，主该十年事业权力扩大、地位提升。权主权力、竞争、成就，官禄宫为事业宫，大限化权加强事业运势",
+        "keywords": [
+          "大限四化",
+          "化权",
+          "官禄宫",
+          "权力",
+          "地位"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_014",
+      "agent": "TimingAgent",
+      "type": "大限四化",
+      "name": "大限化科-福德宫",
+      "input": {
+        "dadian_number": 3,
+        "age_range": "22-31岁",
+        "transform": "化科",
+        "palace": "福德宫"
+      },
+      "output": {
+        "interpretation": "大限化科入福德宫，主该十年思想开悟、学业进步、声誉提升。科主学业、声誉、科名，福德宫主思想，大限化科利考试升学",
+        "keywords": [
+          "大限四化",
+          "化科",
+          "福德宫",
+          "学业",
+          "声誉"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_015",
+      "agent": "TimingAgent",
+      "type": "大限四化",
+      "name": "大限化禄入迁移宫",
+      "input": {
+        "dadian_number": 4,
+        "age_range": "32-41岁",
+        "transform": "化禄",
+        "palace": "迁移宫"
+      },
+      "output": {
+        "interpretation": "大限化禄入迁移宫，主该十年出外发展顺利、际遇佳。迁移宫主外出、际遇，逢禄主得贵人相助、迁移顺利",
+        "keywords": [
+          "大限四化",
+          "化禄",
+          "迁移宫",
+          "出外",
+          "际遇"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_016",
+      "agent": "TimingAgent",
+      "type": "大限四化",
+      "name": "大限化忌入迁移宫",
+      "input": {
+        "dadian_number": 4,
+        "age_range": "32-41岁",
+        "transform": "化忌",
+        "palace": "迁移宫"
+      },
+      "output": {
+        "interpretation": "大限化忌入迁移宫，主该十年出外阻碍多、际遇不佳。迁移宫逢忌，主出行受阻、远行不利或在外运势低迷",
+        "keywords": [
+          "大限四化",
+          "化忌",
+          "迁移宫",
+          "出外",
+          "阻碍"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_017",
+      "agent": "TimingAgent",
+      "type": "大限四化",
+      "name": "大限化禄入夫妻宫",
+      "input": {
+        "dadian_number": 3,
+        "age_range": "22-31岁",
+        "transform": "化禄",
+        "palace": "夫妻宫"
+      },
+      "output": {
+        "interpretation": "大限化禄入夫妻宫，主该十年婚姻甜蜜、配偶得力。夫妻宫逢禄，主感情顺利、婚姻幸福、配偶事业有帮助",
+        "keywords": [
+          "大限四化",
+          "化禄",
+          "夫妻宫",
+          "婚姻",
+          "配偶"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_018",
+      "agent": "TimingAgent",
+      "type": "大限四化",
+      "name": "大限化忌入夫妻宫",
+      "input": {
+        "dadian_number": 3,
+        "age_range": "22-31岁",
+        "transform": "化忌",
+        "palace": "夫妻宫"
+      },
+      "output": {
+        "interpretation": "大限化忌入夫妻宫，主该十年婚姻感情有阻碍、分离或桃花问题。夫妻宫逢忌，主感情纠纷、婚姻危机或第三者介入",
+        "keywords": [
+          "大限四化",
+          "化忌",
+          "夫妻宫",
+          "婚姻",
+          "桃花"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_019",
+      "agent": "TimingAgent",
+      "type": "大限四化",
+      "name": "大限化禄入官禄宫",
+      "input": {
+        "dadian_number": 5,
+        "age_range": "42-51岁",
+        "transform": "化禄",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "大限化禄入官禄宫，主该十年事业顺利、职位晋升。官禄宫逢禄，主事业进步、工作顺利",
+        "keywords": [
+          "大限四化",
+          "化禄",
+          "官禄宫",
+          "事业",
+          "晋升"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_020",
+      "agent": "TimingAgent",
+      "type": "大限四化",
+      "name": "大限化忌入官禄宫",
+      "input": {
+        "dadian_number": 5,
+        "age_range": "42-51岁",
+        "transform": "化忌",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "大限化忌入官禄宫，主该十年事业阻碍、职位不稳。官禄宫逢忌，主事业倒退、工作不顺",
+        "keywords": [
+          "大限四化",
+          "化忌",
+          "官禄宫",
+          "事业",
+          "阻碍"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_021",
+      "agent": "TimingAgent",
+      "type": "五行局",
+      "name": "水二局-命宫",
+      "input": {
+        "wuxing_bureau": "水二局",
+        "main_stars": [
+          "天同",
+          "太阴"
+        ],
+        "palace": "命宫"
+      },
+      "output": {
+        "interpretation": "水二局主智慧、柔性、桃花。命宫主星为天同或太阴加水二局，命主性格柔和，聪明有智慧，但情感丰富易受影响",
+        "keywords": [
+          "五行局",
+          "水二局",
+          "天同",
+          "太阴",
+          "柔性"
+        ]
+      },
+      "source": "《命理学正解》第四章"
+    },
+    {
+      "case_id": "DX_022",
+      "agent": "TimingAgent",
+      "type": "五行局",
+      "name": "木三局-命宫",
+      "input": {
+        "wuxing_bureau": "木三局",
+        "main_stars": [
+          "天机",
+          "天梁"
+        ],
+        "palace": "命宫"
+      },
+      "output": {
+        "interpretation": "木三局主仁慈、策划、学术。命宫主星为天机或天梁加木三局，命主心地善良，长于策划思考，有学术倾向",
+        "keywords": [
+          "五行局",
+          "木三局",
+          "天机",
+          "天梁",
+          "仁慈"
+        ]
+      },
+      "source": "《命理学正解》第四章"
+    },
+    {
+      "case_id": "DX_023",
+      "agent": "TimingAgent",
+      "type": "五行局",
+      "name": "金四局-命宫",
+      "input": {
+        "wuxing_bureau": "金四局",
+        "main_stars": [
+          "武曲",
+          "天府"
+        ],
+        "palace": "命宫"
+      },
+      "output": {
+        "interpretation": "金四局主刚毅、理财、权威。命宫主星为武曲或天府加金四局，命主性格刚强，精于理财，有领导能力",
+        "keywords": [
+          "五行局",
+          "金四局",
+          "武曲",
+          "天府",
+          "刚毅"
+        ]
+      },
+      "source": "《命理学正解》第四章"
+    },
+    {
+      "case_id": "DX_024",
+      "agent": "TimingAgent",
+      "type": "五行局",
+      "name": "土五局-命宫",
+      "input": {
+        "wuxing_bureau": "土五局",
+        "main_stars": [
+          "紫微",
+          "太阳"
+        ],
+        "palace": "命宫"
+      },
+      "output": {
+        "interpretation": "土五局主稳重、权贵、领导。命宫主星为紫微或太阳加土五局，命主有领导气质，稳重务实，追求权位",
+        "keywords": [
+          "五行局",
+          "土五局",
+          "紫微",
+          "太阳",
+          "稳重"
+        ]
+      },
+      "source": "《命理学正解》第四章"
+    },
+    {
+      "case_id": "DX_025",
+      "agent": "TimingAgent",
+      "type": "五行局",
+      "name": "火六局-命宫",
+      "input": {
+        "wuxing_bureau": "火六局",
+        "main_stars": [
+          "廉贞",
+          "七杀"
+        ],
+        "palace": "命宫"
+      },
+      "output": {
+        "interpretation": "火六局主激烈、变革、冲锋。命宫主星为廉贞或七杀加火六局，命主性格激烈，敢于变革，但易冲动",
+        "keywords": [
+          "五行局",
+          "火六局",
+          "廉贞",
+          "七杀",
+          "激烈"
+        ]
+      },
+      "source": "《命理学正解》第四章"
+    },
+    {
+      "case_id": "DX_026",
+      "agent": "TimingAgent",
+      "type": "五行局",
+      "name": "水二局在子",
+      "input": {
+        "wuxing_bureau": "水二局",
+        "palace": "子宫"
+      },
+      "output": {
+        "interpretation": "水二局在子为水旺之地，主聪明智慧、情感丰富。但子为桃花位，易沉溺情感",
+        "keywords": [
+          "水二局",
+          "子宫",
+          "聪明",
+          "情感",
+          "桃花"
+        ]
+      },
+      "source": "《命理学正解》第四章"
+    },
+    {
+      "case_id": "DX_027",
+      "agent": "TimingAgent",
+      "type": "五行局",
+      "name": "木三局在卯",
+      "input": {
+        "wuxing_bureau": "木三局",
+        "palace": "卯宫"
+      },
+      "output": {
+        "interpretation": "木三局在卯为帝旺之地，主仁慈善良、学术有成。卯宫为文书之宫，利考试升学",
+        "keywords": [
+          "木三局",
+          "卯宫",
+          "仁慈",
+          "学术",
+          "考试"
+        ]
+      },
+      "source": "《命理学正解》第四章"
+    },
+    {
+      "case_id": "DX_028",
+      "agent": "TimingAgent",
+      "type": "五行局",
+      "name": "金四局在申",
+      "input": {
+        "wuxing_bureau": "金四局",
+        "palace": "申宫"
+      },
+      "output": {
+        "interpretation": "金四局在申为临官之地，主刚毅果断、理财有道。申宫为马位，利外出发展",
+        "keywords": [
+          "金四局",
+          "申宫",
+          "刚毅",
+          "理财",
+          "外出"
+        ]
+      },
+      "source": "《命理学正解》第四章"
+    },
+    {
+      "case_id": "DX_029",
+      "agent": "TimingAgent",
+      "type": "五行局",
+      "name": "土五局在辰戌",
+      "input": {
+        "wuxing_bureau": "土五局",
+        "palace": "辰宫或戌宫"
+      },
+      "output": {
+        "interpretation": "土五局在辰戌为天罗地网，主稳重但有时运不济之叹。需配合星曜综合判断",
+        "keywords": [
+          "土五局",
+          "辰宫",
+          "戌宫",
+          "稳重",
+          "天罗地网"
+        ]
+      },
+      "source": "《命理学正解》第四章"
+    },
+    {
+      "case_id": "DX_030",
+      "agent": "TimingAgent",
+      "type": "五行局",
+      "name": "火六局在巳",
+      "input": {
+        "wuxing_bureau": "火六局",
+        "palace": "巳宫"
+      },
+      "output": {
+        "interpretation": "火六局在巳为长生之地，主热情激烈、勇于变革。巳宫为文昌之位，利功名",
+        "keywords": [
+          "火六局",
+          "巳宫",
+          "热情",
+          "变革",
+          "功名"
+        ]
+      },
+      "source": "《命理学正解》第四章"
+    },
+    {
+      "case_id": "DX_031",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化禄-甲年",
+      "input": {
+        "year_gan": "甲",
+        "transform": "化禄",
+        "star": "廉贞",
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "甲年廉贞化禄入财帛宫，主该年财运佳，财来自有方。廉贞化禄主桃花得财，财帛宫主正财，此年收入增加",
+        "keywords": [
+          "流年四化",
+          "甲年",
+          "化禄",
+          "廉贞",
+          "财运"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_032",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化忌-甲年",
+      "input": {
+        "year_gan": "甲",
+        "transform": "化忌",
+        "star": "廉贞",
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "甲年廉贞化忌入财帛宫，主该年财务阻碍，财运不佳。化忌主损失消耗，此年需防破财",
+        "keywords": [
+          "流年四化",
+          "甲年",
+          "化忌",
+          "廉贞",
+          "破财"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_033",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化禄-乙年",
+      "input": {
+        "year_gan": "乙",
+        "transform": "化禄",
+        "star": "天机",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "乙年天机化禄入官禄宫，主该年事业顺利，职位晋升。天机化禄主计划成功，官禄宫主事业，此年事业上升",
+        "keywords": [
+          "流年四化",
+          "乙年",
+          "化禄",
+          "天机",
+          "事业"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_034",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化忌-乙年",
+      "input": {
+        "year_gan": "乙",
+        "transform": "化忌",
+        "star": "天机",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "乙年天机化忌入官禄宫，主该年事业阻碍，计划失败。天机化忌主思虑过度，官禄宫逢忌主事业挫折",
+        "keywords": [
+          "流年四化",
+          "乙年",
+          "化忌",
+          "天机",
+          "挫折"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_035",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化禄-丙年",
+      "input": {
+        "year_gan": "丙",
+        "transform": "化禄",
+        "star": "太阳",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "丙年太阳化禄入官禄宫，主该年事业发达，声名远扬。太阳化禄主贵气显现，官禄宫主事业，此年事业顺利",
+        "keywords": [
+          "流年四化",
+          "丙年",
+          "化禄",
+          "太阳",
+          "贵气"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_036",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化忌-丙年",
+      "input": {
+        "year_gan": "丙",
+        "transform": "化忌",
+        "star": "太阳",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "丙年太阳化忌入官禄宫，主该年事业受阻，名声受损。太阳化忌主阴私之灾，官禄宫逢忌主事业是非",
+        "keywords": [
+          "流年四化",
+          "丙年",
+          "化忌",
+          "太阳",
+          "是非"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_037",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化禄-丁年",
+      "input": {
+        "year_gan": "丁",
+        "transform": "化禄",
+        "star": "太阴",
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "丁年太阴化禄入财帛宫，主该年财运亨通，理财得利。太阴化禄主财来自库，财帛宫主正财，此年财富积累",
+        "keywords": [
+          "流年四化",
+          "丁年",
+          "化禄",
+          "太阴",
+          "财富"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_038",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化忌-丁年",
+      "input": {
+        "year_gan": "丁",
+        "transform": "化忌",
+        "star": "太阴",
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "丁年太阴化忌入财帛宫，主该年财务波动，理财失败。太阴化忌主暗财损失，财帛宫逢忌主破财",
+        "keywords": [
+          "流年四化",
+          "丁年",
+          "化忌",
+          "太阴",
+          "损失"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_039",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化禄-戊年",
+      "input": {
+        "year_gan": "戊",
+        "transform": "化禄",
+        "star": "贪狼",
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "戊年贪狼化禄入财帛宫，主该年财运爆发，投机得利。贪狼化禄主欲望满足，财帛宫主财，此年有意外之财",
+        "keywords": [
+          "流年四化",
+          "戊年",
+          "化禄",
+          "贪狼",
+          "偏财"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_040",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化忌-戊年",
+      "input": {
+        "year_gan": "戊",
+        "transform": "化忌",
+        "star": "贪狼",
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "戊年贪狼化忌入财帛宫，主该年贪财招祸，投资失利。贪狼化忌主欲望过度，财帛宫逢忌主因贪破财",
+        "keywords": [
+          "流年四化",
+          "戊年",
+          "化忌",
+          "贪狼",
+          "破财"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_041",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化禄-己年",
+      "input": {
+        "year_gan": "己",
+        "transform": "化禄",
+        "star": "武曲",
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "己年武曲化禄入财帛宫，主该年正财丰厚，事业发展。武曲化禄主财星得利，财帛宫主正财，此年收入稳定",
+        "keywords": [
+          "流年四化",
+          "己年",
+          "化禄",
+          "武曲",
+          "正财"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_042",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化忌-己年",
+      "input": {
+        "year_gan": "己",
+        "transform": "化忌",
+        "star": "武曲",
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "己年武曲化忌入财帛宫，主该年财运不佳，财务压力。武曲化忌主财星受制，财帛宫逢忌主财务困难",
+        "keywords": [
+          "流年四化",
+          "己年",
+          "化忌",
+          "武曲",
+          "困难"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_043",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化禄-庚年",
+      "input": {
+        "year_gan": "庚",
+        "transform": "化禄",
+        "star": "天同",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "庚年天同化禄入官禄宫，主该年事业平稳，享受福泽。天同化禄主福泽来临，官禄宫主事业，此年顺遂",
+        "keywords": [
+          "流年四化",
+          "庚年",
+          "化禄",
+          "天同",
+          "福泽"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_044",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化忌-庚年",
+      "input": {
+        "year_gan": "庚",
+        "transform": "化忌",
+        "star": "天同",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "庚年天同化忌入官禄宫，主该年事业阻滞，意志消沉。天同化忌主福泽减少，官禄宫逢忌主事业倒退",
+        "keywords": [
+          "流年四化",
+          "庚年",
+          "化忌",
+          "天同",
+          "阻滞"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_045",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化禄-辛年",
+      "input": {
+        "year_gan": "辛",
+        "transform": "化禄",
+        "star": "巨门",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "辛年巨门化禄入官禄宫，主该年事业成功，口才得利。巨门化禄主口舌生财，官禄宫主事业，此年靠口才晋升",
+        "keywords": [
+          "流年四化",
+          "辛年",
+          "化禄",
+          "巨门",
+          "口才"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_046",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化忌-辛年",
+      "input": {
+        "year_gan": "辛",
+        "transform": "化忌",
+        "star": "巨门",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "辛年巨门化忌入官禄宫，主该年事业是非，口舌纠纷。巨门化忌主是非口舌，官禄宫逢忌主事业是非",
+        "keywords": [
+          "流年四化",
+          "辛年",
+          "化忌",
+          "巨门",
+          "是非"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_047",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化禄-壬年",
+      "input": {
+        "year_gan": "壬",
+        "transform": "化禄",
+        "star": "天梁",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "壬年天梁化禄入官禄宫，主该年事业清贵，得人信任。天梁化禄主清贵之官，官禄宫主事业，此年利考试晋升",
+        "keywords": [
+          "流年四化",
+          "壬年",
+          "化禄",
+          "天梁",
+          "清贵"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_048",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化忌-壬年",
+      "input": {
+        "year_gan": "壬",
+        "transform": "化忌",
+        "star": "天梁",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "壬年天梁化忌入官禄宫，主该年事业阻碍，贵人不助。天梁化忌主清高受阻，官禄宫逢忌主事业困顿",
+        "keywords": [
+          "流年四化",
+          "壬年",
+          "化忌",
+          "天梁",
+          "困顿"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_049",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化禄-癸年",
+      "input": {
+        "year_gan": "癸",
+        "transform": "化禄",
+        "star": "破军",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "癸年破军化禄入官禄宫，主该年事业突破，改革创新。破军化禄主变革成功，官禄宫主事业，此年事业有新发展",
+        "keywords": [
+          "流年四化",
+          "癸年",
+          "化禄",
+          "破军",
+          "创新"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_050",
+      "agent": "TimingAgent",
+      "type": "流年四化",
+      "name": "流年化忌-癸年",
+      "input": {
+        "year_gan": "癸",
+        "transform": "化忌",
+        "star": "破军",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "癸年破军化忌入官禄宫，主该年事业破败，改革失败。破军化忌主变革失败，官禄宫逢忌主事业重大损失",
+        "keywords": [
+          "流年四化",
+          "癸年",
+          "化忌",
+          "破军",
+          "损失"
+        ]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "DX_051",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "原局与大限关系-吉凶",
+      "input": {
+        "original_palace": "命宫",
+        "dadian_palace": "财帛宫",
+        "original_stars": "紫微天府",
+        "dadian_stars": "化忌"
+      },
+      "output": {
+        "interpretation": "原局命宫紫微天府为贵格，大限命宫在财帛宫逢化忌。虽大限化忌不吉，但原局贵格可化解部分凶性，此限仍有一定发展但需防财务问题",
+        "keywords": [
+          "原局",
+          "大限",
+          "吉凶",
+          "化解",
+          "转化"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_052",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "运限星曜互动",
+      "input": {
+        "dadian_palace": "官禄宫",
+        "dadian_stars": "太阳化禄",
+        "original_stars": "天梁"
+      },
+      "output": {
+        "interpretation": "大限官禄宫太阳化禄，会合原局天梁，构成阳梁昌禄格。此限利考试升学，事业发展，职位晋升",
+        "keywords": [
+          "大限",
+          "官禄宫",
+          "太阳",
+          "天梁",
+          "昌禄"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_053",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "流年触发大限",
+      "input": {
+        "dadian_number": 4,
+        "dadian_palace": "财帛宫",
+        "liunian_stars": "化忌冲破",
+        "trigger": "流年化忌"
+      },
+      "output": {
+        "interpretation": "大限在财帛宫本为财运佳，但流年化忌冲破大限禄星，主该年破财。原局大限吉处藏凶，需谨慎投资",
+        "keywords": [
+          "大限",
+          "流年",
+          "冲破",
+          "破财",
+          "触发"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_054",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "迭禄迭马",
+      "input": {
+        "original_stars": "禄存天马",
+        "dadian_stars": "化禄天马",
+        "palace": "申宫"
+      },
+      "output": {
+        "interpretation": "原局禄马与大限禄马同宫或对照，为迭禄迭马，主此十年大发。原局禄马主根基，大限禄马主新机遇，迭逢则发",
+        "keywords": [
+          "迭禄迭马",
+          "禄马交驰",
+          "财运",
+          "变动",
+          "发展"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_055",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "坐贵向贵",
+      "input": {
+        "main_star": "文昌",
+        "palace": "命宫",
+        "arrangement": "坐贵向贵"
+      },
+      "output": {
+        "interpretation": "文昌坐命命宫，又见魁钺于迁移宫相会，为坐贵向贵格。主贵气盈门，考试得利，功名有望",
+        "keywords": [
+          "坐贵向贵",
+          "文昌",
+          "魁钺",
+          "功名",
+          "考试"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_056",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "三方汇合",
+      "input": {
+        "stars": [
+          "紫微",
+          "天府",
+          "天相"
+        ],
+        "palaces": [
+          "命宫",
+          "财帛宫",
+          "官禄宫"
+        ]
+      },
+      "output": {
+        "interpretation": "紫府天相三星在三方四正相会，主富贵双全。紫微主贵，天府主富，天相主印，三方汇合为上格",
+        "keywords": [
+          "三方汇合",
+          "紫微",
+          "天府",
+          "天相",
+          "富贵"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_057",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "双禄朝垣",
+      "input": {
+        "stars": [
+          "化禄",
+          "禄存"
+        ],
+        "palace": "财帛宫",
+        "arrangement": "双禄同宫或对照"
+      },
+      "output": {
+        "interpretation": "财帛宫双禄同会，主大富。化禄主流动之财，禄存主固定之库，双禄相逢财富丰厚",
+        "keywords": [
+          "双禄朝垣",
+          "化禄",
+          "禄存",
+          "财富",
+          "财运"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_058",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "马头带箭",
+      "input": {
+        "main_star": "七杀",
+        "palace": "午宫",
+        "malefic": "擎羊"
+      },
+      "output": {
+        "interpretation": "七杀在午与擎羊同宫，为马头带箭格。主权威但一生劳碌，早年难成，中年后方有发展",
+        "keywords": [
+          "马头带箭",
+          "七杀",
+          "擎羊",
+          "劳碌",
+          "权威"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_059",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "日月并明",
+      "input": {
+        "stars": [
+          "太阳",
+          "太阴"
+        ],
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "太阳太阴在官禄宫相会，为日月并明格。主贵显，利于仕途发展，日月皆明事业通达",
+        "keywords": [
+          "日月并明",
+          "太阳",
+          "太阴",
+          "贵显",
+          "仕途"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_060",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "府相朝垣",
+      "input": {
+        "stars": [
+          "天府",
+          "天相"
+        ],
+        "palaces": [
+          "命宫",
+          "财帛宫",
+          "官禄宫"
+        ]
+      },
+      "output": {
+        "interpretation": "天府天相在三方相会，为府相朝垣格。主衣禄丰足，富贵盈门，一生不愁吃穿",
+        "keywords": [
+          "府相朝垣",
+          "天府",
+          "天相",
+          "衣禄",
+          "富贵"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_061",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "杀拱武曲",
+      "input": {
+        "stars": [
+          "七杀",
+          "武曲"
+        ],
+        "palace": "财帛宫",
+        "arrangement": "对照或相会"
+      },
+      "output": {
+        "interpretation": "七杀与武曲在财帛宫相会，杀拱武曲格。主武职发展或从军警界，财运丰厚但辛劳",
+        "keywords": [
+          "杀拱武曲",
+          "七杀",
+          "武曲",
+          "武职",
+          "财运"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_062",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "巨机同临",
+      "input": {
+        "stars": [
+          "天机",
+          "巨门"
+        ],
+        "palace": "卯宫"
+      },
+      "output": {
+        "interpretation": "天机巨门同度于卯宫，为巨机同临格。主口才出众，利于外交、谈判、销售等行业",
+        "keywords": [
+          "巨机同临",
+          "天机",
+          "巨门",
+          "口才",
+          "外交"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_063",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "贪狼会煞",
+      "input": {
+        "stars": [
+          "贪狼",
+          "火星",
+          "铃星"
+        ],
+        "palace": "辰戌丑未"
+      },
+      "output": {
+        "interpretation": "贪狼在四墓宫与火铃同度，为豪富家资候伯贵格。主大富大贵，财运丰厚，有横财运",
+        "keywords": [
+          "贪狼会煞",
+          "贪狼",
+          "火铃",
+          "豪富",
+          "横财"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_064",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "铃昌禄曲",
+      "input": {
+        "stars": [
+          "铃星",
+          "文昌",
+          "化禄",
+          "文曲"
+        ],
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "铃昌禄曲四星在官禄宫相会，主功名显达。铃星为煞，昌曲为文，禄为化吉，四星交汇主文武双全",
+        "keywords": [
+          "铃昌禄曲",
+          "功名",
+          "显达",
+          "文武",
+          "官禄"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_065",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "科权禄拱",
+      "input": {
+        "stars": [
+          "化科",
+          "化权",
+          "化禄"
+        ],
+        "palace": "命宫或官禄宫"
+      },
+      "output": {
+        "interpretation": "化科化权化禄三星在命宫或官禄宫相会，为三化吉格。主功名显达，富贵双全，荣耀无比",
+        "keywords": [
+          "科权禄拱",
+          "化科",
+          "化权",
+          "化禄",
+          "富贵"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_066",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "四化冲破",
+      "input": {
+        "transform": "化禄",
+        "malefic": "化忌",
+        "palace": "对宫冲破"
+      },
+      "output": {
+        "interpretation": "化禄在本宫，对宫化忌冲破，主吉处藏凶。禄虽佳但被冲破，运势有起落，投资需谨慎",
+        "keywords": [
+          "四化冲破",
+          "化禄",
+          "化忌",
+          "吉凶",
+          "投资"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_067",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "火羊陀铃",
+      "input": {
+        "stars": [
+          "火星",
+          "羊陀",
+          "铃星"
+        ],
+        "palace": "命宫"
+      },
+      "output": {
+        "interpretation": "火羊陀铃四煞聚于命宫，主孤克。煞星聚集主刑伤灾祸，一生多磨难，需行善化解",
+        "keywords": [
+          "火羊陀铃",
+          "四煞",
+          "孤克",
+          "刑伤",
+          "灾祸"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_068",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "左右昌曲",
+      "input": {
+        "stars": [
+          "左辅",
+          "右弼",
+          "文昌",
+          "文曲"
+        ],
+        "palace": "命宫或官禄宫"
+      },
+      "output": {
+        "interpretation": "左右昌曲四星在命宫或官禄宫相会，主贵气。辅弼为辅佐，昌曲为文章，利于考试功名",
+        "keywords": [
+          "左右昌曲",
+          "辅佐",
+          "文章",
+          "功名",
+          "贵气"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_069",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "紫微斗数-空劫夹命",
+      "input": {
+        "malefic": [
+          "地劫",
+          "天空"
+        ],
+        "palace": "命宫",
+        "arrangement": "夹命"
+      },
+      "output": {
+        "interpretation": "地劫天空夹命宫，主孤贫。空劫夹命为僧道之命或孤独贫困之命，一生劳碌难得享用",
+        "keywords": [
+          "空劫夹命",
+          "地劫",
+          "天空",
+          "孤贫",
+          "劳碌"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_070",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "天马遇空亡",
+      "input": {
+        "star": "天马",
+        "malefic": [
+          "截空",
+          "旬空"
+        ],
+        "palace": "申宫"
+      },
+      "output": {
+        "interpretation": "天马在申与空曜同宫，为马遇空亡格。主终身奔走，劳而少成，或频频转工难得稳定",
+        "keywords": [
+          "天马遇空亡",
+          "天马",
+          "空亡",
+          "奔波",
+          "转工"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_071",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "绝处逢生",
+      "input": {
+        "palace": "绝地",
+        "next_palace": "长生",
+        "dadian": "大限"
+      },
+      "output": {
+        "interpretation": "命宫临绝地，但大限进入长生宫，为绝处逢生格。主先苦后甜，中年后发越，荣华富贵",
+        "keywords": [
+          "绝处逢生",
+          "绝地",
+          "长生",
+          "转变",
+          "荣华"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_072",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "生逢败地",
+      "input": {
+        "palace": "败地",
+        "zodiac": "子午卯酉",
+        "condition": "命宫在败地"
+      },
+      "output": {
+        "interpretation": "命宫在败地，主耗散。若星系性质不良再加耗曜，则发也虚花，财来财去一场空",
+        "keywords": [
+          "生逢败地",
+          "败地",
+          "耗散",
+          "虚花",
+          "破财"
+        ]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "DX_073",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "财库饱满",
+      "input": {
+        "stars": [
+          "武曲",
+          "天府",
+          "禄存"
+        ],
+        "palace": "财帛宫"
+      },
+      "output": {
+        "interpretation": "财帛宫武曲天府会禄存，为财库饱满格。主一生财丰厚，理财有道，富贵不愁",
+        "keywords": [
+          "财库饱满",
+          "武曲",
+          "天府",
+          "禄存",
+          "富贵"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_074",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "官禄显达",
+      "input": {
+        "stars": [
+          "太阳",
+          "天梁",
+          "化科"
+        ],
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "官禄宫太阳天梁会化科，为官禄显达格。主仕途得意，职位清贵，考试得利",
+        "keywords": [
+          "官禄显达",
+          "太阳",
+          "天梁",
+          "化科",
+          "仕途"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_075",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "迁移得地",
+      "input": {
+        "stars": [
+          "紫微",
+          "天府"
+        ],
+        "palace": "迁移宫"
+      },
+      "output": {
+        "interpretation": "迁移宫紫微天府相会，为迁移得地格。主出外贵人多助，因人而贵，在外发展顺利",
+        "keywords": [
+          "迁移得地",
+          "紫微",
+          "天府",
+          "出外",
+          "贵人"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_076",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "禄忌相会",
+      "input": {
+        "transform_1": "化禄",
+        "transform_2": "化忌",
+        "palace": "同一宫位"
+      },
+      "output": {
+        "interpretation": "化禄化忌同宫或相会，为禄忌相会格。主吉凶不定，运势起伏变化大，好坏参半",
+        "keywords": [
+          "禄忌相会",
+          "化禄",
+          "化忌",
+          "起伏",
+          "吉凶"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_077",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "双禄临门",
+      "input": {
+        "stars": [
+          "化禄",
+          "禄存"
+        ],
+        "palace": "财帛宫或官禄宫"
+      },
+      "output": {
+        "interpretation": "双禄临门，主财禄丰厚。化禄为流动之财，禄存为库中之财，双禄相逢富贵盈门",
+        "keywords": [
+          "双禄临门",
+          "化禄",
+          "禄存",
+          "富贵",
+          "财禄"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_078",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "权禄相会",
+      "input": {
+        "transform_1": "化权",
+        "transform_2": "化禄",
+        "palace": "官禄宫或财帛宫"
+      },
+      "output": {
+        "interpretation": "化权化禄相会，为权禄相随格。主升官发财，权力与财禄兼得，富贵双全之命",
+        "keywords": [
+          "权禄相会",
+          "化权",
+          "化禄",
+          "升官",
+          "发财"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_079",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "科权相会",
+      "input": {
+        "transform_1": "化科",
+        "transform_2": "化权",
+        "palace": "官禄宫"
+      },
+      "output": {
+        "interpretation": "化科化权相会，为科权相辅格。主功名显达，职位晋升，考试得名",
+        "keywords": [
+          "科权相会",
+          "化科",
+          "化权",
+          "功名",
+          "晋升"
+        ]
+      },
+      "source": "《命理学正解》"
+    },
+    {
+      "case_id": "DX_080",
+      "agent": "TimingAgent",
+      "type": "运限综合",
+      "name": "科禄相会",
+      "input": {
+        "transform_1": "化科",
+        "transform_2": "化禄",
+        "palace": "福德宫或财帛宫"
+      },
+      "output": {
+        "interpretation": "化科化禄相会，为科禄双全格。主福泽深厚，财运亨通，学业事业双丰收",
+        "keywords": [
+          "科禄相会",
+          "化科",
+          "化禄",
+          "福泽",
+          "丰收"
+        ]
+      },
+      "source": "《命理学正解》"
+    }
+  ]
+}

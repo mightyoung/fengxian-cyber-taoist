@@ -1,0 +1,994 @@
+{
+  "cases": [
+    {
+      "case_id": "SIX_001",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "太阳星居父母宫-父亲缘分深厚",
+      "input": {
+        "palace": "父母宫",
+        "stars": ["太阳星"],
+        "condition": "太阳星坐父母宫"
+      },
+      "output": {
+        "interpretation": "太阳星坐父母宫，主父亲缘分较厚。太阳星为父星，父亲通常较有地位或成就。若太阳星庙旺则父亲有贵气，若落陷则父亲劳碌。太阳星化禄则父亲有财运，化忌则父亲多是非或灾病。太阳星落陷又遇煞曜，则主与父亲有代沟或生离。",
+        "relationship_type": "父母",
+        "keywords": ["父亲", "太阳", "缘分", "贵气", "地位", "财运"]
+      },
+      "source": "《命理学正解》第二章/《中州派紫微斗数深造讲义》"
+    },
+    {
+      "case_id": "SIX_002",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "太阴星居父母宫-母亲缘分深厚",
+      "input": {
+        "palace": "父母宫",
+        "stars": ["太阴星"],
+        "condition": "太阴星坐父母宫"
+      },
+      "output": {
+        "interpretation": "太阴星坐父母宫，主母亲缘分较厚。太阴星为母星，母亲通常较为贤慧或富财。若太阴星庙旺则母亲有福气，若落陷则母亲劳碌或体弱。太阴星化禄则母亲有财运，化忌则母亲多病痛。夜生人太阳坐命则太阴落陷于父母宫，主母亲缘分浅薄。",
+        "relationship_type": "父母",
+        "keywords": ["母亲", "太阴", "缘分", "福气", "财运", "贤慧"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_003",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "天梁星居父母宫-父母荫护",
+      "input": {
+        "palace": "父母宫",
+        "stars": ["天梁星"],
+        "condition": "天梁星在父母宫"
+      },
+      "output": {
+        "interpretation": "天梁星坐父母宫，主父母有荫护之德。天梁为荫星、父母星，主父母慈祥、有福报。若天梁化禄则父母有财运，化科则父母有功名，化忌则父母多灾病需子女照护。天梁最喜化权，可增强其荫护之力。",
+        "relationship_type": "父母",
+        "keywords": ["父母", "天梁", "荫护", "福报", "慈祥", "德行"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_004",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "紫微天府同宫父母宫-父母显贵",
+      "input": {
+        "palace": "父母宫",
+        "stars": ["紫微星", "天府星"],
+        "condition": "紫微天府同宫于父母宫"
+      },
+      "output": {
+        "interpretation": "紫微天府同坐父母宫，主父母为有地位之人。紫微为帝王星，天府为财库星，二星同宫主父母有权威且有财势。父母宫逢禄存、化禄则父母富裕，逢化科则父母有功名。若有左辅右弼会照，则父母更有助力。",
+        "relationship_type": "父母",
+        "keywords": ["父母", "紫微", "天府", "权贵", "富裕", "地位"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_005",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "父母宫化忌-父母灾病或缘薄",
+      "input": {
+        "palace": "父母宫",
+        "stars": ["化忌星"],
+        "condition": "生年化忌在父母宫"
+      },
+      "output": {
+        "interpretation": "生年化忌坐父母宫，主父母有灾病或缘分浅薄。化忌为收敛之星，主损失、灾病。化忌在父母宫表父母身体不佳或与子女有代沟。若又有煞星同宫则主刑克父母。若本宫星曜不吉，则更见化忌冲照父母宫时为凶。",
+        "relationship_type": "父母",
+        "keywords": ["父母宫", "化忌", "灾病", "刑克", "代沟", "缘薄"]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "SIX_006",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "武曲星居父母宫-武曲克亲",
+      "input": {
+        "palace": "父母宫",
+        "stars": ["武曲星"],
+        "condition": "武曲星在父母宫"
+      },
+      "output": {
+        "interpretation": "武曲星坐父母宫不利六亲。武曲为财星，刚烈孤克，若坐父母宫主与父母有距离感或父母劳碌。武曲化忌更主父母灾病，若有煞星会照则主刑克父母。武曲最忌与羊陀同宫或会照，会加深其孤克之性。",
+        "relationship_type": "父母",
+        "keywords": ["父母宫", "武曲", "孤克", "劳碌", "刑克", "距离感"]
+      },
+      "source": "《中州派紫微斗数深造讲义》"
+    },
+    {
+      "case_id": "SIX_007",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "父母宫见煞星-刑克父母",
+      "input": {
+        "palace": "父母宫",
+        "stars": ["火星", "铃星", "擎羊", "陀罗"],
+        "condition": "煞星会照父母宫"
+      },
+      "output": {
+        "interpretation": "父母宫有煞星会照，主刑克父母。火星、铃星主灾祸，羊刃、陀罗主是非。若煞星在父母宫且无吉化化解，则父母有灾病或缘分浅薄。煞星越多则刑克越重。需参考大运流年判断应期，以及父母宫的旺弱程度。",
+        "relationship_type": "父母",
+        "keywords": ["父母宫", "煞星", "刑克", "灾祸", "分离", "应期"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_008",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "天机巨门居父母宫-父母离乡",
+      "input": {
+        "palace": "父母宫",
+        "stars": ["天机星", "巨门星"],
+        "condition": "天机巨门在父母宫"
+      },
+      "output": {
+        "interpretation": "天机巨门同坐父母宫，主父母离乡发展或异乡姻缘。天机主变动，巨门主口舌，二星同宫表父母可能在他乡创业或与子女有口角争执。父母宫有煞星则刑克父母，无煞则吉。天机化忌更主变动频繁。",
+        "relationship_type": "父母",
+        "keywords": ["父母", "天机", "巨门", "离乡", "变动", "口舌"]
+      },
+      "source": "《紫云论斗数_星曜赋性》"
+    },
+    {
+      "case_id": "SIX_009",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "太阳太阴分论父母-日月反背",
+      "input": {
+        "palace": "父母宫",
+        "stars": ["太阳星", "太阴星"],
+        "condition": "太阳太阴分坐父母宫或对宫"
+      },
+      "output": {
+        "interpretation": "太阳为父星，太阴为母星，分坐父母宫时可分论父母。太阳落陷(如亥宫)则父亲劳碌或缘薄；太阴落陷(如巳宫)则母亲劳碌或体弱。日月反背主与父母缘分较浅或有生离。若日月皆庙旺则父母缘分深厚且有助。",
+        "relationship_type": "父母",
+        "keywords": ["太阳", "太阴", "父母", "反背", "分离", "缘分"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_010",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "兄弟宫",
+      "name": "天机星居兄弟宫-兄弟主星",
+      "input": {
+        "palace": "兄弟宫",
+        "stars": ["天机星"],
+        "condition": "天机星在兄弟宫"
+      },
+      "output": {
+        "interpretation": "天机星为兄弟主，坐兄弟宫主兄弟缘分深厚。天机主变动、机动，若天机在兄弟宫庙旺则兄弟有才华，若落陷则兄弟劳碌。天机化禄则兄弟有财运，化忌则兄弟多是非。天机最怕化忌与煞星同宫。",
+        "relationship_type": "兄弟",
+        "keywords": ["兄弟宫", "天机", "兄弟", "缘分", "才华", "变动"]
+      },
+      "source": "《命理学正解》第二章/《紫云论斗数》"
+    },
+    {
+      "case_id": "SIX_011",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "兄弟宫",
+      "name": "紫微天府同宫兄弟宫-兄弟显贵",
+      "input": {
+        "palace": "兄弟宫",
+        "stars": ["紫微星", "天府星"],
+        "condition": "紫府同宫在兄弟宫"
+      },
+      "output": {
+        "interpretation": "紫微天府同坐兄弟宫，主兄弟有地位有贵气。紫微天府均为贵星，二星同宫表兄弟有领导能力或有成就。若又有左辅右弼会照，则兄弟众多且互相扶持。兄弟宫强则兄弟有助力，兄弟宫弱则助力有限。",
+        "relationship_type": "兄弟",
+        "keywords": ["兄弟宫", "紫微", "天府", "贵气", "成就", "助力"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_012",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "兄弟宫",
+      "name": "兄弟宫化忌-兄弟是非或分离",
+      "input": {
+        "palace": "兄弟宫",
+        "stars": ["化忌星"],
+        "condition": "生年化忌在兄弟宫"
+      },
+      "output": {
+        "interpretation": "生年化忌坐兄弟宫，主兄弟缘分浅或有是非争斗。化忌为收敛之星，主损失、争执。化忌在兄弟宫表兄弟间有竞争或财务纠纷。若又有煞星则兄弟间易生冲突，严重者主分离或刑克。",
+        "relationship_type": "兄弟",
+        "keywords": ["兄弟宫", "化忌", "是非", "竞争", "分离", "纠纷"]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "SIX_013",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "兄弟宫",
+      "name": "太阴星居兄弟宫-兄弟福气",
+      "input": {
+        "palace": "兄弟宫",
+        "stars": ["太阴星"],
+        "condition": "太阴星在兄弟宫"
+      },
+      "output": {
+        "interpretation": "太阴星坐兄弟宫，主兄弟有福气或从事与房产、艺术相关行业。太阴主富、主静，若太阴庙旺则兄弟性格温和、有财运，若落陷则兄弟劳碌或体弱。太阴与天同同宫或相对更主福气。",
+        "relationship_type": "兄弟",
+        "keywords": ["兄弟宫", "太阴", "福气", "财运", "温和", "房产"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_014",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "兄弟宫",
+      "name": "贪狼星居兄弟宫-兄弟缘分复杂",
+      "input": {
+        "palace": "兄弟宫",
+        "stars": ["贪狼星"],
+        "condition": "贪狼星在兄弟宫"
+      },
+      "output": {
+        "interpretation": "贪狼星坐兄弟宫，主兄弟缘分较浅或兄弟欲望深。贪狼为欲望之星，若兄弟宫贪狼过份欲望深则主易交酒肉朋友。若贪狼落陷则主兄弟际遇不佳。若又有桃花星则主兄弟感情复杂。",
+        "relationship_type": "兄弟",
+        "keywords": ["兄弟宫", "贪狼", "欲望", "缘分", "酒肉朋友", "感情"]
+      },
+      "source": "《中州派紫微斗数深造讲义》"
+    },
+    {
+      "case_id": "SIX_015",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "兄弟宫",
+      "name": "兄弟宫与命宫关系-兄弟助力",
+      "input": {
+        "palace": "兄弟宫",
+        "stars": [],
+        "condition": "兄弟宫与命宫三方四正关系"
+      },
+      "output": {
+        "interpretation": "兄弟宫与命宫为三方四正关系，合参可判断命主与兄弟姊妹的缘分深浅及互动模式。命宫强兄弟宫弱则兄弟助力有限；命宫弱兄弟宫强则兄弟可能超越命主或反而拖累。兄弟宫有左辅右弼则兄弟众多且互相扶持。",
+        "relationship_type": "兄弟",
+        "keywords": ["兄弟宫", "命宫", "三方四正", "缘分", "助力", "互动"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_016",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "兄弟宫",
+      "name": "禄存星居兄弟宫-兄弟富裕",
+      "input": {
+        "palace": "兄弟宫",
+        "stars": ["禄存星"],
+        "condition": "禄存星在兄弟宫"
+      },
+      "output": {
+        "interpretation": "禄存星坐兄弟宫，主兄弟富裕或有财禄。禄存为财星，主食禄、财运。若兄弟宫有禄存则兄弟经济条件较好，若又有化禄则兄弟财运更佳。禄存最忌与羊陀同宫夹持，会减弱其吉性。",
+        "relationship_type": "兄弟",
+        "keywords": ["兄弟宫", "禄存", "富裕", "财运", "食禄", "财星"]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "SIX_017",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "紫微天府同宫夫妻宫-配偶尊贵",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": ["紫微星", "天府星"],
+        "condition": "紫府同宫在夫妻宫"
+      },
+      "output": {
+        "interpretation": "紫微天府同坐夫妻宫，主配偶有尊贵气质或有地位。紫微为帝王星，天府为财库星，二星同宫表配偶有领导能力且有财势。若又有化禄化科则配偶更有成就。配偶宫强则婚姻稳固，配偶宫弱则婚姻有变数。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "紫微", "天府", "配偶", "尊贵", "地位"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_018",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "武曲星居夫妻宫-武曲克配偶",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": ["武曲星"],
+        "condition": "武曲星在夫妻宫"
+      },
+      "output": {
+        "interpretation": "武曲星坐夫妻宫不利婚姻。武曲为财星，刚烈孤克，若坐夫妻宫古代称寡宿。女命武曲坐夫妻宫主妇夺夫权或婚姻缺憾；男命则嫌配偶性格刚烈或有财务冲突。武曲化忌更主婚姻变动或分离。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "武曲", "孤克", "寡宿", "婚姻", "分离"]
+      },
+      "source": "《中州派紫微斗数深造讲义》"
+    },
+    {
+      "case_id": "SIX_019",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "贪狼星居夫妻宫-配偶物欲或外遇",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": ["贪狼星"],
+        "condition": "贪狼星在夫妻宫"
+      },
+      "output": {
+        "interpretation": "贪狼星坐夫妻宫主配偶物欲或情欲深。贪狼为欲望之星，若在夫妻宫庙旺则配偶有才华但多欲，若落陷则主配偶际遇不佳。若又有桃花星则主外遇或三角关系。贪狼化忌更主桃花劫。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "贪狼", "物欲", "情欲", "外遇", "桃花"]
+      },
+      "source": "《中州派紫微斗数深造讲义》"
+    },
+    {
+      "case_id": "SIX_020",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "天同巨门居夫妻宫-婚姻口角",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": ["天同星", "巨门星"],
+        "condition": "天同巨门在夫妻宫"
+      },
+      "output": {
+        "interpretation": "天同巨门同坐夫妻宫，主婚姻有暗争或口角。天同主福气，巨门主口舌，二星同宫表婚姻生活有暗潮或有口角争执。若巨门化忌更主因感情生是非。天同太阴在夫妻宫则主感情平稳。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "天同", "巨门", "口角", "暗争", "感情"]
+      },
+      "source": "《命理学正解》/《紫云论斗数》"
+    },
+    {
+      "case_id": "SIX_021",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "夫妻宫化忌-婚姻缺憾",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": ["化忌星"],
+        "condition": "生年化忌在夫妻宫"
+      },
+      "output": {
+        "interpretation": "生年化忌坐夫妻宫，主婚姻有缺憾或缘分浅薄。化忌为收敛之星，主损失、遗憾。化忌在夫妻宫表婚姻不美满或有遗憾。若又有煞星则主刑克配偶或分离。化忌在夫妻宫逢大限或流年冲照时为应期。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "化忌", "婚姻", "缺憾", "分离", "遗憾"]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "SIX_022",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "太阳星居夫妻宫-配偶贵气",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": ["太阳星"],
+        "condition": "太阳星在夫妻宫"
+      },
+      "output": {
+        "interpretation": "太阳星坐夫妻宫，主配偶有贵气或从事公教行业。太阳为父星、主贵，若太阳庙旺则配偶有地位，若落陷则配偶劳碌。太阳化禄则配偶有财运，化忌则配偶多是非。夜生人太阳坐命则太阴落陷于夫妻宫，主配偶缘分浅薄。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "太阳", "贵气", "公教", "地位", "配偶"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_023",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "太阴星居夫妻宫-配偶富财",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": ["太阴星"],
+        "condition": "太阴星在夫妻宫"
+      },
+      "output": {
+        "interpretation": "太阴星坐夫妻宫，主配偶富有或从事与房产、艺术相关行业。太阴为母星、主富，若太阴庙旺则配偶有福气，若落陷则配偶劳碌或体弱。太阴化禄则配偶有财运。太阴会文曲于妻宫，主得岳家提携。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "太阴", "富有", "福气", "房产", "岳家"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_024",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "廉贞贪狼居夫妻宫-感情复杂",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": ["廉贞星", "贪狼星"],
+        "condition": "廉贞贪狼在夫妻宫"
+      },
+      "output": {
+        "interpretation": "廉贞贪狼同坐夫妻宫，主感情复杂或有多角关系。廉贞为次桃花星，贪狼为正桃花星，二星同宫主感情丰富或易有外遇。若无吉化化解则主婚姻复杂。廉贞化忌更主桃花风波。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "廉贞", "贪狼", "桃花", "外遇", "复杂"]
+      },
+      "source": "《中州派紫微斗数深造讲义》"
+    },
+    {
+      "case_id": "SIX_025",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "贪狼居子亥宫夫妻宫-泛水桃花",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": ["贪狼星"],
+        "condition": "贪狼居子或亥宫，擎羊或陀罗同度"
+      },
+      "output": {
+        "interpretation": "贪狼居子与擎羊同度，或贪狼居亥与陀罗同度，即成泛水桃花格局。成此格局的夫妻宫一定不好，如贪狼居子则夫妻宫必见武曲化忌；贪狼居亥则夫妻宫必为无禄天府。古代女命以此格局为不吉祥，主飘泊。现代可能成为艺人。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "贪狼", "泛水桃花", "婚姻", "飘泊", "艺人"]
+      },
+      "source": "王亭之注《太微赋》"
+    },
+    {
+      "case_id": "SIX_026",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "天机星居夫妻宫-配偶职业变动",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": ["天机星"],
+        "condition": "天机星在夫妻宫"
+      },
+      "output": {
+        "interpretation": "天机星坐夫妻宫，主配偶职业变动或夫妻聚少离多。天机主变动、机变，若天机在夫妻宫庙旺则配偶有才华，若落陷则配偶多劳碌或漂泊。天机化忌则变动更频繁。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "天机", "变动", "才华", "聚离", "漂泊"]
+      },
+      "source": "《紫云论斗数_星曜赋性》"
+    },
+    {
+      "case_id": "SIX_027",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "紫微星居子女宫-子女尊贵",
+      "input": {
+        "palace": "子女宫",
+        "stars": ["紫微星"],
+        "condition": "紫微星在子女宫"
+      },
+      "output": {
+        "interpretation": "紫微星坐子女宫，主子女有尊贵气质或有成就。紫微为帝王星，若子女宫有紫微则子女有领导能力或社会地位。若又有左辅右弼会照则子女众多且有成就。子女宫强则子女缘分深，子女宫弱则缘分浅。",
+        "relationship_type": "子女",
+        "keywords": ["子女宫", "紫微", "子女", "尊贵", "成就", "领导"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_028",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "天同星居子女宫-子女福气",
+      "input": {
+        "palace": "子女宫",
+        "stars": ["天同星"],
+        "condition": "天同星在子女宫"
+      },
+      "output": {
+        "interpretation": "天同星坐子女宫，主子女有福气或性格温和。天同为福星，若天同庙旺则子女性格温和、有福气，若落陷则子女体弱或劳碌。天同化禄则子女有财运。天同最怕化忌，主子女灾病。",
+        "relationship_type": "子女",
+        "keywords": ["子女宫", "天同", "福气", "温和", "财运", "体弱"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_029",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "贪狼星居子女宫-子女缘分",
+      "input": {
+        "palace": "子女宫",
+        "stars": ["贪狼星"],
+        "condition": "贪狼星在子女宫"
+      },
+      "output": {
+        "interpretation": "贪狼星坐子女宫，主子女缘分深或子女欲望强。贪狼为欲望之星，若在子女宫庙旺则子女有才华，若落陷则子女际遇不佳或易走偏锋。贪狼化忌更主子女有桃花风波。",
+        "relationship_type": "子女",
+        "keywords": ["子女宫", "贪狼", "子女", "欲望", "才华", "缘分"]
+      },
+      "source": "《紫云论斗数_星曜赋性》"
+    },
+    {
+      "case_id": "SIX_030",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "七杀星居子女宫-子女灾病",
+      "input": {
+        "palace": "子女宫",
+        "stars": ["七杀星"],
+        "condition": "七杀星在子女宫"
+      },
+      "output": {
+        "interpretation": "七杀星坐子女宫，主子女有灾病或意外。七杀为将星，主孤克，若在子女宫庙旺则子女有开创能力，若落陷则子女多灾病或意外。子女宫有煞星更主刑克子女。",
+        "relationship_type": "子女",
+        "keywords": ["子女宫", "七杀", "灾病", "意外", "孤克", "开创"]
+      },
+      "source": "《紫云论斗数_星曜赋性》"
+    },
+    {
+      "case_id": "SIX_031",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "子女宫化忌-子女缘浅或灾病",
+      "input": {
+        "palace": "子女宫",
+        "stars": ["化忌星"],
+        "condition": "生年化忌在子女宫"
+      },
+      "output": {
+        "interpretation": "生年化忌坐子女宫，主子女缘分浅或子女灾病。化忌为收敛之星，主损失、灾病。化忌在子女宫表子女身体不佳或与子女有代沟。若又有煞星则主克子女。化忌在子女宫逢冲时为应期。",
+        "relationship_type": "子女",
+        "keywords": ["子女宫", "化忌", "子女", "灾病", "缘浅", "代沟"]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "SIX_032",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "武曲星居子女宫-子女刚烈或金融",
+      "input": {
+        "palace": "子女宫",
+        "stars": ["武曲星"],
+        "condition": "武曲星在子女宫"
+      },
+      "output": {
+        "interpretation": "武曲星坐子女宫，主子女性格刚烈或从事金融行业。武曲为财星，若在子女宫庙旺则子女有财运或从事金融业，若落陷则子女多灾病或意外。武曲化忌更主子女有财务问题。",
+        "relationship_type": "子女",
+        "keywords": ["子女宫", "武曲", "刚烈", "金融", "财运", "灾病"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_033",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "破军星居子女宫-子女耗损",
+      "input": {
+        "palace": "子女宫",
+        "stars": ["破军星"],
+        "condition": "破军星在子女宫"
+      },
+      "output": {
+        "interpretation": "破军星坐子女宫，主子女有耗损或先破后立。破军为耗星，主变动，若在子女宫庙旺则子女有开创能力但耗损，若落陷则子女多灾病或体弱。破军化忌更主子女有意外伤害。",
+        "relationship_type": "子女",
+        "keywords": ["子女宫", "破军", "耗损", "变动", "开创", "体弱"]
+      },
+      "source": "《紫云论斗数_星曜赋性》"
+    },
+    {
+      "case_id": "SIX_034",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "太阳星居子女宫-子女贵气",
+      "input": {
+        "palace": "子女宫",
+        "stars": ["太阳星"],
+        "condition": "太阳星在子女宫"
+      },
+      "output": {
+        "interpretation": "太阳星坐子女宫，主子女有贵气或从事公教行业。太阳为父星、主贵，若太阳庙旺则子女有地位，若落陷则子女劳碌。太阳化禄则子女有财运。子女宫太阳反背会煞，主晚年受子拖累。",
+        "relationship_type": "子女",
+        "keywords": ["子女宫", "太阳", "贵气", "公教", "地位", "拖累"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_035",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "奴仆宫",
+      "name": "贪狼星居奴仆宫-朋友欲望或背叛",
+      "input": {
+        "palace": "奴仆宫",
+        "stars": ["贪狼星"],
+        "condition": "贪狼星在奴仆宫"
+      },
+      "output": {
+        "interpretation": "贪狼星坐奴仆宫，主朋友欲望深或易交酒肉朋友。贪狼为欲望之星，若在奴仆宫过份欲望深则主易交酒肉朋友。若贪狼本性冷退则主朋友缘分浅。奴仆宫贪狼更主易被朋友拖累或背叛。",
+        "relationship_type": "朋友",
+        "keywords": ["奴仆宫", "贪狼", "朋友", "欲望", "酒肉朋友", "背叛"]
+      },
+      "source": "《中州派紫微斗数深造讲义》"
+    },
+    {
+      "case_id": "SIX_036",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "奴仆宫",
+      "name": "奴仆宫化忌-朋友背叛或拖累",
+      "input": {
+        "palace": "奴仆宫",
+        "stars": ["化忌星"],
+        "condition": "生年化忌在奴仆宫"
+      },
+      "output": {
+        "interpretation": "生年化忌坐奴仆宫，主朋友背叛或下属背叛。化忌为收敛之星，主损失、背叛。化忌在奴仆宫表朋友或下属易背叛或有财务纠纷。若又有煞星则主被朋友拖累。奴仆宫化忌逢冲时为应期。",
+        "relationship_type": "朋友",
+        "keywords": ["奴仆宫", "化忌", "朋友", "下属", "背叛", "拖累"]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "SIX_037",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "奴仆宫",
+      "name": "禄存星居奴仆宫-朋友财运佳",
+      "input": {
+        "palace": "奴仆宫",
+        "stars": ["禄存星"],
+        "condition": "禄存星在奴仆宫"
+      },
+      "output": {
+        "interpretation": "禄存星坐奴仆宫，主朋友财运佳或富足。禄存为财星，主食禄、财运。若奴仆宫有禄存则朋友圈经济条件较好。但禄存同宫必被羊陀夹持，主人自私自利或被朋友占便宜。",
+        "relationship_type": "朋友",
+        "keywords": ["奴仆宫", "禄存", "朋友", "财运", "富足", "占便宜"]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "SIX_038",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "奴仆宫",
+      "name": "紫微天府同宫奴仆宫-朋友尊贵",
+      "input": {
+        "palace": "奴仆宫",
+        "stars": ["紫微星", "天府星"],
+        "condition": "紫府同宫在奴仆宫"
+      },
+      "output": {
+        "interpretation": "紫微天府同坐奴仆宫，主朋友或下属有尊贵气质或有地位。紫微天府均为贵星，二星同宫表朋友有领导能力或有成就。若又有左辅右弼会照则助力更大。奴仆宫强则多助力，奴仆宫弱则助力有限。",
+        "relationship_type": "朋友",
+        "keywords": ["奴仆宫", "紫微", "天府", "朋友", "下属", "尊贵"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_039",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "奴仆宫",
+      "name": "巨门星居奴仆宫-朋友多口舌",
+      "input": {
+        "palace": "奴仆宫",
+        "stars": ["巨门星"],
+        "condition": "巨门星在奴仆宫"
+      },
+      "output": {
+        "interpretation": "巨门星坐奴仆宫，主朋友多口舌或易生是非。巨门主口舌，若在奴仆宫庙旺则朋友能言善道，若落陷则朋友多是非或争端。巨门化忌更主因朋友生是非纠纷。",
+        "relationship_type": "朋友",
+        "keywords": ["奴仆宫", "巨门", "朋友", "口舌", "是非", "争端"]
+      },
+      "source": "《紫云论斗数_星曜赋性》"
+    },
+    {
+      "case_id": "SIX_040",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "奴仆宫",
+      "name": "太阳星居奴仆宫-朋友贵气",
+      "input": {
+        "palace": "奴仆宫",
+        "stars": ["太阳星"],
+        "condition": "太阳星在奴仆宫"
+      },
+      "output": {
+        "interpretation": "太阳星坐奴仆宫，主朋友有贵气或从事公教行业。太阳为父星、主贵，若太阳在奴仆宫庙旺则朋友有地位，若落陷则朋友劳碌或劳心。太阳化禄则朋友有财运，化忌则朋友多是非。",
+        "relationship_type": "朋友",
+        "keywords": ["奴仆宫", "太阳", "朋友", "贵气", "公教", "地位"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_041",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "奴仆宫",
+      "name": "太阴星居奴仆宫-朋友福气",
+      "input": {
+        "palace": "奴仆宫",
+        "stars": ["太阴星"],
+        "condition": "太阴星在奴仆宫"
+      },
+      "output": {
+        "interpretation": "太阴星坐奴仆宫，主朋友有福气或从事与房产、艺术相关行业。太阴主富、主静，若太阴庙旺则朋友性格温和、有福气，若落陷则朋友多劳碌。太阴化禄则朋友有财运。",
+        "relationship_type": "朋友",
+        "keywords": ["奴仆宫", "太阴", "朋友", "福气", "温和", "房产"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_042",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "官禄宫",
+      "name": "官禄宫与夫妻宫关系-婚姻事业互动",
+      "input": {
+        "palace": "官禄宫",
+        "stars": [],
+        "condition": "官禄宫与夫妻宫对宫关系"
+      },
+      "output": {
+        "interpretation": "官禄宫与夫妻宫为对宫关系，合参可断婚姻与事业的关系。就官禄而言，夫妻宫即是一种外勤性质；就夫妻而言，官禄宫即表一种外缘。二者合参可判断配偶的事业倾向及婚姻与事业的互动模式。",
+        "relationship_type": "事业",
+        "keywords": ["官禄宫", "夫妻宫", "对宫", "婚姻", "事业", "互动"]
+      },
+      "source": "《命理学正解》第二章第三节"
+    },
+    {
+      "case_id": "SIX_043",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "田宅宫",
+      "name": "田宅宫与子女宫关系-家业与子女传承",
+      "input": {
+        "palace": "田宅宫",
+        "stars": [],
+        "condition": "田宅宫与子女宫对宫关系"
+      },
+      "output": {
+        "interpretation": "田宅宫与子女宫为对宫关系，合参可断不动产与子女缘分，以及事业传承。就子女宫而言论合作事业，则田宅宫表合作店面生意或开工厂；就田宅宫而言，则子女宫表成家后而有子女，或表在外的家。",
+        "relationship_type": "家业",
+        "keywords": ["田宅宫", "子女宫", "对宫", "不动产", "传承", "家业"]
+      },
+      "source": "《命理学正解》第二章第三节"
+    },
+    {
+      "case_id": "SIX_044",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "父母宫与疾厄宫关系-健康与遗传",
+      "input": {
+        "palace": "父母宫",
+        "stars": [],
+        "condition": "父母宫与疾厄宫对宫关系"
+      },
+      "output": {
+        "interpretation": "父母宫与疾厄宫为对宫关系，合参可断先天体质与后天疾病，以及与父母的关系。就父母而言，疾厄宫表我的身体，是父母生命的延续；就疾厄宫而言，则父母宫表遗传所得面貌轮廓之宫位。",
+        "relationship_type": "父母",
+        "keywords": ["父母宫", "疾厄宫", "对宫", "健康", "遗传", "身体"]
+      },
+      "source": "《命理学正解》第二章第三节"
+    },
+    {
+      "case_id": "SIX_045",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "兄弟宫",
+      "name": "兄弟宫与奴仆宫关系-人际合伙",
+      "input": {
+        "palace": "兄弟宫",
+        "stars": [],
+        "condition": "兄弟宫与奴仆宫对宫关系"
+      },
+      "output": {
+        "interpretation": "兄弟宫与奴仆宫为对宫关系，四海之内皆兄弟。兄弟宫代表兄弟姊妹及私人机构；奴仆宫代表朋友、部属、众生命运。合参可断人际与合伙关系，以及与朋友和下属的缘分。",
+        "relationship_type": "兄弟",
+        "keywords": ["兄弟宫", "奴仆宫", "对宫", "朋友", "下属", "合伙"]
+      },
+      "source": "《命理学正解》第二章第三节"
+    },
+    {
+      "case_id": "SIX_046",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "子女宫见左辅右弼-子女众多",
+      "input": {
+        "palace": "子女宫",
+        "stars": ["左辅星", "右弼星"],
+        "condition": "辅弼星在子女宫"
+      },
+      "output": {
+        "interpretation": "左辅右弼坐子女宫，主子女众多且孝顺。辅弼为善星，主助力，若子女宫有辅弼会照则子女有情义、能在危难时相助。若又有吉化则子女更有成就。辅弼在子女宫也表子女有贵人运。",
+        "relationship_type": "子女",
+        "keywords": ["子女宫", "左辅", "右弼", "子女", "孝顺", "助力"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_047",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "子女宫为桃花宫-桃花与子女缘分",
+      "input": {
+        "palace": "子女宫",
+        "stars": [],
+        "condition": "子女宫兼看桃花"
+      },
+      "output": {
+        "interpretation": "子女宫又称桃花宫，看桃花运的有无，是良性或恶性之桃花及其类型。亦表征个人性生活能力的优劣。桃花星(如贪狼、廉贞、文昌、文曲)在子女宫主感情丰富；桃花星遇煞主感情纠纷或外遇。",
+        "relationship_type": "子女",
+        "keywords": ["子女宫", "桃花宫", "桃花", "感情", "外遇", "性生活"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_048",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "子女宫",
+      "name": "子女宫为合伙位-合作事业论断",
+      "input": {
+        "palace": "子女宫",
+        "stars": [],
+        "condition": "子女宫兼看合作事业"
+      },
+      "output": {
+        "interpretation": "子女宫又称合伙位，看合作事业的吉凶得失。子女宫星曜强则合作事业顺利，子女宫星曜弱则合作易有纠纷或失败。子女宫化忌则合作有财务损失，子女宫有煞则合作易生是非。",
+        "relationship_type": "事业",
+        "keywords": ["子女宫", "合伙位", "合作", "事业", "纠纷", "财务"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_049",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "官禄宫",
+      "name": "官禄宫太阳星-事业与贵人",
+      "input": {
+        "palace": "官禄宫",
+        "stars": ["太阳星"],
+        "condition": "太阳星在官禄宫"
+      },
+      "output": {
+        "interpretation": "太阳星坐官禄宫，主事业有贵气或从事公教行业。太阳主贵，若太阳庙旺则事业有地位，若落陷则事业劳碌。太阳化禄则事业有财运，化忌则事业多是非。官禄宫太阳与命宫太阳合参可断事业成就。",
+        "relationship_type": "事业",
+        "keywords": ["官禄宫", "太阳", "事业", "贵气", "公教", "地位"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_050",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "官禄宫",
+      "name": "官禄宫武曲星-事业与财运",
+      "input": {
+        "palace": "官禄宫",
+        "stars": ["武曲星"],
+        "condition": "武曲星在官禄宫"
+      },
+      "output": {
+        "interpretation": "武曲星坐官禄宫，主事业与财务相关或从事金融行业。武曲为财星，若在官禄宫庙旺则事业财运佳，若落陷则事业多财务压力或劳碌。武曲最喜化禄，主财运亨通；武曲化忌则财务纠纷。",
+        "relationship_type": "事业",
+        "keywords": ["官禄宫", "武曲", "事业", "财运", "金融", "财务"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_051",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "田宅宫",
+      "name": "田宅宫紫微天府-祖业丰厚",
+      "input": {
+        "palace": "田宅宫",
+        "stars": ["紫微星", "天府星"],
+        "condition": "紫府同宫在田宅宫"
+      },
+      "output": {
+        "interpretation": "紫微天府同坐田宅宫，主祖业丰厚或能顺利置产。紫微天府均为贵星、财库星，二星同宫表不动产多或家运昌盛。若又有禄存、化禄则家产丰厚。田宅宫强则家运佳，田宅宫弱则家运平淡。",
+        "relationship_type": "家业",
+        "keywords": ["田宅宫", "紫微", "天府", "祖业", "家运", "置产"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_052",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "田宅宫",
+      "name": "田宅宫化忌-家运损耗",
+      "input": {
+        "palace": "田宅宫",
+        "stars": ["化忌星"],
+        "condition": "生年化忌在田宅宫"
+      },
+      "output": {
+        "interpretation": "生年化忌坐田宅宫，主家运有损耗或房产纠纷。化忌为收敛之星，主损失、耗损。化忌在田宅宫表家运不昌或有财务损失。若又有煞星则主破祖业或房产耗损。田宅宫化忌逢冲时为应期。",
+        "relationship_type": "家业",
+        "keywords": ["田宅宫", "化忌", "家运", "损耗", "纠纷", "祖业"]
+      },
+      "source": "《命理学正解》第三章"
+    },
+    {
+      "case_id": "SIX_053",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "官禄宫",
+      "name": "官禄宫贪狼星-事业变动与欲望",
+      "input": {
+        "palace": "官禄宫",
+        "stars": ["贪狼星"],
+        "condition": "贪狼星在官禄宫"
+      },
+      "output": {
+        "interpretation": "贪狼星坐官禄宫，主事业有变动或从事销售、公关行业。贪狼为欲望之星，若在官禄宫庙旺则事业有开创能力，若落陷则事业多变动。贪狼化禄则事业财运佳，化忌则事业多是非纠纷。",
+        "relationship_type": "事业",
+        "keywords": ["官禄宫", "贪狼", "事业", "变动", "开创", "欲望"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_054",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "父母宫",
+      "name": "父母宫空宫-借对宫分析",
+      "input": {
+        "palace": "父母宫",
+        "stars": [],
+        "condition": "父母宫无主星(空宫)"
+      },
+      "output": {
+        "interpretation": "父母宫为空宫时，主与父母缘分较浅或父母助力有限。需借对宫(疾厄宫)星曜来分析。父母宫空宫并非无星，而是以对宫星曜组合论断，对宫星曜对本宫有七成影响力。空宫逢化忌则更凶。",
+        "relationship_type": "父母",
+        "keywords": ["父母宫", "空宫", "对宫", "投射", "缘分", "助力"]
+      },
+      "source": "《命理学正解》第二章"
+    },
+    {
+      "case_id": "SIX_055",
+      "agent": "RelationshipAgent",
+      "type": "六亲论断",
+      "palace": "夫妻宫",
+      "name": "夫妻宫空宫-晚婚或缘浅",
+      "input": {
+        "palace": "夫妻宫",
+        "stars": [],
+        "condition": "夫妻宫无主星(空宫)"
+      },
+      "output": {
+        "interpretation": "夫妻宫为空宫时，主婚姻缘分较浅或结婚较晚。需借对宫(官禄宫)星曜来分析。空宫并非无星，而是以对宫星曜组合论断，对宫星曜对本宫有七成影响力。空宫逢化忌则更凶，主婚姻有变故。",
+        "relationship_type": "夫妻",
+        "keywords": ["夫妻宫", "空宫", "对宫", "晚婚", "缘浅", "婚姻"]
+      },
+      "source": "《命理学正解》第二章"
+    }
+  ]
+}

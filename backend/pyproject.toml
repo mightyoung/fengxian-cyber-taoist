@@ -1,11 +1,11 @@
 [project]
-name = "mirofish-backend"
+name = "fengxian_cyber_taoist-backend"
 version = "0.1.0"
-description = "MiroFish - 简洁通用的群体智能引擎，预测万物"
+description = "FengxianCyberTaoist - 简洁通用的群体智能引擎，预测万物"
 requires-python = ">=3.11"
 license = { text = "AGPL-3.0" }
 authors = [
-    { name = "MiroFish Team" }
+    { name = "FengxianCyberTaoist Team" }
 ]
 
 dependencies = [
@@ -32,6 +32,16 @@ dependencies = [
     # 工具库
     "python-dotenv>=1.0.0",
     "pydantic>=2.0.0",
+
+    # S3 Storage
+    "boto3>=1.34.0",
+
+    # Vector Database (pgvector)
+    "psycopg2-binary>=2.9.9",
+    "numpy>=1.24.0",
+
+    # Redis缓存
+    "redis>=5.0.0",
 ]
 
 [project.optional-dependencies]
@@ -53,3 +63,16 @@ dev = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["app"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = "-v --tb=short"
+markers = [
+    "asyncio: mark test as an async test",
+    "integration: mark test as an integration test",
+    "slow: mark test as slow running",
+]
