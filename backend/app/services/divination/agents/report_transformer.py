@@ -320,6 +320,9 @@ class ReportTransformer:
             # 跳过残余的"还有X条"摘要行（当过滤了父标题时）
             if re.match(r'^\s*-?\s*\.{3}还有\d+条', line):
                 continue
+            # 跳过传递变化路线内容（如 甲干廉贞好运：命宫→命宫）
+            if re.search(r'[\u4e00-\u9fa5]+\u5bab→[\u4e00-\u9fa5]+\u5bab', line):
+                continue
             # 处理分类标题行，如 "**忌转忌（重大）**"
             if line.startswith('**') and '（' in line and '）' in line:
                 # 提取类型名称
