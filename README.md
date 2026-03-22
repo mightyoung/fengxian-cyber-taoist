@@ -1,30 +1,4 @@
-<div align="center">
 
-<img src="./static/image/FengxianCyberTaoist_logo_compressed.jpeg" alt="FengxianCyberTaoist Logo" width="75%"/>
-
-<a href="https://trendshift.io/repositories/16144" target="_blank"><img src="https://trendshift.io/api/badge/repositories/16144" alt="666ghj%2FFengxianCyberTaoist | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
-
-**洞悉天机，预测万物**
-</br>
-<em>Divine the Hidden Order, Predict the Infinite</em>
-
-<a href="https://www.shanda.com/" target="_blank"><img src="./static/image/shanda_logo.png" alt="666ghj%2FengxianCyberTaoist | Shanda" height="40"/></a>
-
-[![GitHub Stars](https://img.shields.io/github/stars/666ghj/FengxianCyberTaoist?style=flat-square&color=DAA520)](https://github.com/666ghj/FengxianCyberTaoist/stargazers)
-[![GitHub Watchers](https://img.shields.io/github/watchers/666ghj/FengxianCyberTaoist?style=flat-square)](https://github.com/666ghj/FengxianCyberTaoist/watchers)
-[![GitHub Forks](https://img.shields.io/github/forks/666ghj/FengxianCyberTaoist?style=flat-square)](https://github.com/666ghj/FengxianCyberTaoist/network)
-[![Docker](https://img.shields.io/badge/Docker-Build-2496ED?style=flat-square&logo=docker&logoColor=white)](https://hub.docker.com/)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/666ghj/FengxianCyberTaoist)
-
-[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.com/channels/1469200078932545606/1469201282077163739)
-[![X](https://img.shields.io/badge/X-Follow-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/fengxian_cyber_taoist_ai)
-[![Instagram](https://img.shields.io/badge/Instagram-Follow-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/fengxian_cyber_taoist_ai/)
-
-[English](./README-EN.md) | [中文文档](./README.md)
-
-</div>
-
----
 
 ## 天人合一 · 洞悉未来
 
@@ -82,55 +56,6 @@
     ↓           ↓           ↓           ↓           ↓
 GraphRAG   Agent人设   OASIS并行   多Agent共识   命运对话
 ```
-
----
-
-## 🌐 在线体验
-
-亲身体验凤凰玄师的风采：[线上演示](https://666ghj.github.io/fengxian_cyber_taoist-demo/)
-
----
-
-## 📸 系统截图
-
-<div align="center">
-<table>
-<tr>
-<td><img src="./static/image/Screenshot/运行截图1.png" alt="截图1" width="100%"/></td>
-<td><img src="./static/image/Screenshot/运行截图2.png" alt="截图2" width="100%"/></td>
-</tr>
-<tr>
-<td><img src="./static/image/Screenshot/运行截图3.png" alt="截图3" width="100%"/></td>
-<td><img src="./static/image/Screenshot/运行截图4.png" alt="截图4" width="100%"/></td>
-</tr>
-<tr>
-<td><img src="./static/image/Screenshot/运行截图5.png" alt="截图5" width="100%"/></td>
-<td><img src="./static/image/Screenshot/运行截图6.png" alt="截图6" width="100%"/></td>
-</tr>
-</table>
-</div>
-
----
-
-## 🎬 玄机演示
-
-### 武汉大学舆情推演 + 项目讲解
-
-<div align="center">
-<a href="https://www.bilibili.com/video/BV1VYBsBHEMY/" target="_blank"><img src="./static/image/武大模拟演示封面.png" alt="FengxianCyberTaoist Demo Video" width="75%"/></a>
-
-点击观看使用微舆 BettaFish 生成的《武大舆情报告》完整演示
-</div>
-
-### 《红楼梦》失传结局推演
-
-<div align="center">
-<a href="https://www.bilibili.com/video/BV1cPk3BBExq" target="_blank"><img src="./static/image/红楼梦模拟推演封面.jpg" alt="FengxianCyberTaoist Demo Video" width="75%"/></a>
-
-基于《红楼梦》前80回数十万字，深度推演失传结局
-</div>
-
-> 更多示例——金融预测、时政推演——陆续揭秘中...
 
 ---
 
@@ -261,6 +186,14 @@ POST /api/divination/report/transform
 
 ---
 
+## 🐟 项目起源
+
+**FengxianCyberTaoist** 基于 [MiroFish](https://github.com/666ghj/MiroFish) 改造而来，保留其群体智能模拟核心能力，并新增紫微斗数命理分析系统。
+
+本项目继承 **AGPL-3.0** 开源协议，所有源代码开放共享。
+
+---
+
 ## 联系我们
 
 <div align="center">
@@ -290,3 +223,4 @@ FengxianCyberTaoist 团队长期招募志同道合者，欢迎投递简历至：
    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=666ghj/FengxianCyberTaoist&type=date&theme=dark&legend=top-left" />
  </picture>
 </a>
+
