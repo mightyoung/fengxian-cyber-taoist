@@ -1099,7 +1099,7 @@ def get_graph_statistics_tool():
 # ============== 命理分析报告接口 (使用ReportService) ==============
 
 @report_bp.route('/divination/generate', methods=['POST'])
-async def generate_divination_report():
+def generate_divination_report():
     """
     生成命理分析报告（增强版）
 
@@ -1187,7 +1187,7 @@ async def generate_divination_report():
                 logger.warning(f"图表生成失败: {e}")
 
         service = get_report_service()
-        report = await service.generate(
+        report = asyncio.run(service.generate(
             chart=chart,
             analysis_result=analysis_result,
             format=format_type,
@@ -1198,7 +1198,7 @@ async def generate_divination_report():
             user_info=user_info,
             heatmap=heatmap,
             monthly_advice=monthly_advice
-        )
+        ))
 
         return jsonify({
             "success": True,
