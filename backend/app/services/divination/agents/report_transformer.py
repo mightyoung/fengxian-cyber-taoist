@@ -308,18 +308,21 @@ class ReportTransformer:
         """将因果链解释格式化为更易读的版本"""
         if not explanation:
             return ""
+        import re
 
         lines = explanation.split('\n')
         result_lines = []
 
         for line in lines:
-            # 跳过纯统计行
-            if '飞化路线（共' in line or '因果链分析（共' in line:
+            # 跳过纯统计行和残余摘要行
+            if '飞化路线（共' in line or '因果链分析（共' in line or '传递变化路线（共' in line:
+                continue
+            # 跳过残余的"还有X条"摘要行（当过滤了父标题时）
+            if re.match(r'^\s*-?\s*\.{3}还有\d+条', line):
                 continue
             # 处理分类标题行，如 "**忌转忌（重大）**"
             if line.startswith('**') and '（' in line and '）' in line:
                 # 提取类型名称
-                import re
                 match = re.match(r'\*\*(.+?)（(.+?)）\*\*', line)
                 if match:
                     chain_type = match.group(1)
@@ -328,6 +331,16 @@ class ReportTransformer:
                     plain_severity = self._translate_causal_chain_type(severity)
                     result_lines.append(f"**{plain_type}（{plain_severity}）**")
                     continue
+            # 处理内联格式，如 "连续挫折（重大）：甲干太阴..."
+            inline_match = re.match(r'^(.+?)（(.+?)）：(.+)$', line)
+            if inline_match:
+                chain_type = inline_match.group(1)
+                severity = inline_match.group(2)
+                rest = inline_match.group(3)
+                plain_type = self._translate_causal_chain_type(chain_type)
+                plain_severity = self._translate_causal_chain_type(severity)
+                result_lines.append(f"{plain_type}（{plain_severity}）：{rest}")
+                continue
             # 处理普通行
             result_lines.append(line)
 
