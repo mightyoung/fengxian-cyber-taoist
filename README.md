@@ -194,33 +194,7 @@ POST /api/divination/report/transform
 
 ---
 
-## 联系我们
-
-<div align="center">
-<img src="./static/image/QQ群.png" alt="QQ交流群" width="60%"/>
-</div>
-
-&nbsp;
-
-FengxianCyberTaoist 团队长期招募志同道合者，欢迎投递简历至：**fengxian_cyber_taoist@shanda.com**
-
----
-
 ## 致谢
 
-**感谢盛大集团的战略支持与孵化！**
-
 本项目的仿真引擎由 **[OASIS](https://github.com/camel-ai/oasis)** 驱动，衷心感谢 CAMEL-AI 团队的开源贡献！
-
----
-
-## 星途统计
-
-<a href="https://www.star-history.com/#666ghj/FengxianCyberTaoist&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=666ghj/FengxianCyberTaoist&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=666ghj/FengxianCyberTaoist&type=date&theme=dark&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=666ghj/FengxianCyberTaoist&type=date&theme=dark&legend=top-left" />
- </picture>
-</a>
 
