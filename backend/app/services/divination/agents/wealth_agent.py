@@ -11,92 +11,16 @@
 """
 
 import os
-from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any
-from enum import Enum
 
-
-# 财富相关星曜
-WEALTH_STARS = {
-    "主星": ["紫微", "天府", "武曲", "太阳", "太阴", "贪狼", "巨门", "天梁", "天同", "廉贞"],
-    "辅星": ["左辅", "右弼", "天魁", "天钺", "文昌", "文曲", "禄存", "天马"],
-    "煞星": ["擎羊", "陀罗", "火星", "铃星", "地空", "地劫"],
-    "化曜": ["化禄", "化权", "化科", "化忌"]
-}
-
-# 财富宫位权重
-PALACE_WEIGHTS = {
-    "财帛宫": 0.40,
-    "田宅宫": 0.25,
-    "福德宫": 0.15,
-    "官禄宫": 0.20
-}
-
-
-class WealthLevel(str, Enum):
-    """财富等级"""
-    TOP_RICH = "顶级富"      # 90-100
-    VERY_RICH = "大富"       # 75-89
-    MEDIUM_RICH = "中富"    # 60-74
-    SMALL_RICH = "小富"      # 45-59
-    NORMAL = "普通"          # 30-44
-    POOR = "清贫"            # 0-29
-
-
-@dataclass
-class PalaceWealthAnalysis:
-    """宫位财富分析"""
-    palace_name: str
-    score: int
-    strength_level: str
-    main_stars: List[str] = field(default_factory=list)
-    auxiliary_stars: List[str] = field(default_factory=list)
-    sha_stars: List[str] = field(default_factory=list)
-    transform_stars: List[str] = field(default_factory=list)
-    interpretation: str = ""
-    wealth_indicator: str = ""  # 财富 indicator e.g. "正财之星"
-    risk_factors: List[str] = field(default_factory=list)
-    opportunity_factors: List[str] = field(default_factory=list)
-
-
-@dataclass
-class WealthPattern:
-    """财富格局"""
-    pattern_name: str
-    description: str
-    score_bonus: int  # 加分
-    characteristics: List[str] = field(default_factory=list)
-
-
-@dataclass
-class YearlyWealthForecast:
-    """年度财富预测"""
-    year: int
-    wealth_score: int
-    gan_zhi: str
-    tai_sui_palace: str
-    advice: str
-    opportunity_periods: List[str] = field(default_factory=list)
-    risk_periods: List[str] = field(default_factory=list)
-    recommended_actions: List[str] = field(default_factory=list)
-
-
-@dataclass
-class WealthReport:
-    """完整财富报告"""
-    total_wealth_score: int
-    wealth_level: str
-    caibi_palace: PalaceWealthAnalysis
-    tianzhai_palace: PalaceWealthAnalysis
-    fude_palace: PalaceWealthAnalysis
-    guanlu_palace: PalaceWealthAnalysis
-    wealth_patterns: List[WealthPattern] = field(default_factory=list)
-    advantages: List[str] = field(default_factory=list)
-    weaknesses: List[str] = field(default_factory=list)
-    yearly_forecast: List[YearlyWealthForecast] = field(default_factory=list)
-    recommendations: List[str] = field(default_factory=list)
-    investment_advice: Dict[str, str] = field(default_factory=dict)
-    risk_assessment: Dict[str, Any] = field(default_factory=dict)
+from .wealth_constants import WEALTH_STARS, PALACE_WEIGHTS
+from .wealth_types import (
+    WealthLevel,
+    PalaceWealthAnalysis,
+    WealthPattern,
+    YearlyWealthForecast,
+    WealthReport,
+)
 
 
 class WealthAgent:

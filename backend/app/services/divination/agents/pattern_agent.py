@@ -4,22 +4,26 @@
 """
 
 from typing import Dict, List, Optional, Any, Set, Tuple
-from dataclasses import dataclass, field
-from enum import Enum
 import json
 import os
 import re
 
+from .pattern_constants import (
+    PALACE_NAMES as CONSTANT_PALACE_NAMES,
+    TRANSFORM_TYPES as CONSTANT_TRANSFORM_TYPES,
+    MAJOR_STARS as CONSTANT_MAJOR_STARS,
+    MODIFIER_STARS as CONSTANT_MODIFIER_STARS,
+    SINI_STARS as CONSTANT_SINI_STARS,
+    EMPTY_STARS as CONSTANT_EMPTY_STARS,
+)
+from .pattern_types import PatternCategory, PatternQuality, Pattern, PatternAnalysis
+
 
 # 十二宫位名称（完整列表）
-PALACE_NAMES = [
-    "命宫", "兄弟宫", "夫妻宫", "子女宫",
-    "财帛宫", "疾厄宫", "迁移宫", "仆役宫",
-    "官禄宫", "田宅宫", "福德宫", "父母宫"
-]
+PALACE_NAMES = CONSTANT_PALACE_NAMES
 
 # 宫位简称到全称的映射（用于精确匹配）
-PALACE_ALIASES = {
+PALACE_ALIASES: Dict[str, str] = {
     "命": "命宫",
     "兄": "兄弟宫",
     "夫": "夫妻宫",
@@ -40,7 +44,7 @@ PALACE_ALIASES = {
 }
 
 # 化曜类型（精确匹配）
-TRANSFORM_TYPES = ["化禄", "化权", "化科", "化忌"]
+TRANSFORM_TYPES = CONSTANT_TRANSFORM_TYPES
 
 
 def parse_transform_star(star: str) -> Optional[Tuple[str, str]]:
@@ -229,109 +233,19 @@ def check_transform_in_palace(
     return False
 
 
-class PatternCategory(Enum):
-    """格局类别"""
-    AUSPICIOUS = "吉格"     # 吉格
-    INAUSPICIOUS = "凶格"   # 凶格
-    NEUTRAL = "中性格"      # 中性格
-
-
-class PatternQuality(Enum):
-    """格局等级"""
-    A_PLUS = "A+"
-    A = "A"
-    B_PLUS = "B+"
-    B = "B"
-    C = "C"
-
-
-@dataclass
-class Pattern:
-    """格局"""
-    id: str
-    name: str
-    name_en: str
-    category: PatternCategory
-    quality: PatternQuality
-    description: str
-    source: str
-    formation_conditions: Dict[str, Any] = field(default_factory=dict)
-    judgment_rules: Dict[str, Any] = field(default_factory=dict)
-    analysis_points: List[str] = field(default_factory=list)
-    effects: Dict[str, str] = field(default_factory=dict)
-    matched: bool = False
-    match_details: str = ""
-
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "id": self.id,
-            "name": self.name,
-            "name_en": self.name_en,
-            "category": self.category.value,
-            "quality": self.quality.value,
-            "description": self.description,
-            "source": self.source,
-            "matched": self.matched,
-            "match_details": self.match_details,
-            "effects": self.effects
-        }
-
-
-@dataclass
-class PatternAnalysis:
-    """格局分析结果
-
-    Attributes:
-        year_stem: 出生年干
-        patterns: 所有格局列表
-        matched_patterns: 已匹配的格局（只读属性）
-        auspicious_patterns: 吉格列表
-        inauspicious_patterns: 凶格列表
-        neutral_patterns: 中性格列表
-        interpretation: 格局解释
-    """
-    year_stem: str
-    patterns: List[Pattern] = field(default_factory=list)
-    auspicious_patterns: List[Pattern] = field(default_factory=list)
-    inauspicious_patterns: List[Pattern] = field(default_factory=list)
-    neutral_patterns: List[Pattern] = field(default_factory=list)
-    interpretation: str = ""
-
-    @property
-    def matched_patterns(self) -> List[Pattern]:
-        """已匹配的格局列表（只返回 matched=True 的格局）"""
-        return [p for p in self.patterns if p.matched]
-
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "year_stem": self.year_stem,
-            "matched_patterns": [p.to_dict() for p in self.patterns if p.matched],
-            "auspicious_count": len(self.auspicious_patterns),
-            "inauspicious_count": len(self.inauspicious_patterns),
-            "neutral_count": len(self.neutral_patterns),
-            "interpretation": self.interpretation
-        }
 
 
 # 常用星曜列表（十四正曜）
-MAJOR_STARS = [
-    "紫微", "天机", "太阳", "武曲", "天同", "廉贞",
-    "天府", "太阴", "贪狼", "巨门", "天相", "天梁",
-    "七杀", "破军"
-]
+MAJOR_STARS = CONSTANT_MAJOR_STARS
 
 # 辅星列表
-MODIFIER_STARS = [
-    "左辅", "右弼", "天魁", "天钺",
-    "文昌", "文曲", "禄存", "天马",
-    "天福", "天贵", "恩光", "天巫"
-]
+MODIFIER_STARS = CONSTANT_MODIFIER_STARS
 
 # 煞星列表
-SINI_STARS = ["擎羊", "陀罗", "火星", "铃星", "地空", "地劫"]
+SINI_STARS = CONSTANT_SINI_STARS
 
 # 空曜列表
-EMPTY_STARS = ["地空", "地劫", "天空", "旬空"]
+EMPTY_STARS = CONSTANT_EMPTY_STARS
 
 
 def load_pattern_rules() -> Dict[str, Any]:

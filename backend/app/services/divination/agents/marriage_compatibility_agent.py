@@ -13,150 +13,19 @@
 7. 分析大运同步性
 """
 
-from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any
-from enum import Enum
 
 # 导入共用类型
 from ..service_types import FortuneLevel, fortune_level_from_score, normalize_score
-
-# 五行相生相克关系
-WUXING_SHENG = {
-    "木": "火",
-    "火": "土",
-    "土": "金",
-    "金": "水",
-    "水": "木",
-}
-
-WUXING_KENG = {
-    "木": "金",
-    "火": "水",
-    "土": "木",
-    "金": "火",
-    "水": "土",
-}
-
-# 主星五行属性
-STAR_WUXING = {
-    # 甲级星
-    "紫微": "土",
-    "天机": "木",
-    "太阳": "火",
-    "武曲": "金",
-    "天同": "水",
-    "廉贞": "火",
-    "天府": "土",
-    "太阴": "水",
-    "贪狼": "木",
-    "巨门": "水",
-    "天相": "水",
-    "天梁": "土",
-    "七杀": "金",
-    "破军": "水",
-    # 乙级星
-    "文昌": "金",
-    "文曲": "水",
-    "左辅": "土",
-    "右弼": "水",
-    "天魁": "火",
-    "天钺": "火",
-    "火星": "火",
-    "铃星": "火",
-    "擎羊": "金",
-    "陀罗": "火",
-    "地空": "火",
-    "地劫": "火",
-    "化禄": "水",
-    "化权": "火",
-    "化科": "木",
-    "化忌": "水",
-}
-
-# 吉星列表
-LUCKY_STARS = [
-    "紫微", "天府", "天相", "天魁", "天钺",
-    "左辅", "右弼", "文昌", "文曲",
-    "化禄", "化科",
-]
-
-# 桃花星列表
-PEACH_BLOSSOM_STARS = [
-    "贪狼", "廉贞", "太阴", "天喜", "红鸾",
-    "咸池", "天姚", "沐浴",
-]
-
-# 煞星列表
-MALIFIC_STARS = [
-    "火星", "铃星", "擎羊", "陀罗", "地空", "地劫",
-    "化忌",
-]
-
-
-class CompatibilityLevel(Enum):
-    """配对等级"""
-    PERFECT = "完美姻缘"      # 90-100
-    EXCELLENT = "天作之合"     # 80-89
-    GOOD = "良缘佳配"         # 70-79
-    AVERAGE = "中规中矩"      # 50-69
-    FAIR = "需要努力"         # 30-49
-    CHALLENGING = "磨合期"     # 0-29
-
-
-@dataclass
-class CompatibilityDimension:
-    """配对维度"""
-    dimension: str              # "性格契合" / "财运互补" / "事业助力" / "感情甜蜜" / "健康同步"
-    score: float               # 维度分数 0-100
-    level: str                 # 等级
-    analysis: str              # 分析理由
-    positive_factors: List[str] = field(default_factory=list)
-    negative_factors: List[str] = field(default_factory=list)
-
-    def to_dict(self) -> Dict[str, Any]:
-        """转换为字典"""
-        return {
-            "dimension": self.dimension,
-            "score": self.score,
-            "level": self.level,
-            "analysis": self.analysis,
-            "positive_factors": self.positive_factors,
-            "negative_factors": self.negative_factors,
-        }
-
-
-@dataclass
-class CompatibilityResult:
-    """姻缘配对结果"""
-    service_type: str = "marriage_compatibility"
-    person_a_name: str = "甲方"
-    person_b_name: str = "乙方"
-    overall_score: float = 0.0                    # 综合配对指数 0-100
-    overall_level: str = ""                      # 等级
-    dimensions: List[CompatibilityDimension] = field(default_factory=list)
-    compatibility_highlights: List[str] = field(default_factory=list)  # 亮点
-    compatibility_warnings: List[str] = field(default_factory=list)     # 警示
-    best_timing: str = ""                        # 最佳时机
-    suggestions: List[str] = field(default_factory=list)
-    overall_analysis: str = ""
-    confidence: float = 0.0
-
-    def to_dict(self) -> Dict[str, Any]:
-        """转换为字典"""
-        return {
-            "service_type": self.service_type,
-            "person_a_name": self.person_a_name,
-            "person_b_name": self.person_b_name,
-            "overall_score": self.overall_score,
-            "overall_level": self.overall_level,
-            "dimensions": [d.to_dict() for d in self.dimensions],
-            "compatibility_highlights": self.compatibility_highlights,
-            "compatibility_warnings": self.compatibility_warnings,
-            "best_timing": self.best_timing,
-            "suggestions": self.suggestions,
-            "overall_analysis": self.overall_analysis,
-            "confidence": self.confidence,
-        }
+from .marriage_constants import (
+    WUXING_SHENG,
+    WUXING_KENG,
+    STAR_WUXING,
+    LUCKY_STARS,
+    PEACH_BLOSSOM_STARS,
+    MALIFIC_STARS,
+)
+from .marriage_types import CompatibilityLevel, CompatibilityDimension, CompatibilityResult
 
 
 class MarriageCompatibilityAgent:

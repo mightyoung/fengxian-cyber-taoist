@@ -21,216 +21,28 @@ MultiAgent Validator - 多Agent共识验证模块
 """
 
 from typing import Dict, List, Optional, Any
-from dataclasses import dataclass, field
-from enum import Enum
 from collections import Counter
 import asyncio
 
-
-# ============ Expert Author Definitions ============
-# 基于MD文档中的真实作者定义
-
-class ExpertAuthor(str, Enum):
-    """专家作者定义 - 基于data_source/mlx/resources/md目录下的真实作者"""
-    XU_QUAN_REN = "许铨仁"           # 《命理学正解》- 斗数界公认的好老师
-    LIANG_RUO_YU = "梁若瑜"           # 《飞星紫微斗数》- 四化能量符号专家
-    WANG_TING_ZHI = "王亭之"          # 《中州派紫微斗数深造讲义》- 中州派正统
-    ZI_YUN = "紫云"                   # 《紫云论斗数 星曜赋性》- 星曜赋性专家
-
-
-# 作者专业领域描述
-EXPERT_AUTHOR_DESCRIPTIONS = {
-    ExpertAuthor.XU_QUAN_REN: {
-        "name": "许铨仁",
-        "title": "《命理学正解》作者",
-        "school": "台湾斗数学派",
-        "expertise": [
-            "斗数命理学正本清源",
-            "宫星象三合一完整解义学",
-            "象数平衡学",
-            "理则学而非神学"
-        ],
-        "key_theories": [
-            "紫微斗数命理学系哲学/理则学",
-            "绝无'改命''改运'之谬论",
-            "宫星象三合一解义"
-        ]
-    },
-    ExpertAuthor.LIANG_RUO_YU: {
-        "name": "梁若瑜",
-        "title": "《飞星紫微斗数》作者",
-        "school": "飞星派",
-        "expertise": [
-            "四化是能量符号",
-            "禄转忌、忌转忌分析",
-            "多宫位串联释象",
-            "理气的逻辑归纳"
-        ],
-        "key_theories": [
-            "禄因忌果",
-            "善观禄忌解析问题",
-            "追禄/追权/追忌",
-            "忌入逢本宫自化禄出"
-        ]
-    },
-    ExpertAuthor.WANG_TING_ZHI: {
-        "name": "王亭之",
-        "title": "《中州派紫微斗数深造讲义》作者",
-        "school": "中州派",
-        "expertise": [
-            "中州派紫微斗数正统传承",
-            "太微赋注解",
-            "星曜赋性深化",
-            "格局体系"
-        ],
-        "key_theories": [
-            "中州派格局论断",
-            "星曜庙旺平陷",
-            "宫位三方四正关系"
-        ]
-    },
-    ExpertAuthor.ZI_YUN: {
-        "name": "紫云",
-        "title": "《紫云论斗数 星曜赋性》作者",
-        "school": "星曜派",
-        "expertise": [
-            "星曜赋性详解（5册）",
-            "十四正曜特性",
-            "辅星、煞星配置",
-            "星曜组合效应"
-        ],
-        "key_theories": [
-            "星曜五行属性",
-            "星曜入宫论断",
-            "星曜互动关系"
-        ]
-    }
-}
-
-
-# 兼容性别名（用于ExpertRole）
-ExpertRole = ExpertAuthor  # 向后兼容
-
-
-# ============ Data Models ============
-
-class JudgmentType(str, Enum):
-    """判断类型"""
-    JI = "吉"      # 吉
-    PING = "平"    # 平
-    XIONG = "凶"   # 凶
-
-
-@dataclass
-class AgentView:
-    """标准化Agent观点"""
-    agent_name: str           # "StarAgent", "PalaceAgent", etc.
-    dimension: str           # "财富", "事业", "感情", "健康"
-    judgment: JudgmentType    # 吉 / 平 / 凶
-    confidence: float         # 0.0-1.0
-    reasoning: str            # 推理过程
-    key_factors: List[str]    # 关键因素
-    expert_role: Optional[ExpertAuthor] = None  # 专家作者
-    validation_results: List[str] = field(default_factory=list)  # 验证结果列表
-
-    def __post_init__(self):
-        """验证字段范围"""
-        if not 0.0 <= self.confidence <= 1.0:
-            raise ValueError(f"confidence must be between 0.0 and 1.0, got {self.confidence}")
-        if self.judgment not in JudgmentType:
-            raise ValueError(f"invalid judgment type: {self.judgment}")
-
-
-@dataclass
-class ConsensusResult:
-    """共识检测结果"""
-    has_consensus: bool                    # 是否有共识
-    agreed_judgment: Optional[JudgmentType]  # 共识判断（无共识时为None）
-    agreeing_agents: List[str]              # 达成共识的Agent列表
-    consensus_confidence: float             # 共识置信度
-    dissenting_views: List[AgentView]       # 分歧观点
-    reasoning: str                          # 共识检测推理过程
-
-
-@dataclass
-class Resolution:
-    """分歧解决结果"""
-    resolved_judgment: JudgmentType        # 最终判断
-    weight_scores: Dict[str, float]        # 各判断的加权得分
-    deciding_agents: List[str]             # 决定性投票的Agent
-    reasoning: str                          # 解决推理过程
-
-
-@dataclass
-class FinalConfidence:
-    """综合置信度"""
-    causal_confidence: float               # 因果链置信度
-    probabilistic_confidence: float         # 案例推理置信度
-    multi_agent_confidence: float           # 多Agent共识置信度
-    overall_confidence: float               # 综合置信度
-
-    # 权重配置
-    CAUSAL_WEIGHT: float = 0.40           # 因果链权重 40%
-    PROBABILISTIC_WEIGHT: float = 0.35     # 案例推理权重 35%
-    MULTI_AGENT_WEIGHT: float = 0.25       # 多Agent共识权重 25%
-
-
-@dataclass
-class ValidationResult:
-    """验证最终结果"""
-    dimension: str                          # 分析维度
-    final_judgment: JudgmentType           # 最终判断
-    final_confidence: FinalConfidence       # 综合置信度
-    consensus_result: Optional[ConsensusResult]  # 共识结果（如果有）
-    resolution: Optional[Resolution]        # 分歧解决结果（如果有）
-    agent_views: List[AgentView]            # 所有Agent观点
-    summary: str                            # 结果摘要
-
-
-# ============ Agent Weights ============
-
-# Agent权重配置：基于专家角色的重要性
-# 紫微斗数专家权重最高（专业知识是核心），其他专家辅助验证
-
-# 原有Agent权重（技术实现层）
-AGENT_WEIGHTS = {
-    # 技术Agent权重
-    "TransformAgent": 1.0,   # 四化分析是核心
-    "PatternAgent": 0.8,     # 格局识别重要
-    "PalaceAgent": 0.7,     # 宫位分析基础
-    "StarAgent": 0.6,       # 星曜分析基础
-    # 其他Agent默认权重
-    "TimingAgent": 0.5,
-    "WealthAgent": 0.5,
-    "HealthAgent": 0.5,
-    "CareerAgent": 0.5,
-    "RelationshipAgent": 0.5,
-    "EducationAgent": 0.5,
-    "ResolutionAgent": 0.4,
-}
-
-# 专家角色权重（专家验证层）
-# 基于真实作者的专业领域和影响力
-EXPERT_ROLE_WEIGHTS = {
-    ExpertAuthor.XU_QUAN_REN: 1.0,     # 命理学正解派 - 理论根基
-    ExpertAuthor.LIANG_RUO_YU: 0.95,   # 飞星派 - 四化能量是核心
-    ExpertAuthor.WANG_TING_ZHI: 0.9,    # 中州派 - 正统传承
-    ExpertAuthor.ZI_YUN: 0.85,          # 星曜派 - 星曜赋性为基础
-}
-
-# 默认权重
-DEFAULT_AGENT_WEIGHT = 0.5
-DEFAULT_EXPERT_WEIGHT = 0.5
-
-
-def get_agent_weight(agent_name: str) -> float:
-    """获取Agent权重"""
-    return AGENT_WEIGHTS.get(agent_name, DEFAULT_AGENT_WEIGHT)
-
-
-def get_expert_weight(expert_role: ExpertAuthor) -> float:
-    """获取专家角色权重"""
-    return EXPERT_ROLE_WEIGHTS.get(expert_role, DEFAULT_EXPERT_WEIGHT)
+from .multi_agent_validator_constants import (
+    ExpertAuthor,
+    ExpertRole,
+    EXPERT_AUTHOR_DESCRIPTIONS,
+    AGENT_WEIGHTS,
+    EXPERT_ROLE_WEIGHTS,
+    DEFAULT_AGENT_WEIGHT,
+    DEFAULT_EXPERT_WEIGHT,
+    get_agent_weight,
+    get_expert_weight,
+)
+from .multi_agent_validator_types import (
+    JudgmentType,
+    AgentView,
+    ConsensusResult,
+    Resolution,
+    FinalConfidence,
+    ValidationResult,
+)
 
 
 # ============ Expert Validator ============

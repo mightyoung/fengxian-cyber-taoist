@@ -31,112 +31,15 @@ from app.services.divination.service_types import fortune_level_from_score
 logger = logging.getLogger(__name__)
 
 
-# ============ 时辰定义 ============
-
-# 十二时辰定义（小时范围）
-SHICHEN_HOURS = [
-    ("子时", 23, 1),
-    ("丑时", 1, 3),
-    ("寅时", 3, 5),
-    ("卯时", 5, 7),
-    ("辰时", 7, 9),
-    ("巳时", 9, 11),
-    ("午时", 11, 13),
-    ("未时", 13, 15),
-    ("申时", 15, 17),
-    ("酉时", 17, 19),
-    ("戌时", 19, 21),
-    ("亥时", 21, 23),
-]
-
-# 时辰显示格式
-SHICHEN_DISPLAY = [
-    "23:00-01:00", "01:00-03:00", "03:00-05:00", "05:00-07:00",
-    "07:00-09:00", "09:00-11:00", "11:00-13:00", "13:00-15:00",
-    "15:00-17:00", "17:00-19:00", "19:00-21:00", "21:00-23:00",
-]
-
-# 重要星曜列表
-IMPORTANT_STARS = [
-    "紫微", "天机", "太阳", "武曲", "天同", "廉贞",
-    "天府", "太阴", "贪狼", "巨门", "天相", "天梁",
-    "七杀", "破军",
-]
-
-# 煞星列表
-SHA_STARS = ["擎羊", "陀罗", "火星", "铃星", "地空", "地劫"]
-
-# 吉格列表
-LUCKY_PATTERNS = [
-    "紫府同垣格", "日月并明格", "机月同梁格", "杀破狼格",
-    "贪武同行格", "府相朝垣格", "文梁振纪格", "巨门亥子宫信",
-]
-
-# 主星庙旺等级分数
-STAR_TEMPLE_SCORES = {
-    "庙": 1.0,
-    "旺": 0.8,
-    "平": 0.5,
-    "陷": 0.2,
-}
-
-
-# ============ 数据结构 ============
-
-@dataclass
-class BirthTimingOption:
-    """时辰选项"""
-    rank: int
-    date: str                    # 格式: "2026-09-15"
-    lunar_date: str              # 格式: "农历八月初五"
-    hour: str                    # 格式: "午时" 或 "11:00-13:00"
-    chart_summary: Dict[str, Any]  # 命盘摘要
-    score: float                # 综合分数 0-100
-    level: str                  # 等级: 极佳/良好/中等/一般/较差
-    strengths: List[str]         # 优势列表
-    weaknesses: List[str]        # 劣势列表
-    reasons: List[str]           # 推荐理由
-    warnings: List[str]          # 注意事项
-
-    def to_dict(self) -> Dict[str, Any]:
-        """转换为字典格式"""
-        return {
-            "rank": self.rank,
-            "date": self.date,
-            "lunar_date": self.lunar_date,
-            "hour": self.hour,
-            "chart_summary": self.chart_summary,
-            "score": round(self.score, 2),
-            "level": self.level,
-            "strengths": self.strengths,
-            "weaknesses": self.weaknesses,
-            "reasons": self.reasons,
-            "warnings": self.warnings,
-        }
-
-
-@dataclass
-class BirthTimingResult:
-    """剖腹产分析结果"""
-    service_type: str = "birth_timing"
-    mother_chart: Dict[str, Any] = field(default_factory=dict)  # 母亲命盘
-    father_chart: Dict[str, Any] = field(default_factory=dict)   # 父亲命盘
-    options: List[BirthTimingOption] = field(default_factory=list)
-    best_option: Optional[BirthTimingOption] = None
-    analysis_summary: str = ""
-    confidence: float = 0.0
-
-    def to_dict(self) -> Dict[str, Any]:
-        """转换为字典格式"""
-        return {
-            "service_type": self.service_type,
-            "mother_chart": self.mother_chart,
-            "father_chart": self.father_chart,
-            "options": [opt.to_dict() for opt in self.options],
-            "best_option": self.best_option.to_dict() if self.best_option else None,
-            "analysis_summary": self.analysis_summary,
-            "confidence": round(self.confidence, 2),
-        }
+from .birth_timing_constants import (
+    SHICHEN_HOURS,
+    SHICHEN_DISPLAY,
+    IMPORTANT_STARS,
+    SHA_STARS,
+    LUCKY_PATTERNS,
+    STAR_TEMPLE_SCORES,
+)
+from .birth_timing_types import BirthTimingOption, BirthTimingResult
 
 
 # ============ 核心类 ============
