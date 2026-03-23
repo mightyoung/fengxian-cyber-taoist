@@ -17,7 +17,6 @@ import json
 import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
-from dataclasses import dataclass, field
 from collections import Counter
 from datetime import datetime
 import asyncio
@@ -33,67 +32,20 @@ from .chart_vectorizer import (
     PALACE_NAMES,
     TRANSFORM_TYPES,
 )
+from .case_based_predictor_types import (
+    ProbabilisticResult,
+    PredictionReport,
+)
+from .case_based_predictor_constants import (
+    CHROMADB_AVAILABLE,
+    DEFAULT_DALIAN_START_AGE,
+    DEFAULT_DALIAN_YEARS,
+    MIN_CONFIDENCE,
+    DEFAULT_EVENT_TYPES,
+    EVENT_DESCRIPTIONS,
+)
 
 logger = logging.getLogger(__name__)
-
-# 尝试导入ChromaDB
-try:
-    import chromadb
-    from chromadb.config import Settings
-    CHROMADB_AVAILABLE = True
-except ImportError:
-    CHROMADB_AVAILABLE = False
-    logger.warning("ChromaDB not available, using in-memory fallback")
-
-
-@dataclass
-class ProbabilisticResult:
-    """
-    概率推断结果
-
-    包含预测结果和置信度
-    """
-    event_type: str                          # 事件类型
-    prediction: str                           # 预测描述
-    probability: float                       # 概率 (0-1)
-    confidence: float                        # 置信度 (0-1)
-    similar_cases: List[Dict[str, Any]]      # 相似案例
-    reasoning: str                           # 推理过程
-    year: int                                # 预测年份
-
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "event_type": self.event_type,
-            "prediction": self.prediction,
-            "probability": round(self.probability, 3),
-            "confidence": round(self.confidence, 3),
-            "similar_cases": self.similar_cases,
-            "reasoning": self.reasoning,
-            "year": self.year
-        }
-
-
-@dataclass
-class PredictionReport:
-    """
-    预测报告
-
-    包含多个概率推断结果的汇总
-    """
-    chart_id: str
-    target_year: int
-    results: List[ProbabilisticResult]
-    summary: str
-    metadata: Dict[str, Any] = field(default_factory=dict)
-
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "chart_id": self.chart_id,
-            "target_year": self.target_year,
-            "results": [r.to_dict() for r in self.results],
-            "summary": self.summary,
-            "metadata": self.metadata
-        }
 
 
 class InMemoryVectorStore:
@@ -434,10 +386,6 @@ class TrajectoryMatcher:
     将目标命盘与案例命盘的命运轨迹按大限对齐
     """
 
-    # 大限参数（默认值，可被chart中的五行局覆盖）
-    DEFAULT_DALIAN_START_AGE = 15  # 默认大限起始年龄
-    DEFAULT_DALIAN_YEARS = 10      # 每个大限的年数
-
     def __init__(self):
         self._vectorizer = ChartVectorizer()
 
@@ -457,12 +405,12 @@ class TrajectoryMatcher:
             int: 大限索引（0开始）
         """
         if start_age is None:
-            start_age = self.DEFAULT_DALIAN_START_AGE
+            start_age = DEFAULT_DALIAN_START_AGE
 
         if age < start_age:
             return -1  # 尚未进入大限
 
-        return (age - start_age) // self.DEFAULT_DALIAN_YEARS
+        return (age - start_age) // DEFAULT_DALIAN_YEARS
 
     def align_by_dalian_index(
         self,
@@ -808,7 +756,7 @@ class CaseBasedPredictor:
             PredictionReport: 预测报告
         """
         if event_types is None:
-            event_types = ["财运", "事业", "感情", "健康"]
+            event_types = DEFAULT_EVENT_TYPES
 
         chart_id = str(chart.get("birth_info", {}).get("year", "")) + "_" + str(id(chart))
 
@@ -852,8 +800,8 @@ class CaseBasedPredictor:
         summary = self._generate_summary(results, len(similar_cases))
 
         # 计算目标的大限索引
-        dalian_start_age = TrajectoryMatcher.DEFAULT_DALIAN_START_AGE
-        target_dalian_index = (target_age - dalian_start_age) // TrajectoryMatcher.DEFAULT_DALIAN_YEARS if target_age >= dalian_start_age else -1
+        dalian_start_age = DEFAULT_DALIAN_START_AGE
+        target_dalian_index = (target_age - dalian_start_age) // DEFAULT_DALIAN_YEARS if target_age >= dalian_start_age else -1
         dalian_age_range = f"第{target_dalian_index + 1}大限" if target_dalian_index >= 0 else "未入大限"
 
         return PredictionReport(
@@ -897,7 +845,7 @@ class CaseBasedPredictor:
         """
         # 使用大限索引（默认15岁起）
         if dalian_start_age is None:
-            dalian_start_age = TrajectoryMatcher.DEFAULT_DALIAN_START_AGE
+            dalian_start_age = DEFAULT_DALIAN_START_AGE
 
         # 计算目标的大限索引
         target_dalian_index = self._trajectory_matcher.calculate_dalian_index(
@@ -1022,9 +970,6 @@ class CaseBasedPredictor:
         Returns:
             float: 置信度 (0-1)
         """
-        # 最小置信度（信息不完整时的基础不确定性）
-        MIN_CONFIDENCE = 0.3
-
         # 无案例情况：返回0.3，反映缺乏案例信息
         if event_count == 0:
             return MIN_CONFIDENCE
@@ -1072,14 +1017,7 @@ class CaseBasedPredictor:
         else:
             level = "小概率"
 
-        event_descriptions = {
-            "财运": "有财运机遇",
-            "事业": "事业有发展",
-            "感情": "感情有变化",
-            "健康": "健康需注意"
-        }
-
-        desc = event_descriptions.get(event_type, event_type)
+        desc = EVENT_DESCRIPTIONS.get(event_type, event_type)
         return f"{level}{desc}"
 
     def _generate_summary(
