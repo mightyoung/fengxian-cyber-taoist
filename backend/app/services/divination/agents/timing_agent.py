@@ -6,253 +6,50 @@ TimingAgent - 运限时间节点分析
 - 流年太岁宫位系统
 - 流曜系统(博士十二神、将前十神、岁前十二神)
 - 应期/克应规则
+
+模块化结构：
+- timing_constants.py: 常量定义（干支、宫位、四化映射表、流曜序列）
+- timing_types.py: 类型定义（enums、dataclasses）
+- timing_core.py: 核心计算函数（四化计算、成住坏空阶段）
 """
 
 import json
 from pathlib import Path
 from typing import Dict, List, Optional, Any
-from dataclasses import dataclass, field
-from enum import Enum
+
+# Import from modular components
+from .timing_constants import (
+    ZHI_TO_PALACE,
+    PALACE_NAMES,
+    HEAVENLY_STEM_TRANSFORMS,
+    CYCLE_STAGE_PALACE_MAP,
+)
+from .timing_types import (
+    MajorFate,
+    YearFate,
+    MonthFate,
+    DayFate,
+    HourFate,
+    TimingAnalysis,
+    FateLevel,
+    LiuYaoCategory,
+    CycleStage,
+)
+from .timing_core import (
+    get_yearly_transforms,
+    get_birth_transforms,
+    get_cycle_stage_for_palace,
+    get_transform_cycle_impact,
+)
 
 # Try to import from parent module, fallback to any
 try:
     from ..star_placer import ChartResult
-    from ..palace_builder import TwelvePalaces, PALACE_NAMES, EARTHLY_BRANCHES
-    from .transform_agent import HEAVENLY_STEM_TRANSFORMS
+    from ..palace_builder import TwelvePalaces, EARTHLY_BRANCHES
 except ImportError:
     ChartResult = Any
     TwelvePalaces = Any
-    PALACE_NAMES = []
     EARTHLY_BRANCHES = []
-    HEAVENLY_STEM_TRANSFORMS = {}
-
-
-# ============ 流年四化/生年四化计算函数 ============
-
-def get_yearly_transforms(year_gan: str) -> Dict[str, str]:
-    """
-    根据流年天干获取四化信息（流年四化）
-
-    流年四化与年干四化的区别：
-    - 流年四化：根据当前流年天干决定的四化，每年不同
-    - 生年四化（年干四化）：根据出生年天干决定的四化，一生不变
-
-    Args:
-        year_gan: 流年天干（甲、乙、丙、丁、戊、己、庚、辛、壬、癸）
-
-    Returns:
-        四化字典，格式: {化位: 星曜名}，例如: {"禄": "廉贞", "权": "破军", ...}
-    """
-    if year_gan in HEAVENLY_STEM_TRANSFORMS:
-        return HEAVENLY_STEM_TRANSFORMS[year_gan]
-    return {}
-
-
-def get_birth_transforms(birth_gan: str) -> Dict[str, str]:
-    """
-    根据出生年天干获取四化信息（生年四化/年干四化）
-
-    生年四化是根据出生年的天干来确定的四化，一辈子不变。
-
-    Args:
-        birth_gan: 出生年天干（甲、乙、丙、丁、戊、己、庚、辛、壬、癸）
-
-    Returns:
-        四化字典，格式: {化位: 星曜名}
-    """
-    if birth_gan in HEAVENLY_STEM_TRANSFORMS:
-        return HEAVENLY_STEM_TRANSFORMS[birth_gan]
-    return {}
-
-
-def get_cycle_stage_for_palace(palace: str, age: int, major_fate_year: int) -> str:
-    """
-    根据年龄和大限年数获取宫位的成住坏空阶段
-
-    Args:
-        palace: 宫位名称
-        age: 当前年龄
-        major_fate_year: 大限第几年 (1-10)
-
-    Returns:
-        成/住/坏/空
-    """
-    # 基础阶段 = (年龄 % 20) // 5  # 0-3对应成住坏空
-    # 大限调整 = major_fate_year % 4
-    # 综合计算
-    base_stage = (age % 20) // 5
-    fate_adjust = major_fate_year % 4
-
-    stage_index = (base_stage + fate_adjust) % 4
-    stages = ["成", "住", "坏", "空"]
-    return stages[stage_index]
-
-
-def get_transform_cycle_impact(transform_type: str, palace: str) -> Dict[str, str]:
-    """
-    获取四化对成住坏空的影响
-
-    Args:
-        transform_type: 化禄/化权/化科/化忌
-        palace: 宫位
-
-    Returns:
-        影响描述字典
-    """
-    cycle_impacts = {
-        "化禄": {
-            "成": "加速形成，带来机遇",
-            "住": "巩固稳定，积累财富",
-            "坏": "表面繁华，内在空虚",
-            "空": "虚假机遇，难以兑现"
-        },
-        "化权": {
-            "成": "增强控制，快速成长",
-            "住": "权力巩固，地位稳固",
-            "坏": "权力斗争，是非增多",
-            "空": "虚假权威，难以服众"
-        },
-        "化科": {
-            "成": "名声初显，才华展露",
-            "住": "名声稳定，贵人扶持",
-            "坏": "名声受损，小人作祟",
-            "空": "徒有虚名，才华被埋"
-        },
-        "化忌": {
-            "成": "困难初现，根基不稳",
-            "住": "持续压力，动力不足",
-            "坏": "问题爆发，需要化解",
-            "空": "彻底失败，一无所有"
-        }
-    }
-    return cycle_impacts.get(transform_type, {})
-
-
-# ============ Data Models ============
-
-class FateLevel(str, Enum):
-    """运限级别"""
-    MAJOR_FATE = "大限"      # 10年大运
-    YEAR_FATE = "流年"       # 一年
-    MONTH_FATE = "流月"      # 一月
-    DAY_FATE = "流日"        # 一日
-    HOUR_FATE = "流时"       # 一时辰(2小时)
-
-
-class LiuYaoCategory(str, Enum):
-    """流曜类别"""
-    BOSHISHI_SHEN = "博士十二神"
-    JIANGSHIQIAN_SHEN = "将前十神"
-    SUIQIAN_SHIER_SHEN = "岁前十二神"
-    FUZHU_SHAHUA = "辅佐煞化流曜"
-
-
-class CycleStage(Enum):
-    """成住坏空四阶段"""
-    CHENG = "成"  # 形成期
-    ZHU = "住"   # 稳定期
-    HUAI = "坏"  # 衰败期
-    KONG = "空"  # 空亡期
-
-
-# 宫位与成住坏空的对应关系（根据大限流年）
-CYCLE_STAGE_PALACE_MAP = {
-    # 命宫相关 - 人生核心
-    "命宫": {"成": "出生-童年", "住": "青年-中年", "坏": "中老年", "空": "晚年"},
-    # 兄弟宫 - 手足之情
-    "兄弟宫": {"成": "兄弟相识", "住": "兄弟情谊", "坏": "兄弟隔阂", "空": "兄弟分离"},
-    # 夫妻宫 - 婚姻感情
-    "夫妻宫": {"成": "姻缘形成", "住": "婚姻稳定", "坏": "婚姻危机", "空": "姻缘空亡"},
-    # 子女宫 - 子嗣后代
-    "子女宫": {"成": "子女诞生", "住": "子女成长", "坏": "子女问题", "空": "子女缘薄"},
-    # 财帛宫 - 财富状况
-    "财帛宫": {"成": "财富积累", "住": "财富稳定", "坏": "财富损耗", "空": "财富空亡"},
-    # 疾厄宫 - 健康疾病
-    "疾厄宫": {"成": "身心调理", "住": "健康稳定", "坏": "疾病出现", "空": "健康空亡"},
-    # 迁移宫 - 外出发展
-    "迁移宫": {"成": "外出起步", "住": "发展稳定", "坏": "变动挫折", "空": "迁移空亡"},
-    # 交友宫 - 人际往来
-    "交友宫": {"成": "人脉建立", "住": "人脉稳定", "坏": "人际纠纷", "空": "人脉空亡"},
-    # 官禄宫 - 事业发展
-    "事业宫": {"成": "事业起步", "住": "事业稳定", "坏": "事业瓶颈", "空": "事业退隐"},
-    # 田宅宫 - 房产家业
-    "田宅宫": {"成": "置产起步", "住": "家业稳定", "坏": "家产损耗", "空": "家业空亡"},
-    # 福德宫 - 福气运势
-    "福德宫": {"成": "福气初积", "住": "福报稳定", "坏": "福气损耗", "空": "福报空亡"},
-    # 父母宫 - 父母长辈
-    "父母宫": {"成": "父母养护", "住": "父母安康", "坏": "父母健康问题", "空": "父母缘薄"},
-}
-
-
-@dataclass
-class MajorFate:
-    """大限信息"""
-    index: int              # 第几大限(1-12)
-    start_age: int          # 起始年龄
-    end_age: int            # 结束年龄
-    palace: str             # 所在宫位
-    hub_palace: str         # 枢纽宫位
-    stars: List[str]        # 大限宫内星曜
-    transformation: str    # 四化情况
-    description: str        # 大限概述
-    star_system: str = ""   # 主星系统(紫微星系/天府星系/杀破狼星系)
-    hub_star: str = ""      # 枢纽星(如紫微、天府、七杀)
-
-
-@dataclass
-class YearFate:
-    """流年信息"""
-    year: int               # 年份
-    zodiac: str              # 生肖
-    gan_zhi: str            # 干支
-    tai_sui_palace: str     # 太岁落宫
-    tai_sui_relationship: str  # 与命宫关系
-    stars: List[str]        # 流年星曜
-    liu_yao: Dict[str, List[str]] = field(default_factory=dict)  # 流曜
-    description: str = ""    # 流年概述
-
-
-@dataclass
-class MonthFate:
-    """流月信息"""
-    month: int              # 月份(1-12)
-    tai_sui_palace: str     # 流月太岁落宫
-    liu_yao: Dict[str, List[str]] = field(default_factory=dict)
-    description: str = ""
-
-
-@dataclass
-class DayFate:
-    """流日信息"""
-    day: int                # 日期
-    tai_sui_palace: str     # 流日太岁落宫
-    tai_sui_relationship: str
-    description: str = ""
-
-
-@dataclass
-class HourFate:
-    """流时信息"""
-    hour: int               # 时辰(1-12)
-    tai_sui_palace: str     # 流时太岁落宫
-    tai_sui_relationship: str
-    description: str = ""
-
-
-@dataclass
-class TimingAnalysis:
-    """时间分析结果"""
-    major_fates: List[MajorFate] = field(default_factory=list)
-    current_major_fate: Optional[MajorFate] = None
-    year_fates: List[YearFate] = field(default_factory=list)
-    current_year_fate: Optional[YearFate] = None
-    timing_triggers: List[Dict[str, Any]] = field(default_factory=list)
-    hub_palace_analysis: Dict[str, Any] = field(default_factory=dict)
-    recommendations: List[str] = field(default_factory=list)
-    # 新增字段：大限和流年分析
-    major_fate_table: List[Dict[str, Any]] = field(default_factory=list)  # 大限表格
-    year_predictions: List[Dict[str, Any]] = field(default_factory=list)   # 流年预测列表
-    time_anchors: List[Dict[str, Any]] = field(default_factory=list)      # 时间锚点
 
 
 # ============ Timing Rules Loader ============
