@@ -8,7 +8,18 @@ LLM提示词模块 - 为分析Agent提供LLM调用能力
 """
 
 from typing import Dict, Any, List, Optional
-from dataclasses import dataclass
+
+from .llm_prompts_types import LLMResponse
+from .llm_prompts_constants import (
+    load_transform_cases,
+    load_pattern_cases,
+    load_palace_cases,
+    load_star_cases,
+    load_daxian_cases,
+    load_six_relation_cases,
+    load_flying_star_rules,
+    _get_knowledge_base_dir,
+)
 
 # 导入增强版提示词（基于顶级Agent提示词研究）
 try:
@@ -36,76 +47,7 @@ except ImportError:
     _SIYIN_LOADER = None
 
 
-# ============ 案例库加载 ============
-
-import os
-import json
-
-def _get_cases_dir() -> str:
-    """获取案例库目录路径"""
-    return os.path.join(
-        os.path.dirname(__file__),
-        "..", "resources", "cases"
-    )
-
-def _load_case_file(filename: str) -> Dict[str, Any]:
-    """加载案例文件"""
-    cases_path = os.path.join(_get_cases_dir(), filename)
-    if os.path.exists(cases_path):
-        try:
-            with open(cases_path, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            pass
-    return {"cases": []}
-
-def load_transform_cases() -> List[Dict[str, Any]]:
-    """加载四化案例库"""
-    data = _load_case_file("transform_cases.json")
-    return data.get("cases", [])
-
-def load_pattern_cases() -> List[Dict[str, Any]]:
-    """加载格局案例库"""
-    data = _load_case_file("pattern_cases.json")
-    return data.get("cases", [])
-
-def load_palace_cases() -> List[Dict[str, Any]]:
-    """加载宫位案例库"""
-    data = _load_case_file("palace_cases.json")
-    return data.get("cases", [])
-
-def load_star_cases() -> List[Dict[str, Any]]:
-    """加载星曜案例库"""
-    data = _load_case_file("star_cases.json")
-    return data.get("cases", [])
-
-def load_daxian_cases() -> List[Dict[str, Any]]:
-    """加载大限案例库"""
-    data = _load_case_file("daxian_cases.json")
-    return data.get("cases", [])
-
-def load_six_relation_cases() -> List[Dict[str, Any]]:
-    """加载六亲论断案例库"""
-    data = _load_case_file("six_relation_cases.json")
-    return data.get("cases", [])
-
-def _get_knowledge_base_dir() -> str:
-    """获取知识库目录路径"""
-    return os.path.join(
-        os.path.dirname(__file__),
-        "..", "..", "..", "data_source", "knowledge_base", "divination"
-    )
-
-def load_flying_star_rules() -> Dict[str, Any]:
-    """加载飞星四化核心规则库"""
-    rules_path = os.path.join(_get_knowledge_base_dir(), "flying_star_transforms.json")
-    if os.path.exists(rules_path):
-        try:
-            with open(rules_path, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            pass
-    return {"rules": {}}
+# ============ 飞星四化规则格式化 ============
 
 def format_flying_star_rules() -> str:
     """格式化飞星四化规则为提示词文本"""
@@ -1474,16 +1416,6 @@ def build_event_predict_user_prompt(
 5. 提供具体的行动建议和最优时机窗口"""
 
     return user_prompt
-
-
-# ============ LLM调用辅助函数 ============
-
-@dataclass
-class LLMResponse:
-    """LLM响应封装"""
-    content: str
-    parsed_json: Optional[Dict[str, Any]] = None
-    raw_response: Optional[str] = None
 
 
 def format_analysis_as_text(analysis_result: Dict[str, Any]) -> str:
