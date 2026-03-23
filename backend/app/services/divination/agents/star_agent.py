@@ -8,261 +8,33 @@
 2. 分析十四正曜、辅星、煞星的状态
 3. 计算星曜的庙旺平陷
 4. 生成星曜解读
+
+模块化结构：
+- star_constants.py: 常量定义（宫位顺序、星曜五行属性、五行局增强关系）
+- star_types.py: 类型定义（enums、dataclasses）
+- star_core.py: 核心计算函数（庙旺平陷计算、五行局调整）
 """
 
 import json
 import os
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any
-from enum import Enum
 
 from .llm_prompts import STAR_SYSTEM_PROMPT, build_star_user_prompt
 from .siyin_loader import SiyinLoader, get_siyin_interpretation
-from ..wuxing_calculator import WuXingJuType
-
-# 宫位顺序
-PALACE_ORDER = [
-    "命宫", "兄弟宫", "夫妻宫", "子女宫",
-    "财帛宫", "疾厄宫", "迁移宫", "仆役宫",
-    "官禄宫", "田宅宫", "父母宫", "福德宫"
-]
-
-# 地支到宫位索引的映射
-BRANCH_TO_INDEX = {
-    "子": 0, "丑": 1, "寅": 2, "卯": 3,
-    "辰": 4, "巳": 5, "午": 6, "未": 7,
-    "申": 8, "酉": 9, "戌": 10, "亥": 11
-}
-
-
-# ============ 五行局-庙旺平陷判断辅助函数 ============
-
-# 星曜五行属性映射（来自 stars-attributes.json）
-STAR_WUXING_MAP = {
-    # 十四正曜
-    "紫微": "土",
-    "天机": "木",
-    "太阳": "火",
-    "武曲": "金",
-    "天同": "水",
-    "廉贞": "火",
-    "天府": "土",
-    "太阴": "水",
-    "贪狼": "木",
-    "巨门": "水",  # 阴水
-    "天相": "水",
-    "天梁": "土",
-    "七杀": "金",
-    "破军": "水",
-    # 辅曜
-    "左辅": "土",
-    "右弼": "水",
-    "天魁": "火",
-    "天钺": "火",
-    # 佐曜
-    "文昌": "金",
-    "文曲": "水",
-    "禄存": "土",
-    "天马": "火",
-    # 煞星
-    "擎羊": "金",
-    "陀罗": "土",
-    "火星": "火",
-    "铃星": "火",
-    "地空": "火",
-    "地劫": "水",  # 阴水
-}
-
-# 五行局与星曜的增强关系
-# 格式：{五行局: {星曜: 提升等级}}
-# 当星曜五行与五行局相同时，该星曜在判断庙旺平时可提升一级
-WUXING_JU_STAR_BOOST = {
-    WuXingJuType.WATER_TWO: {
-        "太阴": "水性星曜在太阴更旺，太阴落水二局旺上叠旺",
-        "天同": "水性星曜，天同与太阴同属水牲，互助有力",
-        "天相": "水牲星，天相落水二局更吉",
-        "破军": "水性星曜，破军落水二局格局更佳",
-    },
-    WuXingJuType.WOOD_THREE: {
-        "天机": "木性星曜，天机落木三局智慧之星更旺",
-        "太阳": "木生火，但太阳为火牲，天机为木牲，相得益彰",
-        "天同": "水生木，天同与天机木性互助",
-        "贪狼": "木牲星，贪狼落木三局野心与智慧并存",
-    },
-    WuXingJuType.GOLD_FOUR: {
-        "武曲": "金牲星，武曲落金四局财权两旺",
-        "天府": "土金相生，天府落金四局更吉",
-        "七杀": "金牲星，七杀落金四局威权更显",
-    },
-    WuXingJuType.EARTH_FIVE: {
-        "紫微": "土牲星，紫微落土五局帝王之星更旺",
-        "天府": "土牲星，天府土五局财库丰盈",
-        "天相": "水牲星，但土能防水，天相落土五局有印星之力",
-        "巨门": "土牲星，巨门落土五局能言善辩",
-        "天梁": "土牲星，天梁落土五局福荫寿长",
-    },
-    WuXingJuType.FIRE_SIX: {
-        "廉贞": "火牲星，廉贞落火六局清廉正直更旺",
-        "七杀": "金牲星，火炼金成器，七杀落火六局威权显赫",
-        "太阳": "火牲星，太阳落火六局光辉照世",
-        "天梁": "土生金，但天梁与太阳火性有光",
-    },
-}
-
-# 五行相生相克表
-WUXING_RELATIONS = {
-    "木": {"生": "火", "克": "土", "被生": "水", "被克": "金"},
-    "火": {"生": "土", "克": "金", "被生": "木", "被克": "水"},
-    "土": {"生": "金", "克": "水", "被生": "火", "被克": "木"},
-    "金": {"生": "水", "克": "木", "被生": "土", "被克": "火"},
-    "水": {"生": "木", "克": "火", "被生": "金", "被克": "土"},
-}
-
-
-def get_miao_wang_by_wuxing_ju(
-    star: str,
-    palace: str,
-    wuxing_ju: str
-) -> Dict[str, Any]:
-    """
-    根据星曜、宫位和五行局计算庙旺平陷
-
-    Args:
-        star: 星曜名称
-        palace: 宫位名称
-        wuxing_ju: 五行局（如"水二局"、"木三局"等）
-
-    Returns:
-        Dict包含:
-            - level: 庙/旺/平/陷
-            - base_level: 基于地支判断的基础等级
-            - wuxing_adjustment: 五行局调整说明
-            - wuxing_influence: 五行局影响描述
-    """
-    # 解析五行局类型
-    wuxing_ju_type = None
-    for jut in WuXingJuType:
-        if jut.value == wuxing_ju or jut.value.replace("局", "") in wuxing_ju:
-            wuxing_ju_type = jut
-            break
-
-    if wuxing_ju_type is None:
-        return {
-            "level": "平",
-            "base_level": "平",
-            "wuxing_adjustment": 0,
-            "wuxing_influence": f"未知五行局: {wuxing_ju}，无法判断五行影响",
-        }
-
-    # 获取星曜五行属性
-    star_wuxing = STAR_WUXING_MAP.get(star, None)
-    if star_wuxing is None:
-        return {
-            "level": "平",
-            "base_level": "平",
-            "wuxing_adjustment": 0,
-            "wuxing_influence": f"星曜 {star} 五行属性未知，默认为平",
-        }
-
-    # 判断五行局增强（与五行局相同则增强）
-    wuxing_ju_element = {
-        WuXingJuType.WATER_TWO: "水",
-        WuXingJuType.WOOD_THREE: "木",
-        WuXingJuType.GOLD_FOUR: "金",
-        WuXingJuType.EARTH_FIVE: "土",
-        WuXingJuType.FIRE_SIX: "火",
-    }.get(wuxing_ju_type, "")
-
-    # 计算五行关系
-    base_result = {
-        "level": "平",
-        "base_level": "平",
-        "wuxing_adjustment": 0,
-        "wuxing_influence": "",
-    }
-
-    if star_wuxing == wuxing_ju_element:
-        # 星曜五行与五行局相同，获得增强
-        base_result["wuxing_adjustment"] = 1
-        base_result["wuxing_influence"] = WUXING_JU_STAR_BOOST.get(wuxing_ju_type, {}).get(
-            star,
-            f"{star}属{star_wuxing}性，与{wuxing_ju}相合，得地而旺"
-        )
-    else:
-        # 检查是否有特定增强关系
-        boost_desc = WUXING_JU_STAR_BOOST.get(wuxing_ju_type, {}).get(star, "")
-        if boost_desc:
-            base_result["wuxing_adjustment"] = 1
-            base_result["wuxing_influence"] = boost_desc
-        else:
-            base_result["wuxing_adjustment"] = 0
-            relations = WUXING_RELATIONS.get(star_wuxing, {})
-            if wuxing_ju_element == relations.get("被生"):
-                base_result["wuxing_influence"] = f"{star}属{star_wuxing}性，{wuxing_ju}生助{star_wuxing}，星曜得地"
-            elif wuxing_ju_element == relations.get("生"):
-                base_result["wuxing_influence"] = f"{star}属{star_wuxing}性，{wuxing_ju}泄气，星曜稍弱"
-            elif wuxing_ju_element == relations.get("克"):
-                base_result["wuxing_influence"] = f"{star}属{star_wuxing}性，{wuxing_ju}克制{star_wuxing}，星曜受制"
-            elif wuxing_ju_element == relations.get("被克"):
-                base_result["wuxing_influence"] = f"{star}属{star_wuxing}性，{star_wuxing}克{wuxing_ju}，星曜有力"
-            else:
-                base_result["wuxing_influence"] = f"{star}属{star_wuxing}性，{wuxing_ju}与{star_wuxing}无直接生克关系"
-
-    return base_result
-
-
-def apply_wuxing_adjustment(base_level: str, adjustment: int) -> str:
-    """
-    根据五行局调整应用等级变化
-
-    Args:
-        base_level: 基础等级（庙/旺/平/陷）
-        adjustment: 调整值（1=升一级，-1=降一级，0=不变）
-
-    Returns:
-        调整后的等级
-    """
-    level_order = ["陷", "平", "旺", "庙"]
-    try:
-        base_idx = level_order.index(base_level)
-        new_idx = max(0, min(len(level_order) - 1, base_idx + adjustment))
-        return level_order[new_idx]
-    except ValueError:
-        return base_level
-
-
-class StarLevelType(str, Enum):
-    """星曜庙旺平陷等级"""
-    MIAO = "庙"   # 庙旺 - 最吉
-    WANG = "旺"   # 旺 - 次吉
-    PING = "平"   # 平 - 中等
-    XIAN = "陷"   # 陷 - 凶
-
-
-@dataclass
-class StarAnalysisResult:
-    """单颗星曜分析结果"""
-    star_name: str
-    palace: str
-    level: str
-    level_type: str
-    category: str
-    interpretation: str
-    attributes: Dict[str, Any] = field(default_factory=dict)
-    wuxing_ju: str = ""  # 五行局
-    wuxing_influence: str = ""  # 五行局影响说明
-    base_level: str = ""  # 基础等级（地支判断）
-
-
-@dataclass
-class StarAnalysis:
-    """星曜分析结果"""
-    main_stars: List[StarAnalysisResult] = field(default_factory=list)
-    auxiliary_stars: List[StarAnalysisResult] = field(default_factory=list)
-    sha_stars: List[StarAnalysisResult] = field(default_factory=list)
-    transform_stars: List[StarAnalysisResult] = field(default_factory=list)
-    palace_star_summary: Dict[str, List[str]] = field(default_factory=dict)
-    total_stars_count: int = 0
+from .star_constants import (
+    PALACE_ORDER,
+    BRANCH_TO_INDEX,
+)
+from .star_types import (
+    StarLevelType,
+    StarAnalysisResult,
+    StarAnalysis,
+)
+from .star_core import (
+    get_miao_wang_by_wuxing_ju,
+    apply_wuxing_adjustment,
+)
 
 
 class StarAgent:

@@ -5,158 +5,34 @@ SynthesisAgent - 综合分析代理
 - 聚合各agent的分析结果
 - 解决冲突观点
 - 生成综合建议
+
+模块化结构：
+- synthesis_constants.py: 常量定义（冲突类型、优先级规则、星曜分类）
+- synthesis_types.py: 类型定义（dataclasses）
 """
 
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, field
 from enum import Enum
 
-
-# ============ Data Models ============
-
-class AnalysisPriority(str, Enum):
-    """分析优先级"""
-    HIGH = "高"
-    MEDIUM = "中"
-    LOW = "低"
-
-
-@dataclass
-class AgentResult:
-    """各agent的分析结果"""
-    agent_name: str          # agent名称
-    content: str            # 分析内容
-    priority: AnalysisPriority = AnalysisPriority.MEDIUM
-    confidence: float = 0.8  # 置信度 0-1
-    conflicts_with: List[str] = field(default_factory=list)  # 与哪些agent有冲突
-
-
-@dataclass
-class StarAnalysis:
-    """星曜分析结果"""
-    main_stars: List[str]           # 主星
-    assistant_stars: List[str]       # 辅星
-    marginal_stars: List[str]        # 杂曜
-    transforming_stars: List[str]   # 四化星
-    key_observations: List[str] = field(default_factory=list)
-    summary: str = ""
-
-
-@dataclass
-class PalaceAnalysis:
-    """宫位分析结果"""
-    palace_strengths: Dict[str, float] = field(default_factory=dict)  # 宫位强弱
-    key_palaces: Dict[str, str] = field(default_factory=dict)  # 关键宫位
-    observations: List[str] = field(default_factory=list)
-    summary: str = ""
-
-
-@dataclass
-class PatternAnalysis:
-    """格局分析结果"""
-    major_patterns: List[str] = field(default_factory=list)
-    minor_patterns: List[str] = field(default_factory=list)
-    observations: List[str] = field(default_factory=list)
-    summary: str = ""
-
-
-@dataclass
-class TransformAnalysis:
-    """四化分析结果"""
-    original_transforms: Dict[str, str] = field(default_factory=dict)  # 原局四化
-    current_transforms: Dict[str, str] = field(default_factory=dict)  # 运限四化
-    observations: List[str] = field(default_factory=list)
-    summary: str = ""
-
-
-@dataclass
-class TimingAnalysis:
-    """时机分析结果(简化版)"""
-    current_period: str = ""
-    year_fate: str = ""
-    key_timing: List[str] = field(default_factory=list)
-    observations: List[str] = field(default_factory=list)
-    summary: str = ""
-
-
-@dataclass
-class SynthesisReport:
-    """综合报告"""
-    # 基础信息
-    chart_overview: str = ""
-    birth_info: Dict[str, Any] = field(default_factory=dict)
-
-    # 各维度分析
-    star_analysis: StarAnalysis = field(default_factory=lambda: StarAnalysis([], [], [], []))
-    palace_analysis: PalaceAnalysis = field(default_factory=lambda: PalaceAnalysis("", "", ""))
-    pattern_analysis: PatternAnalysis = field(default_factory=lambda: PatternAnalysis("", []))
-    transform_analysis: TransformAnalysis = field(default_factory=lambda: TransformAnalysis([]))
-    timing_analysis: TimingAnalysis = field(default_factory=lambda: TimingAnalysis([]))
-
-    # 综合结论
-    overall_assessment: str = ""
-    strengths: List[str] = field(default_factory=list)
-    weaknesses: List[str] = field(default_factory=list)
-    recommendations: List[str] = field(default_factory=list)
-
-    # 冲突解决
-    conflict_resolutions: Dict[str, str] = field(default_factory=dict)
-
-    def to_dict(self) -> Dict[str, Any]:
-        """转换为字典"""
-        return {
-            "chart_overview": self.chart_overview,
-            "birth_info": self.birth_info,
-            "star_analysis": {
-                "main_stars": self.star_analysis.main_stars,
-                "assistant_stars": self.star_analysis.assistant_stars,
-                "marginal_stars": self.star_analysis.marginal_stars,
-                "transforming_stars": self.star_analysis.transforming_stars,
-                "key_observations": self.star_analysis.key_observations,
-                "summary": self.star_analysis.summary
-            },
-            "palace_analysis": {
-                "palace_strengths": self.palace_analysis.palace_strengths,
-                "key_palaces": self.palace_analysis.key_palaces,
-                "observations": self.palace_analysis.observations,
-                "summary": self.palace_analysis.summary
-            },
-            "pattern_analysis": {
-                "major_patterns": self.pattern_analysis.major_patterns,
-                "minor_patterns": self.pattern_analysis.minor_patterns,
-                "observations": self.pattern_analysis.observations,
-                "summary": self.pattern_analysis.summary
-            },
-            "transform_analysis": {
-                "original_transforms": self.transform_analysis.original_transforms,
-                "current_transforms": self.transform_analysis.current_transforms,
-                "observations": self.transform_analysis.observations,
-                "summary": self.transform_analysis.summary
-            },
-            "timing_analysis": {
-                "current_period": self.timing_analysis.current_period,
-                "year_fate": self.timing_analysis.year_fate,
-                "key_timing": self.timing_analysis.key_timing,
-                "observations": self.timing_analysis.observations,
-                "summary": self.timing_analysis.summary
-            },
-            "overall_assessment": self.overall_assessment,
-            "strengths": self.strengths,
-            "weaknesses": self.weaknesses,
-            "recommendations": self.recommendations,
-            "conflict_resolutions": self.conflict_resolutions
-        }
-
-
-# ============ Conflict Resolution Rules ============
-
-class ConflictType(Enum):
-    """冲突类型枚举"""
-    REAL_CONFLICT = "real_conflict"           # 真正的冲突（性质相反且影响同一事务）
-    TRANSFORMABLE = "transformable"            # 可转化类型（某些凶格在特定条件下可解）
-    FALSE_POSITIVE = "false_positive"         # 误判（看起来冲突但实际不冲突）
-    COMPLEMENTARY = "complementary"           # 互补关系（一方描述细节另一方描述全局）
-    NO_CONFLICT = "no_conflict"               # 无冲突
+from .synthesis_constants import (
+    ConflictType,
+    PRIORITY_RULES,
+    PALACE_RELATIONS,
+    STAR_CATEGORIES,
+    TRANSFORM_INTERACTIONS,
+    TRANSFORMABLE_PATTERNS,
+)
+from .synthesis_types import (
+    AnalysisPriority,
+    AgentResult,
+    StarAnalysis,
+    PalaceAnalysis,
+    PatternAnalysis,
+    TransformAnalysis,
+    TimingAnalysis,
+    SynthesisReport,
+)
 
 
 class ConflictResolver:
@@ -174,62 +50,12 @@ class ConflictResolver:
     # 时机：运限 > 原局
     # 四化：化忌 > 化禄/化权/化科
 
-    PRIORITY_RULES = {
-        "星曜级别": {
-            "正曜": 3,
-            "副曜": 2,
-            "杂曜": 1
-        },
-        "四化级别": {
-            "化忌": 4,
-            "化权": 3,
-            "化科": 2,
-            "化禄": 2
-        },
-        "时机": {
-            "运限": 2,
-            "原局": 1
-        }
-    }
-
-    # 宫位关系图：哪些宫位相互影响
-    PALACE_RELATIONS = {
-        "财帛宫": {"related": ["命宫", "官禄宫", "福德宫"], "opposes": ["田宅宫"]},
-        "官禄宫": {"related": ["命宫", "财帛宫", "迁移宫"], "opposes": ["兄弟宫"]},
-        "命宫": {"related": ["财帛宫", "官禄宫", "迁移宫"], "opposes": ["福德宫"]},
-        "夫妻宫": {"related": ["官禄宫", "迁移宫", "福德宫"], "opposes": ["田宅宫"]},
-        "迁移宫": {"related": ["命宫", "官禄宫", "仆役宫"], "opposes": ["命宫"]},
-        "福德宫": {"related": ["命宫", "夫妻宫", "田宅宫"], "opposes": ["命宫"]},
-    }
-
-    # 星曜分类：决定优先级
-    STAR_CATEGORIES = {
-        "main_stars": ["紫微", "天机", "太阳", "武曲", "天同", "廉贞", "天府", "太阴", "贪狼", "巨门", "天相", "天梁", "七杀", "破军"],
-        "assistant_stars": ["左辅", "右弼", "文昌", "文曲", "天魁", "天钺", "禄存", "天马"],
-        "transforming_stars": ["化禄", "化权", "化科", "化忌"],
-        "flower_stars": ["红鸾", "天喜", "咸池", "海棠"],
-        "sha_stars": ["擎羊", "陀罗", "火星", "铃星", "地空", "地劫"],
-    }
-
-    # 四化相互作用的规则
-    TRANSFORM_INTERACTIONS = {
-        ("化禄", "化忌"): "相悖",    # 化禄增加vs化忌减少
-        ("化权", "化忌"): "相悖",    # 强势vs阻碍
-        ("化科", "化忌"): "相悖",    # 名声vs阻碍
-        ("化禄", "化权"): "相助",    # 财权双美
-        ("化禄", "化科"): "相助",    # 财名双美
-        ("化权", "化科"): "相助",    # 权名双美
-    }
-
-    # 可转化凶格规则
-    TRANSFORMABLE_PATTERNS = [
-        # (凶格特征, 转化条件, 转化结果)
-        ("桃花星.*煞星", "有化禄或化权", "桃花煞变桃花贵"),
-        ("煞星.*桃花星", "有化科或左辅右弼", "煞星被制化"),
-        ("化忌.*破军", "有化禄或禄存", "破财可解"),
-        ("空亡.*星曜", "有天乙贵人或天马", "凶中带吉"),
-        ("陀罗.*火星", "有天梁或天寿", "擎羊夹忌可解"),
-    ]
+    # 从常量模块导入
+    _PRIORITY_RULES = PRIORITY_RULES
+    _PALACE_RELATIONS = PALACE_RELATIONS
+    _STAR_CATEGORIES = STAR_CATEGORIES
+    _TRANSFORM_INTERACTIONS = TRANSFORM_INTERACTIONS
+    _TRANSFORMABLE_PATTERNS = TRANSFORMABLE_PATTERNS
 
     @classmethod
     def resolve(cls, results: List[AgentResult]) -> str:
@@ -611,7 +437,7 @@ class ConflictResolver:
         import re
 
         # 检查content1中是否有凶格，content2中是否有转化条件
-        for pattern, condition, result in cls.TRANSFORMABLE_PATTERNS:
+        for pattern, condition, result in cls._TRANSFORMABLE_PATTERNS:
             # 检查凶格模式
             has_malefice = re.search(pattern, content1) or re.search(pattern, content2)
             # 检查转化条件

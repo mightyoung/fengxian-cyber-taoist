@@ -8,152 +8,32 @@
 2. 加载宫位强弱评估规则
 3. 计算宫位强弱评分
 4. 评估宫位重点
+
+模块化结构：
+- palace_constants.py: 常量定义（宫位顺序、三方对宫映射、主题规则）
+- palace_types.py: 类型定义（enums、dataclasses）
 """
 
 import json
 import os
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any
-from enum import Enum
 
-# 宫位顺序
-PALACE_ORDER = [
-    "命宫", "兄弟宫", "夫妻宫", "子女宫",
-    "财帛宫", "疾厄宫", "迁移宫", "仆役宫",
-    "官禄宫", "田宅宫", "父母宫", "福德宫"
-]
-
-# 三方宫位映射 (根据紫微斗数典籍的三方四正规则)
-# 三方：指本宫+两个三方宫（隔三位宫）
-# 四正：指对宫（隔六位宫）
-# 正确逻辑：命宫三方是财帛宫、官禄宫、迁移宫
-SANFANG_MAP = {
-    "命宫": ["财帛宫", "官禄宫", "迁移宫"],
-    "兄弟宫": ["夫妻宫", "子女宫", "疾厄宫"],
-    "夫妻宫": ["财帛宫", "迁移宫", "福德宫"],
-    "子女宫": ["财帛宫", "官禄宫", "迁移宫"],
-    "财帛宫": ["命宫", "子女宫", "疾厄宫"],
-    "疾厄宫": ["命宫", "兄弟宫", "子女宫"],
-    "迁移宫": ["命宫", "官禄宫", "仆役宫"],
-    "仆役宫": ["命宫", "迁移宫", "田宅宫"],
-    "官禄宫": ["命宫", "夫妻宫", "子女宫"],
-    "田宅宫": ["兄弟宫", "仆役宫", "福德宫"],
-    "父母宫": ["子女宫", "疾厄宫", "福德宫"],
-    "福德宫": ["夫妻宫", "财帛宫", "田宅宫"]
-}
-
-# 对宫映射（已修正）
-# 规律：相差6位的宫位互为对宫
-# 简记：命↔迁、兄↔仆、夫↔官、子↔田、财↔福、疾↔父
-DUIGONG_MAP = {
-    "命宫": "迁移宫",
-    "兄弟宫": "仆役宫",
-    "夫妻宫": "官禄宫",
-    "子女宫": "田宅宫",
-    "财帛宫": "福德宫",
-    "疾厄宫": "父母宫",
-    "迁移宫": "命宫",
-    "仆役宫": "兄弟宫",
-    "官禄宫": "夫妻宫",
-    "田宅宫": "子女宫",
-    "父母宫": "疾厄宫",
-    "福德宫": "财帛宫",
-    # 兼容旧名称
-    "交友宫": "兄弟宫",  # 仆役宫=交友宫
-}
-
-# 多宫位串联主题规则 (中州派核心论命方法)
-TOPIC_PALACE_CONNECTIONS = {
-    "婚姻": ["夫妻宫", "子女宫", "田宅宫"],
-    "事业": ["官禄宫", "财帛宫", "迁移宫"],
-    "财运": ["财帛宫", "田宅宫", "福德宫"],
-    "健康": ["疾厄宫", "命宫", "父母宫"],
-    "人际关系": ["仆役宫", "兄弟宫", "迁移宫"],
-    "父母": ["父母宫", "命宫", "福德宫"],
-    "子女": ["子女宫", "田宅宫", "夫妻宫"],
-    "房产": ["田宅宫", "夫妻宫", "子女宫"],
-    "学业": ["父母宫", "官禄宫", "命宫"],
-}
-
-
-class PalaceStrengthLevel(str, Enum):
-    """宫位强弱等级"""
-    STRONG = "强"    # 70-100分
-    MEDIUM = "中"    # 40-69分
-    WEAK = "弱"      # 0-39分
-
-
-@dataclass
-class PalaceScore:
-    """宫位评分详情"""
-    palace_name: str
-    total_score: int
-    strength_level: str
-
-    # 各维度得分
-    master_star_score: int = 0
-    auxiliary_star_score: int = 0
-    sha_star_deduction: int = 0
-    transform_bonus_score: int = 0
-    palace_environment_score: int = 0
-
-    # 加权调整
-    weighted_score: int = 0
-
-
-@dataclass
-class PalaceAnalysisResult:
-    """单个宫位分析结果"""
-    palace_name: str
-    branch: str
-    tiangan: str
-    score: PalaceScore
-    stars_in_palace: List[Dict[str, Any]]
-    focal_point: str
-    interpretation: str
-
-
-@dataclass
-class PalaceAnalysis:
-    """宫位分析结果"""
-    palace_results: List[PalaceAnalysisResult] = field(default_factory=list)
-    strongest_palace: str = ""
-    weakest_palace: str = ""
-    key_palaces: List[str] = field(default_factory=list)
-
-
-@dataclass
-class PalaceConnectionResult:
-    """多宫位串联分析结果"""
-    topic: str
-    connected_palaces: List[str]
-    palace_scores: Dict[str, int]
-    strongest_in_chain: str
-    weakest_in_chain: str
-    overall_score: int
-    connection_analysis: str
-    detailed_interpretation: str
-
-
-@dataclass
-class MultiPalaceConnectionAnalysis:
-    """多宫位串联分析汇总"""
-    topic: str
-    connection_result: PalaceConnectionResult
-    chain_summary: str
-    recommendations: List[str]
-
-
-@dataclass
-class EmptyPalaceAnalysis:
-    """空宫分析结果"""
-    palace_name: str
-    is_empty: bool
-    opposite_palace: str
-    opposite_stars: List[Dict[str, Any]]
-    projection_strength: str  # 强/中/弱
-    projection_analysis: str
-    influence_description: str
+from .palace_constants import (
+    PALACE_ORDER,
+    SANFANG_MAP,
+    DUIGONG_MAP,
+    TOPIC_PALACE_CONNECTIONS,
+)
+from .palace_types import (
+    PalaceStrengthLevel,
+    PalaceScore,
+    PalaceAnalysisResult,
+    PalaceAnalysis,
+    PalaceConnectionResult,
+    MultiPalaceConnectionAnalysis,
+    EmptyPalaceAnalysis,
+)
 
 
 class PalaceAgent:
