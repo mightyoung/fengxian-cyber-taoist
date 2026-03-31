@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Serif_SC, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { QueryProvider } from "@/components/providers/query-provider";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { TopNav } from "@/components/top-nav";
 import { Sidebar } from "@/components/sidebar";
 import "./globals.css";
@@ -43,17 +44,19 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="flex min-h-screen flex-col">
-              <TopNav />
-              <div className="flex flex-1">
-                <Sidebar />
-                <main className="flex-1 overflow-auto bg-background">
-                  <div className="container mx-auto p-4 md:p-6 lg:p-8">
-                    {children}
-                  </div>
-                </main>
+            <AuthProvider>
+              <div className="flex min-h-screen flex-col">
+                <TopNav />
+                <div className="flex flex-1">
+                  <Sidebar />
+                  <main className="flex-1 overflow-auto bg-background">
+                    <div className="container mx-auto p-4 md:p-6 lg:p-8">
+                      {children}
+                    </div>
+                  </main>
+                </div>
               </div>
-            </div>
+            </AuthProvider>
           </ThemeProvider>
         </QueryProvider>
       </body>
