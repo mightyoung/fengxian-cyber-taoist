@@ -66,12 +66,13 @@ from app.services.divination.agents.timing_agent import (
     TimingAnalysis,
     MajorFate,
     YearFate,
-    FateLevel,
     create_timing_agent,
     LLMTimingAnalyzer,
     llm_analyze_timing,
     llm_analyze_timing_sync,
 )
+
+from app.services.divination.agents.timing_types import FateLevel
 
 from app.services.divination.agents.synthesis_agent import (
     SynthesisAgent,

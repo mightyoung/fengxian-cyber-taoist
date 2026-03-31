@@ -25,9 +25,6 @@ from .timing_types import (
     MajorFate,
     YearFate,
     TimingAnalysis,
-    FateLevel,
-    LiuYaoCategory,
-    CycleStage,
 )
 from .cache_decorator import cached_chart_analysis
 from .timing_core import (
