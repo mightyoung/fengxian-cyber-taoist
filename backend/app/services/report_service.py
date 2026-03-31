@@ -27,6 +27,8 @@ import markdown
 from ..config import Config
 from ..utils.logger import get_logger
 
+logger = get_logger('fengxian_cyber_taoist.report_service')
+
 # Enhanced PDF generation with fpdf2 + CJK support
 try:
     from ..utils.markdown_to_pdf import markdown_to_pdf as enhanced_markdown_to_pdf
@@ -50,8 +52,6 @@ try:
 except ImportError:
     METAPHYSICS_SWARM_AVAILABLE = False
     logger.warning("MetaphysicsSwarm not available, emergence calculation disabled")
-
-logger = get_logger('fengxian_cyber_taoist.report_service')
 
 
 class ReportFormat(str, Enum):

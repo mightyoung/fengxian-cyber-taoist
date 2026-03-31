@@ -466,7 +466,7 @@ class ReportTransformer:
         if synthesis_data and synthesis_data.get("overall_pattern"):
             lines.append(f"| 四化格局 | {synthesis_data.get('overall_pattern', '待分析')} |\n")
         else:
-            lines.append(f"| 四化格局 | 禄在命宫，忌入福德 |\n")
+            lines.append("| 四化格局 | 禄在命宫，忌入福德 |\n")
 
         lines.append("\n")
 
@@ -621,8 +621,8 @@ class ReportTransformer:
                         chain_type = chain.get("type", "")
                         lines.append(f"**【{chain_type}】**\n")
                         lines.append(f"\n- 描述：{desc}\n")
-                        lines.append(f"- 影响：因果链显示此项需要关注\n")
-                        lines.append(f"- 建议：根据因果链指引，谨慎应对\n")
+                        lines.append("- 影响：因果链显示此项需要关注\n")
+                        lines.append("- 建议：根据因果链指引，谨慎应对\n")
                         lines.append("\n")
                         shown_chains += 1
 
@@ -760,7 +760,7 @@ class ReportTransformer:
 
         # 元数据
         lines.append("\n---\n")
-        lines.append(f"\n*报告生成: FengxianCyberTaoist 紫微斗数智能分析系统 (LLM驱动版)*\n")
+        lines.append("\n*报告生成: FengxianCyberTaoist 紫微斗数智能分析系统 (LLM驱动版)*\n")
         lines.append(f"\n*生成日期: {report.generated_at if hasattr(report, 'generated_at') else ''}*\n")
 
         return "".join(lines)
@@ -960,7 +960,8 @@ class ReportTransformer:
     async def transform_report(
         self,
         report: ThreeLayerPredictionReport,
-        style: str = "professional_plain"
+        style: str = "professional_plain",
+        synthesis_data: Optional[Dict[str, Any]] = None
     ) -> str:
         """
         异步转换报告
@@ -972,6 +973,7 @@ class ReportTransformer:
             style: 转换风格
                 - "professional_plain": 专业通俗版 (Report C)
                 - "ultra_plain": 超通俗版
+            synthesis_data: 综合分析数据
 
         Returns:
             转换后的报告内容

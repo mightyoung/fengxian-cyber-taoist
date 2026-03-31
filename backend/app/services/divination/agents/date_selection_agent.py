@@ -25,6 +25,10 @@ from .date_selection_constants import (
     WUXING_KENG,
 )
 from .date_selection_types import DailyOption, DateSelectionResult
+from .llm_prompts import (
+    DATE_SELECTION_SYSTEM_PROMPT,
+    build_date_selection_user_prompt,
+)
 
 
 class DateSelectionAgent:
@@ -210,7 +214,7 @@ class DateSelectionAgent:
             advantages.append(f"日柱天干{tiangan}生助命宫天干")
         elif WUXING_SHENG.get(minggong_wx, "") == tiangan_wx:
             score += 5
-            advantages.append(f"命宫天干生助日柱天干")
+            advantages.append("命宫天干生助日柱天干")
 
         # 5. 地支与命宫地支相合: +10分
         # 子丑合化土, 寅亥合化木, 卯戌合化火, 辰酉合化金, 巳申合化水, 午未合化火
@@ -687,12 +691,6 @@ async def select_date_async(
 
 
 # ============ LLM增强分析 ============
-
-from typing import Optional
-from .llm_prompts import (
-    DATE_SELECTION_SYSTEM_PROMPT,
-    build_date_selection_user_prompt,
-)
 
 
 class LLMDateSelectionAnalyzer:

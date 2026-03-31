@@ -19,7 +19,7 @@ import json
 import os
 from typing import Dict, List, Optional, Any
 
-from .llm_prompts import STAR_SYSTEM_PROMPT, build_star_user_prompt
+from .llm_prompts import STAR_SYSTEM_PROMPT, build_star_user_prompt, format_analysis_as_text
 from .siyin_loader import SiyinLoader, get_siyin_interpretation
 from .cache_decorator import cached_chart_analysis
 from .star_constants import (

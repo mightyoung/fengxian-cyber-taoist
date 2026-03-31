@@ -20,6 +20,7 @@ MultiAgent Validator - 多Agent共识验证模块
 4. 数据质量分析师 - 验证数据管道完整性和类型匹配
 """
 
+from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any
 import asyncio
 
@@ -257,7 +258,7 @@ class ExpertValidator:
         if star_analysis:
             main_stars = star_analysis.get("main_stars", [])
             if main_stars and main_stars != [{}] and main_stars != ["****"]:
-                validation_results.append(f"✓ 星曜分析完整")
+                validation_results.append("✓ 星曜分析完整")
             else:
                 issues.append("星曜分析数据缺失")
                 validation_results.append("❌ 星曜数据缺失")
@@ -320,7 +321,7 @@ class ExpertValidator:
         # 2. 检查辅星煞星配置
         assistant_stars = star_analysis.get("assistant_stars", []) if star_analysis else []
         if assistant_stars and assistant_stars != []:
-            validation_results.append(f"✓ 辅星配置完整")
+            validation_results.append("✓ 辅星配置完整")
         else:
             validation_results.append("⚠️ 辅星数据缺失")
 
@@ -744,7 +745,7 @@ class MultiAgentValidator:
                     reasoning=f"分析了{star_count}颗主星",
                     key_factors=[f"主星数:{star_count}"]
                 )
-            except Exception as e:
+            except Exception:
                 return None
 
         # PalaceAgent分析
@@ -761,7 +762,7 @@ class MultiAgentValidator:
                     reasoning="宫位结构分析完成",
                     key_factors=["宫位强弱"]
                 )
-            except Exception as e:
+            except Exception:
                 return None
 
         # PatternAgent分析
@@ -778,7 +779,7 @@ class MultiAgentValidator:
                     reasoning="格局分析完成",
                     key_factors=["格局识别"]
                 )
-            except Exception as e:
+            except Exception:
                 return None
 
         # TransformAgent分析
@@ -795,7 +796,7 @@ class MultiAgentValidator:
                     reasoning="四化分析完成",
                     key_factors=["四化飞化"]
                 )
-            except Exception as e:
+            except Exception:
                 return None
 
         # 并行执行所有分析

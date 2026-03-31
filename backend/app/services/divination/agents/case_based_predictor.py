@@ -20,6 +20,15 @@ from typing import Dict, List, Optional, Any, Tuple
 from collections import Counter
 from datetime import datetime, timezone
 
+try:
+    import chromadb
+    from chromadb.config import Settings
+    CHROMA_AVAILABLE = True
+except ImportError:
+    CHROMA_AVAILABLE = False
+    chromadb = None
+    Settings = None
+
 from .chart_vectorizer import (
     ChartVectorizer,
     ChartFeatures,

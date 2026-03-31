@@ -15,6 +15,14 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
 import logging
 
+from .birth_timing_constants import (
+    SHICHEN_HOURS,
+    SHICHEN_DISPLAY,
+    IMPORTANT_STARS,
+    SHA_STARS,
+    STAR_TEMPLE_SCORES,
+)
+from .birth_timing_types import BirthTimingOption, BirthTimingResult
 from app.services.divination.agents.chart_agent import generate_chart_sync
 from app.services.divination.fortune_calculator import (
     DIMENSION_PALACE_MAPPING,
@@ -24,16 +32,6 @@ from app.services.divination.fortune_calculator import (
 from app.services.divination.service_types import fortune_level_from_score
 
 logger = logging.getLogger(__name__)
-
-
-from .birth_timing_constants import (
-    SHICHEN_HOURS,
-    SHICHEN_DISPLAY,
-    IMPORTANT_STARS,
-    SHA_STARS,
-    STAR_TEMPLE_SCORES,
-)
-from .birth_timing_types import BirthTimingOption, BirthTimingResult
 
 
 # ============ 核心类 ============
@@ -1046,7 +1044,7 @@ if __name__ == "__main__":
     print(f"置信度: {result.confidence:.2f}")
 
     if result.best_option:
-        print(f"\n最佳剖腹产时间:")
+        print("\n最佳剖腹产时间:")
         print(f"  日期: {result.best_option.date}")
         print(f"  农历: {result.best_option.lunar_date}")
         print(f"  时辰: {result.best_option.hour}")
