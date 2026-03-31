@@ -62,7 +62,7 @@ class TestVectorDB:
         vdb = VectorDB(connection_url='postgresql://test:test@localhost:5432/fengxian_cyber_taoist_vectors')
 
         assert vdb.conn is not None
-        mock_conn.cursor.assert_called_once()
+        mock_conn.cursor.assert_not_called()  # cursor is called in insert_chart, not __init__
 
     def test_insert_chart(self, mock_pgconnection, sample_embedding, sample_chart_data):
         """Test inserting a chart into the database"""
@@ -212,8 +212,8 @@ class TestVectorDB:
 
     def test_connection_url_construction(self, sample_embedding):
         """Test that VECTOR_DB_URL is correctly constructed from DATABASE_URL"""
-        # Set DATABASE_URL
-        os.environ['DATABASE_URL'] = 'postgresql://user:pass@localhost:5432/test_db'
+        # Set DATABASE_URL with bs_generator_db (one of the supported patterns)
+        os.environ['DATABASE_URL'] = 'postgresql://user:pass@localhost:5432/bs_generator_db'
 
         with patch('psycopg2.connect') as mock_connect:
             mock_conn = MagicMock()
@@ -357,6 +357,7 @@ class TestVectorStoreWithPgvector:
 
     def test_vector_store_add_case_pgvector(self, mock_vector_db):
         """Test adding a case to pgvector"""
+        import importlib
         with patch.dict('sys.modules', {'chromadb': None}):
             with patch('app.utils.vector_db.VectorDB', return_value=mock_vector_db):
                 import app.services.divination.agents.case_based_predictor as cbp
@@ -388,6 +389,7 @@ class TestVectorStoreWithPgvector:
 
     def test_vector_store_search_pgvector(self, mock_vector_db):
         """Test searching for similar cases in pgvector"""
+        import importlib
         with patch.dict('sys.modules', {'chromadb': None}):
             with patch('app.utils.vector_db.VectorDB', return_value=mock_vector_db):
                 import app.services.divination.agents.case_based_predictor as cbp
