@@ -29,15 +29,25 @@ class TokenPayload:
 class JWTAuth:
     """JWT认证服务"""
 
-    # 配置 - 生产环境必须设置 JWT_SECRET_KEY
+    # 配置 - JWT_SECRET_KEY 必须显式设置（无任何静默 fallback）
+    # 生产环境: JWT_SECRET_KEY=xxx
+    # 开发环境: JWT_SECRET_KEY=xxx 或 JWT_DEV_SECRET=xxx（显式启用 dev 模式）
     _secret = os.environ.get('JWT_SECRET_KEY')
-    _is_dev = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
     if not _secret:
-        if _is_dev:
-            _secret = 'dev-only-secret-do-not-use-in-production'
+        # 允许显式设置 JWT_DEV_SECRET 作为开发模式逃生舱（需明确 opt-in）
+        _dev_secret = os.environ.get('JWT_DEV_SECRET')
+        if _dev_secret:
+            import warnings
+            warnings.warn(
+                "JWT: Using JWT_DEV_SECRET (dev mode). "
+                "Set JWT_SECRET_KEY for production.",
+                UserWarning,
+                stacklevel=2,
+            )
+            _secret = _dev_secret
         else:
             raise ValueError(
-                "JWT_SECRET_KEY environment variable must be set in production. "
+                "JWT_SECRET_KEY environment variable must be set. "
                 "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\""
             )
     SECRET_KEY: str = _secret

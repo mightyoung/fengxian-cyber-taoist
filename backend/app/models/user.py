@@ -2,7 +2,8 @@
 User Model - 用户模型
 
 提供用户注册、登录、密码哈希等基本功能。
-基于文件存储，生产环境应使用数据库。
+存储方案: JSON 文件（通过 UserManager 统一管理）。
+如需切换数据库，实现 UserStorageAdapter 接口即可。
 """
 
 import os

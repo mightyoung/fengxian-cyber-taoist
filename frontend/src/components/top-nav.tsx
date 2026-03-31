@@ -12,9 +12,11 @@ import {
   MessageCircle,
   Menu,
   X,
+  LogOut,
 } from "lucide-react";
 import { useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
+import { useAuth } from "@/hooks/use-auth";
 
 const navItems = [
   {
@@ -47,6 +49,7 @@ const navItems = [
 export function TopNav() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, loading, logout } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -84,6 +87,28 @@ export function TopNav() {
 
         {/* Right side actions */}
         <div className="flex items-center gap-2">
+          {!loading && (
+            user ? (
+              <>
+                <span className="text-sm text-muted-foreground hidden sm:inline">
+                  {user.nickname || user.email}
+                </span>
+                <Button variant="ghost" size="sm" onClick={logout} className="gap-1.5">
+                  <LogOut className="h-4 w-4" />
+                  <span className="hidden sm:inline">退出</span>
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link href="/auth/login">
+                <Button variant="ghost" size="sm">登录</Button>
+                </Link>
+                <Link href="/auth/register">
+                <Button variant="default" size="sm">注册</Button>
+                </Link>
+              </>
+            )
+          )}
           <ThemeToggle />
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -115,6 +140,26 @@ export function TopNav() {
                 </Link>
               );
             })}
+            {!loading && (
+              user ? (
+                <button
+                  onClick={() => { logout(); setMobileMenuOpen(false); }}
+                  className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-muted w-full"
+                >
+                  <LogOut className="h-4 w-4" />
+                  退出 ({user.nickname || user.email})
+                </button>
+              ) : (
+                <>
+                  <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-muted">
+                    登录
+                  </Link>
+                  <Link href="/auth/register" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-muted">
+                    注册
+                  </Link>
+                </>
+              )
+            )}
           </nav>
         </div>
       )}
