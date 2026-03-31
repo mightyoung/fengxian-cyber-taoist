@@ -6,14 +6,12 @@ Specialized Routes - 专业分析路由
 
 from flask import Blueprint, request, jsonify
 
-from app.services.divination.api import (
-    analyze_birth_timing_sync,
-    select_date_sync,
-    predict_event_sync,
-    analyze_marriage_compatibility_sync,
-    recommend_career_sync,
-    recommend_name_sync,
-)
+from app.services.divination.agents.birth_timing_agent import analyze_birth_timing_sync
+from app.services.divination.agents.date_selection_agent import select_date_sync
+from app.services.divination.agents.event_predictor_agent import predict_event_sync
+from app.services.divination.agents.marriage_compatibility_agent import analyze_marriage_compatibility_sync
+from app.services.divination.agents.career_recommendation_agent import recommend_career_sync
+from app.services.divination.agents.name_recommendation_agent import recommend_name_sync
 from app.models.divination import DivinationManager
 
 # Create blueprint for specialized routes

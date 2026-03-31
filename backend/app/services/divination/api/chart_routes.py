@@ -8,11 +8,8 @@ import asyncio
 
 from flask import Blueprint, request, jsonify
 
-from app.services.divination.api import (
-    validate_birth_info,
-    ChartAgent,
-    BirthInfo,
-)
+from app.services.divination.api.common import validate_birth_info
+from app.services.divination.agents.chart_agent import ChartAgent, BirthInfo
 from app.models.divination import DivinationManager
 
 # Create blueprint for chart routes

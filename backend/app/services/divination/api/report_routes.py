@@ -10,9 +10,7 @@ from typing import Dict, Any
 
 from flask import Blueprint, request, jsonify
 
-from app.services.divination.api import (
-    _to_dict,
-)
+from app.services.divination.api.common import _to_dict
 from app.models.divination import DivinationManager
 
 # Create blueprint for report routes
@@ -64,13 +62,11 @@ async def _run_parallel_analysis_for_report(chart_data: Dict[str, Any]):
     import asyncio
     from functools import partial
 
-    from app.services.divination.api import (
-        llm_analyze_stars_sync,
-        llm_analyze_palaces_sync,
-        llm_analyze_transforms_sync,
-        llm_analyze_patterns_sync,
-        llm_analyze_timing_sync,
-    )
+    from app.services.divination.agents.star_agent import llm_analyze_stars_sync
+    from app.services.divination.agents.palace_agent import llm_analyze_palaces_sync
+    from app.services.divination.agents.transform_agent import llm_analyze_transforms_sync
+    from app.services.divination.agents.pattern_agent import llm_analyze_patterns_sync
+    from app.services.divination.agents.timing_agent import llm_analyze_timing_sync
 
     loop = asyncio.get_event_loop()
 

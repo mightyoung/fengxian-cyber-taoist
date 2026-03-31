@@ -11,7 +11,7 @@ from typing import Dict, Any, Optional
 
 from flask import Blueprint, request, jsonify
 
-from app.services.divination.api import DATA_BASE_PATH
+from app.services.divination.api.common import DATA_BASE_PATH
 
 # Create blueprint for knowledge routes
 knowledge_routes_bp = Blueprint('knowledge_routes', __name__, url_prefix='')

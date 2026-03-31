@@ -10,22 +10,17 @@ from typing import Dict, Any
 
 from flask import Blueprint, request, jsonify
 
-from app.services.divination.api import (
-    _to_dict,
-    llm_analyze_stars_sync,
-    llm_analyze_palaces_sync,
-    llm_analyze_transforms_sync,
-    llm_analyze_patterns_sync,
-    llm_analyze_timing_sync,
-    analyze_stars_sync,
-    analyze_palaces_sync,
-    get_transform,
-    analyze_wealth_async,
-    analyze_health_sync,
-    analyze_career_sync,
-    analyze_relationship_sync,
-    analyze_education_sync,
-)
+from app.services.divination.api.common import _to_dict
+from app.services.divination.agents.star_agent import llm_analyze_stars_sync, analyze_stars_sync
+from app.services.divination.agents.palace_agent import llm_analyze_palaces_sync, analyze_palaces_sync
+from app.services.divination.agents.transform_agent import llm_analyze_transforms_sync, get_transform
+from app.services.divination.agents.pattern_agent import llm_analyze_patterns_sync
+from app.services.divination.agents.timing_agent import llm_analyze_timing_sync
+from app.services.divination.agents.wealth_agent import analyze_wealth_async
+from app.services.divination.agents.health_agent import analyze_health_sync
+from app.services.divination.agents.career_agent import analyze_career_sync
+from app.services.divination.agents.relationship_agent import analyze_relationship_sync
+from app.services.divination.agents.education_agent import analyze_education_sync
 from app.models.divination import DivinationManager
 
 # Create blueprint for analysis routes

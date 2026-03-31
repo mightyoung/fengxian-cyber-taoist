@@ -19,18 +19,6 @@ export interface AuthTokens {
   refresh_token: string;
 }
 
-interface LoginRequest {
-  email: string;
-  password: string;
-}
-
-interface RegisterRequest {
-  email: string;
-  password: string;
-  phone?: string;
-  nickname?: string;
-}
-
 const ACCESS_TOKEN_KEY = 'auth_access_token';
 const REFRESH_TOKEN_KEY = 'auth_refresh_token';
 
@@ -71,7 +59,12 @@ export function useAuth() {
   useEffect(() => {
     const tokens = getStoredTokens();
     if (!tokens) {
-      setLoading(false);
+      // No token stored — done loading with no user
+      import('react-dom').then(({ unstable_batchedUpdates }) => {
+        unstable_batchedUpdates(() => {
+          setLoading(false);
+        });
+      });
       return;
     }
     fetchAuthUser(tokens.access_token)

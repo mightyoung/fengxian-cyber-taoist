@@ -22,8 +22,16 @@ sys.path.insert(0, backend_dir)
 
 # ============ 测试夹具 ============
 
+@pytest.fixture(autouse=True)
+def setup_jwt_secret():
+    """Set JWT_SECRET_KEY before any app imports."""
+    import os
+    os.environ.setdefault('JWT_SECRET_KEY', 'test-secret-for-e2e')
+    yield
+
+
 @pytest.fixture
-def app():
+def app(setup_jwt_secret):
     """创建测试应用"""
     from app import create_app
     app = create_app()

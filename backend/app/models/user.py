@@ -271,6 +271,19 @@ class UserManager:
         cls.save_user(user)
         return user
 
+    @classmethod
+    def delete_user(cls, user_id: str) -> bool:
+        """删除用户"""
+        filepath = cls._get_user_file(user_id)
+        if not os.path.exists(filepath):
+            return False
+        os.remove(filepath)
+        # 同时删除订阅文件
+        sub_file = os.path.join(cls.USERS_DIR, f"{user_id}_subscription.json")
+        if os.path.exists(sub_file):
+            os.remove(sub_file)
+        return True
+
     # ==================== 密码管理 ====================
 
     @classmethod
