@@ -2,17 +2,17 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Sparkles, LayoutGrid, Users, FileText, MessageCircle, ArrowRight, Heart } from 'lucide-react';
+import { Sparkles, LayoutGrid, Users, FileText, MessageCircle, ArrowRight, Heart, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
 
-// 主线（Divination）置顶，次级功能列后
-const features = [
+// 主线（Divination）置顶，次级功能列后，实验功能折叠
+const primaryFeatures = [
   {
     title: '命盘分析',
     description: '紫微斗数命盘分析，解读您的命运轨迹',
     href: '/birth-chart',
     icon: LayoutGrid,
     color: 'from-purple-500 to-purple-600',
-    tag: '主线',
   },
   {
     title: '姻缘分析',
@@ -20,15 +20,20 @@ const features = [
     href: '/divination/relationship',
     icon: Heart,
     color: 'from-pink-500 to-rose-600',
-    tag: '主线',
   },
+];
+
+const secondaryFeatures = [
   {
     title: '预测报告',
-    description: 'AI 生成的深度预测分析报告',
+    description: '基于命盘生成深度预测分析报告',
     href: '/report',
     icon: FileText,
     color: 'from-blue-500 to-blue-600',
   },
+];
+
+const experimentalFeatures = [
   {
     title: '智能模拟',
     description: '多智能体社会模拟，预测未来发展',
@@ -52,7 +57,38 @@ const features = [
   },
 ];
 
+function FeatureCard({ feature, delay }: { feature: typeof primaryFeatures[0]; delay: number }) {
+  const Icon = feature.icon;
+  return (
+    <Link href={feature.href}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay }}
+        className="group relative overflow-hidden rounded-xl bg-slate-800/50 border border-slate-700/50 p-6 hover:border-[#D4AF37]/30 transition-all duration-300"
+      >
+        <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+        <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${feature.color} mb-4`}>
+          <Icon className="h-6 w-6 text-white" />
+        </div>
+        <h3 className="text-lg font-semibold text-slate-100 mb-2 group-hover:text-[#D4AF37] transition-colors">
+          {feature.title}
+        </h3>
+        <p className="text-sm text-slate-400 mb-4">
+          {feature.description}
+        </p>
+        <div className="flex items-center text-[#D4AF37] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+          进入
+          <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+        </div>
+      </motion.div>
+    </Link>
+  );
+}
+
 export default function Home() {
+  const [showExperimental, setShowExperimental] = useState(false);
+
   return (
     <div className="space-y-12">
       {/* Hero Section */}
@@ -74,48 +110,67 @@ export default function Home() {
         </p>
       </motion.div>
 
-      {/* Features Grid */}
+      {/* Primary Features - 命盘 + 姻缘 */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        transition={{ duration: 0.5, delay: 0.1 }}
       >
-        {features.map((feature, index) => {
-          const Icon = feature.icon;
-          return (
-            <Link key={feature.href} href={feature.href}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 * index }}
-                className="group relative overflow-hidden rounded-xl bg-slate-800/50 border border-slate-700/50 p-6 hover:border-[#D4AF37]/30 transition-all duration-300"
-              >
-                {/* Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-xs px-2 py-1 rounded bg-[#D4AF37]/20 text-[#D4AF37] font-medium">主线</span>
+          <h2 className="text-xl font-heading font-semibold text-slate-100">紫微斗数分析</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {primaryFeatures.map((feature, i) => (
+            <FeatureCard key={feature.href} feature={feature} delay={0.1 * i} />
+          ))}
+        </div>
+      </motion.div>
 
-                {/* Icon */}
-                <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${feature.color} mb-4`}>
-                  <Icon className="h-6 w-6 text-white" />
-                </div>
+      {/* Secondary Features - 报告 */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-xs px-2 py-1 rounded bg-blue-500/20 text-blue-400 font-medium">扩展</span>
+          <h2 className="text-xl font-heading font-semibold text-slate-100">预测报告</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {secondaryFeatures.map((feature, i) => (
+            <FeatureCard key={feature.href} feature={feature} delay={0.1 * i} />
+          ))}
+        </div>
+      </motion.div>
 
-                {/* Content */}
-                <h3 className="text-lg font-semibold text-slate-100 mb-2 group-hover:text-[#D4AF37] transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-slate-400 mb-4">
-                  {feature.description}
-                </p>
+      {/* Experimental Features - Swarm */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <button
+          onClick={() => setShowExperimental(!showExperimental)}
+          className="flex items-center gap-3 mb-4 w-full text-left hover:text-[#D4AF37] transition-colors"
+        >
+          <span className="text-xs px-2 py-1 rounded bg-slate-700/50 text-slate-400 font-medium">实验</span>
+          <h2 className="text-xl font-heading font-semibold text-slate-100">多智能体模拟</h2>
+          <ChevronDown className={`h-5 w-5 text-slate-400 transition-transform ${showExperimental ? 'rotate-180' : ''}`} />
+        </button>
 
-                {/* Arrow */}
-                <div className="flex items-center text-[#D4AF37] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                  进入
-                  <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </motion.div>
-            </Link>
-          );
-        })}
+        {showExperimental && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {experimentalFeatures.map((feature, i) => (
+              <FeatureCard key={feature.href} feature={feature} delay={0.05 * i} />
+            ))}
+          </motion.div>
+        )}
       </motion.div>
 
       {/* Quick Start Section */}
@@ -129,7 +184,7 @@ export default function Home() {
           快速开始
         </h2>
         <p className="text-slate-400 mb-6 max-w-xl mx-auto">
-          输入您的出生信息，即刻生成命盘分析。或者上传文档，开始构建知识图谱并运行模拟预测。
+          输入您的出生信息，即刻生成命盘分析。
         </p>
         <div className="flex justify-center gap-4">
           <Link
@@ -138,13 +193,6 @@ export default function Home() {
           >
             <LayoutGrid className="h-4 w-4" />
             生成命盘
-          </Link>
-          <Link
-            href="/simulation"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-700 hover:bg-slate-600 text-slate-100 font-medium rounded-lg transition-colors"
-          >
-            <Sparkles className="h-4 w-4" />
-            开始模拟
           </Link>
         </div>
       </motion.div>
