@@ -182,10 +182,10 @@ class TestLLMSynthesisFunctions:
 
     def test_llm_analyze_synthesis_function_exists(self):
         """测试 llm_analyze_synthesis 函数存在"""
-        from app.services.divination.agents import LLMSynthesisAnalyzer
+        from app.services.divination.agents.synthesis_agent import LLMSynthesisAnalyzerStandard
 
         # 检查函数是否存在（通过类方法）
-        assert hasattr(LLMSynthesisAnalyzer, 'analyze_with_llm')
+        assert hasattr(LLMSynthesisAnalyzerStandard, 'analyze_with_llm')
 
     def test_llm_analyze_synthesis_sync_returns_dict(self):
         """测试 llm_analyze_synthesis_sync 返回字典"""
