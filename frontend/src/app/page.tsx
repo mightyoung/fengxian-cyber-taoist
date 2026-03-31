@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Sparkles, LayoutGrid, Users, FileText, MessageCircle, ArrowRight, Heart } from 'lucide-react';
 
+// 主线（Divination）置顶，次级功能列后
 const features = [
   {
     title: '命盘分析',
@@ -11,6 +12,7 @@ const features = [
     href: '/birth-chart',
     icon: LayoutGrid,
     color: 'from-purple-500 to-purple-600',
+    tag: '主线',
   },
   {
     title: '姻缘分析',
@@ -18,6 +20,14 @@ const features = [
     href: '/divination/relationship',
     icon: Heart,
     color: 'from-pink-500 to-rose-600',
+    tag: '主线',
+  },
+  {
+    title: '预测报告',
+    description: 'AI 生成的深度预测分析报告',
+    href: '/report',
+    icon: FileText,
+    color: 'from-blue-500 to-blue-600',
   },
   {
     title: '智能模拟',
@@ -34,18 +44,11 @@ const features = [
     color: 'from-emerald-500 to-emerald-600',
   },
   {
-    title: '预测报告',
-    description: 'AI 生成的深度预测分析报告',
-    href: '/report',
-    icon: FileText,
-    color: 'from-blue-500 to-blue-600',
-  },
-  {
     title: '智能交互',
     description: '与模拟智能体实时对话互动',
     href: '/chat',
     icon: MessageCircle,
-    color: 'from-pink-500 to-pink-600',
+    color: 'from-cyan-500 to-cyan-600',
   },
 ];
 

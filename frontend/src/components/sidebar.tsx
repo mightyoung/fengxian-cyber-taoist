@@ -12,6 +12,7 @@ import {
   MessageCircle,
   ChevronLeft,
   ChevronRight,
+  Heart,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -26,6 +27,20 @@ const sidebarItems = [
     href: "/birth-chart",
     icon: LayoutGrid,
     description: "紫微斗数命盘",
+    tag: "主线",
+  },
+  {
+    title: "姻缘分析",
+    href: "/divination/relationship",
+    icon: Heart,
+    description: "姻缘感情分析",
+    tag: "主线",
+  },
+  {
+    title: "预测报告",
+    href: "/report",
+    icon: FileText,
+    description: "AI 分析报告",
   },
   {
     title: "智能模拟",
@@ -38,12 +53,6 @@ const sidebarItems = [
     href: "/graph",
     icon: Users,
     description: "实体关系网络",
-  },
-  {
-    title: "预测报告",
-    href: "/report",
-    icon: FileText,
-    description: "AI 分析报告",
   },
   {
     title: "智能交互",
@@ -106,7 +115,12 @@ export function Sidebar({ className }: SidebarProps) {
               <Icon className={cn("h-5 w-5 shrink-0", isActive && "text-accent")} />
               {!collapsed && (
                 <div className="flex flex-col">
-                  <span className="text-sm font-medium">{item.title}</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm font-medium">{item.title}</span>
+                    {item.tag === '主线' && (
+                      <span className="text-xs px-1 py-0.5 rounded bg-[#D4AF37]/20 text-[#D4AF37]">主</span>
+                    )}
+                  </div>
                   {item.description && (
                     <span className="text-xs text-muted-foreground">
                       {item.description}

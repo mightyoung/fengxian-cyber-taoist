@@ -13,16 +13,30 @@ import {
   Menu,
   X,
   LogOut,
+  Heart,
 } from "lucide-react";
 import { useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 import { useAuth } from "@/hooks/use-auth";
 
+// Divination (主线) 优先，Swarm/其他降为次级
 const navItems = [
   {
     title: "命盘",
     href: "/birth-chart",
     icon: LayoutGrid,
+    tag: "主线",
+  },
+  {
+    title: "姻缘",
+    href: "/divination/relationship",
+    icon: Heart,
+    tag: "主线",
+  },
+  {
+    title: "报告",
+    href: "/report",
+    icon: FileText,
   },
   {
     title: "模拟",
@@ -33,11 +47,6 @@ const navItems = [
     title: "图谱",
     href: "/graph",
     icon: Users,
-  },
-  {
-    title: "报告",
-    href: "/report",
-    icon: FileText,
   },
   {
     title: "交互",
@@ -80,6 +89,9 @@ export function TopNav() {
               >
                 <Icon className="h-4 w-4" />
                 {item.title}
+                {item.tag === '主线' && (
+                  <span className="ml-1 text-xs px-1.5 py-0.5 rounded bg-[#D4AF37]/20 text-[#D4AF37]">主</span>
+                )}
               </Link>
             );
           })}
