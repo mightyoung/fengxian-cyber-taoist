@@ -16,7 +16,7 @@ import type {
   SimulationRunStatus,
 } from '@/types/api';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api/v1';
 
 async function handleResponse<T>(response: Response): Promise<ApiResponse<T>> {
   let json: { success?: boolean; data?: T; error?: string; count?: number } = {};
