@@ -1,12 +1,10 @@
 """
 Divination Persistence Manager - 紫微斗数持久化管理器
 
-负责命盘和报告的持久化存储，使用文件系统+JSON格式。
-存储路径: uploads/divination/charts/{chart_id}/, uploads/divination/reports/{report_id}/
+负责命盘和报告的持久化存储，使用 StorageAdapter 接口。
+存储路径通过环境变量 DATA_DIR 配置。
 """
 
-import os
-import json
 import uuid
 from datetime import datetime
 from typing import Dict, Any, Optional, List
@@ -110,70 +108,47 @@ class PredictionReport:
 class DivinationManager:
     """紫微斗数持久化管理器"""
 
-    # 存储根目录
-    DIVINATION_BASE_DIR = os.path.join(
-        os.path.dirname(__file__), '../uploads/divination'
-    )
-    CHARTS_DIR = os.path.join(DIVINATION_BASE_DIR, 'charts')
-    REPORTS_DIR = os.path.join(DIVINATION_BASE_DIR, 'reports')
-
-    @classmethod
-    def _ensure_dirs(cls):
-        """确保存储目录存在"""
-        os.makedirs(cls.CHARTS_DIR, exist_ok=True)
-        os.makedirs(cls.REPORTS_DIR, exist_ok=True)
-
     @classmethod
     def _get_chart_dir(cls, chart_id: str) -> str:
         """获取命盘目录路径"""
-        return os.path.join(cls.CHARTS_DIR, chart_id)
-
-    @classmethod
-    def _get_chart_meta_path(cls, chart_id: str) -> str:
-        """获取命盘元数据文件路径"""
-        return os.path.join(cls._get_chart_dir(chart_id), 'chart.json')
+        from app.storage.adapter import get_chart_storage
+        return chart_id
 
     @classmethod
     def _get_report_dir(cls, report_id: str) -> str:
         """获取报告目录路径"""
-        return os.path.join(cls.REPORTS_DIR, report_id)
-
-    @classmethod
-    def _get_report_meta_path(cls, report_id: str) -> str:
-        """获取报告元数据文件路径"""
-        return os.path.join(cls._get_report_dir(report_id), 'report.json')
+        return report_id
 
     # ==================== 命盘管理 ====================
 
     @classmethod
+    def _chart_meta_key(cls, chart_id: str) -> str:
+        """获取命盘元数据的存储键"""
+        return f"{chart_id}/chart.json"
+
+    @classmethod
     def save_chart(cls, chart: BirthChart) -> None:
         """保存命盘"""
-        cls._ensure_dirs()
-        chart_dir = cls._get_chart_dir(chart.chart_id)
-        os.makedirs(chart_dir, exist_ok=True)
+        from app.storage.adapter import get_chart_storage
 
         chart.updated_at = datetime.now().isoformat()
-        meta_path = cls._get_chart_meta_path(chart.chart_id)
-
-        with open(meta_path, 'w', encoding='utf-8') as f:
-            json.dump(chart.to_dict(), f, ensure_ascii=False, indent=2)
+        storage = get_chart_storage()
+        storage.save(cls._chart_meta_key(chart.chart_id), chart.to_dict())
 
     @classmethod
     def get_chart(cls, chart_id: str) -> Optional[BirthChart]:
         """获取命盘"""
-        meta_path = cls._get_chart_meta_path(chart_id)
-        if not os.path.exists(meta_path):
-            return None
+        from app.storage.adapter import get_chart_storage
 
-        with open(meta_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        storage = get_chart_storage()
+        data = storage.load(cls._chart_meta_key(chart_id))
+        if data is None:
+            return None
         return BirthChart.from_dict(data)
 
     @classmethod
     def create_chart(cls, birth_info: Dict[str, Any], chart_data: Dict[str, Any]) -> BirthChart:
         """创建新命盘"""
-        cls._ensure_dirs()
-
         chart_id = str(uuid.uuid4())
         now = datetime.now().isoformat()
 
@@ -204,18 +179,16 @@ class DivinationManager:
     @classmethod
     def list_charts(cls, limit: int = 100, offset: int = 0) -> List[BirthChart]:
         """列出命盘（按创建时间倒序）"""
-        cls._ensure_dirs()
+        from app.storage.adapter import get_chart_storage
+
+        storage = get_chart_storage()
+        keys = storage.list_keys()
+        keys = sorted(keys, reverse=True)
 
         charts = []
-        if not os.path.exists(cls.CHARTS_DIR):
-            return charts
-
-        chart_dirs = sorted(
-            [d for d in os.listdir(cls.CHARTS_DIR) if os.path.isdir(os.path.join(cls.CHARTS_DIR, d))],
-            reverse=True
-        )
-
-        for chart_id in chart_dirs[offset:offset + limit]:
+        for key in keys[offset:offset + limit]:
+            # key 格式: chart_id/chart.json
+            chart_id = key.split('/')[0]
             chart = cls.get_chart(chart_id)
             if chart:
                 charts.append(chart)
@@ -225,36 +198,35 @@ class DivinationManager:
     @classmethod
     def delete_chart(cls, chart_id: str) -> bool:
         """删除命盘"""
-        import shutil
-        chart_dir = cls._get_chart_dir(chart_id)
-        if os.path.exists(chart_dir):
-            shutil.rmtree(chart_dir)
-            return True
-        return False
+        from app.storage.adapter import get_chart_storage
+
+        storage = get_chart_storage()
+        return storage.delete(cls._chart_meta_key(chart_id))
 
     # ==================== 报告管理 ====================
 
     @classmethod
+    def _report_meta_key(cls, report_id: str) -> str:
+        """获取报告元数据的存储键"""
+        return f"{report_id}/report.json"
+
+    @classmethod
     def save_report(cls, report: PredictionReport) -> None:
         """保存报告"""
-        cls._ensure_dirs()
-        report_dir = cls._get_report_dir(report.report_id)
-        os.makedirs(report_dir, exist_ok=True)
+        from app.storage.adapter import get_report_storage
 
-        meta_path = cls._get_report_meta_path(report.report_id)
-
-        with open(meta_path, 'w', encoding='utf-8') as f:
-            json.dump(report.to_dict(), f, ensure_ascii=False, indent=2)
+        storage = get_report_storage()
+        storage.save(cls._report_meta_key(report.report_id), report.to_dict())
 
     @classmethod
     def get_report(cls, report_id: str) -> Optional[PredictionReport]:
         """获取报告"""
-        meta_path = cls._get_report_meta_path(report_id)
-        if not os.path.exists(meta_path):
-            return None
+        from app.storage.adapter import get_report_storage
 
-        with open(meta_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        storage = get_report_storage()
+        data = storage.load(cls._report_meta_key(report_id))
+        if data is None:
+            return None
         return PredictionReport.from_dict(data)
 
     @classmethod
@@ -268,8 +240,6 @@ class DivinationManager:
         metadata: Optional[Dict[str, Any]] = None,
     ) -> PredictionReport:
         """创建新报告"""
-        cls._ensure_dirs()
-
         report_id = str(uuid.uuid4())
         now = datetime.now().isoformat()
 
@@ -292,36 +262,31 @@ class DivinationManager:
     @classmethod
     def get_reports_by_chart(cls, chart_id: str) -> List[PredictionReport]:
         """获取指定命盘的所有报告"""
-        cls._ensure_dirs()
+        from app.storage.adapter import get_report_storage
 
+        storage = get_report_storage()
+        keys = storage.list_keys()
         reports = []
-        if not os.path.exists(cls.REPORTS_DIR):
-            return reports
 
-        for report_id in os.listdir(cls.REPORTS_DIR):
-            report_dir = os.path.join(cls.REPORTS_DIR, report_id)
-            if os.path.isdir(report_dir):
-                report = cls.get_report(report_id)
-                if report and report.chart_id == chart_id:
-                    reports.append(report)
+        for key in keys:
+            report_id = key.split('/')[0] if '/' in key else key
+            report = cls.get_report(report_id)
+            if report and report.chart_id == chart_id:
+                reports.append(report)
 
         return reports
 
     @classmethod
     def list_reports(cls, limit: int = 100, offset: int = 0) -> List[PredictionReport]:
         """列出报告（按创建时间倒序）"""
-        cls._ensure_dirs()
+        from app.storage.adapter import get_report_storage
+
+        storage = get_report_storage()
+        keys = sorted(storage.list_keys(), reverse=True)
 
         reports = []
-        if not os.path.exists(cls.REPORTS_DIR):
-            return reports
-
-        report_dirs = sorted(
-            [d for d in os.listdir(cls.REPORTS_DIR) if os.path.isdir(os.path.join(cls.REPORTS_DIR, d))],
-            reverse=True
-        )
-
-        for report_id in report_dirs[offset:offset + limit]:
+        for key in keys[offset:offset + limit]:
+            report_id = key.split('/')[0] if '/' in key else key
             report = cls.get_report(report_id)
             if report:
                 reports.append(report)
@@ -331,9 +296,7 @@ class DivinationManager:
     @classmethod
     def delete_report(cls, report_id: str) -> bool:
         """删除报告"""
-        import shutil
-        report_dir = cls._get_report_dir(report_id)
-        if os.path.exists(report_dir):
-            shutil.rmtree(report_dir)
-            return True
-        return False
+        from app.storage.adapter import get_report_storage
+
+        storage = get_report_storage()
+        return storage.delete(cls._report_meta_key(report_id))

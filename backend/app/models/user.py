@@ -2,12 +2,10 @@
 User Model - 用户模型
 
 提供用户注册、登录、密码哈希等基本功能。
-存储方案: JSON 文件（通过 UserManager 统一管理）。
-如需切换数据库，实现 UserStorageAdapter 接口即可。
+存储方案: 通过 StorageAdapter 接口（当前为 JSON 文件）。
+如需切换数据库，实现 StorageAdapter 接口即可。
 """
 
-import os
-import json
 import uuid
 import bcrypt
 from datetime import datetime
@@ -151,35 +149,31 @@ class Subscription:
 class UserManager:
     """用户管理器"""
 
-    # 存储根目录
-    USERS_DIR = os.path.join(
-        os.path.dirname(__file__), '../uploads/users'
-    )
-
     @classmethod
-    def _ensure_dirs(cls):
-        """确保存储目录存在"""
-        os.makedirs(cls.USERS_DIR, exist_ok=True)
+    def _get_storage(cls):
+        """获取用户存储适配器"""
+        from app.storage.adapter import get_user_storage
+        return get_user_storage()
 
     @classmethod
     def _get_user_file(cls, user_id: str) -> str:
-        """获取用户文件路径"""
-        return os.path.join(cls.USERS_DIR, f"{user_id}.json")
+        """获取用户文件键"""
+        return f"{user_id}.json"
 
     @classmethod
     def _get_user_by_email_file(cls, email: str) -> Optional[str]:
         """根据邮箱查找用户ID"""
+        storage = cls._get_storage()
         email_lower = email.lower()
-        for filename in os.listdir(cls.USERS_DIR):
-            if filename.endswith('.json'):
-                filepath = os.path.join(cls.USERS_DIR, filename)
-                try:
-                    with open(filepath, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-                    if data.get('email', '').lower() == email_lower:
-                        return filename[:-5]  # 去掉 .json
-                except Exception:
-                    continue
+        keys = storage.list_keys()
+
+        for key in keys:
+            if key.endswith('_subscription.json'):
+                continue
+            data = storage.load(key)
+            if data and data.get('email', '').lower() == email_lower:
+                # 从键中提取 user_id: "uuid.json" -> "uuid"
+                return key.replace('.json', '')
         return None
 
     # ==================== 用户管理 ====================
@@ -193,8 +187,6 @@ class UserManager:
         nickname: Optional[str] = None,
     ) -> User:
         """创建新用户"""
-        cls._ensure_dirs()
-
         # 检查邮箱是否已存在
         existing_id = cls._get_user_by_email_file(email)
         if existing_id:
@@ -217,20 +209,17 @@ class UserManager:
     @classmethod
     def save_user(cls, user: User) -> None:
         """保存用户"""
-        cls._ensure_dirs()
+        storage = cls._get_storage()
         user.updated_at = datetime.now().isoformat()
-        filepath = cls._get_user_file(user.id)
-        with open(filepath, 'w', encoding='utf-8') as f:
-            json.dump(user.to_dict_with_password(), f, ensure_ascii=False, indent=2)
+        storage.save(cls._get_user_file(user.id), user.to_dict_with_password())
 
     @classmethod
     def get_user(cls, user_id: str) -> Optional[User]:
         """获取用户"""
-        filepath = cls._get_user_file(user_id)
-        if not os.path.exists(filepath):
+        storage = cls._get_storage()
+        data = storage.load(cls._get_user_file(user_id))
+        if data is None:
             return None
-        with open(filepath, 'r', encoding='utf-8') as f:
-            data = json.load(f)
         return User.from_dict(data)
 
     @classmethod
@@ -274,15 +263,12 @@ class UserManager:
     @classmethod
     def delete_user(cls, user_id: str) -> bool:
         """删除用户"""
-        filepath = cls._get_user_file(user_id)
-        if not os.path.exists(filepath):
-            return False
-        os.remove(filepath)
+        storage = cls._get_storage()
+        deleted = storage.delete(user_id)
         # 同时删除订阅文件
-        sub_file = os.path.join(cls.USERS_DIR, f"{user_id}_subscription.json")
-        if os.path.exists(sub_file):
-            os.remove(sub_file)
-        return True
+        subscription_key = f"{user_id}_subscription.json"
+        storage.delete(subscription_key)
+        return deleted
 
     # ==================== 密码管理 ====================
 
@@ -321,10 +307,10 @@ class UserManager:
     @classmethod
     def get_subscription(cls, user_id: str) -> Subscription:
         """获取用户订阅信息"""
-        sub_file = os.path.join(cls.USERS_DIR, f"{user_id}_subscription.json")
-        if os.path.exists(sub_file):
-            with open(sub_file, 'r', encoding='utf-8') as f:
-                data = json.load(f)
+        storage = cls._get_storage()
+        sub_key = f"{user_id}_subscription.json"
+        data = storage.load(sub_key)
+        if data is not None:
             return Subscription.from_dict(data)
 
         # 返回默认免费订阅
@@ -338,11 +324,10 @@ class UserManager:
     @classmethod
     def save_subscription(cls, subscription: Subscription) -> None:
         """保存订阅信息"""
-        cls._ensure_dirs()
+        storage = cls._get_storage()
         subscription.updated_at = datetime.now().isoformat()
-        sub_file = os.path.join(cls.USERS_DIR, f"{subscription.user_id}_subscription.json")
-        with open(sub_file, 'w', encoding='utf-8') as f:
-            json.dump(subscription.to_dict(), f, ensure_ascii=False, indent=2)
+        sub_key = f"{subscription.user_id}_subscription.json"
+        storage.save(sub_key, subscription.to_dict())
 
     @classmethod
     def upgrade_subscription(

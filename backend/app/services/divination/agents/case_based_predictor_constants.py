@@ -21,9 +21,14 @@ logger = logging.getLogger(__name__)
 try:
     import chromadb  # noqa: F401 - Used to check availability, not for direct usage
     CHROMADB_AVAILABLE = True
+    logger.info("ChromaDB available - case similarity search enabled")
 except ImportError:
     CHROMADB_AVAILABLE = False
-    logger.warning("ChromaDB not available, using in-memory fallback")
+    logger.warning(
+        "ChromaDB not available - case similarity search is DISABLED. "
+        "Install chromadb>=0.4.0 for production use. "
+        "Current mode: in-memory fallback (no persistence across restarts)"
+    )
 
 # 大限参数（默认值）
 DEFAULT_DALIAN_START_AGE = 15  # 默认大限起始年龄

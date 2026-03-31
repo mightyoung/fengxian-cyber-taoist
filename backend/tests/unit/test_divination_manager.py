@@ -136,17 +136,32 @@ class TestDivinationManagerWithStorage:
     @pytest.fixture
     def mock_storage_paths(self, monkeypatch, tmp_path):
         """Mock the storage paths to use temp directory"""
-        from app.models import divination
+        from app.storage import adapter
 
         # Create temp directories
-        charts_dir = tmp_path / "charts"
-        reports_dir = tmp_path / "reports"
-        charts_dir.mkdir()
-        reports_dir.mkdir()
+        charts_dir = tmp_path / "divination" / "charts"
+        reports_dir = tmp_path / "divination" / "reports"
+        charts_dir.mkdir(parents=True)
+        reports_dir.mkdir(parents=True)
 
-        # Override the class attributes
-        monkeypatch.setattr(divination.DivinationManager, 'CHARTS_DIR', str(charts_dir))
-        monkeypatch.setattr(divination.DivinationManager, 'REPORTS_DIR', str(reports_dir))
+        # Mock the storage adapter base paths
+        original_chart_init = adapter.DivinationChartStorageAdapter.__init__
+        original_report_init = adapter.DivinationReportStorageAdapter.__init__
+
+        def mock_chart_init(self):
+            original_chart_init(self)
+            self._base_path = str(charts_dir)
+
+        def mock_report_init(self):
+            original_report_init(self)
+            self._base_path = str(reports_dir)
+
+        monkeypatch.setattr(adapter.DivinationChartStorageAdapter, '__init__', mock_chart_init)
+        monkeypatch.setattr(adapter.DivinationReportStorageAdapter, '__init__', mock_report_init)
+
+        # Reset the singletons so they use the new paths
+        adapter._chart_storage = None
+        adapter._report_storage = None
 
         return {
             "charts_dir": charts_dir,
