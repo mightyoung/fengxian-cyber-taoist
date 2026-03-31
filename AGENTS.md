@@ -84,19 +84,28 @@ Step1 (Graph Build) → Step2 (Environment Setup) → Step3 (Simulation) → Ste
 
 ### Frontend Structure (Next.js 16 + React 19)
 
-**Views** (`frontend/src/app/`):
-- Page-based routing using Next.js App Router
-- `Process.vue` components for pipeline steps
-- `SimulationRunView.vue` - Real-time simulation monitoring
-- `ReportView.vue` - Prediction report display
+**Pages** (`frontend/src/app/`):
+- Next.js App Router with page-based routing
+- `/birth-chart` - 命盘分析
+- `/divination/relationship` - 姻缘分析
+- `/report/[id]` - 预测报告详情
+- `/simulation/[id]` - 模拟运行详情
+- `/chat` - 智能体交互
+- `/graph` - 知识图谱
 
 **Components** (`frontend/src/components/`):
-- `Step1GraphBuild.vue` through `Step5Interaction.vue` - Pipeline steps
-- `divination/` - Divination-specific components (chart, report)
+- `birth-chart/` - 命盘展示组件
+- `divination/` - Divination-specific components (FortuneRadarChart, PalaceStarMap, etc.)
 - `graph/` - Knowledge graph visualization
+- `report/` - Report display components
+- `simulation/` - Simulation status and controls
 - `ui/` - shadcn/ui components
 
 **Stores** (`frontend/src/stores/`): Zustand for state management
+
+**Hooks** (`frontend/src/hooks/`): Custom React hooks (use-api, use-birth-chart, use-simulation, use-report)
+
+**Contexts** (`frontend/src/contexts/`): React Context providers (AuthContext)
 
 ### External Dependencies
 
@@ -120,19 +129,21 @@ FengxianCyberTaoist/
 ├── frontend/               # Next.js 16 (React 19) frontend
 │   └── src/
 │       ├── app/            # Next.js App Router pages
-│       ├── components/     # UI components (Step1-5, divination, graph)
+│       ├── components/     # UI components (birth-chart, divination, graph, report, simulation)
+│       ├── contexts/       # React Context (AuthContext)
+│       ├── hooks/          # Custom React hooks (use-api, use-auth, use-birth-chart, etc.)
 │       ├── stores/         # Zustand state stores
-│       ├── hooks/          # Custom React hooks
-│       └── lib/            # Utilities
+│       └── lib/            # Utilities and config
 ├── backend/                 # Python Flask backend
 │   └── app/
-│       ├── api/            # REST endpoints
+│       ├── api/            # REST endpoints (auth, payments)
+│       ├── models/         # Data models (user, divination)
 │       ├── services/       # Core business logic
 │       │   ├── divination/ # 紫微斗数 multi-agent system
 │       │   │   ├── agents/ # Individual agent implementations
 │       │   │   └── api/    # Divination API routes
 │       │   └── simulation/ # OASIS simulation services
-│       └── utils/          # LLM client, file parser, logger
+│       └── utils/          # LLM client, file parser, logger, vector_db
 ├── static/                 # Static assets
 └── docker-compose.yml
 ```
