@@ -443,15 +443,13 @@ class ReportTransformer:
 
         # 从chart_data获取出生年份等信息
         birth_year = "未知"
-        wuxing_ju = "未知"
         year_gan = "未知"
         main_stars = "未知"
-        transform_info = "待分析"
 
         if chart_data:
             birth_info = chart_data.get("birth_info", {})
             birth_year = birth_info.get("year", "未知")
-            wuxing_ju = birth_info.get("wuxing_ju_name", birth_info.get("wuxing_ju", "未知"))
+            birth_info.get("wuxing_ju_name", birth_info.get("wuxing_ju", "未知"))
             year_gan = birth_info.get("year_gan", "未知")
             palaces = chart_data.get("palaces", {})
             ming_gong = palaces.get("命宫", {})
@@ -510,7 +508,7 @@ class ReportTransformer:
 
         # 1.3 综合判断
         lines.append("### 1.3 综合判断\n")
-        emoji = self._get_judgment_emoji(report.overall_judgment)
+        self._get_judgment_emoji(report.overall_judgment)
         lines.append(f"\n**整体运势**: {report.overall_judgment}\n")
 
         # 从synthesis_data获取综合判断解读
@@ -569,7 +567,7 @@ class ReportTransformer:
             lines.append("\n**【综合解读】**\n")
 
             # 从synthesis_data获取详细解读
-            analysis_key = f"{transform_type.lower().replace('化', '')}_analysis"
+            f"{transform_type.lower().replace('化', '')}_analysis"
             has_analysis = False
 
             if synthesis_data:

@@ -180,11 +180,9 @@ class DateSelectionAgent:
         # 获取天干地支的阴阳五行
         tiangan_yy = TIANGAN_YINYANG.get(tiangan, "阳")
         tiangan_wx = TIANGAN_WUXING.get(tiangan, "土")
-        dizhi_wx = DIZHI_WUXING.get(dizhi, "土")
 
         birth_yy = TIANGAN_YINYANG.get(self.birth_year_gan, "阳")
         birth_wx = TIANGAN_WUXING.get(self.birth_year_gan, "土")
-        minggong_yy = TIANGAN_YINYANG.get(self.minggong_gan, "阳")
         minggong_wx = TIANGAN_WUXING.get(self.minggong_gan, "土")
 
         # 1. 与生年天干同阴阳: +15分
@@ -443,22 +441,6 @@ class DateSelectionAgent:
         Returns:
             最佳时段描述
         """
-        # 根据日柱地支确定最佳时辰
-        time_windows = {
-            "子": "23:00-01:00",
-            "丑": "01:00-03:00",
-            "寅": "03:00-05:00",
-            "卯": "05:00-07:00",
-            "辰": "07:00-09:00",
-            "巳": "09:00-11:00",
-            "午": "11:00-13:00",
-            "未": "13:00-15:00",
-            "申": "15:00-17:00",
-            "酉": "17:00-19:00",
-            "戌": "19:00-21:00",
-            "亥": "21:00-23:00",
-        }
-
         # 时辰对应的最佳小时（方便阅读的表述）
         hour_map = {
             "子": "子时（23:00-01:00）",

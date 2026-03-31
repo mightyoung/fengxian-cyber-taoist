@@ -66,7 +66,6 @@ def build_overview_prompt(
     birth_info = chart_data.get("birth_info", {})
     palaces = chart_data.get("palaces", {})
     transforms = chart_data.get("transforms", [])
-    stars = chart_data.get("stars", {})
 
     # 命宫信息
     ming_gong = palaces.get("命宫", {})
@@ -178,7 +177,6 @@ def build_transform_detail_prompt(
     """
     palaces = chart_data.get("palaces", {})
     transforms = chart_data.get("transforms", [])
-    stars = chart_data.get("stars", {})
 
     # 按宫位整理四化
     palace_transforms = {}
@@ -408,7 +406,6 @@ def build_personality_prompt(
     # 获取所有主星
     all_main_stars = chart_data.get("stars", {}).get("main_stars", [])
     for star in all_main_stars:
-        palace = star.get("palace", "")
         context += f"- {star['name']}在{star.get('palace', '')}（{star.get('level', '')}）\n"
 
     messages = [
@@ -815,7 +812,6 @@ def build_full_report_prompt(
     birth_info = chart_data.get("birth_info", {})
     palaces = chart_data.get("palaces", {})
     transforms = chart_data.get("transforms", [])
-    stars = chart_data.get("stars", {})
 
     context_parts.append("## 一、命盘数据")
     context_parts.append(f"- 姓名：{birth_info.get('name', '命主')}")
@@ -827,17 +823,17 @@ def build_full_report_prompt(
     # 命宫
     ming_gong = palaces.get("命宫", {})
     ming_gong_stars = ming_gong.get("stars", [])
-    context_parts.append(f"\n### 命宫")
+    context_parts.append("\n### 命宫")
     context_parts.append(f"- 主星：{ming_gong_stars[0]['name'] if ming_gong_stars else '无主星'}")
     context_parts.append(f"- 全部星曜：{', '.join([s['name'] for s in ming_gong_stars])}")
 
     # 四化
-    context_parts.append(f"\n### 四化配置")
+    context_parts.append("\n### 四化配置")
     for t in transforms:
         context_parts.append(f"- {t['type']}：{t['star']}在{t['palace']}")
 
     # 2. 分析结果
-    context_parts.append(f"\n## 二、分析结果")
+    context_parts.append("\n## 二、分析结果")
     context_parts.append(f"- 整体运势：{analysis_result.get('overall_judgment', '未知')}")
     context_parts.append(f"- 置信度：{analysis_result.get('overall_confidence', 0) * 100:.1f}%")
 
@@ -848,7 +844,7 @@ def build_full_report_prompt(
 
     if analysis_result.get("causal_chain_result"):
         causal = analysis_result["causal_chain_result"]
-        context_parts.append(f"\n### 因果链推理")
+        context_parts.append("\n### 因果链推理")
         context_parts.append(f"- 严重等级：{causal.get('severity_level', '未知')}")
         context_parts.append(f"- 因果链类型：{causal.get('chain_type', '未知')}")
 

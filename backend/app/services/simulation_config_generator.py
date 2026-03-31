@@ -20,7 +20,7 @@ from openai import OpenAI
 
 from ..config import Config
 from ..utils.logger import get_logger
-from .zep_entity_reader import EntityNode, ZepEntityReader
+from .zep_entity_reader import EntityNode
 
 logger = get_logger('fengxian_cyber_taoist.simulation_config')
 
@@ -432,7 +432,6 @@ class SimulationConfigGenerator:
     
     def _call_llm_with_retry(self, prompt: str, system_prompt: str) -> Dict[str, Any]:
         """带重试的LLM调用，包含JSON修复逻辑"""
-        import re
         
         max_attempts = 3
         last_error = None
@@ -520,13 +519,13 @@ class SimulationConfigGenerator:
             
             try:
                 return json.loads(json_str)
-            except:
+            except Exception:
                 # 尝试移除所有控制字符
                 json_str = re.sub(r'[\x00-\x1f\x7f-\x9f]', ' ', json_str)
                 json_str = re.sub(r'\s+', ' ', json_str)
                 try:
                     return json.loads(json_str)
-                except:
+                except Exception:
                     pass
         
         return None
@@ -650,7 +649,7 @@ class SimulationConfigGenerator:
         """生成事件配置"""
         
         # 获取可用的实体类型列表，供 LLM 参考
-        entity_types_available = list(set(
+        list(set(
             e.get_entity_type() or "Unknown" for e in entities
         ))
         

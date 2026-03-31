@@ -21,7 +21,6 @@ import uuid
 
 # 避免循环导入
 from app.services.divination.metaphysics_swarm.social_interaction import SocialInteractionEngine
-from app.services.divination.metaphysics_swarm.social_network import SocialNetwork
 from app.services.divination.metaphysics_swarm.agents import MetaphysicsAgent
 
 
@@ -819,7 +818,7 @@ class PlatformSimulator:
 
         # 决定互动类型
         roll = random.random()
-        sentiment_diff = abs(agent.state.mood - 0.5) if hasattr(agent.state, 'mood') else 0
+        abs(agent.state.mood - 0.5) if hasattr(agent.state, 'mood') else 0
 
         if roll < 0.5:
             # 点赞 (50%)
@@ -945,7 +944,7 @@ class PlatformSimulator:
 
     def _generate_reddit_comment(self, agent: MetaphysicsAgent, post: Post) -> Comment:
         """生成 Reddit 评论（更长、更详细）"""
-        primary_star = agent.persona.stars[0] if agent.persona.stars else "天同"
+        agent.persona.stars[0] if agent.persona.stars else "天同"
 
         templates = [
             "作为一个长期关注这个话题的人，我想分享一些看法...",
@@ -1103,7 +1102,7 @@ class PlatformSimulator:
             )
         else:
             total_upvotes = sum(p.upvotes for p in self.posts)
-            total_downvotes = sum(p.downvotes for p in self.posts)
+            sum(p.downvotes for p in self.posts)
             engagement_rate = (
                 (total_upvotes + total_comments) / max(1, total_posts)
             )

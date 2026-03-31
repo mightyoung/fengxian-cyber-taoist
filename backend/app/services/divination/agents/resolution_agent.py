@@ -465,7 +465,7 @@ class ResolutionAgent:
         transform_data = self.knowledge.get("methods", {}).get("transformation_resolution", {})
 
         for palace, stars in palace_stars.items():
-            stars_set = set(stars)
+            set(stars)
 
             # 检查化忌
             for star in stars:
@@ -557,7 +557,7 @@ class ResolutionAgent:
 
         if shaxing_res:
             resolution.methods = shaxing_res.get("resolution", [])
-            resolution.advice = f"借助吉星（禄存、紫微、天府）调和"
+            resolution.advice = "借助吉星（禄存、紫微、天府）调和"
 
     def _find_pattern_resolution(self, issue: IdentifiedIssue, resolution: Resolution):
         """查找格局化解方法"""

@@ -288,7 +288,7 @@ class ScenarioGenerator:
         return Scenario(
             type=ScenarioType.DECISION,
             name=f"禄忌{lu_star}-{ji_star}决策",
-            description=f"禄忌同现，面临关键决策",
+            description="禄忌同现，面临关键决策",
             triggers=["决策", "抉择", "转折"],
             events=[],
             expected_outcome={"growth_potential": 0.3, "risk_level": 0.2},

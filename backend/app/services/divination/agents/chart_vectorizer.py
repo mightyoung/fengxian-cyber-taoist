@@ -391,7 +391,6 @@ class ChartVectorizer:
         """
         vector = [0.0] * 10
 
-        birth_info = chart.get("birth_info", {})
         palaces_data = chart.get("palaces", {})
 
         # 获取命宫信息
@@ -737,8 +736,6 @@ class ChartVectorizer:
         """计算三方四正加成"""
         if palace_name not in PALACE_NAMES:
             return 0.0
-
-        idx = PALACE_NAMES.index(palace_name)
 
         # 三方：命宫+财帛宫+官禄宫（如果是命宫）或对应的三方宫
         if palace_name == "命宫":

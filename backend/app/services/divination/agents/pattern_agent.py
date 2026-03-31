@@ -406,9 +406,6 @@ class PatternAgent:
         all_stars_set = extract_all_stars(palace_stars)
         transform_dict = extract_transform_stars(palace_stars)
 
-        # 获取命宫星曜
-        ming_gong_stars = palace_stars_dict.get("命宫", set())
-
         # ============ 检查主星条件（区分宫位）============
         # 对于需要特定宫位的格局，检查星曜是否在正确宫位
         primary_stars = conditions.get("primary_stars", conditions.get("required_stars", []))
@@ -465,7 +462,7 @@ class PatternAgent:
             if modifier_matched:
                 matched_conditions.append(f"辅星{','.join(required_modifiers)}齐全")
             else:
-                failed_conditions.append(f"辅星不全")
+                failed_conditions.append("辅星不全")
 
         # ============ 检查第二组星曜 ============
         required_stars_2 = conditions.get("required_stars_2", [])
@@ -474,7 +471,7 @@ class PatternAgent:
             if star2_matched:
                 matched_conditions.append(f"有{','.join(required_stars_2)}之一")
             else:
-                failed_conditions.append(f"缺少第二组星曜")
+                failed_conditions.append("缺少第二组星曜")
 
         # ============ 检查禁忌星曜 ============
         forbidden = conditions.get("forbidden", [])

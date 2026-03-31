@@ -5,13 +5,10 @@
 使用 Pydantic 模型定义输入输出，复用 case_loader.py 中的案例数据
 """
 
-import json
 import logging
-from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 
 from pydantic import BaseModel, Field
-from pydantic import field_validator
 
 from .case_loader import get_case_loader, DaxianCaseLoader
 from .case_models import DaxianCase
@@ -438,7 +435,7 @@ class CaseMatcher:
             (总相似度, 各维度分数)
         """
         # 转换为模拟的案例格式用于复用计算逻辑
-        mock_case_1 = DaxianCase(
+        DaxianCase(
             case_id="chart1",
             agent="",
             type="",
@@ -448,7 +445,7 @@ class CaseMatcher:
             source=""
         )
 
-        mock_case_2 = DaxianCase(
+        DaxianCase(
             case_id="chart2",
             agent="",
             type="",

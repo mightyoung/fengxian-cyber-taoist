@@ -383,7 +383,6 @@ def get_transform_example(transform_type: str, star: str = None) -> Dict[str, An
 
 def get_personality_example(main_stars: List[str]) -> Dict[str, Any]:
     """获取性格画像的示例"""
-    stars_str = ",".join(main_stars[:2]) if main_stars else ""
     for example in PERSONALITY_EXAMPLES:
         if any(star in example["input"]["main_stars"] for star in main_stars):
             return example

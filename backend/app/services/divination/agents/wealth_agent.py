@@ -957,7 +957,7 @@ class LLMWealthAnalyzer:
         prompt_parts = ["# 命盘财运分析请求\n"]
 
         # 基础信息
-        prompt_parts.append(f"## 基础信息")
+        prompt_parts.append("## 基础信息")
         prompt_parts.append(f"- 总财富得分: {base_report.total_wealth_score}")
         prompt_parts.append(f"- 财富等级: {base_report.wealth_level}")
         prompt_parts.append("")

@@ -231,8 +231,6 @@ class BirthTimingAgent:
         weaknesses: List[str] = []
 
         # ===== 1. 命宫主星分数 =====
-        ming_gong = palaces.get("命宫", {})
-        ming_gong_stars = ming_gong.get("stars", [])
 
         # 提取主星
         main_stars = stars.get("main_stars", [])

@@ -364,7 +364,7 @@ class MetaphysicsAgent:
         # 获取该星曜擅长的话题
         relevant_topics = star_style.get("topics", [])
         style = star_style.get("style", "中性")
-        sentiment_bias = star_style.get("sentiment_bias", 0.0)
+        star_style.get("sentiment_bias", 0.0)
 
         # 根据角色调整风格
         if self.social_profile.social_role == SocialRole.OPINION_LEADER:

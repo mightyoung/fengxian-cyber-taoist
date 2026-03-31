@@ -61,7 +61,7 @@ class TestCaseMatcher:
         """测试案例库加载"""
         assert matcher._cases is not None
         total = sum(len(cases) for cases in matcher._cases.values())
-        print(f"\n案例库统计:")
+        print("\n案例库统计:")
         for name, cases in matcher._cases.items():
             print(f"  - {name}: {len(cases)} 条")
         print(f"  总计: {total} 条案例")
@@ -95,7 +95,7 @@ class TestCaseMatcher:
         """测试查找相似案例"""
         results = matcher.find_similar_cases(ZHANG_HAIYUN_CHART, limit=5)
 
-        print(f"\n章海云命盘 Top-5 相似案例:")
+        print("\n章海云命盘 Top-5 相似案例:")
         for i, result in enumerate(results, 1):
             print(f"\n{i}. {result.case_name}")
             print(f"   案例ID: {result.case_id}")
@@ -146,7 +146,7 @@ class TestCaseMatcher:
         similar_cases = matcher.find_similar_cases(ZHANG_HAIYUN_CHART, limit=3)
         context = matcher.generate_case_context(similar_cases)
 
-        print(f"\n生成的案例上下文:")
+        print("\n生成的案例上下文:")
         print(context)
 
         assert isinstance(context, str)
@@ -158,7 +158,7 @@ class TestCaseMatcher:
         similar_cases = matcher.find_similar_cases(ZHANG_HAIYUN_CHART, limit=5)
         recommendation = matcher.generate_recommendation(ZHANG_HAIYUN_CHART, similar_cases)
 
-        print(f"\n生成推荐结果:")
+        print("\n生成推荐结果:")
         print(f"  命盘特征: {recommendation['chart_features']}")
         print(f"  相似案例数: {recommendation['similar_cases_count']}")
         print(f"  平均相似度: {recommendation['average_similarity']:.2%}")

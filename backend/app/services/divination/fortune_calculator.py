@@ -12,7 +12,7 @@
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any, Union
+from typing import Dict, List, Optional, Any
 from enum import Enum
 import logging
 
@@ -558,8 +558,8 @@ class FortuneCalculator:
         """
         monthly_scores = []
         base_score = self.calculate_fortune_score()
-        risk_index = self.calculate_risk_index()
-        opportunity_index = self.calculate_opportunity_index()
+        self.calculate_risk_index()
+        self.calculate_opportunity_index()
 
         # 月度运势波动因子
         # 简化模型：基于流年四化产生周期性波动

@@ -447,7 +447,7 @@ class XiaohongshuAgent:
         # 添加维度标签
         if hasattr(report, 'dimensions'):
             for dim in report.dimensions.keys():
-                dim_lower = dim.lower()
+                dim.lower()
                 if '财' in dim:
                     hashtags.add("#财运")
                 elif '事' in dim or '业' in dim:
@@ -696,7 +696,7 @@ class XiaohongshuAgent:
             f"你是{user_type}吗？评论区告诉我你的主星配置，我来帮你分析！",
             f"你的{user_type}运势准不准？评论区说说你的感受~",
             f"想知道更多关于{user_type}的分析吗？关注我，后台私信你的出生日期！",
-            f"这期运势分析对你有帮助吗？点赞收藏，更多内容持续更新~"
+            "这期运势分析对你有帮助吗？点赞收藏，更多内容持续更新~"
         ]
 
         import random

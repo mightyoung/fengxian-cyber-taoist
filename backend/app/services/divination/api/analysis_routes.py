@@ -161,7 +161,7 @@ def analyze_with_agents():
         palace_analysis_dict = _to_dict(analyses.get("palace_analysis"))
         pattern_analysis_dict = _to_dict(analyses.get("pattern_analysis"))
         transform_analysis_dict = _to_dict(analyses.get("transform_analysis"))
-        timing_analysis_dict = _to_dict(analyses.get("timing_analysis"))
+        _to_dict(analyses.get("timing_analysis"))
 
         # 调用LLM综合分析
         synthesis_report = llm_analyzer.synthesize_with_llm_sync(
@@ -450,10 +450,9 @@ def analyze_transforms():
             }), 400
 
         chart_data = data.get('chart')
-        palace_stars = None
 
         if chart_data:
-            palace_stars = {
+            {
                 k: [s.get('name', '') for s in v.get('stars', [])]
                 for k, v in chart_data.get('palaces', {}).items()
             }

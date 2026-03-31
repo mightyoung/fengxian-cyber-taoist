@@ -520,7 +520,6 @@ def _interpret_ji_zhuan_ji(path: TransformPath) -> str:
     """解释忌转忌路径"""
     start = path.start_palace
     end = path.end_palace
-    steps = path.steps
     seq_count = path.sequence_count
     if seq_count == 1:
         return f"本宫{start}化忌，忌入{end}。连续化忌，深入因果。"
@@ -609,8 +608,8 @@ def analyze_transform_path(
     # 获取该年干的四化星
     transforms = transform_rules.get(year_stem, {})
     year_lu_star = transforms.get("禄", "")
-    year_quan_star = transforms.get("权", "")
-    year_ke_star = transforms.get("科", "")
+    transforms.get("权", "")
+    transforms.get("科", "")
     year_ji_star = transforms.get("忌", "")
 
     all_paths: List[TransformPath] = []

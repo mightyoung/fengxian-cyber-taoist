@@ -560,7 +560,7 @@ class TrendTracker:
             热门话题列表
         """
         # 基于时间窗口过滤
-        cutoff_time = datetime.now()
+        datetime.now()
         recent_topics = [
             t for t in self.trending_topics
             if t.mention_count > 0

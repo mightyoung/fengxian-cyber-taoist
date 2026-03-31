@@ -651,7 +651,6 @@ class ReportGenerator:
         """生成完整报告集（异步并行版本）"""
 
         # 并行格式化所有分报告
-        format_tasks = []
 
         async def format_star():
             if star_analysis:
@@ -1062,7 +1061,7 @@ async def _analyze_multi_agent(
             final_judgment="平",
             confidence=0.45
         )
-    except Exception as e:
+    except Exception:
         return MultiAgentAnalysis(
             agent_views=[],
             consensus=None,
@@ -1420,7 +1419,7 @@ def _generate_suggestions(
     # ========== 1. 分析维度冲突 ==========
     ji_dims = [dim for dim, a in dimensions.items() if a.judgment == "吉"]
     xiong_dims = [dim for dim, a in dimensions.items() if a.judgment == "凶"]
-    ping_dims = [dim for dim, a in dimensions.items() if a.judgment == "平"]
+    [dim for dim, a in dimensions.items() if a.judgment == "平"]
 
     # 处理冲突情况：吉多平少但综合判断不是"吉"
     if len(ji_dims) >= 2 and len(xiong_dims) == 0 and overall_judgment != "吉":
@@ -1456,7 +1455,7 @@ def _generate_suggestions(
         if causal.key_chains:
             for chain in causal.key_chains[:2]:  # 取最重要的两条因果链
                 chain_desc = chain.get("description", "")
-                chain_type = chain.get("type", "")
+                chain.get("type", "")
 
                 # 根据因果链类型生成对应建议
                 if "财富" in chain_desc or "财帛" in chain_desc:
@@ -1579,7 +1578,7 @@ def _generate_suggestions(
         if case_based.predictions:
             for dim, pred in case_based.predictions.items():
                 prediction = pred.get("prediction", "")
-                probability = pred.get("probability", 0.5)
+                pred.get("probability", 0.5)
 
                 if dim in dimensions:
                     dim_judgment = dimensions[dim].judgment
@@ -1925,11 +1924,11 @@ def generate_full_prediction_markdown_report(
     prediction_report = generate_prediction_report_sync(chart, target_year, question)
 
     # 2. 格式化为 Markdown
-    markdown_content = format_prediction_report_markdown(prediction_report)
+    format_prediction_report_markdown(prediction_report)
 
     # 3. 构建命盘概览
     birth = chart.get("birth_info", {})
-    year_stem = chart.get("year_stem", birth.get("year_stem", ""))
+    chart.get("year_stem", birth.get("year_stem", ""))
 
 
 def _validate_and_fix_transforms(year_stem: str, wuxing_transforms: Dict[str, Dict[str, str]]) -> Dict[str, str]:
@@ -2038,7 +2037,13 @@ def _get_correct_transforms(year_stem: str) -> Optional[Dict[str, str]]:
 # ============ 报告生成函数 ============
 
 
-def _build_chart_overview(chart: Dict[str, Any], target_year: str, prediction_report: Any) -> Tuple[str, Dict[str, str]]:
+def _build_chart_overview(
+    chart: Dict[str, Any],
+    target_year: str,
+    prediction_report: Any,
+    markdown_content: str = "",
+    question: str = ""
+) -> Tuple[str, Dict[str, str]]:
     """
     构建命盘概览和四化信息
 

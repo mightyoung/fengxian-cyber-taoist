@@ -10,7 +10,6 @@ CareerAgent - 事业发展分析智能体
 """
 
 from dataclasses import dataclass
-from datetime import datetime
 from typing import Dict, List, Optional, Any
 from enum import Enum
 
@@ -309,8 +308,6 @@ class CareerAgent:
 
     def _calculate_peak_ages(self) -> List[int]:
         """计算事业高峰期年龄"""
-        birth_year = self.birth.get("year", 1990)
-        current_year = datetime.now().year
 
         # 大致的事业高峰期（根据命盘结构）
         # 30-35岁第一个高峰，45-50岁第二个高峰

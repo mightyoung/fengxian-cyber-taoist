@@ -233,9 +233,6 @@ class RelationshipAgent:
         peach: Dict[str, Any]
     ) -> MarriageTiming:
         """确定婚姻时间"""
-        birth_year = self.birth.get("year", 1990)
-        current_year = datetime.now().year
-        age = current_year - birth_year
 
         # 基于星曜判断
         if spouse.star_influence in ["贪狼", "廉贞", "七杀"]:

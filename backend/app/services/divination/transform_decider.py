@@ -3,7 +3,7 @@
 根据出生年干确定四化星曜分布
 """
 
-from typing import Dict, List, Optional
+from typing import Dict, List
 from dataclasses import dataclass
 from enum import Enum
 

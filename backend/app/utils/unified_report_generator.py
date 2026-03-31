@@ -15,12 +15,9 @@
     result = generate_complete_report(chart_data, analysis_result)
 """
 
-import os
 import sys
 import json
 import argparse
-import logging
-import re
 from pathlib import Path
 from typing import Dict, Any, Optional, List
 from datetime import datetime
@@ -29,7 +26,6 @@ from datetime import datetime
 _BACKEND_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(_BACKEND_ROOT))
 
-from app.config import Config
 from app.utils.logger import get_logger
 
 logger = get_logger('fengxian_cyber_taoist.unified_report')
@@ -46,14 +42,12 @@ try:
         build_monthly_advice_prompt,
         build_key_reminder_prompt,
         build_causal_chain_prompt,
-        build_full_report_prompt,
         get_llm_temperature,
         get_llm_max_tokens,
     )
     from app.services.divination.agents.report_examples import (
         SIHUA_EXAMPLES,
         PERSONALITY_EXAMPLES,
-        MONTHLY_EXAMPLES,
         GUIDE_EXAMPLES,
         REMINDER_EXAMPLES,
     )
@@ -68,8 +62,7 @@ try:
         generate_radar_chart,
         generate_bar_chart,
         generate_confidence_gauge,
-        generate_monthly_heatmap,
-        generate_timeline_chart
+        generate_monthly_heatmap
     )
     from app.utils.markdown_to_pdf import markdown_to_pdf
     CHART_AND_PDF_AVAILABLE = True
@@ -127,18 +120,18 @@ class LLMReportGenerator:
         """构建few-shot示例文本"""
         if example_type == "sihua":
             # 四化详解示例
-            example = SIHUA_EXAMPLES[0] if SIHUA_EXAMPLES else {}
-            return f"""**示例：禄忌同宫双化**
+            SIHUA_EXAMPLES[0] if SIHUA_EXAMPLES else {}
+            return """**示例：禄忌同宫双化**
 
 用户命盘：化禄[星曜A]在[宫位X]，[星曜A]同时化忌
 LLM生成结果：
 ```json
-{{
+{
   "title": "2.1 化禄 — [星曜A] 在[宫位X]",
   "xingyao_analysis": "[星曜A]是紫微斗数中的[星曜分类]，代表[性格特点]。[星曜A]坐命的人，通常[性格描述]。",
   "sihua_analysis": "化禄代表星的能量往好的方向发展，带来机会和收获。对于[星曜A]来说，化禄增强了其[特质]，让命主更容易获得[好运描述]。",
   "palace_context": "[星曜A]化禄落入[宫位X]，这是[吉凶描述]的配置。[宫位X]代表[含义]，[宫位X]有化禄意味着[运势描述]。",
-  "synthesis": {{
+  "synthesis": {
     "fortune_feature": "[运势特征概括]",
     "specific_manifestations": [
       "[具体表现1]",
@@ -146,43 +139,43 @@ LLM生成结果：
       "[具体表现3]"
     ],
     "advice": "[行动建议]"
-  }}
-}}
+  }
+}
 ```"""
 
         elif example_type == "personality":
-            example = PERSONALITY_EXAMPLES[0] if PERSONALITY_EXAMPLES else {}
-            return f"""**示例：命宫双星组合**
+            PERSONALITY_EXAMPLES[0] if PERSONALITY_EXAMPLES else {}
+            return """**示例：命宫双星组合**
 
 用户命盘：[星曜A]、[星曜B]坐命宫，有[辅助星曜]等
 LLM生成结果：
 ```json
-{{
+{
   "section_title": "四、性格画像",
   "star_traits": [
-    {{
+    {
       "star_name": "[星曜A]",
       "traits_analysis": "[星曜A]是[星曜分类]，代表[性格特点]。你是一个[性格描述]的人。",
       "positive_traits": ["[优点1]", "[优点2]", "[优点3]"],
       "negative_traits": ["[缺点1]", "[缺点2]"]
-    }},
-    {{
+    },
+    {
       "star_name": "[星曜B]",
       "traits_analysis": "[星曜B]是[星曜分类]，代表[性格特点]。[星曜B]坐命的人通常[性格描述]。",
       "positive_traits": ["[优点1]", "[优点2]", "[优点3]"],
       "negative_traits": ["[缺点1]", "[缺点2]"]
-    }}
+    }
   ],
   "personality_summary": "你是一个性格[特征描述]的人。兼具[星曜A]的[特质]和[星曜B]的[特质]，在人际交往中往往能发挥积极作用。...",
   "optimization_suggestions": [
-    {{"aspect": "优势发挥", "suggestion": "利用[星曜A]的[特质]和[星曜B]的[协调能力]，在人际交往中发挥积极作用"}},
-    {{"aspect": "短板改进", "suggestion": "克服[缺点描述]，学会果断决策"}}
+    {"aspect": "优势发挥", "suggestion": "利用[星曜A]的[特质]和[星曜B]的[协调能力]，在人际交往中发挥积极作用"},
+    {"aspect": "短板改进", "suggestion": "克服[缺点描述]，学会果断决策"}
   ]
-}}
+}
 ```"""
 
         elif example_type == "guide":
-            example = GUIDE_EXAMPLES[0] if GUIDE_EXAMPLES else {}
+            GUIDE_EXAMPLES[0] if GUIDE_EXAMPLES else {}
             return """**示例：禄忌并存实用指南**
 
 用户命盘：化禄[星曜A]、[星曜A]化忌同宫
@@ -203,7 +196,7 @@ LLM生成结果：
 ```"""
 
         elif example_type == "reminder":
-            example = REMINDER_EXAMPLES[0] if REMINDER_EXAMPLES else {}
+            REMINDER_EXAMPLES[0] if REMINDER_EXAMPLES else {}
             return """**示例：平运势核心提醒**
 
 用户命盘：整体运势"平"，因果链为CONDITION级别
@@ -583,8 +576,8 @@ LLM生成结果：
         lines.append(f"> **命主**: {name}")
         lines.append(f"> **预测年份**: {target_year}年")
         lines.append(f"> **生成时间**: {datetime.now().strftime('%Y年%m月')}")
-        lines.append(f"> **分析系统**: FengxianCyberTaoist 紫微斗数智能分析系统")
-        lines.append(f"> **LLM驱动**: 是（所有章节均由大语言模型推理生成）\n")
+        lines.append("> **分析系统**: FengxianCyberTaoist 紫微斗数智能分析系统")
+        lines.append("> **LLM驱动**: 是（所有章节均由大语言模型推理生成）\n")
         lines.append("---\n")
 
         # 生成各章节
@@ -625,7 +618,7 @@ LLM生成结果：
         lines.append("- 保持积极向上的生活态度\n")
         lines.append("- 通过自身努力创造美好未来\n")
         lines.append("\n**命理是参考，你才是主角！**\n")
-        lines.append(f"\n---\n\n*报告生成: FengxianCyberTaoist 紫微斗数智能分析系统 (LLM驱动版)*\n")
+        lines.append("\n---\n\n*报告生成: FengxianCyberTaoist 紫微斗数智能分析系统 (LLM驱动版)*\n")
         lines.append(f"*生成日期: {datetime.now().strftime('%Y年%m月%d日 %H:%M')}*")
 
         return "\n".join(lines)
@@ -799,7 +792,7 @@ def _generate_template_report(
     lines.append(f"> **命主**: {name}")
     lines.append(f"> **预测年份**: {target_year}年")
     lines.append(f"> **生成时间**: {datetime.now().strftime('%Y年%m月')}")
-    lines.append(f"> **分析系统**: FengxianCyberTaoist 紫微斗数智能分析系统\n")
+    lines.append("> **分析系统**: FengxianCyberTaoist 紫微斗数智能分析系统\n")
     lines.append("---\n")
 
     # ========== 一、命盘概览 ==========

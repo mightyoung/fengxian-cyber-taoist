@@ -133,42 +133,6 @@ def validate_birth_info(data: Dict[str, Any]) -> tuple[bool, Optional[str]]:
     return True, None
 
 
-# Import agents for route modules
-from app.services.divination.agents import (
-    ChartAgent,
-    BirthInfo,
-    StarAgent,
-    PalaceAgent,
-    TransformAgent,
-    PatternAgent,
-    TimingAgent,
-    SynthesisAgent,
-    WealthAgent,
-    CareerAgent,
-    RelationshipAgent,
-    EducationAgent,
-    llm_analyze_stars_sync,
-    llm_analyze_palaces_sync,
-    llm_analyze_transforms_sync,
-    llm_analyze_patterns_sync,
-    llm_analyze_timing_sync,
-    analyze_stars_sync,
-    analyze_palaces_sync,
-    analyze_patterns,
-    get_transform,
-    analyze_wealth_async,
-    analyze_health_sync,
-    analyze_career_sync,
-    analyze_relationship_sync,
-    analyze_education_sync,
-    analyze_birth_timing_sync,
-    select_date_sync,
-    predict_event_sync,
-    analyze_marriage_compatibility_sync,
-    recommend_career_sync,
-    recommend_name_sync,
-)
-
 # Import route modules to register blueprints
 from app.services.divination.api import chart_routes
 from app.services.divination.api import analysis_routes

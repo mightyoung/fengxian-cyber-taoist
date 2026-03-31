@@ -14,9 +14,9 @@ from datetime import datetime
 import random
 import math
 
-from app.services.divination.metaphysics_swarm.social_network import SocialNetwork, SocialNode, SocialEdge
+from app.services.divination.metaphysics_swarm.social_network import SocialNetwork
 from app.services.divination.metaphysics_swarm.agents import MetaphysicsAgent
-from app.services.divination.metaphysics_swarm.scenarios import Scenario, ScenarioType
+from app.services.divination.metaphysics_swarm.scenarios import Scenario
 
 
 # ============ 事件类型定义 ============
@@ -339,7 +339,7 @@ class SocialInteractionEngine:
 
             # 根据四化生成观点
             transform = self._get_dominant_transform(agent.persona.transforms)
-            behavior = TRANSFORMATION_TO_SOCIAL.get(transform, TRANSFORMATION_TO_SOCIAL["化科"])
+            TRANSFORMATION_TO_SOCIAL.get(transform, TRANSFORMATION_TO_SOCIAL["化科"])
 
             # 生成观点内容
             content = self._generate_opinion_content(
@@ -559,7 +559,7 @@ class SocialInteractionEngine:
 
         for p1, p2 in conflicts:
             agent1 = self.agent_by_palace.get(p1)
-            agent2 = self.agent_by_palace.get(p2)
+            self.agent_by_palace.get(p2)
 
             event = SocialEvent(
                 round_num=round_num,
@@ -706,7 +706,6 @@ class SocialInteractionEngine:
         transform: str,
     ) -> str:
         """生成评论内容"""
-        commenter_palace = commenter.persona.palace_name
 
         if transform == "化忌":
             return f"@{original_post.source_palace} 这个观点我有些担忧..."

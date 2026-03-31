@@ -17,7 +17,6 @@ from .social_media import (
 
 from .trend_tracker import (
     TrendTracker,
-    Topic,
     SentimentDataPoint,
     OpinionCluster,
     SentimentShift,

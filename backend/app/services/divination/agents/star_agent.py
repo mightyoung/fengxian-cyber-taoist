@@ -412,7 +412,7 @@ class StarAgent:
         # 分析主星
         main_stars = stars_data.get("main_stars", [])
         for star_data in main_stars:
-            star_name = star_data.get("name", "")
+            star_data.get("name", "")
             palace = star_data.get("palace", "")
             if palace:
                 analysis = self._analyze_single_star(star_data, palace)
@@ -518,7 +518,7 @@ class StarAgent:
 
         try:
             # 尝试获取当前事件循环
-            loop = asyncio.get_running_loop()
+            asyncio.get_running_loop()
         except RuntimeError:
             # 没有运行中的事件循环，可以安全使用asyncio.run()
             return asyncio.run(self._generate_star_report_async())

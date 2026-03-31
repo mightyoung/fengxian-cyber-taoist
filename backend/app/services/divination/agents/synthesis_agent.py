@@ -838,7 +838,7 @@ class SynthesisAgent:
             else:
                 # 从分析结果生成摘要
                 main_stars = getattr(star_analysis, 'main_stars', [])
-                main_star_names = [s.name if hasattr(s, 'name') else str(s) for s in main_stars[:5]]
+                [s.name if hasattr(s, 'name') else str(s) for s in main_stars[:5]]
                 content = f"星曜分析: {len(main_stars)}颗主星" if main_stars else "星曜分析完成"
             results.append(AgentResult(
                 agent_name="StarAgent",
@@ -1245,7 +1245,7 @@ class LLMSynthesisAnalyzerStandard:
         palace_analysis = self.analysis.get("palace_analysis")
         pattern_analysis = self.analysis.get("pattern_analysis")
         transform_analysis = self.analysis.get("transform_analysis")
-        timing_analysis = self.analysis.get("timing_analysis")
+        self.analysis.get("timing_analysis")
 
         # 构建用户提示词
         user_prompt = build_synthesis_user_prompt(

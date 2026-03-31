@@ -6,8 +6,7 @@
 
 from enum import Enum
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Set
-from copy import deepcopy
+from typing import Dict, List, Optional
 
 
 class PalaceType(Enum):

@@ -7,11 +7,10 @@ SocialNetworkSimulator - 命盘社交网络模拟
 - 模拟影响力传播路径
 """
 
-from typing import Dict, List, Optional, Any, Set, Tuple
+from typing import Dict, List, Any, Set, Tuple
 from dataclasses import dataclass, field
 from enum import Enum
 from collections import deque
-import math
 
 
 class RelationType(str, Enum):

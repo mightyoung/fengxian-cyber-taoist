@@ -8,9 +8,8 @@ SemanticSearch - 语义向量库搜索增强模块
 import json
 import os
 import math
-from typing import Dict, List, Optional, Any, Tuple
+from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
-from functools import lru_cache
 
 
 # 向量库路径 - 从 app/services/divination/ 向上4层到达backend根目录
@@ -253,7 +252,7 @@ class SemanticSearch:
             # 计算文本相似度（基于关键词重叠）
             doc_text = doc.get("text", "").lower()
             doc_question = doc.get("question", "").lower()
-            doc_answer = doc.get("answer", "").lower()
+            doc.get("answer", "").lower()
 
             # 简单文本匹配分数
             text_score = self._compute_text_similarity(query_lower, doc_text)

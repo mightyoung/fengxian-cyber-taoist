@@ -8,7 +8,6 @@ MetaphysicsSwarmEngine - 命理群体预测引擎
 4. 计算涌现结果
 """
 
-import asyncio
 from typing import Dict, List, Optional, Any, Callable
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -17,9 +16,7 @@ from enum import Enum
 from app.services.divination.metaphysics_swarm.agents import (
     MetaphysicsAgent,
     AgentRole,
-    AgentPersonality,
     AgentAction,
-    AgentState,
     create_agent_from_chart,
 )
 from app.services.divination.metaphysics_swarm.scenarios import (
@@ -251,7 +248,7 @@ class MetaphysicsSwarmEngine:
             self.status = SwarmStatus.COMPLETED
             return final_emergence
 
-        except Exception as e:
+        except Exception:
             self.status = SwarmStatus.ERROR
             raise
 

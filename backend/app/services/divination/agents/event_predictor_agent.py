@@ -427,7 +427,6 @@ class EventPredictorAgent:
 
     def _calculate_timing_score(self) -> float:
         """计算时机评分"""
-        base_timing_score = 50.0
 
         # 流年运势分
         flowing_year_score = self.flowing_year_data.get("score", 50)

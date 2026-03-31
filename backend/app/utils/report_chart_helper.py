@@ -31,7 +31,6 @@ try:
         generate_bar_chart,
         generate_confidence_gauge,
         generate_monthly_heatmap,
-        generate_timeline_chart
     )
     CHART_GENERATOR_AVAILABLE = True
 except ImportError as e:
@@ -101,10 +100,10 @@ def generate_report_charts(analysis_result: Dict[str, Any]) -> Dict[str, Any]:
 
         # 3. 生成置信度仪表盘
         confidence = analysis_result.get("overall_confidence", 0.5)
-        judgment = analysis_result.get("overall_judgment", "平")
+        analysis_result.get("overall_judgment", "平")
         gauge_img = generate_confidence_gauge(
             value=int(confidence * 100),
-            label=f"综合运势评分"
+            label="综合运势评分"
         )
         if gauge_img:
             result["charts"]["gauge"] = gauge_img
@@ -230,7 +229,7 @@ def _extract_monthly_advice(analysis_result: Dict[str, Any]) -> List[Dict[str, A
     monthly_data = analysis_result.get("monthly_data", [])
 
     # 尝试从suggestions中提取
-    suggestions = analysis_result.get("suggestions", [])
+    analysis_result.get("suggestions", [])
 
     if monthly_data:
         for i, month_data in enumerate(monthly_data):

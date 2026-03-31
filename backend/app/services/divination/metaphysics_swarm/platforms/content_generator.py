@@ -14,7 +14,6 @@ ContentGenerator - 内容生成器
 
 from typing import Dict, List, Optional, Any, TYPE_CHECKING
 from dataclasses import dataclass, field
-from enum import Enum
 from datetime import datetime
 import random
 import uuid
@@ -750,7 +749,7 @@ class ContentGenerator:
 
         if platform == PlatformType.TWITTER:
             # Twitter: 添加星曜前缀
-            twitter_prefix = star_style.get("twitter", "{topic}")
+            star_style.get("twitter", "{topic}")
             if "{topic}" not in content:
                 content = f"{emoji} {content}" if emoji else content
 

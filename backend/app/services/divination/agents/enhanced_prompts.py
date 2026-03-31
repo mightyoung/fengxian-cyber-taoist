@@ -435,8 +435,6 @@ def build_enhanced_user_prompt(
         格式化的用户提示词
     """
     birth_info = chart_data.get("birth_info", {})
-    stars = chart_data.get("stars", {})
-    palaces = chart_data.get("palaces", {})
 
     # 基础信息
     birth_text = f"""
@@ -654,7 +652,6 @@ def build_enhanced_synthesis_prompt(
 ) -> str:
     """构建综合报告增强提示词"""
     stars = chart_data.get("stars", {})
-    palaces = chart_data.get("palaces", {})
 
     # 简要汇总
     summary_text = f"""

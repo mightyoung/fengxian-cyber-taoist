@@ -281,7 +281,6 @@ class CareerRecommendationAgent:
         分析官禄宫，返回 (宫位描述, 分数, 优势, 劣势)
         """
         palace_name = "官禄宫"
-        palace = self.palaces.get(palace_name, {})
         stars = self._get_palace_stars(palace_name)
         score = self._get_palace_score(palace_name)
         transforms = self._get_transforms_for_palace(palace_name)
@@ -546,7 +545,6 @@ class CareerRecommendationAgent:
         创建发展路线图
         """
         roadmap = []
-        current_age = self.age
 
         # 基础路线
         roadmap.append(f"短期(1-2年): 在{self.current_career or '当前领域'}积累基础经验")

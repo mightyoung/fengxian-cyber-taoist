@@ -161,7 +161,7 @@ def markdown_to_pdf(
 
 def _render_cover(pdf: fpdf.FPDF, title: str, family: str, user_info: Optional[dict] = None):
     """渲染优雅封面"""
-    page_width = pdf.w - pdf.l_margin - pdf.r_margin
+    pdf.w - pdf.l_margin - pdf.r_margin
 
     # 顶部装饰线
     pdf.set_draw_color(*COLORS["accent"])
@@ -239,7 +239,7 @@ def _render_simple_user_card(pdf: fpdf.FPDF, user_info: dict, family: str):
 
 def _render_user_detail_page(pdf: fpdf.FPDF, user_info: dict, family: str):
     """渲染用户详情页"""
-    page_width = pdf.w - pdf.l_margin - pdf.r_margin
+    pdf.w - pdf.l_margin - pdf.r_margin
 
     # 标题
     pdf.ln(10)
@@ -524,7 +524,7 @@ def _render_block(pdf: fpdf.FPDF, block: dict, family: str):
 
     if bt == "hr":
         pdf.ln(5)
-        page_width = pdf.w - pdf.l_margin - pdf.r_margin
+        pdf.w - pdf.l_margin - pdf.r_margin
         pdf.set_draw_color(*COLORS["border"])
         pdf.set_line_width(0.5)
         pdf.line(pdf.l_margin, pdf.get_y(), pdf.w - pdf.r_margin, pdf.get_y())

@@ -7,12 +7,7 @@
 
 from typing import Dict, List, Any, Optional
 from app.services.divination.utils.star_interpretations import (
-    get_star_meaning,
-    get_transform_meaning,
-    get_palace_meaning,
-    get_chain_type_meaning,
-    STAR_INTERPRETATIONS,
-    PALACE_INTERPRETATIONS
+    get_palace_meaning
 )
 
 
@@ -547,7 +542,7 @@ def generate_plain_causal_chain_explanation_v2(
 
     # ============ 第二步：命盘四化详解 ============
     transforms = chart_data.get("transforms", [])
-    palaces = chart_data.get("palaces", {})
+    chart_data.get("palaces", {})
 
     if transforms:
         sections.append("---\n")
@@ -579,7 +574,7 @@ def generate_plain_causal_chain_explanation_v2(
 
             # 3. 综合解读
             sections.append(f"\n**【综合解读】这对{ palace_info.get('meaning', palace) }意味着什么？**\n")
-            sections.append(f"")
+            sections.append("")
             sections.append(_generate_combined_interpretation(star, transform, palace, star_info, transform_info))
             sections.append("")
 

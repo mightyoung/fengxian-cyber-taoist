@@ -107,7 +107,7 @@ class LLMClient:
         # 提取响应内容
         if not response.choices:
             logger.error(f"LLM返回空choices: {response}")
-            raise ValueError(f"LLM返回空响应")
+            raise ValueError("LLM返回空响应")
 
         content = response.choices[0].message.content
         if content is None:

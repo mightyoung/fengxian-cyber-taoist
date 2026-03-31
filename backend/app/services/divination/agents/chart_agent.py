@@ -390,7 +390,7 @@ class ChartAgent:
             chart = await self.generate_chart(birth_info)
 
             # 生成响应文本
-            response = f"命盘已生成。\n"
+            response = "命盘已生成。\n"
             response += f"出生年份: {chart.birth_info['year']}年\n"
             response += f"五行局: {chart.birth_info['wuxing_ju_name']}\n"
             response += f"命宫主星: {', '.join([s['name'] for s in chart.stars['main_stars'] if s['palace'] == '命宫'])}\n"

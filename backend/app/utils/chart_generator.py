@@ -6,7 +6,6 @@
 import os
 import io
 from typing import List, Tuple, Optional
-from PIL import Image, ImageDraw, ImageFont
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt

@@ -752,7 +752,7 @@ class MultiAgentValidator:
         async def analyze_palace():
             try:
                 palace_agent = PalaceAgent(chart)
-                analysis = await palace_agent.analyze_palaces()
+                await palace_agent.analyze_palaces()
                 # 简化判断
                 return AgentView(
                     agent_name="PalaceAgent",
@@ -769,7 +769,7 @@ class MultiAgentValidator:
         async def analyze_pattern():
             try:
                 pattern_agent = PatternAgent(chart)
-                analysis = await pattern_agent.analyze_patterns()
+                await pattern_agent.analyze_patterns()
                 # 简化判断
                 return AgentView(
                     agent_name="PatternAgent",
@@ -786,7 +786,7 @@ class MultiAgentValidator:
         async def analyze_transform():
             try:
                 transform_agent = TransformAgent(chart)
-                analysis = await transform_agent.analyze_transforms()
+                await transform_agent.analyze_transforms()
                 # 简化判断
                 return AgentView(
                     agent_name="TransformAgent",

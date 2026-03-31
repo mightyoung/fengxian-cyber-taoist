@@ -12,8 +12,6 @@ from flask import Blueprint, request, jsonify
 
 from app.services.divination.api import (
     _to_dict,
-    _format_transform_explanation,
-    _format_palace_overview,
 )
 from app.models.divination import DivinationManager
 
@@ -24,7 +22,8 @@ report_bp = Blueprint('report', __name__, url_prefix='/report')
 def _transform_to_professional_plain(markdown_content: str) -> str:
     """使用术语表将专业报告转换为通俗易懂版本"""
     try:
-        import os, json
+        import os
+        import json
         base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
         term_map_path = os.path.join(base_dir, "services", "divination", "resources", "terminology_map.json")
 
@@ -156,16 +155,15 @@ def generate_prediction_report():
         analyses = asyncio.run(_run_parallel_analysis_for_report(chart_data))
 
         # 转换为字典
-        star_dict = _to_dict(analyses.get("star_analysis"))
-        palace_dict = _to_dict(analyses.get("palace_analysis"))
-        pattern_dict = _to_dict(analyses.get("pattern_analysis"))
+        _to_dict(analyses.get("star_analysis"))
+        _to_dict(analyses.get("palace_analysis"))
+        _to_dict(analyses.get("pattern_analysis"))
         transform_dict = _to_dict(analyses.get("transform_analysis"))
-        timing_dict = _to_dict(analyses.get("timing_analysis"))
+        _to_dict(analyses.get("timing_analysis"))
 
         # 生成三层融合预测报告
         from app.services.divination.agents.report_generator import (
             generate_prediction_report_sync,
-            format_prediction_report_markdown,
         )
         prediction_report = generate_prediction_report_sync(
             chart=chart_data,
@@ -356,7 +354,8 @@ def transform_report():
                 )
                 content = xhs_result.get("markdown", xhs_result.get("content", report_content))
             except Exception as e:
-                import traceback; traceback.print_exc()
+                import traceback
+                traceback.print_exc()
                 return jsonify({
                     "success": False,
                     "error": f"小红书版生成失败: {str(e)}"
@@ -374,5 +373,6 @@ def transform_report():
         })
 
     except Exception as e:
-        import traceback; traceback.print_exc()
+        import traceback
+        traceback.print_exc()
         return jsonify({"success": False, "error": f"报告转换时出错: {str(e)}"}), 500

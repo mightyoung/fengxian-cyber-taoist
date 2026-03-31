@@ -306,8 +306,7 @@ def _check_simulation_prepared(simulation_id: str) -> tuple:
         if status in prepared_statuses and config_generated:
             # 获取文件统计信息
             profiles_file = os.path.join(simulation_dir, "reddit_profiles.json")
-            config_file = os.path.join(simulation_dir, "simulation_config.json")
-            
+
             profiles_count = 0
             if os.path.exists(profiles_file):
                 with open(profiles_file, 'r', encoding='utf-8') as f:

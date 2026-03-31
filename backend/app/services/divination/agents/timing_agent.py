@@ -351,7 +351,7 @@ class TimingAgent:
 
         # 命宫地支对应的宫位索引
         zhi_list = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"]
-        life_palace_zhi_idx = zhi_list.index(life_palace_zhi)
+        zhi_list.index(life_palace_zhi)
         life_palace_idx = palace_names.index(self.zhi_to_palace.get(life_palace_zhi, "命宫"))
 
         # 起大限宫位判断
@@ -443,7 +443,7 @@ class TimingAgent:
                     for p in self.chart.palaces:
                         if p.get("name") == palace_name:
                             return p.get("stars", [])
-        except Exception as e:
+        except Exception:
             pass
         return []
 
@@ -1189,13 +1189,13 @@ class TimingAgent:
                 if diff == 6:
                     result["description"] = f"流年太岁与枢纽宫{major_fate.hub_palace}相冲，运势波动较大"
                 elif diff in [4, 8]:
-                    result["description"] = f"流年太岁与枢纽宫三合，运势顺畅"
+                    result["description"] = "流年太岁与枢纽宫三合，运势顺畅"
                 elif diff in [1, 11]:
                     result["description"] = f"流年太岁拱照枢纽宫{major_fate.hub_palace}，有暗中助力"
                 else:
                     result["description"] = f"流年太岁不在枢纽宫{major_fate.hub_palace}"
             except ValueError:
-                result["description"] = f"流年太岁不在枢纽宫"
+                result["description"] = "流年太岁不在枢纽宫"
 
         return result
 

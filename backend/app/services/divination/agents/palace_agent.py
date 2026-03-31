@@ -274,7 +274,7 @@ class PalaceAgent:
         """
         # 获取宫位特定权重调整
         palace_specific = self.strength_rules.get("palace_specific", {})
-        palace_tip = palace_specific.get(palace_name, {}).get("scoring_tip", "")
+        palace_specific.get(palace_name, {}).get("scoring_tip", "")
 
         # 计算各维度得分
         master_score = self._calculate_master_star_score(palace_name)
@@ -377,7 +377,7 @@ class PalaceAgent:
         # 空宫特殊分析
         empty_analysis = self.analyze_empty_palace(palace_name)
         if empty_analysis.is_empty:
-            parts.append(f"\n【空宫特殊分析】")
+            parts.append("\n【空宫特殊分析】")
             parts.append(f"对宫: {empty_analysis.opposite_palace}")
             parts.append(f"对宫星曜: {', '.join([s.get('name', '') for s in empty_analysis.opposite_stars]) if empty_analysis.opposite_stars else '无主星'}")
             parts.append(f"投影强度: {empty_analysis.projection_strength}宫")
@@ -464,7 +464,7 @@ class PalaceAgent:
     def get_palace_detail(self, palace_name: str) -> Dict[str, Any]:
         """获取指定宫位的详细分析"""
         score = self.calculate_palace_strength(palace_name)
-        stars_in_palace = self._get_palace_stars(palace_name)
+        self._get_palace_stars(palace_name)
         stars_by_category = self._get_stars_by_category(palace_name)
         branch = self._get_palace_branch(palace_name)
         tiangan = self._get_palace_tiangan(palace_name)
@@ -655,12 +655,12 @@ class PalaceAgent:
         lines.append(f"\n{topic_intros.get(topic, '')}")
 
         # 详细分析各宫
-        lines.append(f"\n各宫详细分析:")
+        lines.append("\n各宫详细分析:")
         for palace in connected_palaces:
             palace_info = palace_details[palace]
             score = palace_info["score"]
             stars = palace_info["stars"]
-            stars_list = palace_info["stars_in_palace"]
+            palace_info["stars_in_palace"]
 
             lines.append(f"\n  {palace}:")
             lines.append(f"    得分: {score.total_score}分 ({score.strength_level})")
@@ -676,11 +676,11 @@ class PalaceAgent:
 
             # 格局判断
             if main and len(main) >= 2:
-                lines.append(f"    格局: 双星同宫，力量较强")
+                lines.append("    格局: 双星同宫，力量较强")
             elif main and aux:
-                lines.append(f"    格局: 主星得辅星拱照，格局良好")
+                lines.append("    格局: 主星得辅星拱照，格局良好")
             elif sha and len(sha) >= 2:
-                lines.append(f"    格局: 多煞汇聚，需谨慎")
+                lines.append("    格局: 多煞汇聚，需谨慎")
 
             # 化曜影响
             if trans:
@@ -689,16 +689,16 @@ class PalaceAgent:
                     lines.append(f"    化曜: {', '.join(trans_names)}")
                     for t in trans_names:
                         if t == "化禄":
-                            lines.append(f"      → 化禄增强财运/吉庆")
+                            lines.append("      → 化禄增强财运/吉庆")
                         elif t == "化权":
-                            lines.append(f"      → 化权增强事业/竞争力")
+                            lines.append("      → 化权增强事业/竞争力")
                         elif t == "化科":
-                            lines.append(f"      → 化科增强学业/名声")
+                            lines.append("      → 化科增强学业/名声")
                         elif t == "化忌":
-                            lines.append(f"      → 化忌需特别注意阻碍")
+                            lines.append("      → 化忌需特别注意阻碍")
 
         # 综合建议
-        lines.append(f"\n综合建议:")
+        lines.append("\n综合建议:")
 
         # 根据最弱宫位给出建议
         weakest_score = palace_scores[weakest]
@@ -741,7 +741,7 @@ class PalaceAgent:
             lines.append(f"  2. {advice}")
 
         # 串联关系建议
-        lines.append(f"  3. 宫位串联关系:")
+        lines.append("  3. 宫位串联关系:")
         if connected_palaces == ["夫妻宫", "子女宫", "田宅宫"]:
             lines.append("     婚姻线：家庭-子女-婚姻三位一体，相互影响。")
             lines.append("     建议：家庭和睦有利于婚姻，子女教育需共同关注。")
@@ -837,9 +837,9 @@ class PalaceAgent:
             parts.append(f"对宫{opposite_palace}有主星{','.join(star_names)}")
 
             # 判断庙旺
-            miao_count = sum(1 for l in star_levels if l in ["庙", "旺"])
-            ping_count = sum(1 for l in star_levels if l in ["平", "得"])
-            xian_count = sum(1 for l in star_levels if l in ["陷", "不得"])
+            miao_count = sum(1 for lv in star_levels if lv in ["庙", "旺"])
+            ping_count = sum(1 for lv in star_levels if lv in ["平", "得"])
+            xian_count = sum(1 for lv in star_levels if lv in ["陷", "不得"])
 
             if miao_count > 0:
                 parts.append("，星曜庙旺，投影力量较强")
@@ -975,7 +975,7 @@ class PalaceAgent:
 
         try:
             # 尝试获取当前事件循环
-            loop = asyncio.get_running_loop()
+            asyncio.get_running_loop()
         except RuntimeError:
             # 没有运行中的事件循环，可以安全使用asyncio.run()
             return asyncio.run(self._generate_palace_report_async())

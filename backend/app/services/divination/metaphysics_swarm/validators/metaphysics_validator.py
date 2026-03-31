@@ -12,10 +12,8 @@ MetaphysicsValidator - 命理-社会交叉验证器
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, field
 from datetime import datetime
-from enum import Enum
 import uuid
 
-from app.services.divination.metaphysics_swarm.scenarios import MetaphysicsScenario, ScenarioType
 from app.services.divination.metaphysics_swarm.platforms.trend_tracker import EmergenceResult
 from app.services.divination.metaphysics_swarm.social_interaction import InteractionMetrics
 
@@ -287,7 +285,7 @@ class MetaphysicsValidator:
         Returns:
             ValidationResult: 验证结果
         """
-        validation_id = str(uuid.uuid4())[:8]
+        str(uuid.uuid4())[:8]
 
         # 1. 计算各维度一致性评分
         direction_score = self.validate_direction(
@@ -429,7 +427,7 @@ class MetaphysicsValidator:
         emergence = social_result.get("emergence", {})
         if emergence:
             emergence_sentiment = emergence.get("overall_sentiment", 0.0)
-            sentiment_trend = emergence.get("sentiment_trend", "平稳")
+            emergence.get("sentiment_trend", "平稳")
 
             # 基于预测方向推断的情感预期
             positive_predictions = sum(
@@ -683,7 +681,7 @@ class MetaphysicsValidator:
             return 0.5
 
         overall_sentiment = emergence.overall_sentiment
-        sentiment_magnitude = abs(overall_sentiment)
+        abs(overall_sentiment)
 
         matches = 0
         total = len(metaphysics_prediction.predictions)

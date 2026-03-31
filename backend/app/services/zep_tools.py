@@ -73,7 +73,7 @@ class NodeInfo:
     
     def to_text(self) -> str:
         """转换为文本格式"""
-        entity_type = next((l for l in self.labels if l not in ["Entity", "Node"]), "未知类型")
+        entity_type = next((lb for lb in self.labels if lb not in ["Entity", "Node"]), "未知类型")
         return f"实体: {self.name} (类型: {entity_type})\n摘要: {self.summary}"
 
 
@@ -170,10 +170,10 @@ class InsightForgeResult:
     def to_text(self) -> str:
         """转换为详细的文本格式，供LLM理解"""
         text_parts = [
-            f"## 未来预测深度分析",
+            "## 未来预测深度分析",
             f"分析问题: {self.query}",
             f"预测场景: {self.simulation_requirement}",
-            f"\n### 预测数据统计",
+            "\n### 预测数据统计",
             f"- 相关预测事实: {self.total_facts}条",
             f"- 涉及实体: {self.total_entities}个",
             f"- 关系链: {self.total_relationships}条"
@@ -181,19 +181,19 @@ class InsightForgeResult:
         
         # 子问题
         if self.sub_queries:
-            text_parts.append(f"\n### 分析的子问题")
+            text_parts.append("\n### 分析的子问题")
             for i, sq in enumerate(self.sub_queries, 1):
                 text_parts.append(f"{i}. {sq}")
         
         # 语义搜索结果
         if self.semantic_facts:
-            text_parts.append(f"\n### 【关键事实】(请在报告中引用这些原文)")
+            text_parts.append("\n### 【关键事实】(请在报告中引用这些原文)")
             for i, fact in enumerate(self.semantic_facts, 1):
                 text_parts.append(f"{i}. \"{fact}\"")
         
         # 实体洞察
         if self.entity_insights:
-            text_parts.append(f"\n### 【核心实体】")
+            text_parts.append("\n### 【核心实体】")
             for entity in self.entity_insights:
                 text_parts.append(f"- **{entity.get('name', '未知')}** ({entity.get('type', '实体')})")
                 if entity.get('summary'):
@@ -203,7 +203,7 @@ class InsightForgeResult:
         
         # 关系链
         if self.relationship_chains:
-            text_parts.append(f"\n### 【关系链】")
+            text_parts.append("\n### 【关系链】")
             for chain in self.relationship_chains:
                 text_parts.append(f"- {chain}")
         
@@ -249,9 +249,9 @@ class PanoramaResult:
     def to_text(self) -> str:
         """转换为文本格式（完整版本，不截断）"""
         text_parts = [
-            f"## 广度搜索结果（未来全景视图）",
+            "## 广度搜索结果（未来全景视图）",
             f"查询: {self.query}",
-            f"\n### 统计信息",
+            "\n### 统计信息",
             f"- 总节点数: {self.total_nodes}",
             f"- 总边数: {self.total_edges}",
             f"- 当前有效事实: {self.active_count}条",
@@ -260,21 +260,21 @@ class PanoramaResult:
         
         # 当前有效的事实（完整输出，不截断）
         if self.active_facts:
-            text_parts.append(f"\n### 【当前有效事实】(模拟结果原文)")
+            text_parts.append("\n### 【当前有效事实】(模拟结果原文)")
             for i, fact in enumerate(self.active_facts, 1):
                 text_parts.append(f"{i}. \"{fact}\"")
         
         # 历史/过期事实（完整输出，不截断）
         if self.historical_facts:
-            text_parts.append(f"\n### 【历史/过期事实】(演变过程记录)")
+            text_parts.append("\n### 【历史/过期事实】(演变过程记录)")
             for i, fact in enumerate(self.historical_facts, 1):
                 text_parts.append(f"{i}. \"{fact}\"")
         
         # 关键实体（完整输出，不截断）
         if self.all_nodes:
-            text_parts.append(f"\n### 【涉及实体】")
+            text_parts.append("\n### 【涉及实体】")
             for node in self.all_nodes:
-                entity_type = next((l for l in node.labels if l not in ["Entity", "Node"]), "实体")
+                entity_type = next((lb for lb in node.labels if lb not in ["Entity", "Node"]), "实体")
                 text_parts.append(f"- **{node.name}** ({entity_type})")
         
         return "\n".join(text_parts)
@@ -924,7 +924,7 @@ class ZepToolsService:
         # 筛选有实际类型的实体（非纯Entity节点）
         entities = []
         for node in all_nodes:
-            custom_labels = [l for l in node.labels if l not in ["Entity", "Node"]]
+            custom_labels = [lb for lb in node.labels if lb not in ["Entity", "Node"]]
             if custom_labels:
                 entities.append({
                     "name": node.name,
@@ -1046,7 +1046,7 @@ class ZepToolsService:
                 node = self.get_node_detail(uuid)
                 if node:
                     node_map[uuid] = node
-                    entity_type = next((l for l in node.labels if l not in ["Entity", "Node"]), "实体")
+                    entity_type = next((lb for lb in node.labels if lb not in ["Entity", "Node"]), "实体")
                     
                     # 获取该实体相关的所有事实（不截断）
                     related_facts = [
@@ -1192,8 +1192,8 @@ class ZepToolsService:
                 continue
             
             # 为事实添加实体名称
-            source_name = node_map.get(edge.source_node_uuid, NodeInfo('', '', [], '', {})).name or edge.source_node_uuid[:8]
-            target_name = node_map.get(edge.target_node_uuid, NodeInfo('', '', [], '', {})).name or edge.target_node_uuid[:8]
+            node_map.get(edge.source_node_uuid, NodeInfo('', '', [], '', {})).name or edge.source_node_uuid[:8]
+            node_map.get(edge.target_node_uuid, NodeInfo('', '', [], '', {})).name or edge.target_node_uuid[:8]
             
             # 判断是否过期/失效
             is_historical = edge.is_expired or edge.is_invalid

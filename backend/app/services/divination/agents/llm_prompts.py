@@ -469,7 +469,7 @@ def build_transform_user_prompt(chart_data: Dict[str, Any], question: Optional[s
 
     # 提取基本信息
     birth_info = chart_data.get("birth_info", {})
-    stars = chart_data.get("stars", {})
+    chart_data.get("stars", {})
     palaces = chart_data.get("palaces", {})
     transforms = chart_data.get("transforms", [])
 
@@ -571,7 +571,7 @@ def build_pattern_user_prompt(chart_data: Dict[str, Any], question: Optional[str
     """
     # 提取基本信息
     birth_info = chart_data.get("birth_info", {})
-    stars = chart_data.get("stars", {})
+    chart_data.get("stars", {})
     palaces = chart_data.get("palaces", {})
     transforms = chart_data.get("transforms", [])
 
@@ -1284,7 +1284,7 @@ def build_event_predict_user_prompt(
     """
     birth_info = chart_data.get("birth_info", {})
     palaces = chart_data.get("palaces", {})
-    stars = chart_data.get("stars", {})
+    chart_data.get("stars", {})
     flowing_year = chart_data.get("flowing_year", {})
     flowing_month = chart_data.get("flowing_month", {})
 
@@ -1459,7 +1459,7 @@ def format_analysis_as_text(analysis_result: Dict[str, Any]) -> str:
         if "palace_strengths" in analysis_result:
             lines.append("\n【宫位强弱】")
             for palace, strength in analysis_result["palace_strengths"].items():
-                lines.append(f"  {palette}: {strength}分")
+                lines.append(f"  {palace}: {strength}分")
 
         if "strongest_palaces" in analysis_result:
             lines.append(f"\n【最强宫位】\n  {', '.join(analysis_result['strongest_palaces'])}")
@@ -1770,8 +1770,8 @@ def build_marriage_compat_user_prompt(
     prompt_parts = []
 
     # 标题
-    prompt_parts.append(f"# 姻缘配对分析请求\n")
-    prompt_parts.append(f"## 分析对象")
+    prompt_parts.append("# 姻缘配对分析请求\n")
+    prompt_parts.append("## 分析对象")
     prompt_parts.append(f"- {name_a} vs {name_b}\n")
 
     # 基础配对指数
@@ -2168,17 +2168,17 @@ def build_date_selection_user_prompt(
 
     # 构建提示词
     prompt_lines = [
-        f"# 择日分析请求",
+        "# 择日分析请求",
         "",
-        f"## 事件类型",
+        "## 事件类型",
         f"{date_type}",
         "",
-        f"## 命主基本信息",
+        "## 命主基本信息",
         f"- 出生年干（五行）：{birth_year_gan}",
         f"- 命宫天干：{minggong_gan}",
         f"- 关键宫位：{', '.join(target_palaces)}",
         "",
-        f"## 候选日期列表",
+        "## 候选日期列表",
         "",
     ]
 
@@ -2187,7 +2187,7 @@ def build_date_selection_user_prompt(
         solar_date = opt.get("solar_date", "")
         lunar_date = opt.get("lunar_date", "")
         tiangan = opt.get("tiangan", "")
-        dizhi = opt.get("dizhi", "")
+        opt.get("dizhi", "")
         score = opt.get("score", 0)
         level = opt.get("level", "")
         suitable_for = opt.get("suitable_for", [])
@@ -2216,7 +2216,7 @@ def build_date_selection_user_prompt(
     if question:
         prompt_lines.extend([
             "",
-            f"## 用户具体问题",
+            "## 用户具体问题",
             f"{question}",
             "",
         ])
