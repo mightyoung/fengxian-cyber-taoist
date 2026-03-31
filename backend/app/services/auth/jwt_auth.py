@@ -29,8 +29,18 @@ class TokenPayload:
 class JWTAuth:
     """JWT认证服务"""
 
-    # 配置
-    SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'your-secret-key-change-in-production')
+    # 配置 - 生产环境必须设置 JWT_SECRET_KEY
+    _secret = os.environ.get('JWT_SECRET_KEY')
+    _is_dev = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
+    if not _secret:
+        if _is_dev:
+            _secret = 'dev-only-secret-do-not-use-in-production'
+        else:
+            raise ValueError(
+                "JWT_SECRET_KEY environment variable must be set in production. "
+                "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\""
+            )
+    SECRET_KEY: str = _secret
     ALGORITHM = 'HS256'
     ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24 hours
     REFRESH_TOKEN_EXPIRE_DAYS = 30
