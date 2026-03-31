@@ -3,7 +3,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useSimulationStore } from '@/stores/simulationStore';
 import { Simulation, SimulationStatus, ApiResponse } from '@/types/simulation';
-import { Agent, AgentStatus } from '@/types/agent';
+import { Agent, AgentStatus, TimelineEvent } from '@/types/agent';
 
 const API_BASE = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api'}/simulation`;
 
@@ -151,6 +151,48 @@ async function fetchRunStatus(simulationId: string): Promise<SimulationRunStatus
   return extractData(apiResponse);
 }
 
+// Run status detail response (includes all_actions for timeline)
+export interface SimulationRunStatusDetail {
+  simulation_id: string;
+  runner_status: 'idle' | 'running' | 'completed' | 'failed';
+  current_round: number;
+  total_rounds: number;
+  progress_percent: number;
+  simulated_hours: number;
+  total_simulation_hours: number;
+  twitter_running: boolean;
+  reddit_running: boolean;
+  twitter_actions_count: number;
+  reddit_actions_count: number;
+  total_actions_count: number;
+  started_at?: string;
+  updated_at?: string;
+  all_actions: SimulationAction[];
+  twitter_actions: SimulationAction[];
+  reddit_actions: SimulationAction[];
+}
+
+export interface SimulationAction {
+  round_num: number;
+  timestamp: string;
+  platform: 'twitter' | 'reddit';
+  agent_id: number;
+  agent_name: string;
+  action_type: string;
+  action_args: Record<string, unknown>;
+  result: unknown;
+  success: boolean;
+}
+
+async function fetchRunStatusDetail(simulationId: string): Promise<SimulationRunStatusDetail> {
+  const response = await fetch(`${API_BASE}/${simulationId}/run-status/detail`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch run status detail');
+  }
+  const apiResponse: ApiResponse<SimulationRunStatusDetail> = await response.json();
+  return extractData(apiResponse);
+}
+
 // Hook for fetching all simulations
 export function useSimulations() {
   return useQuery({
@@ -245,9 +287,11 @@ export function usePauseSimulation() {
   const { setError } = useSimulationStore();
 
   return {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     mutate: (_: string) => {
       setError('Pause is not supported in this version');
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     mutateAsync: async (_: string) => {
       throw new Error('Pause is not supported in this version');
     },
@@ -291,6 +335,28 @@ export function useSimulationRunStatus(simulationId: string | null) {
     enabled: !!simulationId,
     refetchInterval: 3000,
   });
+}
+
+// Hook for real-time simulation run status detail (includes all_actions for timeline)
+export function useSimulationRunStatusDetail(simulationId: string | null) {
+  return useQuery({
+    queryKey: ['simulation-run-status-detail', simulationId],
+    queryFn: () => fetchRunStatusDetail(simulationId!),
+    enabled: !!simulationId,
+    refetchInterval: 3000,
+  });
+}
+
+// Helper to transform simulation actions to timeline events
+export function transformActionsToTimelineEvents(actions: SimulationAction[]) {
+  return actions.map((action, index): TimelineEvent => ({
+    id: `${action.timestamp}-${index}`,
+    timestamp: new Date(action.timestamp),
+    platform: action.platform,
+    agentId: action.agent_id.toString(),
+    action: action.action_type,
+    content: action.action_args.content as string | undefined,
+  }));
 }
 
 // Helper hook to get agents from store

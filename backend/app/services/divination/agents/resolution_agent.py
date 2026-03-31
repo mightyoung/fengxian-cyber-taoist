@@ -3,7 +3,7 @@
 识别凶格和不利配置，提供化解方法
 """
 
-from typing import Dict, List, Optional, Any, Set
+from typing import Dict, List, Any, Set
 from dataclasses import dataclass, field
 from enum import Enum
 import json

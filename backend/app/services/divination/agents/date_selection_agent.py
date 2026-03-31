@@ -11,12 +11,9 @@ DateSelectionAgent - 择日分析智能体
 """
 
 from datetime import datetime, timedelta
-import calendar
 from typing import Dict, List, Optional, Any, Tuple
 
 from .date_selection_constants import (
-    TIANGAN,
-    EARTHLY_BRANCHES,
     TIANGAN_DIZHI,
     DATE_EVENT_PALACE_MAPPING,
     AUSPICIOUS_TIANGAN,
@@ -28,45 +25,6 @@ from .date_selection_constants import (
     WUXING_KENG,
 )
 from .date_selection_types import DailyOption, DateSelectionResult
-
-
-class DateSelectionAgent:
-    """
-    择日分析智能体
-
-    分析并推荐最佳择日，根据事件类型和命盘配合度对日期进行评分排序。
-    """
-    rank: int
-    solar_date: str              # 阳历: "2026-09-15"
-    lunar_date: str             # 农历: "八月初五"
-    tiangan: str                 # 日柱天干: "甲子"
-    dizhi: str                   # 日柱地支: "子"
-    score: float                # 综合分数 0-100
-    level: str                  # 等级
-    is_auspicious: bool         # 是否为吉日
-    suitable_for: List[str]      # 适合做的事
-    avoid: List[str]            # 需要避免的事
-    key_factors: List[str]       # 关键因素
-    best_time_window: str        # 最佳时段: "上午9-11时"
-    warnings: List[str] = field(default_factory=list)
-
-    def to_dict(self) -> Dict[str, Any]:
-        """转换为字典"""
-        return {
-            "rank": self.rank,
-            "solar_date": self.solar_date,
-            "lunar_date": self.lunar_date,
-            "tiangan": self.tiangan,
-            "dizhi": self.dizhi,
-            "score": self.score,
-            "level": self.level,
-            "is_auspicious": self.is_auspicious,
-            "suitable_for": self.suitable_for,
-            "avoid": self.avoid,
-            "key_factors": self.key_factors,
-            "best_time_window": self.best_time_window,
-            "warnings": self.warnings,
-        }
 
 
 class DateSelectionAgent:

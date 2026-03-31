@@ -9,9 +9,9 @@ CareerAgent - 事业发展分析智能体
 - 事业建议
 """
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
-from typing import Dict, List, Optional, Any, Callable
+from typing import Dict, List, Optional, Any
 from enum import Enum
 
 

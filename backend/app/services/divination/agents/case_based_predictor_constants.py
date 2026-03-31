@@ -19,8 +19,7 @@ logger = logging.getLogger(__name__)
 
 # 尝试导入ChromaDB
 try:
-    import chromadb
-    from chromadb.config import Settings
+    import chromadb  # noqa: F401 - Used to check availability, not for direct usage
     CHROMADB_AVAILABLE = True
 except ImportError:
     CHROMADB_AVAILABLE = False

@@ -15,9 +15,6 @@ DATA_BASE_PATH = os.path.join(
     'data_source', 'mlx', 'data'
 )
 
-# 存储生成的命盘 (生产环境应使用数据库)
-_charts_storage: Dict[str, Dict[str, Any]] = {}
-
 # Create blueprints
 divination_bp = Blueprint('divination', __name__, url_prefix='/api/divination')
 knowledge_bp = Blueprint('knowledge', __name__, url_prefix='/api/divination/knowledge')

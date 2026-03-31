@@ -34,7 +34,6 @@ export const PalaceDetailSheet = memo(function PalaceDetailSheet({
   palace,
   open,
   onOpenChange,
-  className,
 }: PalaceDetailSheetProps) {
   if (!palace) return null;
 

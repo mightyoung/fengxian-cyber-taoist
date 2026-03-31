@@ -3,6 +3,8 @@
  * Centralized configuration for all modules
  */
 
+import { SimulationStatus } from '@/types/api';
+
 export const BIRTH_CHART_CONFIG = {
   PALACE_COUNT: 12,
   MAIN_STARS_COUNT: 14,
@@ -16,12 +18,8 @@ export const BIRTH_CHART_CONFIG = {
 
 export const SIMULATION_CONFIG = {
   PLATFORMS: ['twitter', 'reddit'] as const,
-  STATUS: {
-    PENDING: 'pending',
-    RUNNING: 'running',
-    COMPLETED: 'completed',
-    FAILED: 'failed'
-  } as const,
+  // Re-export SimulationStatus for convenience (imported from types/api.ts)
+  STATUS: SimulationStatus,
   REFRESH_INTERVAL: 3000,
 } as const;
 

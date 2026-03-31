@@ -61,18 +61,8 @@ class CausalChainType(Enum):
     PATTERN_RECOGNITION = "格局识别"  # 四大格局识别
 
 
-# 生年干四化映射表（根据紫微斗数典籍《紫微斗数全书》《飞星紫微斗数》）
-# 注意：一星不可化两曜，化禄和化忌可以同星
-# 甲: 廉贞化禄、破军化权、太阳化科、太阴化忌
-# 乙: 廉贞化禄、破军化权、武曲化科、太阳化忌
-# 丙: 天同化禄、天梁化权、太阳化科、天同化忌
-# 丁: 天同化禄、天梁化权、天机化科、太阴化忌
-# 戊: 贪狼化禄、太阴化权、右弼化科、天机化忌
-# 己: 武曲化禄、贪狼化权、太阴化科、武曲化忌
-# 庚: 太阳化禄、武曲化权、天府化科、太阳化忌
-# 辛: 巨门化禄、太阳化权、天府化科、巨门化忌
-# 壬: 天梁化禄、天机化权、紫微化科、天梁化忌
-# 癸: 天机化禄、巨门化权、紫微化科、天机化忌
+# 生年干四化映射表
+# 与 transform_decider 保持一致，避免不同分析链条使用不同四化规则。
 YEAR_STEM_TRANSFORMS: Dict[str, Dict[TransformType, str]] = {
     "甲": {
         TransformType.HUA_LU: "廉贞",
@@ -81,57 +71,57 @@ YEAR_STEM_TRANSFORMS: Dict[str, Dict[TransformType, str]] = {
         TransformType.HUA_JI: "太阴",
     },
     "乙": {
-        TransformType.HUA_LU: "廉贞",
-        TransformType.HUA_QUAN: "破军",
-        TransformType.HUA_KE: "武曲",
-        TransformType.HUA_JI: "太阳",
+        TransformType.HUA_LU: "天机",
+        TransformType.HUA_QUAN: "天梁",
+        TransformType.HUA_KE: "文昌",
+        TransformType.HUA_JI: "贪狼",
     },
     "丙": {
         TransformType.HUA_LU: "天同",
-        TransformType.HUA_QUAN: "天梁",
-        TransformType.HUA_KE: "太阳",
+        TransformType.HUA_QUAN: "天机",
+        TransformType.HUA_KE: "天机",
         TransformType.HUA_JI: "天同",
     },
     "丁": {
-        TransformType.HUA_LU: "天同",
-        TransformType.HUA_QUAN: "天梁",
-        TransformType.HUA_KE: "天机",
-        TransformType.HUA_JI: "太阴",
+        TransformType.HUA_LU: "巨门",
+        TransformType.HUA_QUAN: "太阳",
+        TransformType.HUA_KE: "文曲",
+        TransformType.HUA_JI: "天机",
     },
     "戊": {
         TransformType.HUA_LU: "贪狼",
-        TransformType.HUA_QUAN: "太阴",
-        TransformType.HUA_KE: "右弼",
-        TransformType.HUA_JI: "天机",
+        TransformType.HUA_QUAN: "武曲",
+        TransformType.HUA_KE: "天梁",
+        TransformType.HUA_JI: "廉贞",
     },
     "己": {
-        TransformType.HUA_LU: "武曲",
-        TransformType.HUA_QUAN: "贪狼",
-        TransformType.HUA_KE: "太阴",
-        TransformType.HUA_JI: "武曲",
+        TransformType.HUA_LU: "太阴",
+        TransformType.HUA_QUAN: "巨门",
+        TransformType.HUA_KE: "天机",
+        TransformType.HUA_JI: "文昌",
     },
     "庚": {
-        TransformType.HUA_LU: "太阳",
-        TransformType.HUA_QUAN: "武曲",
+        TransformType.HUA_LU: "天梁",
+        TransformType.HUA_QUAN: "紫微",
         TransformType.HUA_KE: "天府",
-        TransformType.HUA_JI: "太阳",
+        TransformType.HUA_JI: "天同",
     },
     "辛": {
-        TransformType.HUA_LU: "巨门",
-        TransformType.HUA_QUAN: "太阳",
-        TransformType.HUA_KE: "天府",
-        TransformType.HUA_JI: "巨门",
+        TransformType.HUA_LU: "文昌",
+        TransformType.HUA_QUAN: "文曲",
+        TransformType.HUA_KE: "天同",
+        TransformType.HUA_JI: "天梁",
     },
     "壬": {
-        TransformType.HUA_LU: "天梁",
+        TransformType.HUA_LU: "天同",
         TransformType.HUA_QUAN: "天机",
-        TransformType.HUA_KE: "紫微",
-        TransformType.HUA_JI: "天梁",
+        TransformType.HUA_KE: "天机",
+        TransformType.HUA_JI: "天同",
     },
     "癸": {
         TransformType.HUA_LU: "天机",
-        TransformType.HUA_QUAN: "巨门",
-        TransformType.HUA_KE: "紫微",
+        TransformType.HUA_QUAN: "文曲",
+        TransformType.HUA_KE: "天同",
         TransformType.HUA_JI: "天机",
     },
 }

@@ -172,7 +172,7 @@ function FortuneRadarChartComponent({
       window.removeEventListener('resize', handleResize);
       chart.dispose();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
   // Update chart when data changes
@@ -226,7 +226,7 @@ function FortuneRadarChartComponent({
         },
       ],
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+   
   }, [data, theme]);
 
   return (

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useCallback, useRef } from 'react';
-import { AgentChatMemoized } from '@/components/chat/agent-chat';
 import { ChatMessage } from '@/components/chat/chat-message';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

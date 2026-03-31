@@ -16,7 +16,7 @@
 from typing import Dict, List, Optional, Any
 
 # 导入共用类型
-from ..service_types import FortuneLevel, fortune_level_from_score, normalize_score
+from ..service_types import fortune_level_from_score, normalize_score
 from .marriage_constants import (
     WUXING_SHENG,
     WUXING_KENG,

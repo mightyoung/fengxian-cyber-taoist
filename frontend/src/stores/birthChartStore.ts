@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Palace, BirthChart, BirthChartInput } from '@/types/birth-chart';
+import { BirthChart, BirthChartInput } from '@/types/birth-chart';
 
 interface BirthChartState {
   // State

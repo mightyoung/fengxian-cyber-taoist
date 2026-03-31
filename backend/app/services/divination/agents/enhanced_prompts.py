@@ -15,8 +15,7 @@ Enhanced LLM Prompts - 基于顶级Agent提示词研究的改进版
 5. 添加质量门控
 """
 
-from typing import Dict, Any, List, Optional
-from dataclasses import dataclass
+from typing import Dict, Any, Optional
 
 
 # ============ Enhanced System Prompt Base ============

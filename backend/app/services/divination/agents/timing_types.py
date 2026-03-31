@@ -43,13 +43,16 @@ class CycleStage(Enum):
 @dataclass
 class MajorFate:
     """大限数据"""
+    index: int               # 大限序号 (1-12)
     start_age: int
     end_age: int
+    palace: str               # 大限落宫
     hub_palace: str           # 枢纽宫
     hub_star: str             # 枢纽星
     star_system: str           # 星曜系统
-    main_transform: str       # 主导四化
-    description: str          # 描述
+    transformation: str        # 主导四化
+    description: str           # 描述
+    stars: List[str] = field(default_factory=list)  # 大限内星曜
     keywords: List[str] = field(default_factory=list)
 
 

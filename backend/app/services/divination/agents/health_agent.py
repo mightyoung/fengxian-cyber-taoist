@@ -8,11 +8,9 @@ HealthAgent - 健康分析智能体
 - 养生建议
 """
 
-from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any, Callable
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Any
 from enum import Enum
-import json
-import os
 
 
 class HealthLevel(Enum):

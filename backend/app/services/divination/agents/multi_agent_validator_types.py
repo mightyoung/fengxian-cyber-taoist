@@ -13,7 +13,7 @@ Multi-Agent Validator Types - 多Agent共识验证数据类型
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional
 from enum import Enum
 
 from .multi_agent_validator_constants import ExpertAuthor

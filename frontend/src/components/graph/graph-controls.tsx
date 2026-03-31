@@ -7,7 +7,6 @@ import {
   ZoomOut,
   Maximize2,
   RotateCcw,
-  Filter,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';

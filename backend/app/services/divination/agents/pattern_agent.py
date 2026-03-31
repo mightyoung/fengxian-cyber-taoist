@@ -6,7 +6,6 @@
 from typing import Dict, List, Optional, Any, Set, Tuple
 import json
 import os
-import re
 
 from .pattern_constants import (
     PALACE_NAMES as CONSTANT_PALACE_NAMES,
@@ -17,6 +16,7 @@ from .pattern_constants import (
     EMPTY_STARS as CONSTANT_EMPTY_STARS,
 )
 from .pattern_types import PatternCategory, PatternQuality, Pattern, PatternAnalysis
+from .cache_decorator import cached_chart_analysis
 
 
 # 十二宫位名称（完整列表）
@@ -840,6 +840,7 @@ async def llm_analyze_patterns(
     return await analyzer.analyze_with_llm(question)
 
 
+@cached_chart_analysis("patterns", ttl=3600)
 def llm_analyze_patterns_sync(
     chart_data: Any,
     palace_stars: Optional[Dict[str, List[str]]] = None,

@@ -15,7 +15,7 @@ ChartVectorizer - 命盘特征向量提取模块
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any, Tuple
+from typing import Dict, List, Optional, Any
 from enum import Enum
 import math
 

@@ -67,7 +67,7 @@ function ReportMetrics({ reportId, className }: ReportMetricsProps) {
       transition={{ duration: ANIMATIONS.standard.duration / 1000 }}
       className={cn('grid grid-cols-2 md:grid-cols-4 gap-4', className)}
     >
-      {metricCards.map((metric, index) => (
+      {metricCards.map((metric) => (
         <Card
           key={metric.title}
           className="bg-slate-900/50 border-slate-800 hover:border-slate-700 transition-colors"

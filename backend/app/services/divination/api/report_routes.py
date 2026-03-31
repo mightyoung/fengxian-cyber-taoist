@@ -11,11 +11,11 @@ from typing import Dict, Any
 from flask import Blueprint, request, jsonify
 
 from app.services.divination.api import (
-    _charts_storage,
     _to_dict,
     _format_transform_explanation,
     _format_palace_overview,
 )
+from app.models.divination import DivinationManager
 
 # Create blueprint for report routes
 report_bp = Blueprint('report', __name__, url_prefix='/report')
@@ -104,14 +104,19 @@ async def _run_parallel_analysis_for_report(chart_data: Dict[str, Any]):
 @report_bp.route('/generate', methods=['POST'])
 def generate_prediction_report():
     """
-    生成三层融合预测报告（综合报告 B）
+    生成预测报告
+
+    支持两种报告类型：
+    - professional_plain: 专业通俗版（默认），使用LLM生成详细报告
+    - xiaohongshu: 小红书版
 
     Request Body:
         {
             "chart_id": "uuid",       // optional
             "chart": { ... },          // optional
             "user_name": "杨宏辉",    // optional
-            "year": 2026               // 预测年份
+            "year": 2026,             // 预测年份
+            "report_type": "professional_plain"  // professional_plain | xiaohongshu
         }
 
     Returns:
@@ -134,9 +139,10 @@ def generate_prediction_report():
         chart_data = None
         chart_id = data.get("chart_id")
         if chart_id:
-            if chart_id not in _charts_storage:
+            chart = DivinationManager.get_chart(chart_id)
+            if not chart:
                 return jsonify({"success": False, "error": f"未找到ID为 {chart_id} 的命盘"}), 404
-            chart_data = _charts_storage[chart_id]["chart"]
+            chart_data = chart.chart_data
         else:
             chart_data = data.get("chart")
             if not chart_data:
@@ -174,48 +180,18 @@ def generate_prediction_report():
         report_id_str = chart_id or f"inline_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 
         # 根据报告类型生成不同格式
-        if report_type == "prediction":
-            # 基础三层融合报告
-            markdown = format_prediction_report_markdown(prediction_report)
-            saved_filename = f"{report_id_str}_prediction.md"
-        elif report_type == "enhanced":
-            # 增强版 - 包含详细四化解读的完整报告
-            from app.services.divination.agents.report_transformer import ReportTransformer
-            transformer = ReportTransformer()
-            # 获取四化详细解读（从parallel analysis的结果）
-            transform_content = _format_transform_explanation(chart_data, transform_dict)
-            palace_content = _format_palace_overview(chart_data, palace_dict)
-            # 基础预测报告
-            prediction_markdown = format_prediction_report_markdown(prediction_report)
-            # 合并为增强版
-            markdown = f"""# {user_name} {year}年运势预测报告（增强版）
-
-> **命主**: {user_name}
-> **预测年份**: {year}年
-> **生成时间**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-> **分析系统**: FengxianCyberTaoist 紫微斗数智能分析系统
-
----
-
-## 一、命盘概览
-
-{palace_content}
-
----
-
-## 二、四化详解
-
-{transform_content}
-
----
-
-## 三、年度运势分析
-
-{prediction_markdown}
-"""
-            saved_filename = f"{report_id_str}_enhanced.md"
-        elif report_type == "professional_plain":
-            # 专业通俗版 - 使用unified_report_generator生成详细LLM内容
+        # 只保留 professional_plain (详细LLM版) 和 xiaohongshu
+        if report_type == "xiaohongshu":
+            # 小红书版
+            from app.services.divination.agents.xiaohongshu_agent import generate_xhs_report_sync
+            markdown = generate_xhs_report_sync(
+                chart=chart_data,
+                user_name=user_name,
+                target_year=year
+            )
+            saved_filename = f"{report_id_str}_xiaohongshu.md"
+        else:
+            # professional_plain - 专业通俗版（默认，使用LLM生成详细报告）
             from app.utils.unified_report_generator import generate_markdown_report
             # 构建analysis_result（从并行分析结果）
             analysis_result = {
@@ -236,50 +212,31 @@ def generate_prediction_report():
             # 添加命主名称到标题（如果chart中没有）
             markdown = markdown.replace("# 命主 ", f"# {user_name} ")
             saved_filename = f"{report_id_str}_professional_plain.md"
-        else:  # "full" - 综合版，合并所有报告
-            # 生成完整综合报告
-            from app.services.divination.agents.report_transformer import ReportTransformer
-            transformer = ReportTransformer()
-            plain_markdown = transformer.transform_report_sync(prediction_report, style="professional_plain", user_name=user_name, chart_data=chart_data)
-            prediction_markdown = format_prediction_report_markdown(prediction_report)
 
-            # 合并报告: 专业通俗 + 三层分析 + 因果链
-            markdown = f"""# {user_name} {year}年运势预测报告
-
-> **生成时间**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-> **命盘ID**: {report_id_str}
-> **报告类型**: 综合完整版
-
----
-
-## 一、命盘概览与通俗解读
-
-{plain_markdown}
-
----
-
-## 二、三层融合专业分析
-
-{prediction_markdown}
-
----
-
-## 三、趋避建议
-
-1. 因实证较强，建议寻求专业化解指导
-2. 把握机会，谨慎行事
-"""
-
-            saved_filename = f"{report_id_str}_full.md"
-
-        # 保存报告
+        # 保存报告到文件系统
         report_path = os.path.join(user_folder, saved_filename)
         with open(report_path, 'w', encoding='utf-8') as f:
             f.write(markdown)
 
+        # 使用DivinationManager持久化存储报告元数据
+        saved_report = DivinationManager.create_report(
+            chart_id=chart_id or "inline",
+            user_name=user_name,
+            target_year=year,
+            report_type=report_type,
+            markdown_content=markdown,
+            metadata={
+                "user_name": user_name,
+                "year": year,
+                "report_type": report_type,
+                "report_path": report_path,
+            },
+        )
+
         return jsonify({
             "success": True,
             "data": {
+                "report_id": saved_report.report_id,
                 "chart_id": chart_id or "inline",
                 "markdown": markdown,
                 "report_path": report_path,
@@ -298,30 +255,52 @@ def generate_prediction_report():
 
 
 @report_bp.route('/<chart_id>', methods=['GET'])
-def get_report(chart_id):
+def get_reports_by_chart(chart_id):
     """
-    获取已存储的报告
+    获取指定命盘的所有报告
 
     Returns:
         {
             "success": true,
             "data": {
-                "prediction_report": "# 报告\n...",
-                "xiaohongshu": "# 小红书版\n...",
-                "professional_plain": "# 通俗版\n..."
+                "reports": [...]
             }
         }
     """
-    if chart_id not in _charts_storage:
+    chart = DivinationManager.get_chart(chart_id)
+    if not chart:
         return jsonify({"success": False, "error": f"未找到ID为 {chart_id} 的命盘"}), 404
 
-    stored = _charts_storage[chart_id]
+    reports = DivinationManager.get_reports_by_chart(chart_id)
     return jsonify({
         "success": True,
         "data": {
-            "prediction_report": stored.get("prediction_report", ""),
-            "xiaohongshu": stored.get("xiaohongshu", ""),
-            "professional_plain": stored.get("professional_plain", ""),
+            "reports": [r.to_dict() for r in reports]
+        }
+    })
+
+
+@report_bp.route('/id/<report_id>', methods=['GET'])
+def get_report_by_id(report_id):
+    """
+    根据报告ID获取单个报告
+
+    Returns:
+        {
+            "success": true,
+            "data": {
+                "report": {...}
+            }
+        }
+    """
+    report = DivinationManager.get_report(report_id)
+    if not report:
+        return jsonify({"success": False, "error": f"未找到ID为 {report_id} 的报告"}), 404
+
+    return jsonify({
+        "success": True,
+        "data": {
+            "report": report.to_dict()
         }
     })
 
@@ -358,8 +337,10 @@ def transform_report():
 
         chart_data = None
         chart_id = data.get("chart_id")
-        if chart_id and chart_id in _charts_storage:
-            chart_data = _charts_storage[chart_id]["chart"]
+        if chart_id:
+            chart = DivinationManager.get_chart(chart_id)
+            if chart:
+                chart_data = chart.chart_data
 
         user_name = data.get("user_name", "命主")
 

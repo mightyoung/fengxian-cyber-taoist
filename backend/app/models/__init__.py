@@ -4,6 +4,13 @@
 
 from .task import TaskManager, TaskStatus
 from .project import Project, ProjectStatus, ProjectManager
+from .divination import DivinationManager, BirthChart, PredictionReport, DivinationStatus
+from .user import User, UserManager, Subscription, SubscriptionTier, SubscriptionStatus
 
-__all__ = ['TaskManager', 'TaskStatus', 'Project', 'ProjectStatus', 'ProjectManager']
+__all__ = [
+    'TaskManager', 'TaskStatus',
+    'Project', 'ProjectStatus', 'ProjectManager',
+    'DivinationManager', 'BirthChart', 'PredictionReport', 'DivinationStatus',
+    'User', 'UserManager', 'Subscription', 'SubscriptionTier', 'SubscriptionStatus',
+]
 

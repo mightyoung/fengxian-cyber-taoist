@@ -13,6 +13,7 @@ interface SimulationStatusBarProps {
 }
 
 const statusLabels: Record<SimulationStatus, string> = {
+  [SimulationStatus.PENDING]: '等待中',
   [SimulationStatus.CREATED]: '已创建',
   [SimulationStatus.PREPARING]: '准备中',
   [SimulationStatus.READY]: '就绪',
@@ -23,6 +24,7 @@ const statusLabels: Record<SimulationStatus, string> = {
 };
 
 const statusColors: Record<SimulationStatus, string> = {
+  [SimulationStatus.PENDING]: 'bg-slate-400',
   [SimulationStatus.CREATED]: 'bg-slate-500',
   [SimulationStatus.PREPARING]: 'bg-blue-500',
   [SimulationStatus.READY]: 'bg-green-500',

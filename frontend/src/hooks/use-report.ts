@@ -7,6 +7,22 @@ import type { Report, ReportMetrics, ReportSection } from '@/types/report';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
 
+async function fetchReports(): Promise<Report[]> {
+  const response = await fetch(`${API_BASE}/report/list`);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch reports');
+  }
+
+  const data = await response.json();
+
+  if (!data.success) {
+    throw new Error(data.error || 'Failed to fetch reports');
+  }
+
+  return data.data;
+}
+
 async function fetchReport(reportId: string): Promise<Report> {
   const response = await fetch(`${API_BASE}/report/${reportId}`);
 
@@ -116,5 +132,12 @@ export function useReportMetrics(reportId: string | null) {
 export function useGenerateReport() {
   return useMutation({
     mutationFn: generateReport,
+  });
+}
+
+export function useReports() {
+  return useQuery({
+    queryKey: ['reports'],
+    queryFn: fetchReports,
   });
 }

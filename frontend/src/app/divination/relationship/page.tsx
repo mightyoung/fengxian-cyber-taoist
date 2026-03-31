@@ -8,12 +8,11 @@ import { RelationshipAnalysis } from '@/components/divination/RelationshipAnalys
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BirthChartInput } from '@/components/birth-chart/birth-chart-input';
-import { BirthChartInput as BirthChartInputType, Palace } from '@/types/birth-chart';
+import { BirthChartInput as BirthChartInputType } from '@/types/birth-chart';
 import { divinationApi } from '@/hooks/use-api';
 
 export default function RelationshipPage() {
   const [chartData, setChartData] = useState<Record<string, unknown> | null>(null);
-  const [palaces, setPalaces] = useState<Palace[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,11 +29,9 @@ export default function RelationshipPage() {
     }
 
     if (result.data) {
-      // Store chart data for relationship analysis
-      const data = result.data as { palaces?: Palace[] } & Record<string, unknown>;
-      setChartData(data as unknown as Record<string, unknown>);
-      if (data.palaces) {
-        setPalaces(data.palaces);
+      const data = result.data as { chart?: Record<string, unknown> };
+      if (data.chart) {
+        setChartData(data.chart);
       }
     }
     setIsLoading(false);
@@ -171,7 +168,6 @@ export default function RelationshipPage() {
               <Button
                 onClick={() => {
                   setChartData(null);
-                  setPalaces(null);
                 }}
                 variant="outline"
                 className="border-slate-600 text-slate-300 hover:bg-slate-800"

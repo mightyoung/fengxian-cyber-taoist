@@ -8,17 +8,15 @@ LLM提示词模块 - 为分析Agent提供LLM调用能力
 """
 
 from typing import Dict, Any, List, Optional
+import json
 
-from .llm_prompts_types import LLMResponse
 from .llm_prompts_constants import (
     load_transform_cases,
     load_pattern_cases,
     load_palace_cases,
     load_star_cases,
     load_daxian_cases,
-    load_six_relation_cases,
     load_flying_star_rules,
-    _get_knowledge_base_dir,
 )
 
 # 导入增强版提示词（基于顶级Agent提示词研究）
@@ -1043,8 +1041,6 @@ def build_birth_timing_user_prompt(
     Returns:
         格式化的用户提示词
     """
-    import json
-
     # 格式化父母信息
     parents_info = ""
 

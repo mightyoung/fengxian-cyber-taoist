@@ -16,7 +16,6 @@
 
 import json
 import os
-from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any
 
 from .palace_constants import (
@@ -25,13 +24,13 @@ from .palace_constants import (
     DUIGONG_MAP,
     TOPIC_PALACE_CONNECTIONS,
 )
+from .cache_decorator import cached_chart_analysis
 from .palace_types import (
     PalaceStrengthLevel,
     PalaceScore,
     PalaceAnalysisResult,
     PalaceAnalysis,
     PalaceConnectionResult,
-    MultiPalaceConnectionAnalysis,
     EmptyPalaceAnalysis,
 )
 
@@ -1043,7 +1042,6 @@ class LLVMPalaceAnalyzer:
         from .llm_prompts import (
             PALACE_SYSTEM_PROMPT,
             build_palace_user_prompt,
-            format_analysis_as_text,
             load_palace_cases,
             load_six_relation_cases,
             get_relevant_cases,
@@ -1119,6 +1117,7 @@ async def llm_analyze_palaces(
     return await analyzer.analyze_with_llm(question)
 
 
+@cached_chart_analysis("palaces", ttl=3600)
 def llm_analyze_palaces_sync(
     chart_data: Dict[str, Any],
     question: Optional[str] = None

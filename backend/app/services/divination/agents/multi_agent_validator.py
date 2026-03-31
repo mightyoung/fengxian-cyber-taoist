@@ -21,17 +21,11 @@ MultiAgent Validator - 多Agent共识验证模块
 """
 
 from typing import Dict, List, Optional, Any
-from collections import Counter
 import asyncio
 
 from .multi_agent_validator_constants import (
     ExpertAuthor,
-    ExpertRole,
     EXPERT_AUTHOR_DESCRIPTIONS,
-    AGENT_WEIGHTS,
-    EXPERT_ROLE_WEIGHTS,
-    DEFAULT_AGENT_WEIGHT,
-    DEFAULT_EXPERT_WEIGHT,
     get_agent_weight,
     get_expert_weight,
 )

@@ -1,271 +1,188 @@
 'use client';
 
-import { useState, use } from 'react';
-import { useSimulationStore } from '@/stores/simulationStore';
-import {
-  useSimulation,
-  useSimulationAgents,
-  useStartSimulation,
-  usePauseSimulation,
-  useStopSimulation,
-  useSimulationStatus,
-  useSimulations,
-  useAgents,
-} from '@/hooks/use-simulation';
-import { SimulationStatusBar } from '@/components/simulation/simulation-status-bar';
-import { SimulationControls } from '@/components/simulation/simulation-controls';
-import { AgentGrid } from '@/components/simulation/agent-grid';
-import { SimulationTimeline } from '@/components/simulation/simulation-timeline';
-import { Agent, TimelineEvent, AgentStatus } from '@/types/agent';
-import { SimulationStatus } from '@/types/simulation';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
+import { useSimulations } from '@/hooks/use-simulation';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Sparkles, ArrowLeft, Clock, Users } from 'lucide-react';
 
-// Demo data for testing - 紫微斗数命理模拟角色
-const demoAgents: Agent[] = [
-  {
-    id: '1',
-    name: '玄清真人',
-    role: '道士',
-    status: AgentStatus.RUNNING,
-    activity: 85,
-    tweets: 42,
-    mentions: 156,
-    engagements: 892,
-  },
-  {
-    id: '2',
-    name: '李命理',
-    role: '命理师',
-    status: AgentStatus.RUNNING,
-    activity: 72,
-    tweets: 38,
-    mentions: 124,
-    engagements: 567,
-  },
-  {
-    id: '3',
-    name: '王风水',
-    role: '风水师',
-    status: AgentStatus.IDLE,
-    activity: 45,
-    tweets: 20,
-    mentions: 89,
-    engagements: 234,
-  },
-  {
-    id: '4',
-    name: '赵修士',
-    role: '修士',
-    status: AgentStatus.COMPLETED,
-    activity: 95,
-    tweets: 67,
-    mentions: 234,
-    engagements: 1234,
-  },
-];
-
-const demoEvents: TimelineEvent[] = [
-  {
-    id: '1',
-    timestamp: new Date(Date.now() - 1000 * 60 * 5),
-    platform: 'twitter',
-    agentId: '1',
-    action: '发布推文',
-    content: '刚刚发布了关于AI的最新观点！',
-  },
-  {
-    id: '2',
-    timestamp: new Date(Date.now() - 1000 * 60 * 4),
-    platform: 'reddit',
-    agentId: '2',
-    action: '评论',
-    content: '在r/technology上回复了关于产品发布的讨论',
-  },
-  {
-    id: '3',
-    timestamp: new Date(Date.now() - 1000 * 60 * 3),
-    platform: 'twitter',
-    agentId: '4',
-    action: '转发',
-    content: '转发了科技新闻',
-  },
-  {
-    id: '4',
-    timestamp: new Date(Date.now() - 1000 * 60 * 2),
-    platform: 'twitter',
-    agentId: '1',
-    action: '回复',
-    content: '回复了粉丝的评论',
-  },
-  {
-    id: '5',
-    timestamp: new Date(Date.now() - 1000 * 60),
-    platform: 'reddit',
-    agentId: '3',
-    action: '发帖',
-    content: '在r/startups上分享了创业经验',
-  },
-];
-
-interface SimulationPageProps {
-  params: Promise<{ id: string }>;
-}
-
-export default function SimulationPage({ params }: SimulationPageProps) {
-  const { id } = use(params);
-  const [selectedAgentId, setSelectedAgentId] = useState<string | undefined>();
-
-  const {
-    simulation,
-    isRunning,
-    isCompleted,
-    isPaused,
-  } = useSimulationStatus(id);
-
-  const { agents, isLoading: agentsLoading } = useAgents();
-  const startMutation = useStartSimulation();
-  const pauseMutation = usePauseSimulation();
-  const stopMutation = useStopSimulation();
-
-  // Use demo data if no simulation
-  const displayAgents = agents.length > 0 ? agents : demoAgents;
-  const displayEvents = demoEvents;
-  const currentStatus = simulation?.status || SimulationStatus.PENDING;
-  const progress = simulation?.progress || 0;
-  const currentRound = (simulation?.current_round as number) || 1;
-  const totalRounds = ((simulation?.profiles_count as number) ?? 0) * 10 || 10;
-
-  const handleStart = () => {
-    if (id) {
-      startMutation.mutate(id);
-    }
-  };
-
-  const handlePause = () => {
-    if (id) {
-      pauseMutation.mutate(id);
-    }
-  };
-
-  const handleStop = () => {
-    if (id) {
-      stopMutation.mutate(id);
-    }
-  };
+export default function SimulationListPage() {
+  const { data: simulations, isLoading, error } = useSimulations();
 
   return (
     <div className="container mx-auto p-6 space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-100">模拟监控</h1>
-          <p className="text-slate-400">实时监控AI智能体社交媒体模拟</p>
+      <div className="flex items-center gap-4 mb-8">
+        <Link href="/">
+          <Button variant="ghost" size="icon">
+            <ArrowLeft className="h-4 w-4" />
+          </Button>
+        </Link>
+        <div className="flex-1">
+          <h1 className="text-2xl font-bold text-slate-100">模拟列表</h1>
+          <p className="text-slate-400">所有模拟任务</p>
         </div>
-        <SimulationControls
-          status={currentStatus}
-          onStart={handleStart}
-          onPause={handlePause}
-          onStop={handleStop}
-          isLoading={startMutation.isPending || pauseMutation.isPending || stopMutation.isPending}
-        />
+        <Link href="/graph">
+          <Button className="bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-slate-900">
+            <Sparkles className="h-4 w-4 mr-2" />
+            新建模拟
+          </Button>
+        </Link>
       </div>
 
-      {/* Status Bar */}
-      <Card className="bg-slate-800/50 border-slate-700/50">
-        <CardContent className="pt-6">
-          <SimulationStatusBar
-            progress={progress}
-            status={currentStatus}
-            currentRound={currentRound}
-            totalRounds={totalRounds}
-          />
-        </CardContent>
-      </Card>
-
-      {/* Main Content */}
-      <Tabs defaultValue="agents" className="space-y-4">
-        <TabsList className="bg-slate-800">
-          <TabsTrigger value="agents" className="data-[state=active]:bg-slate-700">
-            智能体
-          </TabsTrigger>
-          <TabsTrigger value="timeline" className="data-[state=active]:bg-slate-700">
-            时间线
-          </TabsTrigger>
-          <TabsTrigger value="details" className="data-[state=active]:bg-slate-700">
-            详情
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="agents">
-          {agentsLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <Card key={i} className="bg-slate-800/50 border-slate-700/50">
-                  <CardHeader>
-                    <Skeleton className="h-10 w-10 rounded-full" />
-                  </CardHeader>
-                  <CardContent>
-                    <Skeleton className="h-20 w-full" />
-                  </CardContent>
-                </Card>
-              ))}
+      {/* Error state */}
+      {error && (
+        <Card className="bg-slate-800/50 border-slate-700/50">
+          <CardContent className="py-8">
+            <div className="text-center text-red-400">
+              <p>加载失败: {error.message}</p>
             </div>
-          ) : (
-            <AgentGrid
-              agents={displayAgents}
-              selectedAgentId={selectedAgentId}
-              onSelectAgent={(agent) => setSelectedAgentId(agent.id)}
-            />
-          )}
-        </TabsContent>
+          </CardContent>
+        </Card>
+      )}
 
-        <TabsContent value="timeline">
-          <Card className="bg-slate-800/50 border-slate-700/50">
-            <CardHeader>
-              <CardTitle className="text-slate-100">事件时间线</CardTitle>
-              <CardDescription className="text-slate-400">
-                模拟过程中的关键事件
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <SimulationTimeline
-                events={displayEvents}
-                isRunning={isRunning}
-              />
-            </CardContent>
-          </Card>
-        </TabsContent>
+      {/* Loading state */}
+      {isLoading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[1, 2, 3].map((i) => (
+            <Card key={i} className="bg-slate-800/50 border-slate-700/50">
+              <CardHeader>
+                <Skeleton className="h-6 w-3/4" />
+              </CardHeader>
+              <CardContent>
+                <Skeleton className="h-4 w-1/2 mb-2" />
+                <Skeleton className="h-4 w-1/3" />
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
 
-        <TabsContent value="details">
-          <Card className="bg-slate-800/50 border-slate-700/50">
-            <CardHeader>
-              <CardTitle className="text-slate-100">模拟详情</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <div className="text-sm text-slate-400">模拟ID</div>
-                  <div className="text-slate-100 font-mono">{id || 'demo-123'}</div>
-                </div>
-                <div>
-                  <div className="text-sm text-slate-400">平台</div>
-                  <div className="text-slate-100">Twitter</div>
-                </div>
-                <div>
-                  <div className="text-sm text-slate-400">智能体数量</div>
-                  <div className="text-slate-100">{displayAgents.length}</div>
-                </div>
-                <div>
-                  <div className="text-sm text-slate-400">总轮次</div>
-                  <div className="text-slate-100">{totalRounds}</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+      {/* Empty state */}
+      {!isLoading && !error && (!simulations || simulations.length === 0) && (
+        <Card className="bg-slate-800/50 border-slate-700/50">
+          <CardContent className="py-12">
+            <div className="text-center">
+              <Sparkles className="h-12 w-12 text-slate-600 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-slate-200 mb-2">暂无模拟</h3>
+              <p className="text-slate-400 text-sm mb-4">
+                从知识图谱开始，创建您的第一个模拟任务
+              </p>
+              <Link href="/graph">
+                <Button className="bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-slate-900">
+                  前往知识图谱
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Simulation list */}
+      {!isLoading && !error && simulations && simulations.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {simulations.map((sim) => (
+            <Link key={sim.id || sim.simulation_id} href={`/simulation/${sim.id || sim.simulation_id}`}>
+              <Card className="bg-slate-800/50 border-slate-700/50 hover:border-[#D4AF37]/30 transition-all duration-200 cursor-pointer h-full">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-slate-100 text-lg">
+                      {sim.name || `Simulation ${(sim.id || sim.simulation_id || '').slice(0, 8)}`}
+                    </CardTitle>
+                    <StatusBadge status={sim.status} />
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center gap-4 text-sm text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      <span>{formatDate(sim.created_at)}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Users className="h-3 w-3" />
+                      <span>{sim.agentCount || sim.profiles_count || 0} 智能体</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <PlatformBadge
+                      enableTwitter={sim.enable_twitter}
+                      enableReddit={sim.enable_reddit}
+                    />
+                  </div>
+
+                  {sim.status === 'running' && (
+                    <div className="pt-2">
+                      <div className="flex items-center gap-2 text-sm">
+                        <div className="flex-1 bg-slate-700 rounded-full h-2">
+                          <div
+                            className="bg-[#D4AF37] h-2 rounded-full transition-all"
+                            style={{ width: `${sim.progress || 0}%` }}
+                          />
+                        </div>
+                        <span className="text-slate-400 text-xs">{sim.progress || 0}%</span>
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
+}
+
+function StatusBadge({ status }: { status: string }) {
+  const statusConfig: Record<string, { label: string; className: string }> = {
+    running: { label: '运行中', className: 'bg-green-500/20 text-green-400 border-green-500/30' },
+    completed: { label: '已完成', className: 'bg-blue-500/20 text-blue-400 border-blue-500/30' },
+    failed: { label: '失败', className: 'bg-red-500/20 text-red-400 border-red-500/30' },
+    paused: { label: '已暂停', className: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' },
+    created: { label: '待启动', className: 'bg-slate-500/20 text-slate-400 border-slate-500/30' },
+    preparing: { label: '准备中', className: 'bg-purple-500/20 text-purple-400 border-purple-500/30' },
+    ready: { label: '就绪', className: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' },
+  };
+
+  const config = statusConfig[status] || statusConfig.created;
+
+  return (
+    <span className={`px-2 py-0.5 rounded text-xs border ${config.className}`}>
+      {config.label}
+    </span>
+  );
+}
+
+function PlatformBadge({ enableTwitter, enableReddit }: { enableTwitter?: boolean; enableReddit?: boolean }) {
+  return (
+    <div className="flex gap-1">
+      {enableTwitter && (
+        <span className="px-2 py-0.5 rounded text-xs bg-sky-500/20 text-sky-400 border border-sky-500/30">
+          Twitter
+        </span>
+      )}
+      {enableReddit && (
+        <span className="px-2 py-0.5 rounded text-xs bg-orange-500/20 text-orange-400 border border-orange-500/30">
+          Reddit
+        </span>
+      )}
+    </div>
+  );
+}
+
+function formatDate(dateStr?: string): string {
+  if (!dateStr) return '-';
+  try {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('zh-CN', {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  } catch {
+    return dateStr.slice(0, 10);
+  }
 }

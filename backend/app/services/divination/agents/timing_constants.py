@@ -10,7 +10,7 @@ Timing Constants - 运限时间分析常量定义
 注意：Enums 和 dataclasses 请使用 timing_types 模块
 """
 
-from typing import Dict, List
+from typing import Dict
 
 
 # 天干地支列表

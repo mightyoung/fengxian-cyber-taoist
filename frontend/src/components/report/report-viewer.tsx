@@ -180,13 +180,13 @@ function ReportViewer({ reportId, className }: ReportViewerProps) {
 
         <TabsContent value="sections" className="flex-1 mt-4 min-h-0 overflow-auto">
           <div className="space-y-4">
-            {sectionsData?.sections.map((section) => (
+            {sectionsData?.sections.map((section, index) => (
               <div
-                key={section.section_index}
+                key={index}
                 className="bg-slate-900/50 border border-slate-800 rounded-lg p-4"
               >
                 <h3 className="text-lg font-medium text-slate-200 mb-2">
-                  Section {section.section_index}
+                  {section.title || `Section ${index + 1}`}
                 </h3>
                 <div className="prose prose-invert prose-sm max-w-none">
                   <ReactMarkdown

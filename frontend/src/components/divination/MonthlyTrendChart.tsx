@@ -83,10 +83,6 @@ const MARKDOWN_LABELS = [
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ];
 
-function getMarkerSymbol(type: 'peak' | 'low'): string {
-  return type === 'peak' ? 'circle' : 'pin';
-}
-
 function findPeaksAndLows(values: number[]): { peakIndices: number[]; lowIndices: number[] } {
   if (values.length < 3) {
     return { peakIndices: [], lowIndices: [] };

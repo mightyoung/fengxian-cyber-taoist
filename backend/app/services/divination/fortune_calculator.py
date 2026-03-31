@@ -157,6 +157,10 @@ class FortuneScore:
 
     def to_dict(self) -> Dict[str, Any]:
         """转换为字典格式"""
+        dimension_scores = {
+            k: v.to_dict() for k, v in self.dimension_scores.items()
+        }
+
         return {
             "overall_score": round(self.overall_score, 2),
             "overall_level": self.overall_level,
@@ -167,9 +171,8 @@ class FortuneScore:
                 "health": {"score": round(self.health_score, 2)},
                 "social": {"score": round(self.social_score, 2)},
             },
-            "dimension_details": {
-                k: v.to_dict() for k, v in self.dimension_scores.items()
-            },
+            "dimension_scores": dimension_scores,
+            "dimension_details": dimension_scores,
             "monthly_scores": self.monthly_scores
         }
 

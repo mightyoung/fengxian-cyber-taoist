@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import {
   ReactFlow,
   Background,
@@ -41,26 +41,30 @@ export function KnowledgeGraph({
 }: KnowledgeGraphProps) {
   const { data: graphData, isLoading, error } = useGraphData(graphId);
 
-  // Use real data from backend
-  const displayData = graphData;
-
   const initialNodes = useMemo(() => {
     if (!graphData?.nodes) return [];
 
-    return graphData.nodes.map((node): Node => ({
+    const total = graphData.nodes.length;
+
+    return graphData.nodes.map((node, index): Node => {
+      const angle = (index / Math.max(total, 1)) * Math.PI * 2;
+      const radius = 220 + (index % 3) * 40;
+
+      return {
       id: node.id,
       type: 'graphNode',
       position: {
-        x: Math.random() * 500,
-        y: Math.random() * 500,
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius,
       },
       data: {
         label: node.label,
         description: node.description,
         type: node.type,
       },
-    }));
-  }, [graphData?.nodes]);
+      };
+    });
+  }, [graphData]);
 
   const initialEdges = useMemo(() => {
     if (!graphData?.edges) return [];
@@ -81,10 +85,18 @@ export function KnowledgeGraph({
         fontSize: 12,
       },
     }));
-  }, [graphData?.edges]);
+  }, [graphData]);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  useEffect(() => {
+    setNodes(initialNodes);
+  }, [initialNodes, setNodes]);
+
+  useEffect(() => {
+    setEdges(initialEdges);
+  }, [initialEdges, setEdges]);
 
   const onNodeClickHandler = useCallback(
     (_: React.MouseEvent, node: Node) => {

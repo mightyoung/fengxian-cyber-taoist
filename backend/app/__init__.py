@@ -78,6 +78,10 @@ def create_app(config_class=Config):
     if knowledge_bp:
         # knowledge_bp has internal url_prefix='/api/divination/knowledge', so no additional prefix needed
         app.register_blueprint(knowledge_bp)
+
+    # 注册API v1蓝图
+    from .api.v1 import v1_bp
+    app.register_blueprint(v1_bp)
     
     # 健康检查
     @app.route('/health')

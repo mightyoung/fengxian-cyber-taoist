@@ -3,7 +3,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useBirthChartStore } from '@/stores/birthChartStore';
 import { divinationApi } from './use-api';
-import { BirthChartInput, BirthChart, Palace, ChartAnalysis } from '@/types/birth-chart';
+import { BirthChartInput, BirthChart, Palace, Wuxing, StarLevel, TransformType } from '@/types/birth-chart';
 
 // Query keys
 const allKeys = ['birthChart'] as const;

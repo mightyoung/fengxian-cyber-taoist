@@ -3,31 +3,45 @@
  * Handles all API calls to the backend
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+import type {
+  ApiResponse,
+  BirthChartInput,
+  CreateSimulationRequest,
+  StartSimulationRequest,
+  BuildGraphRequest,
+  GenerateReportRequest,
+  Simulation,
+  Report,
+  Project,
+  SimulationRunStatus,
+} from '@/types/api';
 
-interface ApiResponse<T> {
-  data?: T;
-  error?: string;
-}
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
 
 async function handleResponse<T>(response: Response): Promise<ApiResponse<T>> {
-  let json: { success?: boolean; data?: T; error?: string } = {};
+  let json: { success?: boolean; data?: T; error?: string; count?: number } = {};
   try {
     json = await response.json();
   } catch {
     // If JSON parsing fails, return error
     return {
+      success: false,
       error: `HTTP ${response.status}: ${response.statusText}`,
     };
   }
 
   // Handle backend response format: {success, data, error}
-  if (response.ok && json.success && json.data) {
-    return { data: json.data };
+  if (response.ok && json.success) {
+    return {
+      success: true,
+      data: json.data,
+      count: json.count,
+    };
   }
 
   // Handle error responses
   return {
+    success: false,
     error: json.error || `HTTP ${response.status}: ${response.statusText}`,
   };
 }
@@ -42,13 +56,7 @@ const defaultOptions: RequestInit = {
 // Divination API
 export const divinationApi = {
   // Generate birth chart
-  generateChart: async (input: {
-    year: number;
-    month: number;
-    day: number;
-    hour: number;
-    gender: 'male' | 'female';
-  }) => {
+  generateChart: async (input: BirthChartInput) => {
     const response = await fetch(`${API_BASE_URL}/divination/chart/generate`, {
       ...defaultOptions,
       method: 'POST',
@@ -68,7 +76,7 @@ export const divinationApi = {
     const response = await fetch(`${API_BASE_URL}/divination/agents/analyze`, {
       ...defaultOptions,
       method: 'POST',
-      body: JSON.stringify({ chartId }),
+      body: JSON.stringify({ chart_id: chartId }),
     });
     return handleResponse(response);
   },
@@ -113,58 +121,54 @@ export const divinationApi = {
 // Graph API
 export const graphApi = {
   // Build knowledge graph
-  buildGraph: async (text: string) => {
+  buildGraph: async (data: BuildGraphRequest) => {
     const response = await fetch(`${API_BASE_URL}/graph/build`, {
       ...defaultOptions,
       method: 'POST',
-      body: JSON.stringify({ text }),
+      body: JSON.stringify(data),
     });
-    return handleResponse(response);
+    return handleResponse<Project>(response);
   },
 
   // Get graph info
   getGraph: async (graphId: string) => {
-    const response = await fetch(`${API_BASE_URL}/graph/${graphId}`);
-    return handleResponse(response);
+    const response = await fetch(`${API_BASE_URL}/graph/data/${graphId}`);
+    return handleResponse<Project>(response);
   },
 
   // List graphs
   listGraphs: async () => {
-    const response = await fetch(`${API_BASE_URL}/graph`);
-    return handleResponse(response);
+    const response = await fetch(`${API_BASE_URL}/graph/project/list`);
+    return handleResponse<Project[]>(response);
   },
 };
 
 // Simulation API
 export const simulationApi = {
   // Create simulation
-  createSimulation: async (data: {
-    name: string;
-    graphId: string;
-    platform: 'twitter' | 'reddit';
-    totalRounds: number;
-    agentCount: number;
-  }) => {
-    const response = await fetch(`${API_BASE_URL}/simulation`, {
+  createSimulation: async (data: CreateSimulationRequest) => {
+    const response = await fetch(`${API_BASE_URL}/simulation/create`, {
       ...defaultOptions,
       method: 'POST',
       body: JSON.stringify(data),
     });
-    return handleResponse(response);
+    return handleResponse<Simulation>(response);
   },
 
   // Get simulation
   getSimulation: async (id: string) => {
     const response = await fetch(`${API_BASE_URL}/simulation/${id}`);
-    return handleResponse(response);
+    return handleResponse<Simulation>(response);
   },
 
   // Start simulation
-  startSimulation: async (id: string) => {
-    const response = await fetch(`${API_BASE_URL}/simulation/${id}/start`, {
+  startSimulation: async (data: StartSimulationRequest) => {
+    const response = await fetch(`${API_BASE_URL}/simulation/start`, {
+      ...defaultOptions,
       method: 'POST',
+      body: JSON.stringify(data),
     });
-    return handleResponse(response);
+    return handleResponse<SimulationRunStatus>(response);
   },
 
   // Pause simulation
@@ -172,39 +176,53 @@ export const simulationApi = {
     const response = await fetch(`${API_BASE_URL}/simulation/${id}/pause`, {
       method: 'POST',
     });
-    return handleResponse(response);
+    return handleResponse<Simulation>(response);
   },
 
   // Stop simulation
   stopSimulation: async (id: string) => {
-    const response = await fetch(`${API_BASE_URL}/simulation/${id}/stop`, {
+    const response = await fetch(`${API_BASE_URL}/simulation/stop`, {
+      ...defaultOptions,
       method: 'POST',
+      body: JSON.stringify({ simulation_id: id }),
     });
-    return handleResponse(response);
+    return handleResponse<Simulation>(response);
   },
 
   // List simulations
   listSimulations: async () => {
-    const response = await fetch(`${API_BASE_URL}/simulation`);
-    return handleResponse(response);
+    const response = await fetch(`${API_BASE_URL}/simulation/list`);
+    return handleResponse<Simulation[]>(response);
+  },
+
+  // Get simulation run status
+  getSimulationRunStatus: async (id: string) => {
+    const response = await fetch(`${API_BASE_URL}/simulation/${id}/run-status`);
+    return handleResponse<SimulationRunStatus>(response);
   },
 };
 
 // Report API
 export const reportApi = {
   // Generate report
-  generateReport: async (simulationId: string) => {
+  generateReport: async (data: GenerateReportRequest) => {
     const response = await fetch(`${API_BASE_URL}/report/generate`, {
       ...defaultOptions,
       method: 'POST',
-      body: JSON.stringify({ simulationId }),
+      body: JSON.stringify(data),
     });
-    return handleResponse(response);
+    return handleResponse<Report>(response);
   },
 
   // Get report
   getReport: async (reportId: string) => {
     const response = await fetch(`${API_BASE_URL}/report/${reportId}`);
-    return handleResponse(response);
+    return handleResponse<Report>(response);
+  },
+
+  // List reports
+  listReports: async () => {
+    const response = await fetch(`${API_BASE_URL}/report/list`);
+    return handleResponse<Report[]>(response);
   },
 };

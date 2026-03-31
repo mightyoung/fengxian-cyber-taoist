@@ -18,19 +18,14 @@ import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 from collections import Counter
-from datetime import datetime
-import asyncio
+from datetime import datetime, timezone
 
 from .chart_vectorizer import (
     ChartVectorizer,
     ChartFeatures,
-    ChartFeatureQuality,
     LifeEvent,
     LifeTrajectory,
     ChartCase,
-    ZHENGYAO_STARS,
-    PALACE_NAMES,
-    TRANSFORM_TYPES,
 )
 from .case_based_predictor_types import (
     ProbabilisticResult,
@@ -624,7 +619,7 @@ class CaseBasedPredictor:
             Optional[ChartCase]: 解析后的案例对象，解析失败返回None
         """
         try:
-            case_id = case_data.get('case_id', f"case_{datetime.utcnow().timestamp()}")
+            case_id = case_data.get('case_id', f"case_{datetime.now(timezone.utc).timestamp()}")
 
             # 提取chart数据
             chart = case_data.get('chart', case_data.get('natal_chart', {}))
@@ -1093,7 +1088,7 @@ class CaseBasedPredictor:
         """
         try:
             features = self._vectorizer.extract(chart)
-            case_id = f"case_{datetime.utcnow().strftime('%Y%m%d%H%M%S%f')}"
+            case_id = f"case_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S%f')}"
 
             case = ChartCase(
                 case_id=case_id,

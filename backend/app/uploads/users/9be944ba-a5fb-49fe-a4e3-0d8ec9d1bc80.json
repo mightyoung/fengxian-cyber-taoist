@@ -1,0 +1,13 @@
+{
+  "id": "9be944ba-a5fb-49fe-a4e3-0d8ec9d1bc80",
+  "email": "test_auth_64770@example.com",
+  "phone": null,
+  "wechat_openid": null,
+  "nickname": "Test User",
+  "avatar_url": null,
+  "is_active": true,
+  "created_at": "2026-03-31T13:39:26.631341",
+  "updated_at": "2026-03-31T13:39:28.645868",
+  "last_login_at": "2026-03-31T13:39:28.645787",
+  "password_hash": "$2b$12$vaLCaVIviL/WsQKM0c4csujeNagVgLvbdXe3c4aPwuR9WfDjet5Ue"
+}

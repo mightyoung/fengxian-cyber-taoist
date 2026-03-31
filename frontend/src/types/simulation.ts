@@ -1,36 +1,12 @@
-export enum SimulationStatus {
-  CREATED = 'created',
-  PREPARING = 'preparing',
-  READY = 'ready',
-  RUNNING = 'running',
-  COMPLETED = 'completed',
-  FAILED = 'failed',
-  PAUSED = 'paused',
-  // Legacy aliases for compatibility
-  PENDING = 'created',
-}
+// Re-export API types as the single source of truth
+export type { ApiResponse, Simulation as SimulationBase } from './api';
+export { SimulationStatus } from './api';
 
-export interface Simulation {
-  // Backend fields
-  simulation_id: string;
-  project_id: string;
-  graph_id: string;
-  enable_twitter: boolean;
-  enable_reddit: boolean;
-  status: SimulationStatus;
-  entities_count: number;
-  profiles_count: number;
-  entity_types: string[];
-  config_generated: boolean;
-  config_reasoning?: string;
-  current_round: number;
-  twitter_status: string;
-  reddit_status: string;
-  created_at: string;
-  updated_at: string;
-  error?: string;
+// Extend Simulation with frontend convenience fields
+import type { Simulation as SimulationBase } from './api';
 
-  // Frontend convenience fields (mapped from backend)
+export interface Simulation extends SimulationBase {
+  // Frontend convenience fields (mapped from backend in hooks)
   id?: string;
   name?: string;
   progress?: number;
@@ -39,12 +15,4 @@ export interface Simulation {
   agentCount?: number;
   startedAt?: Date;
   completedAt?: Date;
-}
-
-// API response wrapper
-export interface ApiResponse<T> {
-  success: boolean;
-  data?: T;
-  error?: string;
-  count?: number;
 }

@@ -2,7 +2,6 @@
 
 import { memo } from 'react';
 import { cn } from '@/lib/utils';
-import { COLORS } from '@/lib/colors';
 import { Transform, TransformType } from '@/types/birth-chart';
 
 interface TransformBadgeProps {

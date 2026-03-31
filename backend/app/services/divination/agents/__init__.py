@@ -76,8 +76,6 @@ from app.services.divination.agents.timing_agent import (
 from app.services.divination.agents.synthesis_agent import (
     SynthesisAgent,
     SynthesisReport,
-    StarAnalysis as SynthesisStarAnalysis,
-    PalaceAnalysis as SynthesisPalaceAnalysis,
     PatternAnalysis as SynthesisPatternAnalysis,
     TransformAnalysis as SynthesisTransformAnalysis,
     AgentResult,
@@ -97,15 +95,6 @@ from app.services.divination.agents.report_generator import (
     ReportGenerator,
     generate_markdown_report,
     generate_markdown_report_sync,
-    # 三层融合预测报告
-    ThreeLayerPredictionReport,
-    CausalChainAnalysis,
-    CaseBasedAnalysis,
-    MultiAgentAnalysis,
-    DimensionAnalysis,
-    generate_prediction_report,
-    generate_prediction_report_sync,
-    format_prediction_report_markdown,
 )
 
 from app.services.divination.agents.wealth_agent import (
@@ -199,14 +188,6 @@ from app.services.divination.agents.case_based_predictor import (
     InMemoryVectorStore,
     predict_from_chart,
     create_predictor,
-)
-
-from app.services.divination.agents.xiaohongshu_agent import (
-    XiaohongshuAgent,
-    XHSReport,
-    XHSSection,
-    generate_xhs_report_sync,
-    generate_xhs_report_async,
 )
 
 from app.services.divination.agents.report_transformer import (

@@ -10,7 +10,7 @@ TransformAgent - 四化分析智能体
 
 import json
 import os
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
 # Import from modular components
 from .transform_constants import (
@@ -21,7 +21,6 @@ from .transform_constants import (
     HEAVENLY_STEM_TRANSFORMS,
     TRANSFORM_INTERPRETATIONS,
     INTERACTION_INTERPRETATIONS,
-    CYCLE_TO_TRANSFORM,
     CYCLE_INTERPRETATIONS,
 )
 from .transform_types import (
@@ -34,6 +33,7 @@ from .transform_types import (
     CycleStage,
     CycleAnalysis,
 )
+from .cache_decorator import cached_chart_analysis
 
 
 def load_transform_rules() -> Dict[str, Dict[str, str]]:
@@ -1289,6 +1289,7 @@ async def llm_analyze_transforms(
     return await analyzer.analyze_with_llm(question)
 
 
+@cached_chart_analysis("transforms", ttl=3600)
 def llm_analyze_transforms_sync(
     chart_data: Any,
     question: Optional[str] = None

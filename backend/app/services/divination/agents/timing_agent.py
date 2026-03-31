@@ -19,22 +19,17 @@ from typing import Dict, List, Optional, Any
 
 # Import from modular components
 from .timing_constants import (
-    ZHI_TO_PALACE,
-    PALACE_NAMES,
-    HEAVENLY_STEM_TRANSFORMS,
     CYCLE_STAGE_PALACE_MAP,
 )
 from .timing_types import (
     MajorFate,
     YearFate,
-    MonthFate,
-    DayFate,
-    HourFate,
     TimingAnalysis,
     FateLevel,
     LiuYaoCategory,
     CycleStage,
 )
+from .cache_decorator import cached_chart_analysis
 from .timing_core import (
     get_yearly_transforms,
     get_birth_transforms,
@@ -1750,6 +1745,7 @@ async def llm_analyze_timing(
     return await analyzer.analyze_with_llm(question)
 
 
+@cached_chart_analysis("timing", ttl=3600)
 def llm_analyze_timing_sync(
     chart_data: Any,
     question: Optional[str] = None

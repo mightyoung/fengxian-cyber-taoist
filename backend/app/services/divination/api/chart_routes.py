@@ -5,18 +5,15 @@ Chart Routes - 命盘相关路由
 """
 
 import asyncio
-import uuid
-from typing import Dict, Any
 
 from flask import Blueprint, request, jsonify
 
 from app.services.divination.api import (
-    _charts_storage,
-    _to_dict,
     validate_birth_info,
     ChartAgent,
     BirthInfo,
 )
+from app.models.divination import DivinationManager
 
 # Create blueprint for chart routes
 chart_bp = Blueprint('chart', __name__, url_prefix='/chart')
@@ -80,20 +77,27 @@ def generate_chart():
         agent = ChartAgent()
         chart = asyncio.run(agent.generate_chart(birth_info))
 
-        # 生成chart_id并存储
-        chart_id = str(uuid.uuid4())
-        chart_data = chart.to_dict()
-
-        _charts_storage[chart_id] = {
-            'chart': chart_data,
-            'birth_info': data,
+        # 使用DivinationManager持久化存储
+        birth_info_dict = {
+            'year': data['year'],
+            'month': data['month'],
+            'day': data['day'],
+            'hour': data['hour'],
+            'minute': data.get('minute', 0),
+            'gender': data['gender'],
+            'birthplace': data.get('birthplace', ''),
+            'is_lunar': data.get('is_lunar', False),
         }
+        saved_chart = DivinationManager.create_chart(
+            birth_info=birth_info_dict,
+            chart_data=chart.to_dict(),
+        )
 
         return jsonify({
             "success": True,
             "data": {
-                "chart_id": chart_id,
-                "chart": chart_data
+                "chart_id": saved_chart.chart_id,
+                "chart": saved_chart.chart_data
             }
         })
 
@@ -127,20 +131,19 @@ def get_chart(chart_id: str):
         }
     """
     try:
-        if chart_id not in _charts_storage:
+        chart = DivinationManager.get_chart(chart_id)
+        if not chart:
             return jsonify({
                 "success": False,
                 "error": f"未找到ID为 {chart_id} 的命盘"
             }), 404
 
-        stored_data = _charts_storage[chart_id]
-
         return jsonify({
             "success": True,
             "data": {
-                "chart_id": chart_id,
-                "chart": stored_data['chart'],
-                "birth_info": stored_data['birth_info']
+                "chart_id": chart.chart_id,
+                "chart": chart.chart_data,
+                "birth_info": chart.birth_info
             }
         })
 

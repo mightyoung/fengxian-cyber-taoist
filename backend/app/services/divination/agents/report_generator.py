@@ -14,11 +14,10 @@ ReportGenerator - Markdown报告生成器
 import asyncio
 import logging
 import re
-from typing import Dict, List, Optional, Any, Set, Tuple
+from typing import Dict, List, Optional, Any, Tuple
 from datetime import datetime
 
 from .report_generator_types import (
-    JudgmentType,
     DimensionAnalysis,
     CausalChainAnalysis,
     CaseBasedAnalysis,
@@ -997,10 +996,7 @@ async def _analyze_multi_agent(
 ) -> Optional["MultiAgentAnalysis"]:
     """执行多Agent共识验证分析"""
     try:
-        from .multi_agent_validator import (
-            MultiAgentValidator,
-            JudgmentType as MAJudgmentType
-        )
+        from .multi_agent_validator import MultiAgentValidator
 
         # 对每个维度进行多Agent验证
         all_agent_views = []

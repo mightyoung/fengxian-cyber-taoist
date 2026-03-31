@@ -4,12 +4,10 @@ Report API路由
 """
 
 import os
-import traceback
 import threading
 from flask import request, jsonify, send_file
 
 from . import report_bp
-from ..config import Config
 from ..services.report_agent import ReportAgent, ReportManager, ReportStatus
 from ..services.simulation_manager import SimulationManager
 from ..models.project import ProjectManager
@@ -1133,7 +1131,6 @@ def generate_divination_report():
     try:
         from ..services.report_service import (
             get_report_service,
-            ReportFormat,
             ReportType
         )
 
@@ -1166,12 +1163,6 @@ def generate_divination_report():
 
         if generate_charts and format_type == 'pdf':
             try:
-                from ..utils.chart_generator import (
-                    generate_radar_chart,
-                    generate_bar_chart,
-                    generate_confidence_gauge,
-                    generate_monthly_heatmap
-                )
                 from ..utils.report_chart_helper import generate_report_charts
 
                 # 使用辅助函数生成所有图表

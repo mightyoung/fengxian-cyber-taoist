@@ -13,7 +13,7 @@
 真实规则计算结果作为素材上下文，提供few-shot示例辅助生成
 """
 
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 import json
 
 
@@ -711,7 +711,6 @@ def build_causal_chain_prompt(
     target_year: int = 2026
 ) -> List[Dict[str, str]]:
     """构建因果链分析的提示词"""
-    from .report_examples import SIHUA_EXAMPLES
 
     # 构建因果链上下文
     causal = analysis_result.get("causal_chain_result", {})

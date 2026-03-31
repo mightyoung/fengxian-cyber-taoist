@@ -3,15 +3,13 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { KnowledgeGraph } from '@/components/graph';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
-import { X, Info, Building2, User, MapPin, Calendar, Lightbulb } from 'lucide-react';
+import { Info, Building2, User, MapPin, Calendar, Lightbulb } from 'lucide-react';
 import { useGraphData } from '@/hooks/use-graph';
 import { cn } from '@/lib/utils';
 import { ANIMATIONS } from '@/lib/animation';
-import type { GraphNode, GraphData } from '@/types/graph';
 
 interface GraphPageProps {
   graphId: string;

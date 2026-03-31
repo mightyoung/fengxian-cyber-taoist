@@ -1,37 +1,14 @@
 /**
  * Report Types
+ *
+ * Re-exports from api.ts as single source of truth,
+ * with additional frontend-specific types.
  */
 
-export interface ReportSection {
-  filename: string;
-  section_index: number;
-  content: string;
-}
+// Re-export API types as types (interfaces are always type-only)
+export type { Report, ReportOutline, ReportSection, ReportStatus, ReportMetrics } from './api';
 
-export interface ReportOutline {
-  title: string;
-  sections: string[];
-}
-
-export interface Report {
-  report_id: string;
-  simulation_id: string;
-  status: ReportStatus;
-  outline?: ReportOutline;
-  markdown_content?: string;
-  created_at: string;
-  completed_at?: string;
-}
-
-export type ReportStatus = 'generating' | 'completed' | 'failed';
-
-export interface ReportMetrics {
-  totalPosts: number;
-  totalEngagement: number;
-  sentimentScore: number;
-  topInfluencers: { name: string; score: number }[];
-}
-
+// Additional frontend-specific types
 export interface ExportFormat {
   type: 'pdf' | 'json' | 'markdown';
   label: string;

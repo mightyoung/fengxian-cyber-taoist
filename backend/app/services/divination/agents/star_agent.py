@@ -17,17 +17,15 @@
 
 import json
 import os
-from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any
 
 from .llm_prompts import STAR_SYSTEM_PROMPT, build_star_user_prompt
 from .siyin_loader import SiyinLoader, get_siyin_interpretation
+from .cache_decorator import cached_chart_analysis
 from .star_constants import (
     PALACE_ORDER,
-    BRANCH_TO_INDEX,
 )
 from .star_types import (
-    StarLevelType,
     StarAnalysisResult,
     StarAnalysis,
 )
@@ -679,6 +677,7 @@ async def llm_analyze_stars(
     return await analyzer.analyze_with_llm(question)
 
 
+@cached_chart_analysis("stars", ttl=3600)
 def llm_analyze_stars_sync(
     chart_data: Dict[str, Any],
     question: Optional[str] = None

@@ -14,9 +14,9 @@ ChartAgent - 紫微斗数排盘智能体
 """
 
 import asyncio
-from dataclasses import dataclass, field, asdict
-from datetime import datetime
-from typing import Dict, List, Optional, Any
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
+from typing import Dict, List, Any
 from enum import Enum
 
 # 导入现有模块（使用相对导入）
@@ -27,19 +27,15 @@ from app.services.divination.wuxing_calculator import (
 )
 from app.services.divination.palace_builder import (
     PalaceBuilder,
-    PALACE_NAMES as PALACE_NAMES_FROM_BUILDER,
-    EARTHLY_BRANCHES,
 )
 from app.services.divination.star_placer import (
     StarPlacer,
     FiveElementType,
     StarType,
-    StarLevel,
     PALACE_ORDER,
 )
 from app.services.divination.transform_decider import (
     TransformDecider,
-    TransformType,
 )
 
 
@@ -195,7 +191,7 @@ class ChartAgent:
             palaces=palaces_data,
             stars=stars_data,
             transforms=transforms_data,
-            chart_timestamp=datetime.utcnow().isoformat() + "Z",
+            chart_timestamp=datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         )
 
         return chart

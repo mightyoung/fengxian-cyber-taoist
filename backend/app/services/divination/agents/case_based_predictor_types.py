@@ -9,7 +9,7 @@ CaseBasedPredictor Types - 案例推理预测器数据类型
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Any, Tuple
+from typing import Dict, List, Any
 
 
 @dataclass

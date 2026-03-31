@@ -133,6 +133,43 @@ def generate_cache_key(
     return "|".join(key_parts)
 
 
+def generate_chart_data_cache_key(
+    chart_data: Dict[str, Any],
+    analysis_type: str,
+    params: Optional[Dict[str, Any]] = None
+) -> str:
+    """
+    从 chart_data 生成缓存键（不依赖 chart_id）
+
+    Args:
+        chart_data: 命盘数据字典
+        analysis_type: 分析类型
+        params: 其他参数
+
+    Returns:
+        缓存键字符串
+    """
+    # 从 chart_data 中提取关键信息生成稳定的哈希
+    birth_info = chart_data.get("birth_info", {})
+    key_parts = [
+        str(birth_info.get("year", "")),
+        str(birth_info.get("month", "")),
+        str(birth_info.get("day", "")),
+        str(birth_info.get("hour", "")),
+        birth_info.get("gender", ""),
+        birth_info.get("wuxing_ju", ""),
+        analysis_type
+    ]
+
+    if params:
+        key_parts.append(json.dumps(params, sort_keys=True, ensure_ascii=False))
+
+    # 生成稳定的哈希
+    key_string = "|".join(key_parts)
+    key_hash = hashlib.md5(key_string.encode()).hexdigest()[:12]
+    return f"chart_data|{key_hash}"
+
+
 def cache_analysis_result(
     ttl: int = 3600,
     key_prefix: str = ""
@@ -182,6 +219,69 @@ def cache_analysis_result(
         # 添加清理方法
         wrapper.clear_cache = get_cache().clear
         wrapper.get_cache_stats = get_cache().get_stats
+
+        return wrapper
+
+    return decorator
+
+
+def cached_chart_analysis(
+    analysis_type: str,
+    ttl: int = 1800  # 30分钟，LLM分析结果变化较少
+) -> Callable:
+    """
+    基于 chart_data 的缓存装饰器（不需要 chart_id）
+
+    Args:
+        analysis_type: 分析类型 (stars, palaces, patterns, etc.)
+        ttl: 缓存过期时间（秒），默认1800（30分钟）
+
+    Usage:
+        @cached_chart_analysis("stars", ttl=3600)
+        def llm_analyze_stars_sync(chart_data: Dict, question: Optional[str] = None) -> Dict:
+            ...
+    """
+    def decorator(func: Callable) -> Callable:
+        @wraps(func)
+        def wrapper(*args, **kwargs) -> Any:
+            # 从参数中提取 chart_data（可能在 args[0] 或 kwargs['chart_data']）
+            chart_data = kwargs.get('chart_data')
+            if chart_data is None and args:
+                chart_data = args[0]
+
+            if chart_data is None:
+                # 无法提取 chart_data，直接执行
+                return func(*args, **kwargs)
+
+            # 生成缓存键
+            question = kwargs.get('question')
+            params = {"question": question} if question else None
+            cache_key = generate_chart_data_cache_key(
+                chart_data=chart_data,
+                analysis_type=analysis_type,
+                params=params
+            )
+
+            # 尝试从缓存获取
+            cache = get_cache()
+            cached_value = cache.get(cache_key)
+
+            if cached_value is not None:
+                return cached_value
+
+            # 执行原函数
+            result = func(*args, **kwargs)
+
+            # 存入缓存
+            if result is not None:
+                cache.set(cache_key, result, ttl)
+
+            return result
+
+        # 添加清理方法
+        wrapper.clear_cache = get_cache().clear
+        wrapper.get_cache_stats = get_cache().get_stats
+        wrapper.cache_key_prefix = f"chart_data|{analysis_type}"
 
         return wrapper
 

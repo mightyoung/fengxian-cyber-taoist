@@ -9,7 +9,7 @@ Date Selection Types - 择日分析数据类型
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any, Tuple
+from typing import Dict, List, Any, Tuple
 
 
 @dataclass

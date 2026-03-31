@@ -25,9 +25,6 @@ from .causal_chain_constants import (
     TransformType,
     CausalChainType,
     YEAR_STEM_TRANSFORMS,
-    get_sanfang,
-    get_sizheng,
-    get_duigong,
 )
 
 from .causal_chain_types import (
@@ -40,8 +37,6 @@ from .causal_chain_types import (
 from .causal_chain_core import (
     count_ji_intensity,
     calculate_causal_confidence,
-    get_flying_destinations,
-    calculate_palace_stems,
     calculate_flying_paths,
     analyze_lu_zhuan_ji,
     analyze_ji_zhuan_ji,

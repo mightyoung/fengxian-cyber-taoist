@@ -7,7 +7,6 @@ Specialized Routes - 专业分析路由
 from flask import Blueprint, request, jsonify
 
 from app.services.divination.api import (
-    _charts_storage,
     analyze_birth_timing_sync,
     select_date_sync,
     predict_event_sync,
@@ -15,6 +14,7 @@ from app.services.divination.api import (
     recommend_career_sync,
     recommend_name_sync,
 )
+from app.models.divination import DivinationManager
 
 # Create blueprint for specialized routes
 specialized_bp = Blueprint('specialized', __name__, url_prefix='')
@@ -151,8 +151,9 @@ def analyze_date_selection():
         chart_data = None
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id in _charts_storage:
-                chart_data = _charts_storage[chart_id]['chart']
+            chart = DivinationManager.get_chart(chart_id)
+            if chart:
+                chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
 
@@ -225,8 +226,9 @@ def analyze_event_predict():
         chart_data = None
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id in _charts_storage:
-                chart_data = _charts_storage[chart_id]['chart']
+            chart = DivinationManager.get_chart(chart_id)
+            if chart:
+                chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
 
@@ -377,8 +379,9 @@ def analyze_career_recommendation():
         chart_data = None
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id in _charts_storage:
-                chart_data = _charts_storage[chart_id]['chart']
+            chart = DivinationManager.get_chart(chart_id)
+            if chart:
+                chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
 
@@ -443,8 +446,9 @@ def analyze_name_recommendation():
         chart_data = None
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id in _charts_storage:
-                chart_data = _charts_storage[chart_id]['chart']
+            chart = DivinationManager.get_chart(chart_id)
+            if chart:
+                chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
 

@@ -12,8 +12,6 @@ SynthesisAgent - 综合分析代理
 """
 
 from typing import Dict, List, Optional, Any
-from dataclasses import dataclass, field
-from enum import Enum
 
 from .synthesis_constants import (
     ConflictType,
@@ -336,7 +334,6 @@ class ConflictResolver:
                 "details": {}  # 详细分析数据
             }
         """
-        import re
 
         sentiment1 = cls._analyze_sentiment(content1)
         sentiment2 = cls._analyze_sentiment(content2)
@@ -1056,8 +1053,7 @@ class LLMSynthesisAnalyzer:
         from ....utils.llm_client import LLMClient
         from .llm_prompts import (
             SYNTHESIS_SYSTEM_PROMPT,
-            build_synthesis_user_prompt,
-            format_analysis_as_text
+            build_synthesis_user_prompt
         )
 
         # 构建提示词

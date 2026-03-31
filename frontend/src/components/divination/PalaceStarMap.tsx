@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ChevronDown, ChevronUp, Sparkles, Shield, Zap, AlertTriangle } from 'lucide-react';
+import { Star, ChevronDown, ChevronUp, Sparkles, Shield, Zap } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -138,7 +138,7 @@ function StarBadge({ name, type }: { name: string; type: StarData['type'] }) {
   );
 }
 
-function TransformBadge({ type, star }: { type: string; star: string }) {
+function TransformBadge({ type }: { type: string; star: string }) {
   const colors = TRANSFORM_COLORS[type as keyof typeof TRANSFORM_COLORS];
   if (!colors) return null;
 
@@ -339,7 +339,6 @@ export function PalaceStarMap({
   };
 
   // Calculate layout dimensions
-  const containerRef = useMemo(() => ({ current: null }), []);
   const size = 600;
   const centerX = size / 2;
   const centerY = size / 2;

@@ -11,18 +11,13 @@ BirthTimingAgent - 剖腹产良辰吉日分析引擎
 4. 排序并输出最佳时辰推荐
 """
 
-from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
 import logging
 
 from app.services.divination.agents.chart_agent import generate_chart_sync
 from app.services.divination.fortune_calculator import (
-    FortuneCalculator,
-    DIMENSION_WEIGHTS,
     DIMENSION_PALACE_MAPPING,
-    STAR_LEVEL_SCORES,
-    TRANSFORM_INTENSITY,
     MAIN_STAR_BASE_SCORE,
     AUXILIARY_STAR_JUDGMENT,
 )
@@ -36,7 +31,6 @@ from .birth_timing_constants import (
     SHICHEN_DISPLAY,
     IMPORTANT_STARS,
     SHA_STARS,
-    LUCKY_PATTERNS,
     STAR_TEMPLE_SCORES,
 )
 from .birth_timing_types import BirthTimingOption, BirthTimingResult

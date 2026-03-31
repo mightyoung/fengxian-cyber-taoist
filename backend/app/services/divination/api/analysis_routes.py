@@ -11,7 +11,6 @@ from typing import Dict, Any
 from flask import Blueprint, request, jsonify
 
 from app.services.divination.api import (
-    _charts_storage,
     _to_dict,
     llm_analyze_stars_sync,
     llm_analyze_palaces_sync,
@@ -26,8 +25,8 @@ from app.services.divination.api import (
     analyze_career_sync,
     analyze_relationship_sync,
     analyze_education_sync,
-    TimingAgent,
 )
+from app.models.divination import DivinationManager
 
 # Create blueprint for analysis routes
 analysis_bp = Blueprint('analysis', __name__, url_prefix='')
@@ -134,12 +133,13 @@ def analyze_with_agents():
         # 优先使用chart_id获取命盘
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id not in _charts_storage:
+            chart = DivinationManager.get_chart(chart_id)
+            if not chart:
                 return jsonify({
                     "success": False,
                     "error": f"未找到ID为 {chart_id} 的命盘"
                 }), 404
-            chart_data = _charts_storage[chart_id]['chart']
+            chart_data = chart.chart_data
         else:
             # 使用请求中直接提供的chart
             chart_data = data.get('chart')
@@ -229,12 +229,13 @@ def analyze_with_agents_markdown():
         # 优先使用chart_id获取命盘
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id not in _charts_storage:
+            chart = DivinationManager.get_chart(chart_id)
+            if not chart:
                 return jsonify({
                     "success": False,
                     "error": f"未找到ID为 {chart_id} 的命盘"
                 }), 404
-            chart_data = _charts_storage[chart_id]['chart']
+            chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
             if not chart_data:
@@ -305,12 +306,13 @@ def analyze_stars():
         # 获取命盘数据
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id not in _charts_storage:
+            chart = DivinationManager.get_chart(chart_id)
+            if not chart:
                 return jsonify({
                     "success": False,
                     "error": f"未找到ID为 {chart_id} 的命盘"
                 }), 404
-            chart_data = _charts_storage[chart_id]['chart']
+            chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
             if not chart_data:
@@ -365,12 +367,13 @@ def analyze_palaces():
         # 获取命盘数据
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id not in _charts_storage:
+            chart = DivinationManager.get_chart(chart_id)
+            if not chart:
                 return jsonify({
                     "success": False,
                     "error": f"未找到ID为 {chart_id} 的命盘"
                 }), 404
-            chart_data = _charts_storage[chart_id]['chart']
+            chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
             if not chart_data:
@@ -473,11 +476,11 @@ def analyze_transforms():
 @analysis_bp.route('/health', methods=['GET'])
 def health():
     """健康检查"""
-    from app.services.divination.api import _charts_storage
+    charts = DivinationManager.list_charts(limit=1000)
     return jsonify({
         "status": "ok",
         "service": "divination-api",
-        "stored_charts": len(_charts_storage)
+        "stored_charts": len(charts)
     })
 
 
@@ -526,12 +529,13 @@ def analyze_wealth():
 
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id not in _charts_storage:
+            chart = DivinationManager.get_chart(chart_id)
+            if not chart:
                 return jsonify({
                     "success": False,
                     "error": f"未找到ID为 {chart_id} 的命盘"
                 }), 404
-            chart_data = _charts_storage[chart_id]['chart']
+            chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
             if not chart_data:
@@ -599,12 +603,13 @@ def analyze_health():
 
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id not in _charts_storage:
+            chart = DivinationManager.get_chart(chart_id)
+            if not chart:
                 return jsonify({
                     "success": False,
                     "error": f"未找到ID为 {chart_id} 的命盘"
                 }), 404
-            chart_data = _charts_storage[chart_id]['chart']
+            chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
             if not chart_data:
@@ -711,12 +716,13 @@ def analyze_career():
 
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id not in _charts_storage:
+            chart = DivinationManager.get_chart(chart_id)
+            if not chart:
                 return jsonify({
                     "success": False,
                     "error": f"未找到ID为 {chart_id} 的命盘"
                 }), 404
-            chart_data = _charts_storage[chart_id]['chart']
+            chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
             if not chart_data:
@@ -786,12 +792,13 @@ def analyze_education():
 
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id not in _charts_storage:
+            chart = DivinationManager.get_chart(chart_id)
+            if not chart:
                 return jsonify({
                     "success": False,
                     "error": f"未找到ID为 {chart_id} 的命盘"
                 }), 404
-            chart_data = _charts_storage[chart_id]['chart']
+            chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
             if not chart_data:
@@ -868,12 +875,13 @@ def analyze_relationship():
 
         chart_id = data.get('chart_id')
         if chart_id:
-            if chart_id not in _charts_storage:
+            chart = DivinationManager.get_chart(chart_id)
+            if not chart:
                 return jsonify({
                     "success": False,
                     "error": f"未找到ID为 {chart_id} 的命盘"
                 }), 404
-            chart_data = _charts_storage[chart_id]['chart']
+            chart_data = chart.chart_data
         else:
             chart_data = data.get('chart')
             if not chart_data:
