@@ -102,13 +102,28 @@ export function TopNav() {
           {!loading && (
             user ? (
               <>
-                <span className="text-sm text-muted-foreground hidden sm:inline">
-                  {user.nickname || user.email}
-                </span>
-                <Button variant="ghost" size="sm" onClick={logout} className="gap-1.5">
-                  <LogOut className="h-4 w-4" />
-                  <span className="hidden sm:inline">退出</span>
-                </Button>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-muted-foreground hidden sm:inline">
+                    {user.nickname || user.email}
+                  </span>
+                  <span className={cn(
+                    "text-xs px-1.5 py-0.5 rounded font-medium",
+                    user.subscription_tier === 'premium' && "bg-purple-500/20 text-purple-400",
+                    user.subscription_tier === 'pro' && "bg-[#D4AF37]/20 text-[#D4AF37]",
+                    user.subscription_tier === 'free' && "bg-slate-700/50 text-slate-400",
+                  )}>
+                    {user.subscription_tier === 'premium' ? 'Premium' : user.subscription_tier === 'pro' ? 'Pro' : 'Free'}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Button variant="ghost" size="sm" asChild className="hidden sm:inline-flex">
+                    <Link href="/pricing">升级</Link>
+                  </Button>
+                  <Button variant="ghost" size="sm" onClick={logout} className="gap-1.5">
+                    <LogOut className="h-4 w-4" />
+                    <span className="hidden sm:inline">退出</span>
+                  </Button>
+                </div>
               </>
             ) : (
               <>

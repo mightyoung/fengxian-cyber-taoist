@@ -194,6 +194,13 @@ export default function Home() {
             <LayoutGrid className="h-4 w-4" />
             生成命盘
           </Link>
+          <Link
+            href="/pricing"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-[#D4AF37]/30 hover:border-[#D4AF37]/50 text-[#D4AF37] font-medium rounded-lg transition-colors"
+          >
+            <Sparkles className="h-4 w-4" />
+            升级 Pro
+          </Link>
         </div>
       </motion.div>
     </div>
