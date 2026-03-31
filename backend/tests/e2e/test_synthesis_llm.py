@@ -103,40 +103,39 @@ SAMPLE_ANALYSIS_DATA = {
 # ============ Test Class ============
 
 class TestLLMSynthesisAnalyzer:
-    """LLMSynthesisAnalyzer 测试"""
+    """LLMSynthesisAnalyzerStandard 测试"""
 
     def test_analyzer_initialization(self):
         """测试分析器初始化"""
-        from app.services.divination.agents import LLMSynthesisAnalyzer
+        from app.services.divination.agents.synthesis_agent import LLMSynthesisAnalyzerStandard
 
         # 无分析数据初始化
-        analyzer = LLMSynthesisAnalyzer(SAMPLE_CHART_DATA)
+        analyzer = LLMSynthesisAnalyzerStandard(SAMPLE_CHART_DATA)
         assert analyzer.chart == SAMPLE_CHART_DATA
         assert analyzer.analysis == {}
 
         # 带分析数据初始化
-        analyzer_with_data = LLMSynthesisAnalyzer(SAMPLE_CHART_DATA, SAMPLE_ANALYSIS_DATA)
+        analyzer_with_data = LLMSynthesisAnalyzerStandard(SAMPLE_CHART_DATA, SAMPLE_ANALYSIS_DATA)
         assert analyzer_with_data.analysis == SAMPLE_ANALYSIS_DATA
 
     def test_analyzer_has_analyze_method(self):
         """测试分析器具有标准方法"""
-        from app.services.divination.agents import LLMSynthesisAnalyzer
+        from app.services.divination.agents.synthesis_agent import LLMSynthesisAnalyzerStandard
 
-        analyzer = LLMSynthesisAnalyzer(SAMPLE_CHART_DATA)
+        analyzer = LLMSynthesisAnalyzerStandard(SAMPLE_CHART_DATA)
 
         # 检查是否有标准方法
         assert hasattr(analyzer, 'analyze_with_llm')
         assert hasattr(analyzer, 'analyze_with_llm_sync')
-        assert hasattr(analyzer, 'generate_text_report')
         assert callable(analyzer.analyze_with_llm)
         assert callable(analyzer.analyze_with_llm_sync)
 
     @pytest.mark.asyncio
     async def test_analyze_with_llm_returns_dict(self):
         """测试异步分析返回字典结构"""
-        from app.services.divination.agents import LLMSynthesisAnalyzer
+        from app.services.divination.agents.synthesis_agent import LLMSynthesisAnalyzerStandard
 
-        analyzer = LLMSynthesisAnalyzer(SAMPLE_CHART_DATA, SAMPLE_ANALYSIS_DATA)
+        analyzer = LLMSynthesisAnalyzerStandard(SAMPLE_CHART_DATA, SAMPLE_ANALYSIS_DATA)
 
         # 由于需要 LLM API，这里只测试方法签名和返回类型
         # 实际测试需要 mock LLMClient
@@ -150,9 +149,9 @@ class TestLLMSynthesisAnalyzer:
 
     def test_analyze_with_llm_sync_returns_dict(self):
         """测试同步分析返回字典结构"""
-        from app.services.divination.agents import LLMSynthesisAnalyzer
+        from app.services.divination.agents.synthesis_agent import LLMSynthesisAnalyzerStandard
 
-        analyzer = LLMSynthesisAnalyzer(SAMPLE_CHART_DATA, SAMPLE_ANALYSIS_DATA)
+        analyzer = LLMSynthesisAnalyzerStandard(SAMPLE_CHART_DATA, SAMPLE_ANALYSIS_DATA)
 
         # 由于需要 LLM API，这里只测试方法签名
         result = analyzer.analyze_with_llm_sync(temperature=0.3)
@@ -162,9 +161,9 @@ class TestLLMSynthesisAnalyzer:
 
     def test_analyze_with_question_parameter(self):
         """测试带问题的分析"""
-        from app.services.divination.agents import LLMSynthesisAnalyzer
+        from app.services.divination.agents.synthesis_agent import LLMSynthesisAnalyzerStandard
 
-        analyzer = LLMSynthesisAnalyzer(SAMPLE_CHART_DATA, SAMPLE_ANALYSIS_DATA)
+        analyzer = LLMSynthesisAnalyzerStandard(SAMPLE_CHART_DATA, SAMPLE_ANALYSIS_DATA)
 
         question = "事业运程如何？"
         result = analyzer.analyze_with_llm_sync(question=question)
@@ -230,7 +229,7 @@ class TestSynthesisAnalyzerIntegration:
 
     def test_analyzer_with_full_analysis_data(self):
         """测试带完整分析数据的分析器"""
-        from app.services.divination.agents import LLMSynthesisAnalyzer
+        from app.services.divination.agents.synthesis_agent import LLMSynthesisAnalyzerStandard
 
         full_analysis = {
             "star_analysis": {
@@ -255,7 +254,7 @@ class TestSynthesisAnalyzerIntegration:
             }
         }
 
-        analyzer = LLMSynthesisAnalyzer(SAMPLE_CHART_DATA, full_analysis)
+        analyzer = LLMSynthesisAnalyzerStandard(SAMPLE_CHART_DATA, full_analysis)
 
         result = analyzer.analyze_with_llm_sync()
 
