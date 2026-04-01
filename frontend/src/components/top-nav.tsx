@@ -117,7 +117,11 @@ export function TopNav() {
                 </div>
                 <div className="flex items-center gap-1">
                   <Button variant="ghost" size="sm" asChild className="hidden sm:inline-flex">
-                    <Link href="/pricing">升级</Link>
+                    {user.subscription_tier === 'free' ? (
+                      <Link href="/pricing">升级</Link>
+                    ) : (
+                      <Link href="/account">管理订阅</Link>
+                    )}
                   </Button>
                   <Button variant="ghost" size="sm" onClick={logout} className="gap-1.5">
                     <LogOut className="h-4 w-4" />

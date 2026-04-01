@@ -74,8 +74,11 @@ export function useAuthApi() {
       return authFetch('/payments/subscription', { method: 'GET' });
     },
 
-    cancelSubscription: async () => {
-      return authFetch('/payments/subscription', { method: 'DELETE' });
+    cancelSubscription: async (cancelAtPeriodEnd = true) => {
+      return authFetch('/payments/cancel', {
+        method: 'POST',
+        body: JSON.stringify({ cancel_at_period_end: cancelAtPeriodEnd }),
+      });
     },
 
     // User

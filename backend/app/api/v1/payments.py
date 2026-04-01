@@ -229,6 +229,46 @@ def wechat_webhook():
         return '<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[{}]]></return_msg></xml>'.format(str(e))
 
 
+@payments_bp.route('/subscription', methods=['GET'])
+@require_auth
+def get_subscription():
+    """
+    获取当前用户订阅信息
+
+    Returns:
+        {
+            "success": true,
+            "data": {
+                "tier": "free|pro|premium",
+                "status": "active|cancelled|expired|pending",
+                "stripe_customer_id": "cus_xxx",
+                "stripe_subscription_id": "sub_xxx",
+                "starts_at": "2024-01-01T00:00:00Z",
+                "expires_at": "2024-02-01T00:00:00Z",
+                "cancelled_at": null
+            }
+        }
+    """
+    try:
+        user_id = g.current_user_id
+        subscription = UserManager.get_subscription(user_id)
+
+        return jsonify({
+            "success": True,
+            "data": {
+                "tier": subscription.tier,
+                "status": subscription.status,
+                "stripe_customer_id": subscription.stripe_customer_id,
+                "stripe_subscription_id": subscription.stripe_subscription_id,
+                "starts_at": subscription.starts_at,
+                "expires_at": subscription.expires_at,
+                "cancelled_at": subscription.cancelled_at,
+            }
+        })
+    except Exception as e:
+        return jsonify({"success": False, "error": f"获取订阅信息失败: {str(e)}"}), 500
+
+
 @payments_bp.route('/history', methods=['GET'])
 @require_auth
 def get_payment_history():
