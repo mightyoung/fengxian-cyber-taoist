@@ -711,175 +711,183 @@ class TimingAgent:
 
         # 基于星曜性质的飞化规则（中州派核心规则）
         # 格式：{星曜: {化类型: {palaces: [], interpretation: ""}}}
-        STAR_FLYING_RULES: Dict[str, Dict[str, Dict]] = {
-            # 甲年四化
-            "廉贞": {
-                "禄": {
-                    "palaces": ["财帛宫", "官禄宫", "迁移宫"],
-                    "interpretation": "廉贞化禄主财禄双美，有桃花性质但为艺术桃花"
+        # 星曜飞化详细规则（按年干分组，无重复键）
+        # 结构: {年干: {星曜: {化类型: {palaces, interpretation}}}}
+        STAR_FLYING_RULES: Dict[str, Dict[str, Dict[str, Dict]]] = {
+            "甲": {
+                "廉贞": {
+                    "禄": {
+                        "palaces": ["财帛宫", "官禄宫", "迁移宫"],
+                        "interpretation": "廉贞化禄主财禄双美，有桃花性质但为艺术桃花"
+                    },
+                    "忌": {
+                        "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
+                        "interpretation": "廉贞化忌主官非小人，须防口舌是非"
+                    }
                 },
-                "忌": {
-                    "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
-                    "interpretation": "廉贞化忌主官非小人，须防口舌是非"
-                }
-            },
-            "天机": {
-                "禄": {
-                    "palaces": ["官禄宫", "迁移宫", "财帛宫"],
-                    "interpretation": "天机化禄主智慧生财，有谋略善策划"
+                "天机": {
+                    "禄": {
+                        "palaces": ["官禄宫", "迁移宫", "财帛宫"],
+                        "interpretation": "天机化禄主智慧生财，有谋略善策划"
+                    },
+                    "权": {
+                        "palaces": ["官禄宫", "迁移宫"],
+                        "interpretation": "天机化权主竞争创新，宜主动出击"
+                    },
+                    "科": {
+                        "palaces": ["官禄宫", "福德宫"],
+                        "interpretation": "天机化科主谋略名声，宜学术研究"
+                    }
                 },
-                "权": {
-                    "palaces": ["官禄宫", "迁移宫"],
-                    "interpretation": "天机化权主竞争创新，宜主动出击"
+                "太阳": {
+                    "禄": {
+                        "palaces": ["官禄宫", "财帛宫", "迁移宫"],
+                        "interpretation": "太阳化禄主事业发达，光明磊落"
+                    },
+                    "权": {
+                        "palaces": ["官禄宫", "迁移宫"],
+                        "interpretation": "太阳化权主权威显现，宜争夺功名"
+                    },
+                    "科": {
+                        "palaces": ["官禄宫", "迁移宫"],
+                        "interpretation": "太阳化科主声名远播，贵人多助"
+                    },
+                    "忌": {
+                        "palaces": ["官禄宫", "迁移宫", "田宅宫"],
+                        "interpretation": "太阳化忌主小人是非，眼光偏高"
+                    }
                 },
-                "科": {
-                    "palaces": ["官禄宫", "福德宫"],
-                    "interpretation": "天机化科主谋略名声，宜学术研究"
+                "太阴": {
+                    "禄": {
+                        "palaces": ["财帛宫", "田宅宫", "福德宫"],
+                        "interpretation": "太阴化禄主财库充盈，房产田宅积聚"
+                    },
+                    "权": {
+                        "palaces": ["官禄宫", "田宅宫"],
+                        "interpretation": "太阴化权主女权主导，理财持家"
+                    },
+                    "科": {
+                        "palaces": ["福德宫", "田宅宫"],
+                        "interpretation": "太阴化科主财库名声，储蓄有方"
+                    },
+                    "忌": {
+                        "palaces": ["疾厄宫", "迁移宫", "田宅宫"],
+                        "interpretation": "太阴化忌主家宅不宁，财库有损"
+                    }
                 },
-                "忌": {
-                    "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
-                    "interpretation": "天机化忌主思虑过度，变动不安"
-                }
             },
-            "太阳": {
-                "禄": {
-                    "palaces": ["官禄宫", "财帛宫", "迁移宫"],
-                    "interpretation": "太阳化禄主事业发达，光明磊落"
+            "乙": {
+                "天梁": {
+                    "权": {
+                        "palaces": ["官禄宫", "迁移宫", "福德宫"],
+                        "interpretation": "天梁化权主清高独立，宜监管仲裁"
+                    }
                 },
-                "权": {
-                    "palaces": ["官禄宫", "迁移宫"],
-                    "interpretation": "太阳化权主权威显现，宜争夺功名"
+                "武曲": {
+                    "科": {
+                        "palaces": ["财帛宫", "官禄宫"],
+                        "interpretation": "武曲化科主财运名声，正财有利"
+                    }
                 },
-                "科": {
-                    "palaces": ["官禄宫", "迁移宫"],
-                    "interpretation": "太阳化科主声名远播，贵人多助"
+                "巨门": {
+                    "禄": {
+                        "palaces": ["财帛宫", "迁移宫", "官禄宫"],
+                        "interpretation": "巨门化禄主口财生财，宜销售外交"
+                    },
+                    "忌": {
+                        "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
+                        "interpretation": "巨门化忌主是非口舌，须防小人"
+                    }
                 },
-                "忌": {
-                    "palaces": ["官禄宫", "迁移宫", "田宅宫"],
-                    "interpretation": "太阳化忌主小人是非，眼光偏高"
-                }
             },
-            "太阴": {
-                "禄": {
-                    "palaces": ["财帛宫", "田宅宫", "福德宫"],
-                    "interpretation": "太阴化禄主财库充盈，房产田宅积聚"
+            "丙": {
+                "天同": {
+                    "禄": {
+                        "palaces": ["财帛宫", "福德宫", "田宅宫"],
+                        "interpretation": "天同化禄主福泽深厚，温和得财"
+                    },
+                    "权": {
+                        "palaces": ["官禄宫", "迁移宫"],
+                        "interpretation": "天同化权主平稳保守，宜守成"
+                    },
+                    "忌": {
+                        "palaces": ["疾厄宫", "迁移宫", "田宅宫"],
+                        "interpretation": "天同化忌主小人是非，健康有损"
+                    }
                 },
-                "权": {
-                    "palaces": ["官禄宫", "田宅宫"],
-                    "interpretation": "太阴化权主女权主导，理财持家"
+            },
+            "丁": {
+                "太阳": {
+                    "权": {
+                        "palaces": ["官禄宫", "迁移宫", "财帛宫"],
+                        "interpretation": "太阳化权主事业心重，宜争取功名"
+                    }
                 },
-                "科": {
-                    "palaces": ["福德宫", "田宅宫"],
-                    "interpretation": "太阴化科主财库名声，储蓄有方"
+            },
+            "戊": {
+                "贪狼": {
+                    "禄": {
+                        "palaces": ["财帛宫", "田宅宫", "迁移宫"],
+                        "interpretation": "贪狼化禄主财源广进，桃花财机会多"
+                    },
+                    "忌": {
+                        "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
+                        "interpretation": "贪狼化忌主酒色财气，宜防贪念"
+                    }
                 },
-                "忌": {
-                    "palaces": ["疾厄宫", "迁移宫", "田宅宫"],
-                    "interpretation": "太阴化忌主家宅不宁，财库有损"
-                }
             },
-            # 乙年四化
-            "天梁": {
-                "权": {
-                    "palaces": ["官禄宫", "迁移宫", "福德宫"],
-                    "interpretation": "天梁化权主清高独立，宜监管仲裁"
-                }
-            },
-            "武曲": {
-                "科": {
-                    "palaces": ["财帛宫", "官禄宫"],
-                    "interpretation": "武曲化科主财运名声，正财有利"
-                }
-            },
-            "巨门": {
-                "禄": {
-                    "palaces": ["财帛宫", "迁移宫", "官禄宫"],
-                    "interpretation": "巨门化禄主口财生财，宜销售外交"
+            "己": {
+                "天府": {
+                    "科": {
+                        "palaces": ["官禄宫", "田宅宫", "财帛宫"],
+                        "interpretation": "天府化科主才能出众，理财有方"
+                    }
                 },
-                "忌": {
-                    "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
-                    "interpretation": "巨门化忌主是非口舌，须防小人"
-                }
-            },
-            # 丙年四化
-            "天同": {
-                "禄": {
-                    "palaces": ["财帛宫", "福德宫", "田宅宫"],
-                    "interpretation": "天同化禄主福泽深厚，温和得财"
+                "文曲": {
+                    "忌": {
+                        "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
+                        "interpretation": "文曲化忌主文书失误，名声有损"
+                    }
                 },
-                "权": {
-                    "palaces": ["官禄宫", "迁移宫"],
-                    "interpretation": "天同化权主平稳保守，宜守成"
+            },
+            "庚": {
+                "文昌": {
+                    "忌": {
+                        "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
+                        "interpretation": "文昌化忌主文书失误，考运不佳"
+                    }
                 },
-                "忌": {
-                    "palaces": ["疾厄宫", "迁移宫", "田宅宫"],
-                    "interpretation": "天同化忌主小人是非，健康有损"
-                }
             },
-            # 丁年四化
-            "太阳": {
-                "权": {
-                    "palaces": ["官禄宫", "迁移宫", "财帛宫"],
-                    "interpretation": "太阳化权主事业心重，宜争取功名"
-                }
-            },
-            # 戊年四化
-            "贪狼": {
-                "禄": {
-                    "palaces": ["财帛宫", "田宅宫", "迁移宫"],
-                    "interpretation": "贪狼化禄主财源广进，桃花财机会多"
+            "辛": {
+                "文曲": {
+                    "科": {
+                        "palaces": ["官禄宫", "财帛宫", "迁移宫"],
+                        "interpretation": "文曲化科主文采风流，名声远播"
+                    }
                 },
-                "忌": {
-                    "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
-                    "interpretation": "贪狼化忌主酒色财气，宜防贪念"
-                }
             },
-            # 己年四化
-            "天府": {
-                "科": {
-                    "palaces": ["官禄宫", "田宅宫", "财帛宫"],
-                    "interpretation": "天府化科主才能出众，理财有方"
-                }
+            "壬": {
+                "紫微": {
+                    "权": {
+                        "palaces": ["官禄宫", "田宅宫", "财帛宫"],
+                        "interpretation": "紫微化权主独尊权威，宜领导管理"
+                    }
+                },
+                "贪狼": {
+                    "科": {
+                        "palaces": ["官禄宫", "财帛宫", "迁移宫"],
+                        "interpretation": "贪狼化科主才艺生财，有桃花性质"
+                    }
+                },
             },
-            "文曲": {
-                "忌": {
-                    "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
-                    "interpretation": "文曲化忌主文书失误，名声有损"
-                }
+            "癸": {
+                "文昌": {
+                    "忌": {
+                        "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
+                        "interpretation": "文昌化忌主文书失误，学业受阻"
+                    }
+                },
             },
-            # 庚年四化
-            "文昌": {
-                "忌": {
-                    "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
-                    "interpretation": "文昌化忌主文书失误，考运不佳"
-                }
-            },
-            # 辛年四化
-            "文曲": {
-                "科": {
-                    "palaces": ["官禄宫", "财帛宫", "迁移宫"],
-                    "interpretation": "文曲化科主文采风流，名声远播"
-                }
-            },
-            # 壬年四化
-            "紫微": {
-                "权": {
-                    "palaces": ["官禄宫", "田宅宫", "财帛宫"],
-                    "interpretation": "紫微化权主独尊权威，宜领导管理"
-                }
-            },
-            "贪狼": {
-                "科": {
-                    "palaces": ["官禄宫", "财帛宫", "迁移宫"],
-                    "interpretation": "贪狼化科主才艺生财，有桃花性质"
-                }
-            },
-            # 癸年四化
-            "文昌": {
-                "忌": {
-                    "palaces": ["官禄宫", "迁移宫", "疾厄宫"],
-                    "interpretation": "文昌化忌主文书失误，学业受阻"
-                }
-            }
         }
 
         # 通用飞化宫位规则（当星曜没有特定规则时使用）
@@ -907,19 +915,25 @@ class TimingAgent:
                 "interpretation": ""
             }
 
-            # 首先查找星曜特定规则
-            if star_name in STAR_FLYING_RULES:
-                star_rules = STAR_FLYING_RULES[star_name]
-                if transform_key in star_rules:
-                    rule = star_rules[transform_key]
-                    result_item["palaces"] = rule["palaces"]
-                    result_item["interpretation"] = rule["interpretation"]
+            # 首先查找星曜特定规则（按年干+星曜查找）
+            if year_gan in STAR_FLYING_RULES:
+                year_rules = STAR_FLYING_RULES[year_gan]
+                if star_name in year_rules:
+                    star_rules = year_rules[star_name]
+                    if transform_key in star_rules:
+                        rule = star_rules[transform_key]
+                        result_item["palaces"] = rule["palaces"]
+                        result_item["interpretation"] = rule["interpretation"]
+                    else:
+                        # 星曜有记录但该化类型无特定规则，使用通用规则
+                        result_item["palaces"] = GENERIC_FLYING_RULES.get(transform_type, [])
+                        result_item["interpretation"] = f"{star_name}化{transform_type}按通用规则飞化"
                 else:
-                    # 星曜有记录但该化类型无特定规则，使用通用规则
+                    # 星曜无特定规则，使用通用规则
                     result_item["palaces"] = GENERIC_FLYING_RULES.get(transform_type, [])
                     result_item["interpretation"] = f"{star_name}化{transform_type}按通用规则飞化"
             else:
-                # 星曜无特定规则，使用通用规则
+                # 年干无特定规则，使用通用规则
                 result_item["palaces"] = GENERIC_FLYING_RULES.get(transform_type, [])
                 result_item["interpretation"] = f"{star_name}化{transform_type}按通用规则飞化"
 
