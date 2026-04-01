@@ -586,11 +586,10 @@ def get_report_metrics(report_id: str):
         simulation = manager.get_simulation(simulation_id) if simulation_id else None
 
         # 构建指标数据
-        # TODO: 可以从模拟运行结果中获取更准确的指标
         metrics = {
             "totalPosts": 0,
             "totalEngagement": 0,
-            "sentimentScore": 0.5,
+            "sentimentScore": None,
             "topInfluencers": []
         }
 
@@ -598,7 +597,7 @@ def get_report_metrics(report_id: str):
             # 从模拟状态中获取一些基本信息
             metrics["totalPosts"] = simulation.profiles_count * 10 if hasattr(simulation, 'profiles_count') else 0
             metrics["totalEngagement"] = simulation.profiles_count * 25 if hasattr(simulation, 'profiles_count') else 0
-            metrics["sentimentScore"] = 0.5 + (hash(simulation_id) % 100) / 200  # 临时使用模拟ID生成伪随机值
+            # sentimentScore 需要真实的情感分析数据，暂时置空
 
         # 尝试从报告内容中提取更多指标
         if report.markdown_content:
@@ -629,11 +628,8 @@ def get_report_metrics(report_id: str):
                 {"name": name, "score": float(score)} for name, score in top_users
             ]
 
-        # 如果没有从内容中提取到任何影响力数据，使用默认模拟数据
-        if not metrics["topInfluencers"]:
-            metrics["topInfluencers"] = [
-                {"name": "Agent_001", "score": 85.0 + (i * 5)} for i in range(min(5, max(1, metrics["totalPosts"] // 100)))
-            ]
+        # 如果没有从内容中提取到任何影响力数据，返回空列表
+        # 注意：不使用假数据填充，避免误导
 
         return jsonify({
             "success": True,
