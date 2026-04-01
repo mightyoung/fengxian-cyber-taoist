@@ -23,15 +23,17 @@ sys.path.insert(0, backend_dir)
 # ============ 测试夹具 ============
 
 @pytest.fixture(autouse=True)
-def setup_jwt_secret():
-    """Set JWT_SECRET_KEY before any app imports."""
+def setup_env():
+    """Set test environment variables before any app imports."""
     import os
     os.environ.setdefault('JWT_SECRET_KEY', 'test-secret-for-e2e')
+    os.environ['FLASK_ENV'] = 'test'
+    os.environ['TEST_DATA_DIR'] = f'/tmp/fengxian-test-{os.getpid()}'
     yield
 
 
 @pytest.fixture
-def app(setup_jwt_secret):
+def app(setup_env):
     """创建测试应用"""
     from app import create_app
     app = create_app()

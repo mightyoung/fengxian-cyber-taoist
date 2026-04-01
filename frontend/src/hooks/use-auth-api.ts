@@ -8,12 +8,16 @@
  *
  * Use this for API calls that require authentication.
  * For public endpoints (no auth required), use use-api.ts instead.
+ *
+ * API structure:
+ * - Auth & Payments: /api/v1/{auth,payments}/*
+ * - Reports (simulation): /api/report/*
  */
 
 import { useAuthContext } from '@/contexts/AuthContext';
 import type { ApiResponse } from '@/types/api';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api/v1';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
 
 async function handleResponse<T>(response: Response): Promise<ApiResponse<T>> {
   let json: { success?: boolean; data?: T; error?: string; count?: number } = {};
@@ -62,44 +66,44 @@ export function useAuthApi() {
   };
 
   return {
-    // Payments
+    // Payments (at /api/v1/payments/*)
     createCheckoutSession: async (priceKey: string, successUrl: string, cancelUrl: string) => {
-      return authFetch('/payments/checkout', {
+      return authFetch('/v1/payments/checkout', {
         method: 'POST',
         body: JSON.stringify({ price_key: priceKey, success_url: successUrl, cancel_url: cancelUrl }),
       });
     },
 
     getSubscription: async () => {
-      return authFetch('/payments/subscription', { method: 'GET' });
+      return authFetch('/v1/payments/subscription', { method: 'GET' });
     },
 
     cancelSubscription: async (cancelAtPeriodEnd = true) => {
-      return authFetch('/payments/cancel', {
+      return authFetch('/v1/payments/cancel', {
         method: 'POST',
         body: JSON.stringify({ cancel_at_period_end: cancelAtPeriodEnd }),
       });
     },
 
-    // User
+    // User (at /api/v1/auth/*)
     getCurrentUser: async () => {
-      return authFetch('/auth/me', { method: 'GET' });
+      return authFetch('/v1/auth/me', { method: 'GET' });
     },
 
     updateUser: async (data: Record<string, unknown>) => {
-      return authFetch('/auth/me', {
+      return authFetch('/v1/auth/me', {
         method: 'PUT',
         body: JSON.stringify(data),
       });
     },
 
-    // Reports (authenticated) - simulation report routes at /api/report/*
+    // Reports (simulation, at /api/report/*)
     listReports: async () => {
-      return authFetch('/api/report/list', { method: 'GET' });
+      return authFetch('/report/list', { method: 'GET' });
     },
 
     getReport: async (reportId: string) => {
-      return authFetch(`/api/report/${reportId}`, { method: 'GET' });
+      return authFetch(`/report/${reportId}`, { method: 'GET' });
     },
 
     generateReport: async (data: {
@@ -108,7 +112,7 @@ export function useAuthApi() {
       target_year: number;
       report_type: string;
     }) => {
-      return authFetch('/api/report/generate', {
+      return authFetch('/report/generate', {
         method: 'POST',
         body: JSON.stringify(data),
       });
