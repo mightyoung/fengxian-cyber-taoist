@@ -3,7 +3,6 @@ Report API路由
 提供模拟报告生成、获取、对话等接口
 """
 
-import asyncio
 import os
 import threading
 from flask import request, jsonify, send_file
