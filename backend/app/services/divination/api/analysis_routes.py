@@ -470,11 +470,16 @@ def analyze_transforms():
 @analysis_bp.route('/health', methods=['GET'])
 def health():
     """健康检查"""
+    from app.services.divination.agents.case_based_predictor_constants import CHROMADB_AVAILABLE
+
     charts = DivinationManager.list_charts(limit=1000)
     return jsonify({
         "status": "ok",
         "service": "divination-api",
-        "stored_charts": len(charts)
+        "stored_charts": len(charts),
+        "capabilities": {
+            "chroma": CHROMADB_AVAILABLE,
+        }
     })
 
 
