@@ -2,16 +2,18 @@
 Storage Paths - 环境相关的存储路径配置
 
 存储路径按环境分离：
-- development: DATA_DIR (默认 backend/app/uploads)
-- test: 临时目录 /tmp/fengxian-test-{random}
-- production: DATA_DIR (必须显式设置)
+- development: DATA_DIR (默认 ~/Downloads/dev/fengxian-cyber-taoist-data)
+- test: 进程级缓存临时目录 /tmp/fengxian-test-{固定值}
+- production: DATA_DIR (必需)
 
 用法:
     from app.storage.paths import get_data_dir, get_upload_dir
 """
 
 import os
-import uuid
+
+# 进程级缓存 (避免测试时每次调用生成新路径)
+_test_data_dir: str | None = None
 
 
 def _get_env() -> str:
@@ -23,18 +25,20 @@ def get_data_dir() -> str:
     """
     获取数据根目录。
 
-    开发环境: backend/app/uploads (或 DATA_DIR 环境变量)
-    测试环境: 临时目录 /tmp/fengxian-test-{uuid}
+    开发环境: DATA_DIR 环境变量或 ~/Downloads/dev/fengxian-cyber-taoist-data
+    测试环境: TEST_DATA_DIR 或进程级缓存临时目录
     生产环境: DATA_DIR 环境变量 (必需)
     """
+    global _test_data_dir
     env = _get_env()
 
     if env == 'test':
-        # 测试环境使用临时目录
         test_dir = os.environ.get('TEST_DATA_DIR')
         if test_dir:
             return test_dir
-        return f"/tmp/fengxian-test-{uuid.uuid4().hex[:8]}"
+        if _test_data_dir is None:
+            _test_data_dir = f"/tmp/fengxian-test-{os.getpid()}"
+        return _test_data_dir
 
     if env == 'production':
         data_dir = os.environ.get('DATA_DIR')
@@ -45,11 +49,9 @@ def get_data_dir() -> str:
             )
         return data_dir
 
-    # 开发环境
-    return os.environ.get(
-        'DATA_DIR',
-        os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'uploads')
-    )
+    # 开发环境: 默认到 home 目录下数据目录（避免污染源码树）
+    default_dev_dir = os.path.expanduser('~/.fengxian-data')
+    return os.environ.get('DATA_DIR', default_dev_dir)
 
 
 def get_upload_dir(*subdirs: str) -> str:

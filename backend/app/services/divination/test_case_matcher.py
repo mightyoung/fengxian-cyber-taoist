@@ -11,7 +11,7 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from app.services.divination.case_matcher import (
+from app.services.divination.case_matcher import (  # noqa: E402
     CaseMatcher,
     ChartFeatures,
     SimilarityResult,

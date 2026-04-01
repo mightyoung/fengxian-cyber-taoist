@@ -563,14 +563,14 @@ class SimulationRunner:
             if simulation_id in cls._stdout_files:
                 try:
                     cls._stdout_files[simulation_id].close()
-                except Exception:
-                    pass
+                except Exception as e:
+                    logger.warning(f"关闭 stdout 文件句柄失败: simulation_id={simulation_id}, error={e}")
                 cls._stdout_files.pop(simulation_id, None)
             if simulation_id in cls._stderr_files and cls._stderr_files[simulation_id]:
                 try:
                     cls._stderr_files[simulation_id].close()
-                except Exception:
-                    pass
+                except Exception as e:
+                    logger.warning(f"关闭 stderr 文件句柄失败: simulation_id={simulation_id}, error={e}")
                 cls._stderr_files.pop(simulation_id, None)
     
     @classmethod
@@ -793,7 +793,8 @@ class SimulationRunner:
                 try:
                     process.terminate()
                     process.wait(timeout=5)
-                except Exception:
+                except Exception as e:
+                    logger.warning(f"terminate/wait 失败，强制 kill: simulation={simulation_id}, error={e}")
                     process.kill()
         
         state.runner_status = RunnerStatus.STOPPED
@@ -1219,7 +1220,8 @@ class SimulationRunner:
                         try:
                             process.terminate()
                             process.wait(timeout=3)
-                        except Exception:
+                        except Exception as e:
+                            logger.warning(f"terminate/wait 失败，强制 kill: simulation={simulation_id}, error={e}")
                             process.kill()
                     
                     # 更新 run_state.json

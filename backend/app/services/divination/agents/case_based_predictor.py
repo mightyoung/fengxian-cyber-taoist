@@ -20,14 +20,13 @@ from typing import Dict, List, Optional, Any, Tuple
 from collections import Counter
 from datetime import datetime, timezone
 
+# ChromaDB import (used only when CHROMADB_AVAILABLE=True via case_based_predictor_constants)
 try:
-    import chromadb
-    from chromadb.config import Settings
-    CHROMA_AVAILABLE = True
+    import chromadb  # noqa: F401 - used in _init_chromadb when available
+    from chromadb.config import Settings  # noqa: F401
 except ImportError:
-    CHROMA_AVAILABLE = False
-    chromadb = None
-    Settings = None
+    chromadb = None  # type: ignore
+    Settings = None  # type: ignore
 
 from .chart_vectorizer import (
     ChartVectorizer,

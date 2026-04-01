@@ -84,8 +84,8 @@ export default function PricingPage() {
         `${window.location.origin}/pricing?success=1`,
         `${window.location.origin}/pricing?canceled=1`
       );
-      if (result.success && (result.data as { url?: string })?.url) {
-        window.location.href = (result.data as { url: string }).url;
+      if (result.success && (result.data as { checkout_url?: string })?.checkout_url) {
+        window.location.href = (result.data as { checkout_url: string }).checkout_url;
       } else {
         setError(result.error || '创建订单失败');
       }

@@ -26,7 +26,7 @@ from datetime import datetime
 _BACKEND_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(_BACKEND_ROOT))
 
-from app.utils.logger import get_logger
+from app.utils.logger import get_logger  # noqa: E402
 
 logger = get_logger('fengxian_cyber_taoist.unified_report')
 

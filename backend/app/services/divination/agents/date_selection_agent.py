@@ -10,6 +10,7 @@ DateSelectionAgent - 择日分析智能体
 4. 筛选吉日并排序
 """
 
+import logging
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Tuple
 
@@ -29,6 +30,8 @@ from .llm_prompts import (
     DATE_SELECTION_SYSTEM_PROMPT,
     build_date_selection_user_prompt,
 )
+
+logger = logging.getLogger(__name__)
 
 
 class DateSelectionAgent:
@@ -77,7 +80,8 @@ class DateSelectionAgent:
             birth_info = self.chart.get("birth_info", {})
             tiangan = birth_info.get("tiangan", "甲")
             return tiangan[0] if tiangan else "甲"
-        except Exception:
+        except Exception as e:
+            logger.warning(f"_get_birth_year_gan 失败，使用默认值甲: {e}")
             return "甲"
 
     def _get_minggong_tiangan(self) -> str:
@@ -87,7 +91,8 @@ class DateSelectionAgent:
             minggong = palaces.get("命宫", {})
             tiangan = minggong.get("tiangan", "甲")
             return tiangan[0] if tiangan else "甲"
-        except Exception:
+        except Exception as e:
+            logger.warning(f"_get_minggong_tiangan 失败，使用默认值甲: {e}")
             return "甲"
 
     def _get_daily_stem_branch(self, solar_date: datetime) -> Tuple[str, str]:
@@ -237,7 +242,8 @@ class DateSelectionAgent:
             minggong = palaces.get("命宫", {})
             branch = minggong.get("branch", "子")
             return branch
-        except Exception:
+        except Exception as e:
+            logger.warning(f"_get_minggong_branch 失败，使用默认值子: {e}")
             return "子"
 
     def _calculate_auspicious_score(
@@ -358,7 +364,8 @@ class DateSelectionAgent:
             palaces = self.chart.get("palaces", {})
             palace = palaces.get(palace_name, {})
             return palace.get("branch", None)
-        except Exception:
+        except Exception as e:
+            logger.warning(f"_get_palace_branch({palace_name}) 失败: {e}")
             return None
 
     def _score_daily(

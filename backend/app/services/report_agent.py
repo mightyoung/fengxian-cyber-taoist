@@ -1748,8 +1748,8 @@ class ReportAgent:
                     report_id, "failed", -1, f"报告生成失败: {str(e)}",
                     completed_sections=completed_section_titles
                 )
-            except Exception:
-                pass  # 忽略保存失败的错误
+            except Exception as save_err:
+                logger.error(f"保存报告失败状态时出错: {save_err}")
             
             # 关闭控制台日志记录器
             if self.console_logger:

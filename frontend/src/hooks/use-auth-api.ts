@@ -93,13 +93,13 @@ export function useAuthApi() {
       });
     },
 
-    // Reports (authenticated)
+    // Reports (authenticated) - simulation report routes at /api/report/*
     listReports: async () => {
-      return authFetch('/report/list', { method: 'GET' });
+      return authFetch('/api/report/list', { method: 'GET' });
     },
 
     getReport: async (reportId: string) => {
-      return authFetch(`/report/${reportId}`, { method: 'GET' });
+      return authFetch(`/api/report/${reportId}`, { method: 'GET' });
     },
 
     generateReport: async (data: {
@@ -108,7 +108,7 @@ export function useAuthApi() {
       target_year: number;
       report_type: string;
     }) => {
-      return authFetch('/report/generate', {
+      return authFetch('/api/report/generate', {
         method: 'POST',
         body: JSON.stringify(data),
       });

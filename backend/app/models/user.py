@@ -8,9 +8,12 @@ User Model - 用户模型
 
 import uuid
 import bcrypt
+import logging
 from datetime import datetime
 from typing import Optional, Dict, Any
 from dataclasses import dataclass
+
+logger = logging.getLogger(__name__)
 
 
 class SubscriptionTier(str):
@@ -149,6 +152,8 @@ class Subscription:
 class UserManager:
     """用户管理器"""
 
+    _EMAIL_INDEX_KEY = ".email_index.json"
+
     @classmethod
     def _get_storage(cls):
         """获取用户存储适配器"""
@@ -161,20 +166,64 @@ class UserManager:
         return f"{user_id}.json"
 
     @classmethod
+    def _load_email_index(cls) -> Dict[str, str]:
+        """加载邮箱→用户ID索引"""
+        storage = cls._get_storage()
+        data = storage.load(cls._EMAIL_INDEX_KEY)
+        return data if data else {}
+
+    @classmethod
+    def _save_email_index(cls, index: Dict[str, str]) -> None:
+        """保存邮箱→用户ID索引"""
+        storage = cls._get_storage()
+        storage.save(cls._EMAIL_INDEX_KEY, index)
+
+    @classmethod
     def _get_user_by_email_file(cls, email: str) -> Optional[str]:
-        """根据邮箱查找用户ID"""
+        """根据邮箱查找用户ID（使用索引，O(1)）"""
+        index = cls._load_email_index()
+        user_id = index.get(email.lower())
+        # 防御：如果索引miss，回退到文件扫描并重建索引
+        if user_id is None:
+            user_id = cls._rebuild_email_index_for_email(email)
+        return user_id
+
+    @classmethod
+    def _rebuild_email_index_for_email(cls, email: str) -> Optional[str]:
+        """扫描所有用户文件重建索引并查找指定邮箱"""
         storage = cls._get_storage()
         email_lower = email.lower()
-        keys = storage.list_keys()
+        index: Dict[str, str] = {}
+        found: Optional[str] = None
 
-        for key in keys:
-            if key.endswith('_subscription.json'):
+        for key in storage.list_keys():
+            if key.endswith('_subscription.json') or key == cls._EMAIL_INDEX_KEY:
                 continue
             data = storage.load(key)
-            if data and data.get('email', '').lower() == email_lower:
-                # 从键中提取 user_id: "uuid.json" -> "uuid"
-                return key.replace('.json', '')
-        return None
+            if data and data.get('email'):
+                idx_email = data['email'].lower()
+                index[idx_email] = key.replace('.json', '')
+                if idx_email == email_lower:
+                    found = key.replace('.json', '')
+
+        cls._save_email_index(index)
+        return found
+
+    @classmethod
+    def _update_email_index_on_save(cls, user: User, old_email: Optional[str] = None) -> None:
+        """保存用户时更新邮箱索引"""
+        index = cls._load_email_index()
+        if old_email and old_email != user.email:
+            index.pop(old_email.lower(), None)
+        index[user.email.lower()] = user.id
+        cls._save_email_index(index)
+
+    @classmethod
+    def _remove_from_email_index(cls, email: str) -> None:
+        """删除用户时从索引移除"""
+        index = cls._load_email_index()
+        index.pop(email.lower(), None)
+        cls._save_email_index(index)
 
     # ==================== 用户管理 ====================
 
@@ -204,14 +253,22 @@ class UserManager:
         )
 
         cls.save_user(user)
+        cls._update_email_index_on_save(user)
         return user
 
     @classmethod
-    def save_user(cls, user: User) -> None:
-        """保存用户"""
+    def save_user(cls, user: User, old_email: Optional[str] = None) -> None:
+        """保存用户
+
+        Args:
+            user: 用户对象
+            old_email: 仅在 email 可能变更时传入，用于更新索引
+        """
         storage = cls._get_storage()
         user.updated_at = datetime.now().isoformat()
         storage.save(cls._get_user_file(user.id), user.to_dict_with_password())
+        if old_email:
+            cls._update_email_index_on_save(user, old_email)
 
     @classmethod
     def get_user(cls, user_id: str) -> Optional[User]:
@@ -253,21 +310,27 @@ class UserManager:
         if not user:
             return None
 
+        old_email = user.email if 'email' in kwargs else None
+
         for key, value in kwargs.items():
             if hasattr(user, key) and key not in ('id', 'password_hash'):
                 setattr(user, key, value)
 
-        cls.save_user(user)
+        cls.save_user(user, old_email)
         return user
 
     @classmethod
     def delete_user(cls, user_id: str) -> bool:
         """删除用户"""
+        user = cls.get_user(user_id)
         storage = cls._get_storage()
         deleted = storage.delete(user_id)
         # 同时删除订阅文件
         subscription_key = f"{user_id}_subscription.json"
         storage.delete(subscription_key)
+        # 从邮箱索引中移除
+        if user:
+            cls._remove_from_email_index(user.email)
         return deleted
 
     # ==================== 密码管理 ====================
@@ -286,7 +349,8 @@ class UserManager:
                 password.encode('utf-8'),
                 password_hash.encode('utf-8')
             )
-        except Exception:
+        except Exception as e:
+            logger.warning(f"密码验证失败: {type(e).__name__}: {e}")
             return False
 
     @classmethod

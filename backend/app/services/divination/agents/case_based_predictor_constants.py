@@ -25,9 +25,10 @@ try:
 except ImportError:
     CHROMADB_AVAILABLE = False
     logger.warning(
-        "ChromaDB not available - case similarity search is DISABLED. "
-        "Install chromadb>=0.4.0 for production use. "
-        "Current mode: in-memory fallback (no persistence across restarts)"
+        "[OPTIONAL DEPENDENCY] ChromaDB not available - case similarity search is DISABLED. "
+        "This feature provides similarity-based case matching for predictions. "
+        "Install: pip install 'chromadb>=0.4.0' "
+        "Current mode: in-memory fallback (no persistence, case matching unavailable)"
     )
 
 # 大限参数（默认值）

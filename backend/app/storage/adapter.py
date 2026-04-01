@@ -8,6 +8,7 @@ JSON File Storage Adapter - 基于 JSON 文件的存储适配器
 import os
 import json
 import logging
+import tempfile
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
 
@@ -88,8 +89,18 @@ class JSONFileStorageAdapter(StorageAdapter):
         if parent:
             os.makedirs(parent, exist_ok=True)
 
-        with open(filepath, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2, **kwargs)
+        # 原子写入: 先写临时文件再 rename（同一文件系统下原子操作）
+        dirname, basename = os.path.dirname(filepath), os.path.basename(filepath)
+        tmp_fd, tmp_path = tempfile.mkstemp(dir=dirname or '.', prefix=f'.{basename}.', suffix='.tmp')
+        try:
+            with os.fdopen(tmp_fd, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2, **kwargs)
+            os.replace(tmp_path, filepath)  # 原子替换
+        except Exception:
+            # 写入失败时清理临时文件
+            if os.path.exists(tmp_path):
+                os.unlink(tmp_path)
+            raise
 
     def load(self, key: str, **kwargs) -> Optional[Dict[str, Any]]:
         """

@@ -6,6 +6,7 @@
 import uuid
 import time
 import threading
+import logging
 from typing import Dict, Any, List, Optional, Callable
 from dataclasses import dataclass
 
@@ -16,6 +17,8 @@ from ..config import Config
 from ..models.task import TaskManager, TaskStatus
 from ..utils.zep_paging import fetch_all_nodes, fetch_all_edges
 from .text_processor import TextProcessor
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -376,9 +379,8 @@ class GraphBuilderService:
                         pending_episodes.remove(ep_uuid)
                         completed_count += 1
                         
-                except Exception:
-                    # 忽略单个查询错误，继续
-                    pass
+                except Exception as e:
+                    logger.warning(f"查询 episode 状态失败: ep_uuid={ep_uuid}, error={e}")
             
             elapsed = int(time.time() - start_time)
             if progress_callback:

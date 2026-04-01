@@ -69,12 +69,12 @@ def _format_palace_overview(chart_data, palace_dict):
     return "".join(lines)
 
 
-# Import route modules AFTER defining all shared utilities (avoids circular import)
-from app.services.divination.api import chart_routes
-from app.services.divination.api import analysis_routes
-from app.services.divination.api import knowledge_routes
-from app.services.divination.api import report_routes
-from app.services.divination.api import specialized_routes
+# Import route modules AFTER defining all shared utilities (avoids circular import)  # noqa: E402
+from app.services.divination.api import chart_routes  # noqa: E402
+from app.services.divination.api import analysis_routes  # noqa: E402
+from app.services.divination.api import knowledge_routes  # noqa: E402
+from app.services.divination.api import report_routes  # noqa: E402
+from app.services.divination.api import specialized_routes  # noqa: E402
 
 # Register sub-module blueprints
 divination_bp.register_blueprint(chart_routes.chart_bp)
