@@ -250,7 +250,7 @@ def _check_simulation_prepared(simulation_id: str) -> tuple:
     import os
     from ..config import Config
     
-    simulation_dir = os.path.join(Config.OASIS_SIMULATION_DATA_DIR, simulation_id)
+    simulation_dir = os.path.join(Config.get_simulation_data_dir(), simulation_id)
     
     # 检查目录是否存在
     if not os.path.exists(simulation_dir):
@@ -1042,7 +1042,7 @@ def get_simulation_profiles_realtime(simulation_id: str):
         platform = request.args.get('platform', 'reddit')
         
         # 获取模拟目录
-        sim_dir = os.path.join(Config.OASIS_SIMULATION_DATA_DIR, simulation_id)
+        sim_dir = os.path.join(Config.get_simulation_data_dir(), simulation_id)
         
         if not os.path.exists(sim_dir):
             return jsonify({
@@ -1144,7 +1144,7 @@ def get_simulation_config_realtime(simulation_id: str):
     
     try:
         # 获取模拟目录
-        sim_dir = os.path.join(Config.OASIS_SIMULATION_DATA_DIR, simulation_id)
+        sim_dir = os.path.join(Config.get_simulation_data_dir(), simulation_id)
         
         if not os.path.exists(sim_dir):
             return jsonify({

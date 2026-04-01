@@ -44,7 +44,7 @@ class ReportLogger:
         """
         self.report_id = report_id
         self.log_file_path = os.path.join(
-            Config.UPLOAD_FOLDER, 'reports', report_id, 'agent_log.jsonl'
+            Config.get_reports_dir(), report_id, 'agent_log.jsonl'
         )
         self.start_time = datetime.now()
         self._ensure_log_file()
@@ -315,7 +315,7 @@ class ReportConsoleLogger:
         """
         self.report_id = report_id
         self.log_file_path = os.path.join(
-            Config.UPLOAD_FOLDER, 'reports', report_id, 'console_log.txt'
+            Config.get_reports_dir(), report_id, 'console_log.txt'
         )
         self._ensure_log_file()
         self._file_handler = None
@@ -1894,7 +1894,7 @@ class ReportManager:
     """
     
     # 报告存储目录
-    REPORTS_DIR = os.path.join(Config.UPLOAD_FOLDER, 'reports')
+    REPORTS_DIR = Config.get_reports_dir()
     
     @classmethod
     def _ensure_reports_dir(cls):

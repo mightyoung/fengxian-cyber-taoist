@@ -130,7 +130,7 @@ class ReportService:
 
     def __init__(self):
         self.template_dir = Path(__file__).parent / "templates"
-        self.reports_dir = Path(Config.UPLOAD_FOLDER) / "reports"
+        self.reports_dir = Path(Config.get_reports_dir())
         self.reports_dir.mkdir(parents=True, exist_ok=True)
 
     def _get_report_dir(self, report_id: str) -> Path:

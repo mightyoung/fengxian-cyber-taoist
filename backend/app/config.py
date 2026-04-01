@@ -44,9 +44,8 @@ class Config:
     # Zep配置
     ZEP_API_KEY = os.environ.get('ZEP_API_KEY')
     
-    # 文件上传配置
+    # 文件上传配置 - 统一走 storage/paths.py
     MAX_CONTENT_LENGTH = 50 * 1024 * 1024  # 50MB
-    UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '../uploads')
     ALLOWED_EXTENSIONS = {'pdf', 'md', 'txt', 'markdown'}
     
     # 文本处理配置
@@ -55,7 +54,6 @@ class Config:
     
     # OASIS模拟配置
     OASIS_DEFAULT_MAX_ROUNDS = int(os.environ.get('OASIS_DEFAULT_MAX_ROUNDS', '10'))
-    OASIS_SIMULATION_DATA_DIR = os.path.join(os.path.dirname(__file__), '../uploads/simulations')
     
     # OASIS平台可用动作配置
     OASIS_TWITTER_ACTIONS = [
@@ -104,4 +102,31 @@ class Config:
         if not cls.ZEP_API_KEY:
             errors.append("ZEP_API_KEY 未配置")
         return errors
+
+    # ---- 存储路径 helpers（委托给 storage/paths.py） ----
+    # 使用 @classmethod 确保运行时从 FLASK_ENV 读取，而不是 import 时求值
+
+    @classmethod
+    def get_upload_folder(cls) -> str:
+        """获取上传根目录，委托给 storage/paths"""
+        from app.storage.paths import get_upload_dir
+        return get_upload_dir()
+
+    @classmethod
+    def get_simulation_data_dir(cls) -> str:
+        """获取OASIS仿真数据目录，委托给 storage/paths"""
+        from app.storage.paths import get_upload_dir
+        return get_upload_dir('simulations')
+
+    @classmethod
+    def get_reports_dir(cls) -> str:
+        """获取报告存储目录"""
+        from app.storage.paths import get_upload_dir
+        return get_upload_dir('reports')
+
+    @classmethod
+    def get_projects_dir(cls) -> str:
+        """获取项目存储目录"""
+        from app.storage.paths import get_upload_dir
+        return get_upload_dir('projects')
 

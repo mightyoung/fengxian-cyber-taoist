@@ -100,7 +100,7 @@ class TestReportAPI:
 
     def test_divination_report_missing_chart(self, client):
         """生成命理报告缺少chart字段"""
-        response = client.post('/api/report/divination/generate', json={
+        response = client.post('/api/divination/report/generate', json={
             "analysis_result": {}
         })
         # 缺少chart时返回400或500（取决于验证时机）
@@ -108,7 +108,7 @@ class TestReportAPI:
 
     def test_divination_report_invalid_chart(self, client):
         """命理报告无效chart数据"""
-        response = client.post('/api/report/divination/generate', json={
+        response = client.post('/api/divination/report/generate', json={
             "chart": {"invalid": "data"},
             "analysis_result": {}
         })
