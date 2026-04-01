@@ -474,11 +474,14 @@ def health():
 
     charts = DivinationManager.list_charts(limit=1000)
     return jsonify({
-        "status": "ok",
-        "service": "divination-api",
-        "stored_charts": len(charts),
-        "capabilities": {
-            "chroma": CHROMADB_AVAILABLE,
+        "success": True,
+        "data": {
+            "status": "ok",
+            "service": "divination-api",
+            "stored_charts": len(charts),
+            "capabilities": {
+                "chroma": CHROMADB_AVAILABLE,
+            }
         }
     })
 
