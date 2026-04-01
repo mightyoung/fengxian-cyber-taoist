@@ -176,13 +176,30 @@ def generate_prediction_report():
         # 根据报告类型生成不同格式
         # 只保留 professional_plain (详细LLM版) 和 xiaohongshu
         if report_type == "xiaohongshu":
-            # 小红书版
-            from app.services.divination.agents.xiaohongshu_agent import generate_xhs_report_sync
-            markdown = generate_xhs_report_sync(
+            # 小红书版 - 先生成专业报告，再转换为小红书格式
+            from app.utils.unified_report_generator import generate_markdown_report
+            analysis_result = {
+                "overall_judgment": prediction_report.overall_judgment if hasattr(prediction_report, 'overall_judgment') else "平",
+                "dimensions": {k: {"judgment": v.judgment, "reasoning": getattr(v, 'reasoning', '')} for k, v in getattr(prediction_report, 'dimensions', {}).items()},
+                "causal_chain_result": {
+                    "severity_level": prediction_report.causal_chain_result.severity_level if hasattr(prediction_report, 'causal_chain_result') and hasattr(prediction_report.causal_chain_result, 'severity_level') else "潜在",
+                    "key_chains": prediction_report.causal_chain_result.key_chains if hasattr(prediction_report, 'causal_chain_result') else []
+                } if hasattr(prediction_report, 'causal_chain_result') else {},
+                "transforms": transform_dict,
+            }
+            full_markdown = generate_markdown_report(
                 chart=chart_data,
-                user_name=user_name,
-                target_year=year
+                analysis_result=analysis_result,
+                target_year=year,
+                use_llm=True
             )
+            from app.services.divination.agents.xiaohongshu_agent import generate_xhs_report_sync
+            xhs_result = generate_xhs_report_sync(
+                report=full_markdown,
+                user_name=user_name,
+                user_type="运势预测"
+            )
+            markdown = xhs_result.get("markdown", xhs_result.get("content", full_markdown))
             saved_filename = f"{report_id_str}_xiaohongshu.md"
         else:
             # professional_plain - 专业通俗版（默认，使用LLM生成详细报告）

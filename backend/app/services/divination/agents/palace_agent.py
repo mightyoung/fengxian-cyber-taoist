@@ -1043,10 +1043,10 @@ class LLVMPalaceAnalyzer:
             PALACE_SYSTEM_PROMPT,
             build_palace_user_prompt,
             load_palace_cases,
-            load_six_relation_cases,
             get_relevant_cases,
             format_cases_as_context
         )
+        from .llm_prompts_constants import load_six_relation_cases
 
         # 构建提示词
         user_prompt = build_palace_user_prompt(self.chart, question)
