@@ -571,6 +571,9 @@ def list_siyin_systems():
 def knowledge_health():
     """知识库API健康检查"""
     return jsonify({
-        "status": "ok",
-        "service": "knowledge-api"
+        "success": True,
+        "data": {
+            "status": "ok",
+            "service": "knowledge-api"
+        }
     })
