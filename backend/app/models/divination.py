@@ -109,12 +109,6 @@ class DivinationManager:
     """紫微斗数持久化管理器"""
 
     @classmethod
-    def _get_chart_dir(cls, chart_id: str) -> str:
-        """获取命盘目录路径"""
-        from app.storage.adapter import get_chart_storage
-        return chart_id
-
-    @classmethod
     def _get_report_dir(cls, report_id: str) -> str:
         """获取报告目录路径"""
         return report_id

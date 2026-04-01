@@ -250,6 +250,7 @@ def get_subscription():
         }
     """
     try:
+        from app.models.user import UserManager
         user_id = g.current_user_id
         subscription = UserManager.get_subscription(user_id)
 

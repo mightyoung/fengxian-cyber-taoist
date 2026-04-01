@@ -7,7 +7,6 @@ JSON File Storage Adapter - 基于 JSON 文件的存储适配器
 
 import os
 import json
-import shutil
 import logging
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
