@@ -1,6 +1,13 @@
 """
-Report API路由
-提供模拟报告生成、获取、对话等接口
+Report API路由 - Swarm Intelligence Simulation Reports
+
+路由: /api/report/*
+产品域: OASIS swarm intelligence engine
+职责: 基于Twitter/Reddit多智能体模拟的预测报告
+
+与 Divination Report 的边界（两个不同的产品对象）:
+- Simulation Report (本模块): 基于代理模拟的社交媒体预测
+- Divination Report: 紫微斗数命理分析，由 /api/divination/report/* 提供
 """
 
 import os

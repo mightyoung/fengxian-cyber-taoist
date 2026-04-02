@@ -1,7 +1,13 @@
 """
-Report Routes - 报告相关路由
+Report Routes - 紫微斗数命理报告路由
 
-提供预测报告生成和格式转换的API接口。
+路由: /api/divination/report/*
+产品域: 紫微斗数多智能体命理分析
+职责: 命盘运势预测报告生成（professional_plain / xiaohongshu 格式）
+
+与 Simulation Report 的边界（两个不同的产品对象）:
+- Divination Report (本模块): 紫微斗数命理分析预测
+- Simulation Report: 基于OASIS代理模拟的社交媒体预测，由 /api/report/* 提供
 """
 
 from typing import Dict, Any
