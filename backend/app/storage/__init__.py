@@ -11,9 +11,11 @@ Storage Adapter - 存储适配器接口
 环境配置:
 - DATA_DIR: 数据存储根目录
 - FLASK_ENV: development | test | production
-  - development: 使用 DATA_DIR 或默认 backend/app/uploads
-  - test: 使用临时目录 /tmp/fengxian-test-{uuid}
-  - production: 必须设置 DATA_DIR
+  - development: DATA_DIR 或 ~/.fengxian-data（不污染源码树）
+  - test: TEST_DATA_DIR 或 /tmp/fengxian-test-{pid}（进程级缓存）
+  - production: DATA_DIR（必需）
+
+存储路径统一由 paths.py 的 get_data_dir() / get_upload_dir() 管理。
 """
 
 from .adapter import (

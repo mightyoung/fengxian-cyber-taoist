@@ -201,11 +201,11 @@ class SimulationRunner:
     4. 支持暂停/停止/恢复操作
     """
     
-    # 运行状态存储目录
-    RUN_STATE_DIR = os.path.join(
-        os.path.dirname(__file__),
-        '../../uploads/simulations'
-    )
+    @classmethod
+    def get_simulation_base_dir(cls) -> str:
+        """获取模拟数据基准目录（统一路径）"""
+        from ..config import Config
+        return Config.get_simulation_data_dir()
     
     # 脚本目录
     SCRIPTS_DIR = os.path.join(
@@ -239,7 +239,7 @@ class SimulationRunner:
     @classmethod
     def _load_run_state(cls, simulation_id: str) -> Optional[SimulationRunState]:
         """从文件加载运行状态"""
-        state_file = os.path.join(cls.RUN_STATE_DIR, simulation_id, "run_state.json")
+        state_file = os.path.join(cls.get_simulation_base_dir(), simulation_id, "run_state.json")
         if not os.path.exists(state_file):
             return None
         
@@ -295,7 +295,7 @@ class SimulationRunner:
     @classmethod
     def _save_run_state(cls, state: SimulationRunState):
         """保存运行状态到文件"""
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, state.simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), state.simulation_id)
         os.makedirs(sim_dir, exist_ok=True)
         state_file = os.path.join(sim_dir, "run_state.json")
         
@@ -334,7 +334,7 @@ class SimulationRunner:
             raise ValueError(f"模拟已在运行中: {simulation_id}")
         
         # 加载模拟配置
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         config_path = os.path.join(sim_dir, "simulation_config.json")
         
         if not os.path.exists(config_path):
@@ -475,7 +475,7 @@ class SimulationRunner:
     @classmethod
     def _monitor_simulation(cls, simulation_id: str):
         """监控模拟进程，解析动作日志"""
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         
         # 新的日志结构：分平台的动作日志
         twitter_actions_log = os.path.join(sim_dir, "twitter", "actions.jsonl")
@@ -693,7 +693,7 @@ class SimulationRunner:
         Returns:
             True 如果所有启用的平台都已完成
         """
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, state.simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), state.simulation_id)
         twitter_log = os.path.join(sim_dir, "twitter", "actions.jsonl")
         reddit_log = os.path.join(sim_dir, "reddit", "actions.jsonl")
         
@@ -904,7 +904,7 @@ class SimulationRunner:
         Returns:
             完整的动作列表（按时间戳排序，新的在前）
         """
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         actions = []
         
         # 读取 Twitter 动作文件（根据文件路径自动设置 platform 为 twitter）
@@ -1117,7 +1117,7 @@ class SimulationRunner:
             清理结果信息
         """
         
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         
         if not os.path.exists(sim_dir):
             return {"success": True, "message": "模拟目录不存在，无需清理"}
@@ -1236,7 +1236,7 @@ class SimulationRunner:
                     
                     # 同时更新 state.json，将状态设为 stopped
                     try:
-                        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+                        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
                         state_file = os.path.join(sim_dir, "state.json")
                         logger.info(f"尝试更新 state.json: {state_file}")
                         if os.path.exists(state_file):
@@ -1375,7 +1375,7 @@ class SimulationRunner:
         Returns:
             True 表示环境存活，False 表示环境已关闭
         """
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         if not os.path.exists(sim_dir):
             return False
 
@@ -1393,7 +1393,7 @@ class SimulationRunner:
         Returns:
             状态详情字典，包含 status, twitter_available, reddit_available, timestamp
         """
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         status_file = os.path.join(sim_dir, "env_status.json")
         
         default_status = {
@@ -1447,7 +1447,7 @@ class SimulationRunner:
             ValueError: 模拟不存在或环境未运行
             TimeoutError: 等待响应超时
         """
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         if not os.path.exists(sim_dir):
             raise ValueError(f"模拟不存在: {simulation_id}")
 
@@ -1509,7 +1509,7 @@ class SimulationRunner:
             ValueError: 模拟不存在或环境未运行
             TimeoutError: 等待响应超时
         """
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         if not os.path.exists(sim_dir):
             raise ValueError(f"模拟不存在: {simulation_id}")
 
@@ -1566,7 +1566,7 @@ class SimulationRunner:
         Returns:
             全局采访结果字典
         """
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         if not os.path.exists(sim_dir):
             raise ValueError(f"模拟不存在: {simulation_id}")
 
@@ -1619,7 +1619,7 @@ class SimulationRunner:
         Returns:
             操作结果字典
         """
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         if not os.path.exists(sim_dir):
             raise ValueError(f"模拟不存在: {simulation_id}")
         
@@ -1730,7 +1730,7 @@ class SimulationRunner:
         Returns:
             Interview历史记录列表
         """
-        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
         
         results = []
         

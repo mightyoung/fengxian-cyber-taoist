@@ -1969,10 +1969,7 @@ def get_simulation_posts(simulation_id: str):
         limit = request.args.get('limit', 50, type=int)
         offset = request.args.get('offset', 0, type=int)
         
-        sim_dir = os.path.join(
-            os.path.dirname(__file__),
-            f'../../uploads/simulations/{simulation_id}'
-        )
+        sim_dir = os.path.join(Config.get_simulation_data_dir(), simulation_id)
         
         db_file = f"{platform}_simulation.db"
         db_path = os.path.join(sim_dir, db_file)
@@ -2044,10 +2041,7 @@ def get_simulation_comments(simulation_id: str):
         limit = request.args.get('limit', 50, type=int)
         offset = request.args.get('offset', 0, type=int)
         
-        sim_dir = os.path.join(
-            os.path.dirname(__file__),
-            f'../../uploads/simulations/{simulation_id}'
-        )
+        sim_dir = os.path.join(Config.get_simulation_data_dir(), simulation_id)
         
         db_path = os.path.join(sim_dir, "reddit_simulation.db")
         

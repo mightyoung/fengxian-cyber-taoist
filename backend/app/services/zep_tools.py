@@ -1507,11 +1507,8 @@ class ZepToolsService:
         import os
         import csv
         
-        # 构建人设文件路径
-        sim_dir = os.path.join(
-            os.path.dirname(__file__), 
-            f'../../uploads/simulations/{simulation_id}'
-        )
+        # 构建人设文件路径（统一存储路径）
+        sim_dir = os.path.join(Config.get_simulation_data_dir(), simulation_id)
         
         profiles = []
         

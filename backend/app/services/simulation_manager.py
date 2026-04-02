@@ -120,22 +120,22 @@ class SimulationManager:
     4. 准备预设脚本所需的所有文件
     """
     
-    # 模拟数据存储目录
-    SIMULATION_DATA_DIR = os.path.join(
-        os.path.dirname(__file__), 
-        '../../uploads/simulations'
-    )
-    
+    @classmethod
+    def get_simulation_base_dir(cls) -> str:
+        """获取模拟数据基准目录（统一路径）"""
+        from ..config import Config
+        return Config.get_simulation_data_dir()
+
     def __init__(self):
         # 确保目录存在
-        os.makedirs(self.SIMULATION_DATA_DIR, exist_ok=True)
-        
+        os.makedirs(self.get_simulation_base_dir(), exist_ok=True)
+
         # 内存中的模拟状态缓存
         self._simulations: Dict[str, SimulationState] = {}
-    
+
     def _get_simulation_dir(self, simulation_id: str) -> str:
         """获取模拟数据目录"""
-        sim_dir = os.path.join(self.SIMULATION_DATA_DIR, simulation_id)
+        sim_dir = os.path.join(self.get_simulation_base_dir(), simulation_id)
         os.makedirs(sim_dir, exist_ok=True)
         return sim_dir
     
@@ -461,10 +461,10 @@ class SimulationManager:
         """列出所有模拟"""
         simulations = []
         
-        if os.path.exists(self.SIMULATION_DATA_DIR):
-            for sim_id in os.listdir(self.SIMULATION_DATA_DIR):
+        if os.path.exists(self.get_simulation_base_dir()):
+            for sim_id in os.listdir(self.get_simulation_base_dir()):
                 # 跳过隐藏文件（如 .DS_Store）和非目录文件
-                sim_path = os.path.join(self.SIMULATION_DATA_DIR, sim_id)
+                sim_path = os.path.join(self.get_simulation_base_dir(), sim_id)
                 if sim_id.startswith('.') or not os.path.isdir(sim_path):
                     continue
                 
