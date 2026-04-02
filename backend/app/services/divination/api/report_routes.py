@@ -12,6 +12,7 @@ from flask import Blueprint, request, jsonify
 
 from app.services.divination.api.common import _to_dict
 from app.models.divination import DivinationManager
+from app.config import Config
 
 # Create blueprint for report routes
 report_bp = Blueprint('report', __name__, url_prefix='/report')
@@ -167,8 +168,8 @@ def generate_prediction_report():
             question=f"请对{user_name}{year}年运势进行全面预测分析",
         )
 
-        # 确定返回的markdown和文件名
-        reports_base = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))), 'reports')
+        # 确定返回的markdown和文件名（统一存储路径）
+        reports_base = Config.get_reports_dir()
         user_folder = os.path.join(reports_base, f"{user_name}_{year}")
         os.makedirs(user_folder, exist_ok=True)
         report_id_str = chart_id or f"inline_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
