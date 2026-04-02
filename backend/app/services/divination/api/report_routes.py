@@ -4,15 +4,12 @@ Report Routes - 报告相关路由
 提供预测报告生成和格式转换的API接口。
 """
 
-import os
-from datetime import datetime
 from typing import Dict, Any
 
 from flask import Blueprint, request, jsonify
 
 from app.services.divination.api.common import _to_dict
 from app.models.divination import DivinationManager
-from app.config import Config
 
 # Create blueprint for report routes
 report_bp = Blueprint('report', __name__, url_prefix='/report')
@@ -168,13 +165,7 @@ def generate_prediction_report():
             question=f"请对{user_name}{year}年运势进行全面预测分析",
         )
 
-        # 确定返回的markdown和文件名（统一存储路径）
-        reports_base = Config.get_reports_dir()
-        user_folder = os.path.join(reports_base, f"{user_name}_{year}")
-        os.makedirs(user_folder, exist_ok=True)
-        report_id_str = chart_id or f"inline_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-
-        # 根据报告类型生成不同格式
+        # 根据报告类型生成不同格式（DivinationManager统一存储，无需手动写文件）
         # 只保留 professional_plain (详细LLM版) 和 xiaohongshu
         if report_type == "xiaohongshu":
             # 小红书版 - 先生成专业报告，再转换为小红书格式
@@ -201,7 +192,6 @@ def generate_prediction_report():
                 user_type="运势预测"
             )
             markdown = xhs_result.get("markdown", xhs_result.get("content", full_markdown))
-            saved_filename = f"{report_id_str}_xiaohongshu.md"
         else:
             # professional_plain - 专业通俗版（默认，使用LLM生成详细报告）
             from app.utils.unified_report_generator import generate_markdown_report
@@ -223,14 +213,8 @@ def generate_prediction_report():
             )
             # 添加命主名称到标题（如果chart中没有）
             markdown = markdown.replace("# 命主 ", f"# {user_name} ")
-            saved_filename = f"{report_id_str}_professional_plain.md"
 
-        # 保存报告到文件系统
-        report_path = os.path.join(user_folder, saved_filename)
-        with open(report_path, 'w', encoding='utf-8') as f:
-            f.write(markdown)
-
-        # 使用DivinationManager持久化存储报告元数据
+        # DivinationManager统一存储报告（包含完整markdown_content）
         saved_report = DivinationManager.create_report(
             chart_id=chart_id or "inline",
             user_name=user_name,
@@ -241,7 +225,6 @@ def generate_prediction_report():
                 "user_name": user_name,
                 "year": year,
                 "report_type": report_type,
-                "report_path": report_path,
             },
         )
 
@@ -251,7 +234,6 @@ def generate_prediction_report():
                 "report_id": saved_report.report_id,
                 "chart_id": chart_id or "inline",
                 "markdown": markdown,
-                "report_path": report_path,
                 "metadata": {
                     "user_name": user_name,
                     "year": year,
