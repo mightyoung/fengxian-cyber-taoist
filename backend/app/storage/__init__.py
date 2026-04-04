@@ -6,7 +6,7 @@ Storage Adapter - 存储适配器接口
 主要组件:
 - StorageAdapter: 存储适配器抽象接口
 - JSONFileStorageAdapter: 基于 JSON 文件的存储实现
-- get_user_storage() / get_chart_storage() / get_report_storage(): 存储单例访问函数
+- get_user_storage() / get_chart_storage() / get_report_storage() / get_simulation_storage(): 存储单例访问函数
 
 环境配置:
 - DATA_DIR: 数据存储根目录
@@ -24,9 +24,11 @@ from .adapter import (
     UserStorageAdapter,
     DivinationChartStorageAdapter,
     DivinationReportStorageAdapter,
+    SimulationStorageAdapter,
     get_user_storage,
     get_chart_storage,
     get_report_storage,
+    get_simulation_storage,
 )
 from .paths import get_data_dir, get_upload_dir, ensure_dir
 
@@ -36,9 +38,11 @@ __all__ = [
     "UserStorageAdapter",
     "DivinationChartStorageAdapter",
     "DivinationReportStorageAdapter",
+    "SimulationStorageAdapter",
     "get_user_storage",
     "get_chart_storage",
     "get_report_storage",
+    "get_simulation_storage",
     "get_data_dir",
     "get_upload_dir",
     "ensure_dir",

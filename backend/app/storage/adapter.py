@@ -212,10 +212,31 @@ class DivinationReportStorageAdapter(JSONFileStorageAdapter):
         return f"{report_id}/report.json"
 
 
+class SimulationStorageAdapter(JSONFileStorageAdapter):
+    """Simulation存储适配器
+
+    统一管理 simulation 域的元数据存储（state.json, config.json）。
+    其他仿真数据文件（profiles, agent logs, databases）由 SimulationManager
+    和 SimulationRunner 直接管理，通过 Config.get_simulation_data_dir() 获取路径。
+    """
+
+    def __init__(self):
+        super().__init__(base_subdir="simulations")
+
+    def get_simulation_meta_path(self, simulation_id: str) -> str:
+        """获取模拟元数据路径"""
+        return f"{simulation_id}/state.json"
+
+    def get_simulation_config_path(self, simulation_id: str) -> str:
+        """获取模拟配置路径"""
+        return f"{simulation_id}/config.json"
+
+
 # 全局单例实例 (延迟初始化)
 _user_storage: Optional[UserStorageAdapter] = None
 _chart_storage: Optional[DivinationChartStorageAdapter] = None
 _report_storage: Optional[DivinationReportStorageAdapter] = None
+_simulation_storage: Optional[SimulationStorageAdapter] = None
 
 
 def get_user_storage() -> UserStorageAdapter:
@@ -243,3 +264,12 @@ def get_report_storage() -> DivinationReportStorageAdapter:
         _report_storage = DivinationReportStorageAdapter()
         ensure_dir(get_upload_dir("divination", "reports"))
     return _report_storage
+
+
+def get_simulation_storage() -> SimulationStorageAdapter:
+    """获取Simulation存储适配器单例"""
+    global _simulation_storage
+    if _simulation_storage is None:
+        _simulation_storage = SimulationStorageAdapter()
+        ensure_dir(get_upload_dir("simulations"))
+    return _simulation_storage

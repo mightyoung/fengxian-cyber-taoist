@@ -813,9 +813,8 @@ def _get_report_id_for_simulation(simulation_id: str) -> str:
     """
     import json
 
-    # reports 目录路径：backend/uploads/reports
-    # __file__ 是 app/api/simulation.py，需要向上两级到 backend/
-    reports_dir = os.path.join(os.path.dirname(__file__), '../../uploads/reports')
+    # reports 目录路径（统一存储路径）
+    reports_dir = Config.get_reports_dir()
     if not os.path.exists(reports_dir):
         return None
     
