@@ -43,6 +43,7 @@ class SimulationState:
     simulation_id: str
     project_id: str
     graph_id: str
+    parent_simulation_id: Optional[str] = None  # 父模拟ID（用于分支/因果扰动）
     
     # 平台启用状态
     enable_twitter: bool = True
@@ -78,6 +79,7 @@ class SimulationState:
             "simulation_id": self.simulation_id,
             "project_id": self.project_id,
             "graph_id": self.graph_id,
+            "parent_simulation_id": self.parent_simulation_id,
             "enable_twitter": self.enable_twitter,
             "enable_reddit": self.enable_reddit,
             "status": self.status.value,
@@ -141,13 +143,11 @@ class SimulationManager:
     
     def _save_simulation_state(self, state: SimulationState):
         """保存模拟状态到文件"""
-        sim_dir = self._get_simulation_dir(state.simulation_id)
-        state_file = os.path.join(sim_dir, "state.json")
+        from ..storage.adapter import get_simulation_storage
         
         state.updated_at = datetime.now().isoformat()
-        
-        with open(state_file, 'w', encoding='utf-8') as f:
-            json.dump(state.to_dict(), f, ensure_ascii=False, indent=2)
+        storage = get_simulation_storage()
+        storage.save(storage.get_simulation_meta_path(state.simulation_id), state.to_dict())
         
         self._simulations[state.simulation_id] = state
     
@@ -156,19 +156,18 @@ class SimulationManager:
         if simulation_id in self._simulations:
             return self._simulations[simulation_id]
         
-        sim_dir = self._get_simulation_dir(simulation_id)
-        state_file = os.path.join(sim_dir, "state.json")
+        from ..storage.adapter import get_simulation_storage
+        storage = get_simulation_storage()
+        data = storage.load(storage.get_simulation_meta_path(simulation_id))
         
-        if not os.path.exists(state_file):
+        if not data:
             return None
-        
-        with open(state_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
         
         state = SimulationState(
             simulation_id=simulation_id,
             project_id=data.get("project_id", ""),
             graph_id=data.get("graph_id", ""),
+            parent_simulation_id=data.get("parent_simulation_id"),
             enable_twitter=data.get("enable_twitter", True),
             enable_reddit=data.get("enable_reddit", True),
             status=SimulationStatus(data.get("status", "created")),
@@ -188,41 +187,71 @@ class SimulationManager:
         self._simulations[simulation_id] = state
         return state
     
-    def create_simulation(
+    def fork_simulation(
         self,
-        project_id: str,
-        graph_id: str,
-        enable_twitter: bool = True,
-        enable_reddit: bool = True,
+        parent_id: str,
+        intervention_config: Optional[Dict[str, Any]] = None
     ) -> SimulationState:
         """
-        创建新的模拟
+        基于现有模拟创建分支（因果扰动/改命模拟）
         
         Args:
-            project_id: 项目ID
-            graph_id: Zep图谱ID
-            enable_twitter: 是否启用Twitter模拟
-            enable_reddit: 是否启用Reddit模拟
+            parent_id: 父模拟ID
+            intervention_config: 扰动配置（可选），可修改配置参数、Agent人设或初始发帖
             
         Returns:
-            SimulationState
+            新的 SimulationState
         """
+        parent_state = self._load_simulation_state(parent_id)
+        if not parent_state:
+            raise ValueError(f"父模拟不存在: {parent_id}")
+            
         import uuid
-        simulation_id = f"sim_{uuid.uuid4().hex[:12]}"
+        import shutil
+        new_id = f"fork_{uuid.uuid4().hex[:8]}_{parent_id[4:] if parent_id.startswith('sim_') else parent_id}"
         
-        state = SimulationState(
-            simulation_id=simulation_id,
-            project_id=project_id,
-            graph_id=graph_id,
-            enable_twitter=enable_twitter,
-            enable_reddit=enable_reddit,
-            status=SimulationStatus.CREATED,
+        # 1. 创建新目录
+        new_dir = self._get_simulation_dir(new_id)
+        parent_dir = self._get_simulation_dir(parent_id)
+        
+        # 2. 复制必要文件（Profile文件）
+        profile_files = ["reddit_profiles.json", "twitter_profiles.csv"]
+        for f in profile_files:
+            src = os.path.join(parent_dir, f)
+            if os.path.exists(src):
+                shutil.copy2(src, os.path.join(new_dir, f))
+                
+        # 3. 复制并修改配置文件
+        config_data = self.get_simulation_config(parent_id)
+        if config_data:
+            if intervention_config:
+                # 深度合并或替换配置
+                config_data.update(intervention_config)
+            
+            # 保存新配置
+            from ..storage.adapter import get_simulation_storage
+            storage = get_simulation_storage()
+            storage.save(storage.get_simulation_config_path(new_id), config_data)
+            
+        # 4. 创建新状态
+        new_state = SimulationState(
+            simulation_id=new_id,
+            project_id=parent_state.project_id,
+            graph_id=parent_state.graph_id,
+            parent_simulation_id=parent_id,
+            enable_twitter=parent_state.enable_twitter,
+            enable_reddit=parent_state.enable_reddit,
+            status=SimulationStatus.READY,  # 复制完成后直接进入就绪状态
+            entities_count=parent_state.entities_count,
+            profiles_count=parent_state.profiles_count,
+            entity_types=parent_state.entity_types,
+            config_generated=True
         )
         
-        self._save_simulation_state(state)
-        logger.info(f"创建模拟: {simulation_id}, project={project_id}, graph={graph_id}")
+        self._save_simulation_state(new_state)
+        logger.info(f"分支模拟创建完成: {new_id} <- {parent_id}")
         
-        return state
+        return new_state
     
     def prepare_simulation(
         self,
@@ -417,9 +446,9 @@ class SimulationManager:
                 )
             
             # 保存配置文件
-            config_path = os.path.join(sim_dir, "simulation_config.json")
-            with open(config_path, 'w', encoding='utf-8') as f:
-                f.write(sim_params.to_json())
+            from ..storage.adapter import get_simulation_storage
+            storage = get_simulation_storage()
+            storage.save(storage.get_simulation_config_path(simulation_id), sim_params.to_dict())
             
             state.config_generated = True
             state.config_reasoning = sim_params.generation_reasoning
@@ -492,14 +521,9 @@ class SimulationManager:
     
     def get_simulation_config(self, simulation_id: str) -> Optional[Dict[str, Any]]:
         """获取模拟配置"""
-        sim_dir = self._get_simulation_dir(simulation_id)
-        config_path = os.path.join(sim_dir, "simulation_config.json")
-        
-        if not os.path.exists(config_path):
-            return None
-        
-        with open(config_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
+        from ..storage.adapter import get_simulation_storage
+        storage = get_simulation_storage()
+        return storage.load(storage.get_simulation_config_path(simulation_id))
     
     def get_run_instructions(self, simulation_id: str) -> Dict[str, str]:
         """获取运行说明"""

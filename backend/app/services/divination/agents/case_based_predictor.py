@@ -37,7 +37,7 @@ from .chart_vectorizer import (
 )
 from .case_based_predictor_types import (
     ProbabilisticResult,
-    PredictionReport,
+    CasePredictionReport,
 )
 from .case_based_predictor_constants import (
     CHROMADB_AVAILABLE,
@@ -746,7 +746,7 @@ class CaseBasedPredictor:
         chart: Dict[str, Any],
         target_year: int,
         event_types: Optional[List[str]] = None
-    ) -> PredictionReport:
+    ) -> CasePredictionReport:
         """
         预测指定年份的事件
 
@@ -756,7 +756,7 @@ class CaseBasedPredictor:
             event_types: 要预测的事件类型列表（默认：财运、事业、感情、健康）
 
         Returns:
-            PredictionReport: 预测报告
+            CasePredictionReport: 预测报告
         """
         if event_types is None:
             event_types = DEFAULT_EVENT_TYPES
@@ -807,7 +807,7 @@ class CaseBasedPredictor:
         target_dalian_index = (target_age - dalian_start_age) // DEFAULT_DALIAN_YEARS if target_age >= dalian_start_age else -1
         dalian_age_range = f"第{target_dalian_index + 1}大限" if target_dalian_index >= 0 else "未入大限"
 
-        return PredictionReport(
+        return CasePredictionReport(
             chart_id=chart_id,
             target_year=target_year,
             results=results,
@@ -1063,9 +1063,9 @@ class CaseBasedPredictor:
         chart_id: str,
         target_year: int,
         reason: str
-    ) -> PredictionReport:
+    ) -> CasePredictionReport:
         """创建空报告（优雅降级）"""
-        return PredictionReport(
+        return CasePredictionReport(
             chart_id=chart_id,
             target_year=target_year,
             results=[],
@@ -1199,7 +1199,7 @@ async def predict_from_chart(
     target_year: int,
     event_types: Optional[List[str]] = None,
     collection_name: str = "chart_cases"
-) -> PredictionReport:
+) -> CasePredictionReport:
     """
     从命盘数据进行预测
 
@@ -1210,7 +1210,7 @@ async def predict_from_chart(
         collection_name: 案例集合名称
 
     Returns:
-        PredictionReport: 预测报告
+        CasePredictionReport: 预测报告
     """
     predictor = CaseBasedPredictor(collection_name)
     # 加载种子案例库

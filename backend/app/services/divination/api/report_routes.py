@@ -220,7 +220,7 @@ def generate_prediction_report():
             # 添加命主名称到标题（如果chart中没有）
             markdown = markdown.replace("# 命主 ", f"# {user_name} ")
 
-        # DivinationManager统一存储报告（包含完整markdown_content）
+        # DivinationManager统一存储报告（元数据JSON + 完整Markdown文件）
         saved_report = DivinationManager.create_report(
             chart_id=chart_id or "inline",
             user_name=user_name,

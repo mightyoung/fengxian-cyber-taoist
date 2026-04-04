@@ -212,7 +212,8 @@ class OasisProfileGenerator:
         self, 
         entity: EntityNode, 
         user_id: int,
-        use_llm: bool = True
+        use_llm: bool = True,
+        astrology_traits: Optional[List[str]] = None
     ) -> OasisAgentProfile:
         """
         从Zep实体生成OASIS Agent Profile
@@ -221,6 +222,7 @@ class OasisProfileGenerator:
             entity: Zep实体节点
             user_id: 用户ID（用于OASIS）
             use_llm: 是否使用LLM生成详细人设
+            astrology_traits: 可选的星曜特质列表
             
         Returns:
             OasisAgentProfile
@@ -241,7 +243,8 @@ class OasisProfileGenerator:
                 entity_type=entity_type,
                 entity_summary=entity.summary,
                 entity_attributes=entity.attributes,
-                context=context
+                context=context,
+                astrology_traits=astrology_traits
             )
         else:
             # 使用规则生成基础人设
@@ -489,27 +492,55 @@ class OasisProfileGenerator:
         """判断是否是群体/机构类型实体"""
         return entity_type.lower() in self.GROUP_ENTITY_TYPES
     
+    # 星曜性格映射表
+    ASTROLOGY_TRAITS_MAP = {
+        "紫微": "具有极强的领导欲和自尊心，发帖语气威严且具有号召力，倾向于评价宏观局势。",
+        "天机": "思虑周全但容易纠结，擅长分析细节，社交媒体表现为频繁评论和多角度思考。",
+        "太阳": "积极、阳光、博爱，喜欢传播正能量和公开信息，互动风格热情大方。",
+        "武曲": "务实、果断、甚至略显孤克，发言直白且注重利益分析，不喜欢无效社交。",
+        "天同": "随和、佛系、追求精神愉悦，倾向于点赞和分享生活，极少参与争论。",
+        "廉贞": "性格复杂、甚至带有邪气或偏激，社交媒体表现为立场坚定且风格独特，容易产生争议。",
+        "天府": "保守、稳重、有城府，倾向于分享成功的经验，互动风格得体但保持距离。",
+        "太阴": "细腻、感性、略带忧郁，倾向于发布文学性或情感类内容，关注隐私。",
+        "贪狼": "欲望强烈、交际广泛，喜欢追逐热点和新鲜事物，发帖频率高且内容多样。",
+        "巨门": "疑心重、口才好、容易引起口舌之争，擅长辩论和挑错，语气可能较尖锐。",
+        "天相": "得体、公正、注重形象，社交媒体表现为协调者角色，发帖内容通常优雅平衡。",
+        "天梁": "老成、爱照顾人、甚至爱说教，倾向于发布长篇大论的指导性内容。",
+        "七杀": "独立、刚烈、充满变动，发言极具攻击性，不喜欢拖泥带水，敢于挑战权威。",
+        "破军": "叛逆、先破后立、不按常理出牌，倾向于发布颠覆性观点，行为具有不可预测性。",
+        "化忌": "执着、压抑、容易陷入负面循环，社交媒体表现为对某一特定话题的过度执念。",
+    }
+
     def _generate_profile_with_llm(
         self,
         entity_name: str,
         entity_type: str,
         entity_summary: str,
         entity_attributes: Dict[str, Any],
-        context: str
+        context: str,
+        astrology_traits: Optional[List[str]] = None
     ) -> Dict[str, Any]:
         """
         使用LLM生成非常详细的人设
         
-        根据实体类型区分：
-        - 个人实体：生成具体的人物设定
-        - 群体/机构实体：生成代表性账号设定
+        支持 astrology_traits 注入紫微斗数性格特质
         """
         
         is_individual = self._is_individual_entity(entity_type)
         
+        # 融合星曜特质
+        celestial_description = ""
+        if astrology_traits:
+            traits_desc = []
+            for t in astrology_traits:
+                if t in self.ASTROLOGY_TRAITS_MAP:
+                    traits_desc.append(f"【{t}】: {self.ASTROLOGY_TRAITS_MAP[t]}")
+            if traits_desc:
+                celestial_description = "\n### 核心人格特质（必须融合进人设中）:\n" + "\n".join(traits_desc)
+        
         if is_individual:
             prompt = self._build_individual_persona_prompt(
-                entity_name, entity_type, entity_summary, entity_attributes, context
+                entity_name, entity_type, entity_summary, entity_attributes, context, celestial_description
             )
         else:
             prompt = self._build_group_persona_prompt(
@@ -674,7 +705,8 @@ class OasisProfileGenerator:
         entity_type: str,
         entity_summary: str,
         entity_attributes: Dict[str, Any],
-        context: str
+        context: str,
+        celestial_description: str = ""
     ) -> str:
         """构建个人实体的详细人设提示词"""
         
@@ -687,6 +719,7 @@ class OasisProfileGenerator:
 实体类型: {entity_type}
 实体摘要: {entity_summary}
 实体属性: {attrs_str}
+{celestial_description}
 
 上下文信息:
 {context_str}
@@ -850,7 +883,8 @@ class OasisProfileGenerator:
         graph_id: Optional[str] = None,
         parallel_count: int = 5,
         realtime_output_path: Optional[str] = None,
-        output_platform: str = "reddit"
+        output_platform: str = "reddit",
+        entity_to_traits: Optional[Dict[str, List[str]]] = None
     ) -> List[OasisAgentProfile]:
         """
         批量从实体生成Agent Profile（支持并行生成）
@@ -863,6 +897,7 @@ class OasisProfileGenerator:
             parallel_count: 并行生成数量，默认5
             realtime_output_path: 实时写入的文件路径（如果提供，每生成一个就写入一次）
             output_platform: 输出平台格式 ("reddit" 或 "twitter")
+            entity_to_traits: 实体名到星曜特质列表的映射
             
         Returns:
             Agent Profile列表
@@ -913,12 +948,14 @@ class OasisProfileGenerator:
         def generate_single_profile(idx: int, entity: EntityNode) -> tuple:
             """生成单个profile的工作函数"""
             entity_type = entity.get_entity_type() or "Entity"
+            traits = entity_to_traits.get(entity.name) if entity_to_traits else None
             
             try:
                 profile = self.generate_profile_from_entity(
                     entity=entity,
                     user_id=idx,
-                    use_llm=use_llm
+                    use_llm=use_llm,
+                    astrology_traits=traits
                 )
                 
                 # 实时输出生成的人设到控制台和日志

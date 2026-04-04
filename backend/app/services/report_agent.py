@@ -1,5 +1,5 @@
 """
-Report Agent服务
+SimulationReport Agent服务
 使用LangChain + Zep实现ReACT模式的模拟报告生成
 
 功能：
@@ -27,9 +27,9 @@ from .zep_tools import (
 logger = get_logger('fengxian_cyber_taoist.report_agent')
 
 
-class ReportLogger:
+class SimulationReportLogger:
     """
-    Report Agent 详细日志记录器
+    SimulationReport Agent 详细日志记录器
     
     在报告文件夹中生成 agent_log.jsonl 文件，记录每一步详细动作。
     每行是一个完整的 JSON 对象，包含时间戳、动作类型、详细内容等。
@@ -298,9 +298,9 @@ class ReportLogger:
         )
 
 
-class ReportConsoleLogger:
+class SimulationReportConsoleLogger:
     """
-    Report Agent 控制台日志记录器
+    SimulationReport Agent 控制台日志记录器
     
     将控制台风格的日志（INFO、WARNING等）写入报告文件夹中的 console_log.txt 文件。
     这些日志与 agent_log.jsonl 不同，是纯文本格式的控制台输出。
@@ -380,7 +380,7 @@ class ReportConsoleLogger:
         self.close()
 
 
-class ReportStatus(str, Enum):
+class SimulationReportStatus(str, Enum):
     """报告状态"""
     PENDING = "pending"
     PLANNING = "planning"
@@ -390,7 +390,7 @@ class ReportStatus(str, Enum):
 
 
 @dataclass
-class ReportSection:
+class SimulationReportSection:
     """报告章节"""
     title: str
     content: str = ""
@@ -410,11 +410,11 @@ class ReportSection:
 
 
 @dataclass
-class ReportOutline:
+class SimulationReportOutline:
     """报告大纲"""
     title: str
     summary: str
-    sections: List[ReportSection]
+    sections: List[SimulationReportSection]
     
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -433,14 +433,14 @@ class ReportOutline:
 
 
 @dataclass
-class Report:
+class SimulationReport:
     """完整报告"""
     report_id: str
     simulation_id: str
     graph_id: str
     simulation_requirement: str
-    status: ReportStatus
-    outline: Optional[ReportOutline] = None
+    status: SimulationReportStatus
+    outline: Optional[SimulationReportOutline] = None
     markdown_content: str = ""
     created_at: str = ""
     completed_at: str = ""
@@ -852,13 +852,13 @@ CHAT_OBSERVATION_SUFFIX = "\n\n请简洁回答问题。"
 
 
 # ═══════════════════════════════════════════════════════════════
-# ReportAgent 主类
+# SimulationReportAgent 主类
 # ═══════════════════════════════════════════════════════════════
 
 
-class ReportAgent:
+class SimulationReportAgent:
     """
-    Report Agent - 模拟报告生成Agent
+    SimulationReport Agent - 模拟报告生成Agent
 
     采用ReACT（Reasoning + Acting）模式：
     1. 规划阶段：分析模拟需求，规划报告目录结构
@@ -884,7 +884,7 @@ class ReportAgent:
         zep_tools: Optional[ZepToolsService] = None
     ):
         """
-        初始化Report Agent
+        初始化SimulationReport Agent
         
         Args:
             graph_id: 图谱ID
@@ -904,11 +904,11 @@ class ReportAgent:
         self.tools = self._define_tools()
         
         # 日志记录器（在 generate_report 中初始化）
-        self.report_logger: Optional[ReportLogger] = None
+        self.report_logger: Optional[SimulationReportLogger] = None
         # 控制台日志记录器（在 generate_report 中初始化）
-        self.console_logger: Optional[ReportConsoleLogger] = None
+        self.console_logger: Optional[SimulationReportConsoleLogger] = None
         
-        logger.info(f"ReportAgent 初始化完成: graph_id={graph_id}, simulation_id={simulation_id}")
+        logger.info(f"SimulationReportAgent 初始化完成: graph_id={graph_id}, simulation_id={simulation_id}")
     
     def _define_tools(self) -> Dict[str, Dict[str, Any]]:
         """定义可用工具"""
@@ -1131,7 +1131,7 @@ class ReportAgent:
     def plan_outline(
         self, 
         progress_callback: Optional[Callable] = None
-    ) -> ReportOutline:
+    ) -> SimulationReportOutline:
         """
         规划报告大纲
         
@@ -1141,7 +1141,7 @@ class ReportAgent:
             progress_callback: 进度回调函数
             
         Returns:
-            ReportOutline: 报告大纲
+            SimulationReportOutline: 报告大纲
         """
         logger.info("开始规划报告大纲...")
         
@@ -1182,12 +1182,12 @@ class ReportAgent:
             # 解析大纲
             sections = []
             for section_data in response.get("sections", []):
-                sections.append(ReportSection(
+                sections.append(SimulationReportSection(
                     title=section_data.get("title", ""),
                     content=""
                 ))
             
-            outline = ReportOutline(
+            outline = SimulationReportOutline(
                 title=response.get("title", "模拟分析报告"),
                 summary=response.get("summary", ""),
                 sections=sections
@@ -1202,20 +1202,20 @@ class ReportAgent:
         except Exception as e:
             logger.error(f"大纲规划失败: {str(e)}")
             # 返回默认大纲（3个章节，作为fallback）
-            return ReportOutline(
+            return SimulationReportOutline(
                 title="未来预测报告",
                 summary="基于模拟预测的未来趋势与风险分析",
                 sections=[
-                    ReportSection(title="预测场景与核心发现"),
-                    ReportSection(title="人群行为预测分析"),
-                    ReportSection(title="趋势展望与风险提示")
+                    SimulationReportSection(title="预测场景与核心发现"),
+                    SimulationReportSection(title="人群行为预测分析"),
+                    SimulationReportSection(title="趋势展望与风险提示")
                 ]
             )
     
     def _generate_section_react(
         self, 
-        section: ReportSection,
-        outline: ReportOutline,
+        section: SimulationReportSection,
+        outline: SimulationReportOutline,
         previous_sections: List[str],
         progress_callback: Optional[Callable] = None,
         section_index: int = 0
@@ -1528,7 +1528,7 @@ class ReportAgent:
         self, 
         progress_callback: Optional[Callable[[str, int, str], None]] = None,
         report_id: Optional[str] = None
-    ) -> Report:
+    ) -> SimulationReport:
         """
         生成完整报告（分章节实时输出）
         
@@ -1548,7 +1548,7 @@ class ReportAgent:
             report_id: 报告ID（可选，如果不传则自动生成）
             
         Returns:
-            Report: 完整报告
+            SimulationReport: 完整报告
         """
         import uuid
         
@@ -1557,12 +1557,12 @@ class ReportAgent:
             report_id = f"report_{uuid.uuid4().hex[:12]}"
         start_time = datetime.now()
         
-        report = Report(
+        report = SimulationReport(
             report_id=report_id,
             simulation_id=self.simulation_id,
             graph_id=self.graph_id,
             simulation_requirement=self.simulation_requirement,
-            status=ReportStatus.PENDING,
+            status=SimulationReportStatus.PENDING,
             created_at=datetime.now().isoformat()
         )
         
@@ -1571,10 +1571,10 @@ class ReportAgent:
         
         try:
             # 初始化：创建报告文件夹并保存初始状态
-            ReportManager._ensure_report_folder(report_id)
+            SimulationReportManager._ensure_report_folder(report_id)
             
             # 初始化日志记录器（结构化日志 agent_log.jsonl）
-            self.report_logger = ReportLogger(report_id)
+            self.report_logger = SimulationReportLogger(report_id)
             self.report_logger.log_start(
                 simulation_id=self.simulation_id,
                 graph_id=self.graph_id,
@@ -1582,17 +1582,17 @@ class ReportAgent:
             )
             
             # 初始化控制台日志记录器（console_log.txt）
-            self.console_logger = ReportConsoleLogger(report_id)
+            self.console_logger = SimulationReportConsoleLogger(report_id)
             
-            ReportManager.update_progress(
+            SimulationReportManager.update_progress(
                 report_id, "pending", 0, "初始化报告...",
                 completed_sections=[]
             )
-            ReportManager.save_report(report)
+            SimulationReportManager.save_report(report)
             
             # 阶段1: 规划大纲
-            report.status = ReportStatus.PLANNING
-            ReportManager.update_progress(
+            report.status = SimulationReportStatus.PLANNING
+            SimulationReportManager.update_progress(
                 report_id, "planning", 5, "开始规划报告大纲...",
                 completed_sections=[]
             )
@@ -1613,17 +1613,17 @@ class ReportAgent:
             self.report_logger.log_planning_complete(outline.to_dict())
             
             # 保存大纲到文件
-            ReportManager.save_outline(report_id, outline)
-            ReportManager.update_progress(
+            SimulationReportManager.save_outline(report_id, outline)
+            SimulationReportManager.update_progress(
                 report_id, "planning", 15, f"大纲规划完成，共{len(outline.sections)}个章节",
                 completed_sections=[]
             )
-            ReportManager.save_report(report)
+            SimulationReportManager.save_report(report)
             
             logger.info(f"大纲已保存到文件: {report_id}/outline.json")
             
             # 阶段2: 逐章节生成（分章节保存）
-            report.status = ReportStatus.GENERATING
+            report.status = SimulationReportStatus.GENERATING
             
             total_sections = len(outline.sections)
             generated_sections = []  # 保存内容用于上下文
@@ -1633,7 +1633,7 @@ class ReportAgent:
                 base_progress = 20 + int((i / total_sections) * 70)
                 
                 # 更新进度
-                ReportManager.update_progress(
+                SimulationReportManager.update_progress(
                     report_id, "generating", base_progress,
                     f"正在生成章节: {section.title} ({section_num}/{total_sections})",
                     current_section=section.title,
@@ -1665,7 +1665,7 @@ class ReportAgent:
                 generated_sections.append(f"## {section.title}\n\n{section_content}")
 
                 # 保存章节
-                ReportManager.save_section(report_id, section_num, section)
+                SimulationReportManager.save_section(report_id, section_num, section)
                 completed_section_titles.append(section.title)
 
                 # 记录章节完成日志
@@ -1681,7 +1681,7 @@ class ReportAgent:
                 logger.info(f"章节已保存: {report_id}/section_{section_num:02d}.md")
                 
                 # 更新进度
-                ReportManager.update_progress(
+                SimulationReportManager.update_progress(
                     report_id, "generating", 
                     base_progress + int(70 / total_sections),
                     f"章节 {section.title} 已完成",
@@ -1693,14 +1693,14 @@ class ReportAgent:
             if progress_callback:
                 progress_callback("generating", 95, "正在组装完整报告...")
             
-            ReportManager.update_progress(
+            SimulationReportManager.update_progress(
                 report_id, "generating", 95, "正在组装完整报告...",
                 completed_sections=completed_section_titles
             )
             
-            # 使用ReportManager组装完整报告
-            report.markdown_content = ReportManager.assemble_full_report(report_id, outline)
-            report.status = ReportStatus.COMPLETED
+            # 使用SimulationReportManager组装完整报告
+            report.markdown_content = SimulationReportManager.assemble_full_report(report_id, outline)
+            report.status = SimulationReportStatus.COMPLETED
             report.completed_at = datetime.now().isoformat()
             
             # 计算总耗时
@@ -1714,8 +1714,8 @@ class ReportAgent:
                 )
             
             # 保存最终报告
-            ReportManager.save_report(report)
-            ReportManager.update_progress(
+            SimulationReportManager.save_report(report)
+            SimulationReportManager.update_progress(
                 report_id, "completed", 100, "报告生成完成",
                 completed_sections=completed_section_titles
             )
@@ -1734,7 +1734,7 @@ class ReportAgent:
             
         except Exception as e:
             logger.error(f"报告生成失败: {str(e)}")
-            report.status = ReportStatus.FAILED
+            report.status = SimulationReportStatus.FAILED
             report.error = str(e)
             
             # 记录错误日志
@@ -1743,8 +1743,8 @@ class ReportAgent:
             
             # 保存失败状态
             try:
-                ReportManager.save_report(report)
-                ReportManager.update_progress(
+                SimulationReportManager.save_report(report)
+                SimulationReportManager.update_progress(
                     report_id, "failed", -1, f"报告生成失败: {str(e)}",
                     completed_sections=completed_section_titles
                 )
@@ -1764,7 +1764,7 @@ class ReportAgent:
         chat_history: List[Dict[str, str]] = None
     ) -> Dict[str, Any]:
         """
-        与Report Agent对话
+        与SimulationReport Agent对话
         
         在对话中Agent可以自主调用检索工具来回答问题
         
@@ -1779,14 +1779,14 @@ class ReportAgent:
                 "sources": [信息来源]
             }
         """
-        logger.info(f"Report Agent对话: {message[:50]}...")
+        logger.info(f"SimulationReport Agent对话: {message[:50]}...")
         
         chat_history = chat_history or []
         
         # 获取已生成的报告内容
         report_content = ""
         try:
-            report = ReportManager.get_report_by_simulation(self.simulation_id)
+            report = SimulationReportManager.get_report_by_simulation(self.simulation_id)
             if report and report.markdown_content:
                 # 限制报告长度，避免上下文过长
                 report_content = report.markdown_content[:15000]
@@ -1875,7 +1875,7 @@ class ReportAgent:
         }
 
 
-class ReportManager:
+class SimulationReportManager:
     """
     报告管理器
     
@@ -2072,7 +2072,7 @@ class ReportManager:
         return result["logs"]
     
     @classmethod
-    def save_outline(cls, report_id: str, outline: ReportOutline) -> None:
+    def save_outline(cls, report_id: str, outline: SimulationReportOutline) -> None:
         """
         保存报告大纲
         
@@ -2090,7 +2090,7 @@ class ReportManager:
         cls,
         report_id: str,
         section_index: int,
-        section: ReportSection
+        section: SimulationReportSection
     ) -> str:
         """
         保存单个章节
@@ -2262,7 +2262,7 @@ class ReportManager:
         return sections
     
     @classmethod
-    def assemble_full_report(cls, report_id: str, outline: ReportOutline) -> str:
+    def assemble_full_report(cls, report_id: str, outline: SimulationReportOutline) -> str:
         """
         组装完整报告
         
@@ -2292,7 +2292,7 @@ class ReportManager:
         return md_content
     
     @classmethod
-    def _post_process_report(cls, content: str, outline: ReportOutline) -> str:
+    def _post_process_report(cls, content: str, outline: SimulationReportOutline) -> str:
         """
         后处理报告内容
         
@@ -2418,7 +2418,7 @@ class ReportManager:
         return '\n'.join(result_lines)
     
     @classmethod
-    def save_report(cls, report: Report) -> None:
+    def save_report(cls, report: SimulationReport) -> None:
         """保存报告元信息和完整报告"""
         cls._ensure_report_folder(report.report_id)
         
@@ -2438,7 +2438,7 @@ class ReportManager:
         logger.info(f"报告已保存: {report.report_id}")
     
     @classmethod
-    def get_report(cls, report_id: str) -> Optional[Report]:
+    def get_report(cls, report_id: str) -> Optional[SimulationReport]:
         """获取报告"""
         path = cls._get_report_path(report_id)
         
@@ -2453,17 +2453,17 @@ class ReportManager:
         with open(path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
-        # 重建Report对象
+        # 重建SimulationReport对象
         outline = None
         if data.get('outline'):
             outline_data = data['outline']
             sections = []
             for s in outline_data.get('sections', []):
-                sections.append(ReportSection(
+                sections.append(SimulationReportSection(
                     title=s['title'],
                     content=s.get('content', '')
                 ))
-            outline = ReportOutline(
+            outline = SimulationReportOutline(
                 title=outline_data['title'],
                 summary=outline_data['summary'],
                 sections=sections
@@ -2477,12 +2477,12 @@ class ReportManager:
                 with open(full_report_path, 'r', encoding='utf-8') as f:
                     markdown_content = f.read()
         
-        return Report(
+        return SimulationReport(
             report_id=data['report_id'],
             simulation_id=data['simulation_id'],
             graph_id=data['graph_id'],
             simulation_requirement=data['simulation_requirement'],
-            status=ReportStatus(data['status']),
+            status=SimulationReportStatus(data['status']),
             outline=outline,
             markdown_content=markdown_content,
             created_at=data.get('created_at', ''),
@@ -2491,7 +2491,7 @@ class ReportManager:
         )
     
     @classmethod
-    def get_report_by_simulation(cls, simulation_id: str) -> Optional[Report]:
+    def get_report_by_simulation(cls, simulation_id: str) -> Optional[SimulationReport]:
         """根据模拟ID获取报告"""
         cls._ensure_reports_dir()
         
@@ -2512,7 +2512,7 @@ class ReportManager:
         return None
     
     @classmethod
-    def list_reports(cls, simulation_id: Optional[str] = None, limit: int = 50) -> List[Report]:
+    def list_reports(cls, simulation_id: Optional[str] = None, limit: int = 50) -> List[SimulationReport]:
         """列出报告"""
         cls._ensure_reports_dir()
         

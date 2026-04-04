@@ -14,19 +14,70 @@ import os
 import threading
 from flask import request, jsonify, send_file
 
-from . import report_bp
-from ..services.report_agent import ReportAgent, ReportManager, ReportStatus
+from . import simulation_report_bp
+from ..services.report_agent import SimulationReportAgent, SimulationReportManager, SimulationReportStatus
 from ..services.simulation_manager import SimulationManager
 from ..models.project import ProjectManager
 from ..models.task import TaskManager, TaskStatus
 from ..utils.logger import get_logger
 
-logger = get_logger('fengxian_cyber_taoist.api.report')
+logger = get_logger('fengxian_cyber_taoist.api.simulation_report')
 
 
 # ============== 报告生成接口 ==============
 
-@report_bp.route('/generate', methods=['POST'])
+@simulation_report_bp.route('/<simulation_id>/narrative', methods=['GET'])
+def get_simulation_narrative(simulation_id: str):
+    """
+    获取模拟的文学化叙事总结
+    
+    Query参数:
+        round_num: 指定轮次（可选，不传则返回整体总结）
+    """
+    from ..services.narrative_generator import SimulationNarrativeGenerator
+    from ..services.simulation_runner import SimulationRunner
+    
+    try:
+        round_num = request.args.get('round_num', type=int)
+        run_state = SimulationRunner.get_run_state(simulation_id)
+        
+        if not run_state:
+            return jsonify({"success": False, "error": "模拟运行记录不存在"}), 404
+            
+        generator = SimulationNarrativeGenerator()
+        
+        if round_num is not None:
+            # 找到对应轮次
+            round_data = next((r for r in run_state.rounds if r.round_num == round_num), None)
+            if not round_data:
+                return jsonify({"success": False, "error": f"未找到第{round_num}轮数据"}), 404
+            
+            narrative = generator.generate_round_narrative(round_data)
+            return jsonify({
+                "success": True,
+                "data": {
+                    "simulation_id": simulation_id,
+                    "round_num": round_num,
+                    "narrative": narrative
+                }
+            })
+        else:
+            # 返回整体总结
+            story = generator.generate_full_story(run_state.rounds)
+            return jsonify({
+                "success": True,
+                "data": {
+                    "simulation_id": simulation_id,
+                    "full_story": story
+                }
+            })
+            
+    except Exception as e:
+        logger.error(f"生成叙事失败: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@simulation_report_bp.route('/generate', methods=['POST'])
 def generate_report():
     """
     生成模拟分析报告（异步任务）
@@ -75,8 +126,8 @@ def generate_report():
         
         # 检查是否已有报告
         if not force_regenerate:
-            existing_report = ReportManager.get_report_by_simulation(simulation_id)
-            if existing_report and existing_report.status == ReportStatus.COMPLETED:
+            existing_report = SimulationReportManager.get_report_by_simulation(simulation_id)
+            if existing_report and existing_report.status == SimulationReportStatus.COMPLETED:
                 return jsonify({
                     "success": True,
                     "data": {
@@ -136,7 +187,7 @@ def generate_report():
                 )
                 
                 # 创建Report Agent
-                agent = ReportAgent(
+                agent = SimulationReportAgent(
                     graph_id=graph_id,
                     simulation_id=simulation_id,
                     simulation_requirement=simulation_requirement
@@ -157,9 +208,9 @@ def generate_report():
                 )
                 
                 # 保存报告
-                ReportManager.save_report(report)
+                SimulationReportManager.save_report(report)
                 
-                if report.status == ReportStatus.COMPLETED:
+                if report.status == SimulationReportStatus.COMPLETED:
                     task_manager.complete_task(
                         task_id,
                         result={
@@ -199,7 +250,7 @@ def generate_report():
         }), 500
 
 
-@report_bp.route('/generate/status', methods=['POST'])
+@simulation_report_bp.route('/generate/status', methods=['POST'])
 def get_generate_status():
     """
     查询报告生成任务进度
@@ -229,8 +280,8 @@ def get_generate_status():
         
         # 如果提供了simulation_id，先检查是否已有完成的报告
         if simulation_id:
-            existing_report = ReportManager.get_report_by_simulation(simulation_id)
-            if existing_report and existing_report.status == ReportStatus.COMPLETED:
+            existing_report = SimulationReportManager.get_report_by_simulation(simulation_id)
+            if existing_report and existing_report.status == SimulationReportStatus.COMPLETED:
                 return jsonify({
                     "success": True,
                     "data": {
@@ -273,7 +324,7 @@ def get_generate_status():
 
 # ============== 报告获取接口 ==============
 
-@report_bp.route('/<report_id>', methods=['GET'])
+@simulation_report_bp.route('/<report_id>', methods=['GET'])
 def get_report(report_id: str):
     """
     获取报告详情
@@ -293,7 +344,7 @@ def get_report(report_id: str):
         }
     """
     try:
-        report = ReportManager.get_report(report_id)
+        report = SimulationReportManager.get_report(report_id)
         
         if not report:
             return jsonify({
@@ -314,7 +365,7 @@ def get_report(report_id: str):
         }), 500
 
 
-@report_bp.route('/by-simulation/<simulation_id>', methods=['GET'])
+@simulation_report_bp.route('/by-simulation/<simulation_id>', methods=['GET'])
 def get_report_by_simulation(simulation_id: str):
     """
     根据模拟ID获取报告
@@ -329,7 +380,7 @@ def get_report_by_simulation(simulation_id: str):
         }
     """
     try:
-        report = ReportManager.get_report_by_simulation(simulation_id)
+        report = SimulationReportManager.get_report_by_simulation(simulation_id)
         
         if not report:
             return jsonify({
@@ -352,7 +403,7 @@ def get_report_by_simulation(simulation_id: str):
         }), 500
 
 
-@report_bp.route('/list', methods=['GET'])
+@simulation_report_bp.route('/list', methods=['GET'])
 def list_reports():
     """
     列出所有报告
@@ -372,7 +423,7 @@ def list_reports():
         simulation_id = request.args.get('simulation_id')
         limit = request.args.get('limit', 50, type=int)
         
-        reports = ReportManager.list_reports(
+        reports = SimulationReportManager.list_reports(
             simulation_id=simulation_id,
             limit=limit
         )
@@ -391,7 +442,7 @@ def list_reports():
         }), 500
 
 
-@report_bp.route('/<report_id>/download', methods=['GET'])
+@simulation_report_bp.route('/<report_id>/download', methods=['GET'])
 def download_report(report_id: str):
     """
     下载报告（Markdown格式）
@@ -399,7 +450,7 @@ def download_report(report_id: str):
     返回Markdown文件
     """
     try:
-        report = ReportManager.get_report(report_id)
+        report = SimulationReportManager.get_report(report_id)
         
         if not report:
             return jsonify({
@@ -407,7 +458,7 @@ def download_report(report_id: str):
                 "error": f"报告不存在: {report_id}"
             }), 404
         
-        md_path = ReportManager._get_report_markdown_path(report_id)
+        md_path = SimulationReportManager._get_report_markdown_path(report_id)
         
         if not os.path.exists(md_path):
             # 如果MD文件不存在，生成一个临时文件
@@ -436,11 +487,11 @@ def download_report(report_id: str):
         }), 500
 
 
-@report_bp.route('/<report_id>', methods=['DELETE'])
+@simulation_report_bp.route('/<report_id>', methods=['DELETE'])
 def delete_report(report_id: str):
     """删除报告"""
     try:
-        success = ReportManager.delete_report(report_id)
+        success = SimulationReportManager.delete_report(report_id)
         
         if not success:
             return jsonify({
@@ -461,9 +512,49 @@ def delete_report(report_id: str):
         }), 500
 
 
+@simulation_report_bp.route('/consult', methods=['POST'])
+def consult_cyber_taoist():
+    """
+    赛博道士深度咨询接口
+    
+    同时结合命理(chart_id)和模拟(simulation_id)进行跨域咨询
+    
+    请求（JSON）：
+        {
+            "message": "为什么我这次模拟失败了？",
+            "simulation_id": "sim_xxxx",
+            "chart_id": "chart_xxxx",
+            "chat_history": [...]
+        }
+    """
+    from ..services.consultant_agent import CyberTaoistConsultant
+    
+    try:
+        data = request.get_json() or {}
+        message = data.get('message')
+        simulation_id = data.get('simulation_id')
+        chart_id = data.get('chart_id')
+        chat_history = data.get('chat_history', [])
+        
+        if not message:
+            return jsonify({"success": False, "error": "请提供咨询问题"}), 400
+            
+        consultant = CyberTaoistConsultant(simulation_id=simulation_id, chart_id=chart_id)
+        result = consultant.chat(message=message, chat_history=chat_history)
+        
+        return jsonify({
+            "success": True,
+            "data": result
+        })
+        
+    except Exception as e:
+        logger.error(f"咨询失败: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
 # ============== Report Agent对话接口 ==============
 
-@report_bp.route('/chat', methods=['POST'])
+@simulation_report_bp.route('/chat', methods=['POST'])
 def chat_with_report_agent():
     """
     与Report Agent对话
@@ -536,7 +627,7 @@ def chat_with_report_agent():
         simulation_requirement = project.simulation_requirement or ""
         
         # 创建Agent并进行对话
-        agent = ReportAgent(
+        agent = SimulationReportAgent(
             graph_id=graph_id,
             simulation_id=simulation_id,
             simulation_requirement=simulation_requirement
@@ -559,7 +650,7 @@ def chat_with_report_agent():
 
 # ============== 报告指标接口 ==============
 
-@report_bp.route('/<report_id>/metrics', methods=['GET'])
+@simulation_report_bp.route('/<report_id>/metrics', methods=['GET'])
 def get_report_metrics(report_id: str):
     """
     获取报告相关指标数据
@@ -579,7 +670,7 @@ def get_report_metrics(report_id: str):
         }
     """
     try:
-        report = ReportManager.get_report(report_id)
+        report = SimulationReportManager.get_report(report_id)
 
         if not report:
             return jsonify({
@@ -653,7 +744,7 @@ def get_report_metrics(report_id: str):
 
 # ============== 报告进度与分章节接口 ==============
 
-@report_bp.route('/<report_id>/progress', methods=['GET'])
+@simulation_report_bp.route('/<report_id>/progress', methods=['GET'])
 def get_report_progress(report_id: str):
     """
     获取报告生成进度（实时）
@@ -672,7 +763,7 @@ def get_report_progress(report_id: str):
         }
     """
     try:
-        progress = ReportManager.get_progress(report_id)
+        progress = SimulationReportManager.get_progress(report_id)
         
         if not progress:
             return jsonify({
@@ -693,7 +784,7 @@ def get_report_progress(report_id: str):
         }), 500
 
 
-@report_bp.route('/<report_id>/sections', methods=['GET'])
+@simulation_report_bp.route('/<report_id>/sections', methods=['GET'])
 def get_report_sections(report_id: str):
     """
     获取已生成的章节列表（分章节输出）
@@ -719,11 +810,11 @@ def get_report_sections(report_id: str):
         }
     """
     try:
-        sections = ReportManager.get_generated_sections(report_id)
+        sections = SimulationReportManager.get_generated_sections(report_id)
         
         # 获取报告状态
-        report = ReportManager.get_report(report_id)
-        is_complete = report is not None and report.status == ReportStatus.COMPLETED
+        report = SimulationReportManager.get_report(report_id)
+        is_complete = report is not None and report.status == SimulationReportStatus.COMPLETED
         
         return jsonify({
             "success": True,
@@ -743,7 +834,7 @@ def get_report_sections(report_id: str):
         }), 500
 
 
-@report_bp.route('/<report_id>/section/<int:section_index>', methods=['GET'])
+@simulation_report_bp.route('/<report_id>/section/<int:section_index>', methods=['GET'])
 def get_single_section(report_id: str, section_index: int):
     """
     获取单个章节内容
@@ -758,7 +849,7 @@ def get_single_section(report_id: str, section_index: int):
         }
     """
     try:
-        section_path = ReportManager._get_section_path(report_id, section_index)
+        section_path = SimulationReportManager._get_section_path(report_id, section_index)
         
         if not os.path.exists(section_path):
             return jsonify({
@@ -788,7 +879,7 @@ def get_single_section(report_id: str, section_index: int):
 
 # ============== 报告状态检查接口 ==============
 
-@report_bp.route('/check/<simulation_id>', methods=['GET'])
+@simulation_report_bp.route('/check/<simulation_id>', methods=['GET'])
 def check_report_status(simulation_id: str):
     """
     检查模拟是否有报告，以及报告状态
@@ -808,14 +899,14 @@ def check_report_status(simulation_id: str):
         }
     """
     try:
-        report = ReportManager.get_report_by_simulation(simulation_id)
+        report = SimulationReportManager.get_report_by_simulation(simulation_id)
         
         has_report = report is not None
         report_status = report.status.value if report else None
         report_id = report.report_id if report else None
         
         # 只有报告完成后才解锁interview
-        interview_unlocked = has_report and report.status == ReportStatus.COMPLETED
+        interview_unlocked = has_report and report.status == SimulationReportStatus.COMPLETED
         
         return jsonify({
             "success": True,
@@ -838,7 +929,7 @@ def check_report_status(simulation_id: str):
 
 # ============== Agent 日志接口 ==============
 
-@report_bp.route('/<report_id>/agent-log', methods=['GET'])
+@simulation_report_bp.route('/<report_id>/agent-log', methods=['GET'])
 def get_agent_log(report_id: str):
     """
     获取 Report Agent 的详细执行日志
@@ -881,7 +972,7 @@ def get_agent_log(report_id: str):
     try:
         from_line = request.args.get('from_line', 0, type=int)
         
-        log_data = ReportManager.get_agent_log(report_id, from_line=from_line)
+        log_data = SimulationReportManager.get_agent_log(report_id, from_line=from_line)
         
         return jsonify({
             "success": True,
@@ -896,7 +987,7 @@ def get_agent_log(report_id: str):
         }), 500
 
 
-@report_bp.route('/<report_id>/agent-log/stream', methods=['GET'])
+@simulation_report_bp.route('/<report_id>/agent-log/stream', methods=['GET'])
 def stream_agent_log(report_id: str):
     """
     获取完整的 Agent 日志（一次性获取全部）
@@ -911,7 +1002,7 @@ def stream_agent_log(report_id: str):
         }
     """
     try:
-        logs = ReportManager.get_agent_log_stream(report_id)
+        logs = SimulationReportManager.get_agent_log_stream(report_id)
         
         return jsonify({
             "success": True,
@@ -931,7 +1022,7 @@ def stream_agent_log(report_id: str):
 
 # ============== 控制台日志接口 ==============
 
-@report_bp.route('/<report_id>/console-log', methods=['GET'])
+@simulation_report_bp.route('/<report_id>/console-log', methods=['GET'])
 def get_console_log(report_id: str):
     """
     获取 Report Agent 的控制台输出日志
@@ -961,7 +1052,7 @@ def get_console_log(report_id: str):
     try:
         from_line = request.args.get('from_line', 0, type=int)
         
-        log_data = ReportManager.get_console_log(report_id, from_line=from_line)
+        log_data = SimulationReportManager.get_console_log(report_id, from_line=from_line)
         
         return jsonify({
             "success": True,
@@ -976,7 +1067,7 @@ def get_console_log(report_id: str):
         }), 500
 
 
-@report_bp.route('/<report_id>/console-log/stream', methods=['GET'])
+@simulation_report_bp.route('/<report_id>/console-log/stream', methods=['GET'])
 def stream_console_log(report_id: str):
     """
     获取完整的控制台日志（一次性获取全部）
@@ -991,7 +1082,7 @@ def stream_console_log(report_id: str):
         }
     """
     try:
-        logs = ReportManager.get_console_log_stream(report_id)
+        logs = SimulationReportManager.get_console_log_stream(report_id)
         
         return jsonify({
             "success": True,
@@ -1011,7 +1102,7 @@ def stream_console_log(report_id: str):
 
 # ============== 工具调用接口（供调试使用）==============
 
-@report_bp.route('/tools/search', methods=['POST'])
+@simulation_report_bp.route('/tools/search', methods=['POST'])
 def search_graph_tool():
     """
     图谱搜索工具接口（供调试使用）
@@ -1058,7 +1149,7 @@ def search_graph_tool():
         }), 500
 
 
-@report_bp.route('/tools/statistics', methods=['POST'])
+@simulation_report_bp.route('/tools/statistics', methods=['POST'])
 def get_graph_statistics_tool():
     """
     图谱统计工具接口（供调试使用）

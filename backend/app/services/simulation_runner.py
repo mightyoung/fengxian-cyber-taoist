@@ -1236,19 +1236,17 @@ class SimulationRunner:
                     
                     # 同时更新 state.json，将状态设为 stopped
                     try:
-                        sim_dir = os.path.join(cls.get_simulation_base_dir(), simulation_id)
-                        state_file = os.path.join(sim_dir, "state.json")
-                        logger.info(f"尝试更新 state.json: {state_file}")
-                        if os.path.exists(state_file):
-                            with open(state_file, 'r', encoding='utf-8') as f:
-                                state_data = json.load(f)
+                        from ..storage.adapter import get_simulation_storage
+                        storage = get_simulation_storage()
+                        meta_path = storage.get_simulation_meta_path(simulation_id)
+                        state_data = storage.load(meta_path)
+                        if state_data:
                             state_data['status'] = 'stopped'
                             state_data['updated_at'] = datetime.now().isoformat()
-                            with open(state_file, 'w', encoding='utf-8') as f:
-                                json.dump(state_data, f, indent=2, ensure_ascii=False)
+                            storage.save(meta_path, state_data)
                             logger.info(f"已更新 state.json 状态为 stopped: {simulation_id}")
                         else:
-                            logger.warning(f"state.json 不存在: {state_file}")
+                            logger.warning(f"state.json 不存在: {simulation_id}")
                     except Exception as state_err:
                         logger.warning(f"更新 state.json 失败: {simulation_id}, error={state_err}")
                         

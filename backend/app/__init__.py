@@ -63,7 +63,7 @@ def create_app(config_class=Config):
         return response
     
     # 注册蓝图
-    from .api import graph_bp, simulation_bp, report_bp
+    from .api import graph_bp, simulation_bp, simulation_report_bp
     from .api import divination_bp, _divination_available
     # knowledge_bp 在 divination_available 时从 divination.api 导入
     if _divination_available:
@@ -72,7 +72,7 @@ def create_app(config_class=Config):
         knowledge_bp = None
     app.register_blueprint(graph_bp, url_prefix='/api/graph')
     app.register_blueprint(simulation_bp, url_prefix='/api/simulation')
-    app.register_blueprint(report_bp, url_prefix='/api/report')
+    app.register_blueprint(simulation_report_bp, url_prefix='/api/report')
     if _divination_available and divination_bp:
         app.register_blueprint(divination_bp, url_prefix='/api/divination')
     if knowledge_bp:

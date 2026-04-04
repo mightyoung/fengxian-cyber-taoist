@@ -157,6 +157,69 @@ def get_entities_by_type(graph_id: str, entity_type: str):
 
 # ============== 模拟管理接口 ==============
 
+@simulation_bp.route('/fork', methods=['POST'])
+def fork_simulation():
+    """
+    基于现有模拟创建分支（因果扰动/改命模拟）
+    
+    请求（JSON）：
+        {
+            "parent_id": "sim_xxxx",          // 必填，父模拟ID
+            "intervention_config": {          // 可选，扰动配置
+                "simulation_requirement": "如果那个大V没发帖...",
+                "event_config": {
+                    "initial_posts": [...]
+                }
+            }
+        }
+    
+    返回：
+        {
+            "success": true,
+            "data": {
+                "simulation_id": "fork_xxxx",
+                "parent_simulation_id": "sim_xxxx",
+                "status": "ready",
+                ...
+            }
+        }
+    """
+    try:
+        data = request.get_json() or {}
+        
+        parent_id = data.get('parent_id')
+        if not parent_id:
+            return jsonify({
+                "success": False,
+                "error": "请提供 parent_id"
+            }), 400
+            
+        intervention_config = data.get('intervention_config')
+        
+        manager = SimulationManager()
+        state = manager.fork_simulation(
+            parent_id=parent_id,
+            intervention_config=intervention_config
+        )
+        
+        return jsonify({
+            "success": True,
+            "data": state.to_dict()
+        })
+        
+    except ValueError as e:
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        }), 404
+    except Exception as e:
+        logger.error(f"分支模拟失败: {str(e)}")
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        }), 500
+
+
 @simulation_bp.route('/create', methods=['POST'])
 def create_simulation():
     """
@@ -281,72 +344,34 @@ def _check_simulation_prepared(simulation_id: str) -> tuple:
             "existing_files": existing_files
         }
     
-    # 检查state.json中的状态
-    state_file = os.path.join(simulation_dir, "state.json")
-    try:
-        import json
-        with open(state_file, 'r', encoding='utf-8') as f:
-            state_data = json.load(f)
-        
-        status = state_data.get("status", "")
-        config_generated = state_data.get("config_generated", False)
-        
-        # 详细日志
-        logger.debug(f"检测模拟准备状态: {simulation_id}, status={status}, config_generated={config_generated}")
-        
-        # 如果 config_generated=True 且文件存在，认为准备完成
-        # 以下状态都说明准备工作已完成：
-        # - ready: 准备完成，可以运行
-        # - preparing: 如果 config_generated=True 说明已完成
-        # - running: 正在运行，说明准备早就完成了
-        # - completed: 运行完成，说明准备早就完成了
-        # - stopped: 已停止，说明准备早就完成了
-        # - failed: 运行失败（但准备是完成的）
-        prepared_statuses = ["ready", "preparing", "running", "completed", "stopped", "failed"]
-        if status in prepared_statuses and config_generated:
-            # 获取文件统计信息
-            profiles_file = os.path.join(simulation_dir, "reddit_profiles.json")
-
-            profiles_count = 0
-            if os.path.exists(profiles_file):
-                with open(profiles_file, 'r', encoding='utf-8') as f:
-                    profiles_data = json.load(f)
-                    profiles_count = len(profiles_data) if isinstance(profiles_data, list) else 0
+    # 使用 SimulationManager 获取状态
+    from ..services.simulation_manager import SimulationManager
+    manager = SimulationManager()
+    state = manager.get_simulation(simulation_id)
+    
+    if not state:
+        return False, {"reason": "模拟状态不存在"}
+    
+    status = state.status
+    config_generated = state.config_generated
+    
+    # 详细日志
+    logger.debug(f"检测模拟准备状态: {simulation_id}, status={status}, config_generated={config_generated}")
+    
+    # 如果 config_generated=True 且文件存在，认为准备完成
+    prepared_statuses = ["ready", "preparing", "running", "completed", "stopped", "failed"]
+    if status in prepared_statuses and config_generated:
+        # 如果状态是preparing但文件已完成，自动更新状态为ready
+        if status == "preparing":
+            state.status = "ready"
+            manager._save_simulation_state(state)
             
-            # 如果状态是preparing但文件已完成，自动更新状态为ready
-            if status == "preparing":
-                try:
-                    state_data["status"] = "ready"
-                    from datetime import datetime
-                    state_data["updated_at"] = datetime.now().isoformat()
-                    with open(state_file, 'w', encoding='utf-8') as f:
-                        json.dump(state_data, f, ensure_ascii=False, indent=2)
-                    logger.info(f"自动更新模拟状态: {simulation_id} preparing -> ready")
-                    status = "ready"
-                except Exception as e:
-                    logger.warning(f"自动更新状态失败: {e}")
-            
-            logger.info(f"模拟 {simulation_id} 检测结果: 已准备完成 (status={status}, config_generated={config_generated})")
-            return True, {
-                "status": status,
-                "entities_count": state_data.get("entities_count", 0),
-                "profiles_count": profiles_count,
-                "entity_types": state_data.get("entity_types", []),
-                "config_generated": config_generated,
-                "created_at": state_data.get("created_at"),
-                "updated_at": state_data.get("updated_at"),
-                "existing_files": existing_files
-            }
-        else:
-            logger.warning(f"模拟 {simulation_id} 检测结果: 未准备完成 (status={status}, config_generated={config_generated})")
-            return False, {
-                "reason": f"状态不在已准备列表中或config_generated为false: status={status}, config_generated={config_generated}",
-                "status": status,
-                "config_generated": config_generated
-            }
-            
-    except Exception as e:
-        return False, {"reason": f"读取状态文件失败: {str(e)}"}
+        return True, {
+            "status": state.status,
+            "entities_count": state.entities_count,
+            "profiles_count": state.profiles_count
+        }
+    return False, {"reason": "模拟尚未就绪", "status": status}
 
 
 @simulation_bp.route('/prepare', methods=['POST'])

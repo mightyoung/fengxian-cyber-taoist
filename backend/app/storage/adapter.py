@@ -26,12 +26,22 @@ class StorageAdapter(ABC):
 
     @abstractmethod
     def save(self, key: str, data: Dict[str, Any], **kwargs) -> None:
-        """保存数据"""
+        """保存JSON数据"""
+        pass
+
+    @abstractmethod
+    def save_text(self, key: str, text: str, **kwargs) -> None:
+        """保存文本数据"""
         pass
 
     @abstractmethod
     def load(self, key: str, **kwargs) -> Optional[Dict[str, Any]]:
-        """加载数据"""
+        """加载JSON数据"""
+        pass
+
+    @abstractmethod
+    def load_text(self, key: str, **kwargs) -> Optional[str]:
+        """加载文本数据"""
         pass
 
     @abstractmethod
@@ -102,6 +112,33 @@ class JSONFileStorageAdapter(StorageAdapter):
                 os.unlink(tmp_path)
             raise
 
+    def save_text(self, key: str, text: str, **kwargs) -> None:
+        """
+        保存纯文本数据
+
+        Args:
+            key: 文件键，如 "report.md"
+            text: 文本内容
+        """
+        filepath = self._resolve_path(key)
+
+        # 确保父目录存在
+        parent = os.path.dirname(filepath)
+        if parent:
+            os.makedirs(parent, exist_ok=True)
+
+        # 原子写入
+        dirname, basename = os.path.dirname(filepath), os.path.basename(filepath)
+        tmp_fd, tmp_path = tempfile.mkstemp(dir=dirname or '.', prefix=f'.{basename}.', suffix='.tmp')
+        try:
+            with os.fdopen(tmp_fd, 'w', encoding='utf-8') as f:
+                f.write(text)
+            os.replace(tmp_path, filepath)
+        except Exception:
+            if os.path.exists(tmp_path):
+                os.unlink(tmp_path)
+            raise
+
     def load(self, key: str, **kwargs) -> Optional[Dict[str, Any]]:
         """
         从 JSON 文件加载数据
@@ -118,6 +155,23 @@ class JSONFileStorageAdapter(StorageAdapter):
 
         with open(filepath, 'r', encoding='utf-8') as f:
             return json.load(f, **kwargs)
+
+    def load_text(self, key: str, **kwargs) -> Optional[str]:
+        """
+        加载文本数据
+
+        Args:
+            key: 文件键
+
+        Returns:
+            文本内容，不存在则返回 None
+        """
+        filepath = self._resolve_path(key)
+        if not os.path.exists(filepath):
+            return None
+
+        with open(filepath, 'r', encoding='utf-8') as f:
+            return f.read()
 
     def delete(self, key: str, **kwargs) -> bool:
         """

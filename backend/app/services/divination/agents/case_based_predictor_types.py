@@ -40,7 +40,7 @@ class ProbabilisticResult:
 
 
 @dataclass
-class PredictionReport:
+class CasePredictionReport:
     """
     预测报告
 

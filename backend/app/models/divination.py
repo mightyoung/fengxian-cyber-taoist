@@ -60,7 +60,7 @@ class BirthChart:
 
 
 @dataclass
-class PredictionReport:
+class DivinationReport:
     """预测报告数据模型"""
     report_id: str
     chart_id: str
@@ -89,7 +89,7 @@ class PredictionReport:
         }
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> "PredictionReport":
+    def from_dict(cls, data: Dict[str, Any]) -> "DivinationReport":
         """从字典创建"""
         return cls(
             report_id=data["report_id"],
@@ -205,15 +205,24 @@ class DivinationManager:
         return f"{report_id}/report.json"
 
     @classmethod
-    def save_report(cls, report: PredictionReport) -> None:
+    def _report_markdown_key(cls, report_id: str) -> str:
+        """获取报告Markdown内容的存储键"""
+        return f"{report_id}/report.md"
+
+    @classmethod
+    def save_report(cls, report: DivinationReport) -> None:
         """保存报告"""
         from app.storage.adapter import get_report_storage
 
         storage = get_report_storage()
+        # 1. 保存元数据 (JSON)
         storage.save(cls._report_meta_key(report.report_id), report.to_dict())
+        # 2. 保存Markdown内容 (MD)
+        if report.markdown_content:
+            storage.save_text(cls._report_markdown_key(report.report_id), report.markdown_content)
 
     @classmethod
-    def get_report(cls, report_id: str) -> Optional[PredictionReport]:
+    def get_report(cls, report_id: str) -> Optional[DivinationReport]:
         """获取报告"""
         from app.storage.adapter import get_report_storage
 
@@ -221,7 +230,7 @@ class DivinationManager:
         data = storage.load(cls._report_meta_key(report_id))
         if data is None:
             return None
-        return PredictionReport.from_dict(data)
+        return DivinationReport.from_dict(data)
 
     @classmethod
     def create_report(
@@ -232,12 +241,12 @@ class DivinationManager:
         report_type: str,
         markdown_content: str,
         metadata: Optional[Dict[str, Any]] = None,
-    ) -> PredictionReport:
+    ) -> DivinationReport:
         """创建新报告"""
         report_id = str(uuid.uuid4())
         now = datetime.now().isoformat()
 
-        report = PredictionReport(
+        report = DivinationReport(
             report_id=report_id,
             chart_id=chart_id,
             user_name=user_name,
@@ -254,7 +263,7 @@ class DivinationManager:
         return report
 
     @classmethod
-    def get_reports_by_chart(cls, chart_id: str) -> List[PredictionReport]:
+    def get_reports_by_chart(cls, chart_id: str) -> List[DivinationReport]:
         """获取指定命盘的所有报告"""
         from app.storage.adapter import get_report_storage
 
@@ -263,24 +272,25 @@ class DivinationManager:
         reports = []
 
         for key in keys:
-            report_id = key.split('/')[0] if '/' in key else key
-            report = cls.get_report(report_id)
-            if report and report.chart_id == chart_id:
-                reports.append(report)
+            if key.endswith('report.json'):
+                report_id = key.split('/')[0]
+                report = cls.get_report(report_id)
+                if report and report.chart_id == chart_id:
+                    reports.append(report)
 
         return reports
 
     @classmethod
-    def list_reports(cls, limit: int = 100, offset: int = 0) -> List[PredictionReport]:
+    def list_reports(cls, limit: int = 100, offset: int = 0) -> List[DivinationReport]:
         """列出报告（按创建时间倒序）"""
         from app.storage.adapter import get_report_storage
 
         storage = get_report_storage()
-        keys = sorted(storage.list_keys(), reverse=True)
+        keys = sorted([k for k in storage.list_keys() if k.endswith('report.json')], reverse=True)
 
         reports = []
         for key in keys[offset:offset + limit]:
-            report_id = key.split('/')[0] if '/' in key else key
+            report_id = key.split('/')[0]
             report = cls.get_report(report_id)
             if report:
                 reports.append(report)
@@ -288,9 +298,43 @@ class DivinationManager:
         return reports
 
     @classmethod
-    def delete_report(cls, report_id: str) -> bool:
-        """删除报告"""
-        from app.storage.adapter import get_report_storage
-
-        storage = get_report_storage()
-        return storage.delete(cls._report_meta_key(report_id))
+    def get_global_stats(cls, limit: int = 100) -> Dict[str, Any]:
+        """聚合全服运势统计"""
+        reports = cls.list_reports(limit=limit)
+        if not reports:
+            return {
+                "total_count": 0,
+                "vibe_distribution": {"吉": 0, "平": 0, "凶": 0},
+                "average_year": datetime.now().year
+            }
+            
+        vibes = {"吉": 0, "平": 0, "凶": 0}
+        years = []
+        
+        for r in reports:
+            # 1. 优先从 metadata 获取
+            judgment = None
+            if r.metadata and "overall_judgment" in r.metadata:
+                judgment = r.metadata["overall_judgment"]
+            
+            # 2. 如果 metadata 没有，尝试从正文解析
+            if not judgment and r.markdown_content:
+                if "吉" in r.markdown_content[:500]: judgment = "吉"
+                elif "凶" in r.markdown_content[:500]: judgment = "凶"
+                else: judgment = "平"
+            
+            if judgment:
+                if "吉" in judgment: vibes["吉"] += 1
+                elif "凶" in judgment: vibes["凶"] += 1
+                else: vibes["平"] += 1
+                
+            years.append(r.target_year)
+            
+        total = len(reports)
+        return {
+            "total_count": total,
+            "vibe_distribution": vibes,
+            "vibe_percentages": {k: round(v/total*100, 1) for k, v in vibes.items()} if total > 0 else {},
+            "average_year": round(sum(years)/total) if years else datetime.now().year,
+            "updated_at": datetime.now().isoformat()
+        }

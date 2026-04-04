@@ -1,7 +1,7 @@
 """
 Unit Tests - DivinationManager Persistence Layer
 
-Tests for BirthChart and PredictionReport persistence.
+Tests for BirthChart and DivinationReport persistence.
 
 Run with:
     pytest tests/unit/test_divination_manager.py -v
@@ -88,10 +88,10 @@ class TestDivinationManagerPersistence:
         assert restored.status == chart.status
 
     def test_prediction_report_dataclass(self):
-        """Test PredictionReport dataclass creation and serialization"""
-        from app.models.divination import PredictionReport, DivinationStatus
+        """Test DivinationReport dataclass creation and serialization"""
+        from app.models.divination import DivinationReport, DivinationStatus
 
-        report = PredictionReport(
+        report = DivinationReport(
             report_id="test-report-456",
             chart_id="test-chart-123",
             user_name="测试用户",
@@ -114,8 +114,8 @@ class TestDivinationManagerPersistence:
         assert report_dict["user_name"] == "测试用户"
 
         # Test from_dict
-        from app.models.divination import PredictionReport
-        restored = PredictionReport.from_dict(report_dict)
+        from app.models.divination import DivinationReport
+        restored = DivinationReport.from_dict(report_dict)
         assert restored.report_id == report.report_id
         assert restored.user_name == report.user_name
 

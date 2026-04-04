@@ -22,7 +22,7 @@ from .report_generator_types import (
     CausalChainAnalysis,
     CaseBasedAnalysis,
     MultiAgentAnalysis,
-    ThreeLayerPredictionReport,
+    ThreeLayerDivinationReport,
     ReportBundle,
 )
 from .report_generator_constants import (
@@ -757,7 +757,7 @@ async def generate_prediction_report(
     chart: Dict[str, Any],
     target_year: int,
     question: str = ""
-) -> "ThreeLayerPredictionReport":
+) -> "ThreeLayerDivinationReport":
     """
     生成三层融合预测报告
 
@@ -767,7 +767,7 @@ async def generate_prediction_report(
         question: 分析问题
 
     Returns:
-        ThreeLayerPredictionReport: 三层融合预测报告
+        ThreeLayerDivinationReport: 三层融合预测报告
     """
     chart_id = chart.get("chart_id", f"chart_{id(chart)}")
 
@@ -816,7 +816,7 @@ async def generate_prediction_report(
         dimensions
     )
 
-    return ThreeLayerPredictionReport(
+    return ThreeLayerDivinationReport(
         overall_judgment=overall_judgment,
         overall_confidence=overall_confidence,
         causal_chain_result=causal_result,
@@ -836,7 +836,7 @@ def generate_prediction_report_sync(
     chart: Dict[str, Any],
     target_year: int,
     question: str = ""
-) -> "ThreeLayerPredictionReport":
+) -> "ThreeLayerDivinationReport":
     """同步版本的三层融合预测报告生成"""
     return asyncio.run(generate_prediction_report(chart, target_year, question))
 
@@ -1709,7 +1709,7 @@ def _generate_suggestions(
 # ============ Markdown格式化扩展 ============
 
 def format_prediction_report_markdown(
-    report: "ThreeLayerPredictionReport"
+    report: "ThreeLayerDivinationReport"
 ) -> str:
     """将三层融合预测报告格式化为Markdown"""
 

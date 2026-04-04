@@ -107,14 +107,20 @@ class Config:
     # 使用 @classmethod 确保运行时从 FLASK_ENV 读取，而不是 import 时求值
 
     @classmethod
+    def get_data_dir(cls) -> str:
+        """获取基础数据目录"""
+        from app.storage.paths import get_data_dir
+        return get_data_dir()
+
+    @classmethod
     def get_upload_folder(cls) -> str:
-        """获取上传根目录，委托给 storage/paths"""
+        """获取上传根目录"""
         from app.storage.paths import get_upload_dir
         return get_upload_dir()
 
     @classmethod
     def get_simulation_data_dir(cls) -> str:
-        """获取OASIS仿真数据目录，委托给 storage/paths"""
+        """获取OASIS仿真数据目录"""
         from app.storage.paths import get_upload_dir
         return get_upload_dir('simulations')
 

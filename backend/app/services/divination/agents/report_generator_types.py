@@ -7,7 +7,7 @@ ReportGenerator Types - Markdown报告生成器数据类型
 - CausalChainAnalysis: 因果链推理结果
 - CaseBasedAnalysis: 案例推理结果
 - MultiAgentAnalysis: 多Agent共识验证结果
-- ThreeLayerPredictionReport: 三层融合预测报告
+- ThreeLayerDivinationReport: 三层融合预测报告
 - ReportBundle: 报告集合
 
 注意：常量定义请使用 report_generator_constants 模块
@@ -96,7 +96,7 @@ class MultiAgentAnalysis:
 
 
 @dataclass
-class ThreeLayerPredictionReport:
+class ThreeLayerDivinationReport:
     """三层融合预测报告"""
     # 综合判断
     overall_judgment: str  # 吉/平/凶

@@ -184,7 +184,7 @@ class XiaohongshuAgent:
         生成小红书报告
 
         Args:
-            report: ThreeLayerPredictionReport 专业报告
+            report: ThreeLayerDivinationReport 专业报告
             user_name: 用户昵称
             user_type: 用户类型 (如 "天同星人")
 
@@ -950,7 +950,7 @@ def generate_xhs_report_sync(
     同步生成小红书报告
 
     Args:
-        report: ThreeLayerPredictionReport
+        report: ThreeLayerDivinationReport
         user_name: 用户昵称
         user_type: 用户类型
         terminology_map_path: 术语映射文件路径
@@ -977,7 +977,7 @@ async def generate_xhs_report_async(
     异步生成小红书报告
 
     Args:
-        report: ThreeLayerPredictionReport
+        report: ThreeLayerDivinationReport
         user_name: 用户昵称
         user_type: 用户类型
         terminology_map_path: 术语映射文件路径

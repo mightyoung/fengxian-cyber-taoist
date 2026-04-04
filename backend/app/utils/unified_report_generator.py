@@ -916,15 +916,6 @@ def generate_complete_report(
             "llm_generated": bool
         }
     """
-    if not output_dir:
-        # 默认输出到 backend/reports/{name}_{year}
-        birth_info = chart.get("birth_info", {})
-        name = birth_info.get("name", "命主")
-        output_dir = _BACKEND_ROOT / "reports" / f"{name}_{target_year}"
-
-    output_dir = Path(output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
-
     # 生成报告ID
     import uuid
     report_id = f"report_{uuid.uuid4().hex[:12]}"
@@ -941,12 +932,17 @@ def generate_complete_report(
     markdown_content = generate_markdown_report(
         chart, analysis_result, target_year, use_llm=use_llm
     )
-    md_path = output_dir / f"{report_id}.md"
 
-    with open(md_path, 'w', encoding='utf-8') as f:
-        f.write(markdown_content)
-
-    logger.info(f"Markdown报告已保存: {md_path}")
+    if output_dir:
+        output_dir = Path(output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        md_path = output_dir / f"{report_id}.md"
+        with open(md_path, 'w', encoding='utf-8') as f:
+            f.write(markdown_content)
+        logger.info(f"Markdown报告已保存: {md_path}")
+    else:
+        md_path = None
+        logger.info("未提供 output_dir，跳过文件保存")
 
     # 3. 生成PDF（如果启用）
     pdf_path = None
@@ -991,15 +987,17 @@ def generate_complete_report(
         }
     }
 
-    meta_path = output_dir / f"{report_id}_metadata.json"
-    with open(meta_path, 'w', encoding='utf-8') as f:
-        json.dump(metadata, f, ensure_ascii=False, indent=2)
+    if output_dir:
+        meta_path = output_dir / f"{report_id}_metadata.json"
+        with open(meta_path, 'w', encoding='utf-8') as f:
+            json.dump(metadata, f, ensure_ascii=False, indent=2)
 
     result = {
         "success": True,
         "report_id": report_id,
-        "output_dir": str(output_dir),
-        "markdown_path": str(md_path),
+        "output_dir": str(output_dir) if output_dir else None,
+        "markdown_path": str(md_path) if md_path else None,
+        "markdown_content": markdown_content,
         "pdf_path": str(pdf_path) if pdf_path else None,
         "charts_generated": charts_count,
         "llm_generated": use_llm and LLM_AND_PROMPTS_AVAILABLE

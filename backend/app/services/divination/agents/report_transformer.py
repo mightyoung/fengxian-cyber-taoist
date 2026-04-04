@@ -5,7 +5,7 @@ ReportTransformer - 报告通俗化转换器
 - Report C (专业通俗版): 保留专业结构，用括号添加通俗解释
 - Ultra Plain (超通俗版): 情感优先重写，无术语，带 emoji
 
-三层融合预测报告 (ThreeLayerPredictionReport) 输入格式
+三层融合预测报告 (ThreeLayerDivinationReport) 输入格式
 """
 
 import asyncio
@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from typing import Dict, Optional, Any
 
 from .report_generator import (
-    ThreeLayerPredictionReport,
+    ThreeLayerDivinationReport,
 )
 
 # 配置日志
@@ -154,7 +154,7 @@ class ReportTransformer:
     使用方式:
     ```python
     transformer = ReportTransformer()
-    report = ThreeLayerPredictionReport(...)
+    report = ThreeLayerDivinationReport(...)
 
     # 专业通俗版 (Report C)
     plain_report = transformer.transform_to_professional_plain(report)
@@ -392,7 +392,7 @@ class ReportTransformer:
 
     def transform_to_professional_plain(
         self,
-        report: ThreeLayerPredictionReport,
+        report: ThreeLayerDivinationReport,
         synthesis_data: Optional[Dict[str, Any]] = None,
         user_name: str = "命主",
         chart_data: Optional[Dict[str, Any]] = None
@@ -763,7 +763,7 @@ class ReportTransformer:
 
         return "".join(lines)
 
-    def transform_to_ultra_plain(self, report: ThreeLayerPredictionReport) -> str:
+    def transform_to_ultra_plain(self, report: ThreeLayerDivinationReport) -> str:
         """
         转换为超通俗版
 
@@ -910,7 +910,7 @@ class ReportTransformer:
 
         return "".join(lines)
 
-    def generate_actionable_summary(self, report: ThreeLayerPredictionReport) -> str:
+    def generate_actionable_summary(self, report: ThreeLayerDivinationReport) -> str:
         """
         生成3条可执行的建议摘要
 
@@ -957,7 +957,7 @@ class ReportTransformer:
 
     async def transform_report(
         self,
-        report: ThreeLayerPredictionReport,
+        report: ThreeLayerDivinationReport,
         style: str = "professional_plain",
         synthesis_data: Optional[Dict[str, Any]] = None
     ) -> str:
@@ -987,7 +987,7 @@ class ReportTransformer:
 
     def transform_report_sync(
         self,
-        report: ThreeLayerPredictionReport,
+        report: ThreeLayerDivinationReport,
         style: str = "professional_plain",
         synthesis_data: Optional[Dict[str, Any]] = None,
         user_name: str = "命主",
@@ -1036,7 +1036,7 @@ def create_transformer(
 
 
 async def transform_report_async(
-    report: ThreeLayerPredictionReport,
+    report: ThreeLayerDivinationReport,
     style: str = "professional_plain",
     **kwargs
 ) -> str:
@@ -1056,7 +1056,7 @@ async def transform_report_async(
 
 
 def transform_report_sync(
-    report: ThreeLayerPredictionReport,
+    report: ThreeLayerDivinationReport,
     style: str = "professional_plain",
     synthesis_data: Optional[Dict[str, Any]] = None,
     user_name: str = "命主",
