@@ -7,17 +7,7 @@ Import from specific submodules directly when testing.
 """
 
 # Lazy import for weasyprint-dependent modules (macOS may not have libgobject)
-try:
-    from .report_service import ReportService, get_report_service, ReportFormat, ReportType, ReportStatus, Report
-except (ImportError, OSError):
-    # WeasyPrint not available (missing libgobject on macOS)
-    ReportService = None
-    get_report_service = None
-    ReportFormat = None
-    ReportType = None
-    ReportStatus = None
-    Report = None
-
+# NOTE: ReportService was removed - simulation reports now use ReportManager (report_agent.py)
 # Lazy import for zep_cloud-dependent modules (only needed at runtime, not for tests)
 try:
     from .graph_builder import GraphBuilderService
