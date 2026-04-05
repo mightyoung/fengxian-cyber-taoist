@@ -1,12 +1,19 @@
 'use client';
 
 import { useState, useCallback, memo } from 'react';
+import { motion } from 'framer-motion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { PalaceGrid } from './palace-grid';
 import { PalaceDetailSheet } from './palace-detail-sheet';
+import { RealtimeVibe } from './realtime-vibe';
 import { BirthChartInput } from './birth-chart-input';
+import { useGenerateDivinationReport } from '@/hooks/use-report';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+import { FileText, Sparkles, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Palace, BirthChartInput as BirthChartInputType } from '@/types/birth-chart';
 
 interface BirthChartPageProps {
@@ -53,6 +60,29 @@ export const BirthChartPage = memo(function BirthChartPage({
     onGenerateChart(input);
   }, [onGenerateChart]);
 
+  const router = useRouter();
+  const generateReportMutation = useGenerateDivinationReport();
+
+  const handleGenerateFullReport = async () => {
+    if (!chart?.id) return;
+    
+    toast.promise(
+      generateReportMutation.mutateAsync({
+        chart_id: chart.id,
+        year: 2026,
+        report_type: 'full'
+      }),
+      {
+        loading: '正在召集多智能体进行深度推演...',
+        success: (data) => {
+          router.push(`/report/${data.report_id}`);
+          return '推演完成，正在开启档案...';
+        },
+        error: (err) => `推演受阻: ${err.message}`
+      }
+    );
+  };
+
   // Use demo data if no chart is provided
   const displayPalaces = chart?.palaces || demoPalaces;
 
@@ -70,8 +100,43 @@ export const BirthChartPage = memo(function BirthChartPage({
 
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Left - Input Form */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 space-y-4">
           <BirthChartInput onSubmit={handleSubmit} isLoading={isLoading} />
+          
+          {chart && (
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="space-y-4"
+            >
+              <RealtimeVibe chartId={chart.id} />
+              
+              <Card className="border-accent/30 bg-accent/5 overflow-hidden group">
+                <div className="absolute top-0 left-0 w-1 h-full bg-accent" />
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm flex items-center gap-2">
+                    <Sparkles className="h-4 w-4 text-accent" />
+                    深度命理推演
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    召集多智能体（因果链预测、案例推理、共识验证）进行全方位深度解析，生成持久化档案。
+                  </p>
+                  <Button 
+                    onClick={handleGenerateFullReport}
+                    disabled={generateReportMutation.isPending}
+                    className="w-full bg-accent text-slate-950 hover:bg-accent/90 gap-2"
+                  >
+                    <FileText className="h-4 w-4" />
+                    {generateReportMutation.isPending ? '推演中...' : '开启深度推演'}
+                    <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          )}
 
           {/* Quick Info */}
           <Card className="mt-4">

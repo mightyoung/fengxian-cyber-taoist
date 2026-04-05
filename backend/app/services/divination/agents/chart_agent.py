@@ -16,7 +16,7 @@ ChartAgent - 紫微斗数排盘智能体
 import asyncio
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 from enum import Enum
 
 # 导入现有模块（使用相对导入）
@@ -401,6 +401,32 @@ class ChartAgent:
             return f"生成命盘时出错: {str(e)}"
 
 
+    async def calculate_realtime_vibe(self, chart_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        计算当前时刻对命盘的瞬时影响（实时气场）
+        
+        用于实现高频交互功能，告诉用户“此时此刻”的运势变化。
+        """
+        now = datetime.now()
+        # 获取当前时间的干支四化（简化逻辑演示）
+        # 实际应调用 transform_decider 获取当前流分/流秒的飞化
+        
+        palaces = chart_data.get("palaces", {})
+        ming_gong = palaces.get("命宫", {})
+        
+        # 模拟当前瞬时能量
+        vibe_score = 0.5
+        current_focus = "平稳"
+        
+        # 这里的逻辑未来应与真正的流分计算对接
+        return {
+            "timestamp": now.isoformat(),
+            "vibe_score": vibe_score,
+            "current_focus": current_focus,
+            "instant_transforms": ["流分化禄入命宫", "流分化忌入迁移"],
+            "advice": "此时气机流转较快，宜静观其变，不宜在社交媒体进行重要决策。"
+        }
+
 # 便捷函数
 async def generate_birth_chart(
     year: int,
@@ -446,6 +472,42 @@ async def generate_birth_chart(
 
 
 # 同步版本（兼容旧代码）
+def parse_chart_from_text_sync(text: str) -> Optional[Dict[str, Any]]:
+    """从文本中解析命盘信息（如文墨天机格式）并生成并存储命盘"""
+    from ...text_processor import TextProcessor
+    from app.models.divination import DivinationManager
+    
+    if TextProcessor.is_wenmo_format(text):
+        wenmo_data = TextProcessor.parse_wenmo_chart(text)
+        if all(k in wenmo_data for k in ["year", "month", "day", "hour"]):
+            chart_data = generate_chart_sync(
+                year=wenmo_data["year"],
+                month=wenmo_data["month"],
+                day=wenmo_data["day"],
+                hour=wenmo_data["hour"],
+                gender=wenmo_data.get("gender", "male"),
+                minute=wenmo_data.get("minute", 0)
+            )
+            if not chart_data:
+                return None
+                
+            # 补全姓名信息
+            if "name" in wenmo_data:
+                chart_data["birth_info"]["name"] = wenmo_data["name"]
+            
+            # 持久化存储
+            saved_chart = DivinationManager.create_chart(
+                birth_info=chart_data["birth_info"],
+                chart_data=chart_data
+            )
+            
+            # 返回包含 chart_id 的完整字典
+            result = saved_chart.chart_data
+            result["chart_id"] = saved_chart.chart_id
+            return result
+    return None
+
+
 def generate_chart_sync(
     year: int,
     month: int,

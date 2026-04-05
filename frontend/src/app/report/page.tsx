@@ -5,7 +5,7 @@ import { useReports } from '@/hooks/use-report';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { FileText, ArrowLeft, Clock, ExternalLink } from 'lucide-react';
+import { FileText, ArrowLeft, Clock, ExternalLink, BookOpen } from 'lucide-react';
 
 export default function ReportListPage() {
   const { data: reports, isLoading, error } = useReports();
@@ -20,9 +20,15 @@ export default function ReportListPage() {
           </Button>
         </Link>
         <div className="flex-1">
-          <h1 className="text-2xl font-bold text-slate-100">报告列表</h1>
-          <p className="text-slate-400">所有预测报告</p>
+          <h1 className="text-2xl font-bold text-slate-100">模拟报告列表</h1>
+          <p className="text-slate-400">OASIS 模拟预测报告</p>
         </div>
+        <Link href="/insights">
+          <Button variant="outline" className="border-slate-700 text-slate-200">
+            <BookOpen className="h-4 w-4 mr-2" />
+            内容中心
+          </Button>
+        </Link>
       </div>
 
       {/* Error state */}

@@ -45,6 +45,10 @@ class User:
     created_at: str = ""
     updated_at: str = ""
     last_login_at: Optional[str] = None
+    
+    # 功德系统
+    merit_balance: int = 0
+    merit_total_earned: int = 0
 
     def __post_init__(self):
         if not self.created_at:
@@ -65,6 +69,8 @@ class User:
             "created_at": self.created_at,
             "updated_at": self.updated_at,
             "last_login_at": self.last_login_at,
+            "merit_balance": self.merit_balance,
+            "merit_total_earned": self.merit_total_earned,
         }
 
     def to_dict_with_password(self) -> Dict[str, Any]:
@@ -395,14 +401,14 @@ class UserManager:
 
     @classmethod
     def upgrade_subscription(
-        cls,
+        self,
         user_id: str,
         tier: str,
         payment_method: str = "stripe",
         payment_id: Optional[str] = None,
     ) -> Subscription:
         """升级订阅"""
-        subscription = cls.get_subscription(user_id)
+        subscription = self.get_subscription(user_id)
         subscription.tier = tier
         subscription.status = SubscriptionStatus.ACTIVE
 
@@ -411,5 +417,35 @@ class UserManager:
         elif payment_method == "wechat":
             subscription.wechat_prepay_id = payment_id
 
-        cls.save_subscription(subscription)
+        self.save_subscription(subscription)
         return subscription
+
+    # ==================== 功德管理 ====================
+
+    @classmethod
+    def add_merit(cls, user_id: str, amount: int, reason: str) -> int:
+        """增加功德"""
+        user = cls.get_user(user_id)
+        if not user:
+            return 0
+
+        user.merit_balance += amount
+        user.merit_total_earned += amount
+        cls.save_user(user)
+
+        logger.info(f"用户 {user_id} 获得功德 {amount}，原因: {reason}")
+        return user.merit_balance
+
+    @classmethod
+    def use_merit(cls, user_id: str, amount: int, reason: str) -> bool:
+        """消耗功德"""
+        user = cls.get_user(user_id)
+        if not user or user.merit_balance < amount:
+            return False
+
+        user.merit_balance -= amount
+        cls.save_user(user)
+
+        logger.info(f"用户 {user_id} 消耗功德 {amount}，原因: {reason}")
+        return True
+

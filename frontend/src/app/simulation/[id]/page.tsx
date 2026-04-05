@@ -19,7 +19,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { Sparkles, ArrowLeft } from 'lucide-react';
+import { Sparkles, ArrowLeft, GitFork } from 'lucide-react';
+import { useMutation } from '@tanstack/react-query';
+import { simulationApi } from '@/hooks/use-api';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 interface SimulationDetailPageProps {
   params: Promise<{ id: string }>;
@@ -27,6 +31,7 @@ interface SimulationDetailPageProps {
 
 export default function SimulationDetailPage({ params }: SimulationDetailPageProps) {
   const { id } = use(params);
+  const router = useRouter();
   const [selectedAgentId, setSelectedAgentId] = useState<string | undefined>();
 
   const { simulation, isRunning } = useSimulationStatus(id);
@@ -34,6 +39,20 @@ export default function SimulationDetailPage({ params }: SimulationDetailPagePro
   const { data: runStatusDetail } = useSimulationRunStatusDetail(id);
   const startMutation = useStartSimulation();
   const stopMutation = useStopSimulation();
+
+  const forkMutation = useMutation({
+    mutationFn: () => simulationApi.forkSimulation({ parent_id: id }),
+    onSuccess: (res) => {
+      if (res.success) {
+        toast.success('已成功开启因果分支模拟');
+        router.push(`/simulation/${res.data.simulation_id}`);
+      }
+    }
+  });
+
+  const handleFork = () => {
+    forkMutation.mutate();
+  };
 
   // Transform run status actions to timeline events
   const timelineEvents = runStatusDetail?.all_actions
@@ -106,13 +125,24 @@ export default function SimulationDetailPage({ params }: SimulationDetailPagePro
           <h1 className="text-2xl font-bold text-slate-100">模拟详情</h1>
           <p className="text-slate-400 text-sm">ID: {id}</p>
         </div>
-        <SimulationControls
-          status={currentStatus}
-          onStart={handleStart}
-          onPause={() => {}}
-          onStop={handleStop}
-          isLoading={startMutation.isPending || stopMutation.isPending}
-        />
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            className="border-accent/20 hover:bg-accent/10 text-accent gap-2"
+            onClick={handleFork}
+            disabled={forkMutation.isPending}
+          >
+            <GitFork className="h-4 w-4" />
+            开启分支推演
+          </Button>
+          <SimulationControls
+            status={currentStatus}
+            onStart={handleStart}
+            onPause={() => {}}
+            onStop={handleStop}
+            isLoading={startMutation.isPending || stopMutation.isPending}
+          />
+        </div>
       </div>
 
       {/* Status Bar */}

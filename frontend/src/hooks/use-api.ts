@@ -14,6 +14,7 @@ import type {
   Report,
   Project,
   SimulationRunStatus,
+  DivinationChartSummary,
 } from '@/types/api';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api/v1';
@@ -71,6 +72,12 @@ export const divinationApi = {
     return handleResponse(response);
   },
 
+  // List birth charts
+  listCharts: async () => {
+    const response = await fetch(`${API_BASE_URL}/divination/chart/list`);
+    return handleResponse<DivinationChartSummary[]>(response);
+  },
+
   // Analyze birth chart
   analyzeChart: async (chartId: string) => {
     const response = await fetch(`${API_BASE_URL}/divination/agents/analyze`, {
@@ -116,6 +123,26 @@ export const divinationApi = {
     });
     return handleResponse(response);
   },
+
+  // Get real-time vibe
+  getVibe: async (chartId: string) => {
+    const response = await fetch(`${API_BASE_URL}/divination/report/vibe`, {
+      ...defaultOptions,
+      method: 'POST',
+      body: JSON.stringify({ chart_id: chartId }),
+    });
+    return handleResponse(response);
+  },
+
+  // Deep consultation
+  consult: async (data: Record<string, unknown>) => {
+    const response = await fetch(`${API_BASE_URL}/report/consult`, {
+      ...defaultOptions,
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+    return handleResponse(response);
+  },
 };
 
 // Graph API
@@ -148,6 +175,16 @@ export const simulationApi = {
   // Create simulation
   createSimulation: async (data: CreateSimulationRequest) => {
     const response = await fetch(`${API_BASE_URL}/simulation/create`, {
+      ...defaultOptions,
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+    return handleResponse<Simulation>(response);
+  },
+
+  // Fork simulation (Karmic Branching)
+  forkSimulation: async (data: Record<string, unknown>) => {
+    const response = await fetch(`${API_BASE_URL}/simulation/fork`, {
       ...defaultOptions,
       method: 'POST',
       body: JSON.stringify(data),
@@ -224,5 +261,25 @@ export const reportApi = {
   listReports: async () => {
     const response = await fetch(`${API_BASE_URL}/report/list`);
     return handleResponse<Report[]>(response);
+  },
+
+  // Get vibe poster
+  getPoster: async (chartId: string) => {
+    const response = await fetch(`${API_BASE_URL}/system/poster`, {
+      ...defaultOptions,
+      method: 'POST',
+      body: JSON.stringify({ chart_id: chartId }),
+    });
+    return handleResponse(response);
+  },
+
+  // Save report feedback
+  saveFeedback: async (reportId: string, rating: number, comment?: string) => {
+    const response = await fetch(`${API_BASE_URL}/divination/report/id/${reportId}/feedback`, {
+      ...defaultOptions,
+      method: 'POST',
+      body: JSON.stringify({ rating, comment }),
+    });
+    return handleResponse(response);
   },
 };

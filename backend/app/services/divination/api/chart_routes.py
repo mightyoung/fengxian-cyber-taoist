@@ -50,6 +50,24 @@ def generate_chart():
                 "error": "请求体必须是JSON格式"
             }), 400
 
+        # --- 新增：支持从粘贴文本解析 ---
+        chart_id_as_text = data.get('chart_id')
+        if chart_id_as_text and len(str(chart_id_as_text)) > 100:
+            from ..agents.chart_agent import parse_chart_from_text_sync
+            parsed_chart = parse_chart_from_text_sync(str(chart_id_as_text))
+            if parsed_chart:
+                # 如果解析成功，直接返回结果（模拟 generate_chart 的成功返回）
+                # 这里我们重新获取保存后的对象以确保一致性
+                # 注意：parse_chart_from_text_sync 内部已经调用了 create_chart
+                return jsonify({
+                    "success": True,
+                    "data": {
+                        "chart_id": parsed_chart.get("chart_id"),
+                        "chart": parsed_chart
+                    }
+                })
+
+        # --- 原始逻辑：常规出生信息校验 ---
         # 验证出生信息
         is_valid, error_msg = validate_birth_info(data)
         if not is_valid:
@@ -148,4 +166,55 @@ def get_chart(chart_id: str):
         return jsonify({
             "success": False,
             "error": f"获取命盘时出错: {str(e)}"
+        }), 500
+
+
+@chart_bp.route('/list', methods=['GET'])
+def list_charts():
+    """
+    获取命盘列表
+
+    Query参数:
+        limit: 可选，默认100
+        offset: 可选，默认0
+
+    Returns:
+        {
+            "success": true,
+            "data": {
+                "charts": [...],
+                "count": 12
+            }
+        }
+    """
+    try:
+        limit = request.args.get('limit', default=100, type=int)
+        offset = request.args.get('offset', default=0, type=int)
+
+        charts = DivinationManager.list_charts(limit=limit, offset=offset)
+        chart_summaries = []
+
+        for chart in charts:
+            report_count = len(DivinationManager.get_reports_by_chart(chart.chart_id))
+            chart_summaries.append({
+                "chart_id": chart.chart_id,
+                "birth_info": chart.birth_info,
+                "status": chart.status,
+                "created_at": chart.created_at,
+                "updated_at": chart.updated_at,
+                "analysis": chart.analysis,
+                "report_count": report_count,
+            })
+
+        return jsonify({
+            "success": True,
+            "data": {
+                "charts": chart_summaries,
+                "count": len(chart_summaries),
+            }
+        })
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "error": f"获取命盘列表时出错: {str(e)}"
         }), 500

@@ -61,11 +61,39 @@ class TextProcessor:
         return text.strip()
     
     @staticmethod
-    def get_text_stats(text: str) -> dict:
-        """获取文本统计信息"""
-        return {
-            "total_chars": len(text),
-            "total_lines": text.count('\n') + 1,
-            "total_words": len(text.split()),
-        }
+    def is_wenmo_format(text: str) -> bool:
+        """判断是否为文墨天机导出的格式"""
+        markers = ["文墨天机", "命盘ID", "公历", "农历", "五行局"]
+        count = sum(1 for m in markers if m in text)
+        return count >= 3
+
+    @staticmethod
+    def parse_wenmo_chart(text: str) -> dict:
+        """
+        解析文墨天机导出的命盘文本
+        提取基本出生信息，用于快捷起卦
+        """
+        import re
+        result = {}
+        
+        # 1. 提取姓名
+        name_match = re.search(r"姓名：([^\n\s]+)", text)
+        if name_match: result["name"] = name_match.group(1)
+        
+        # 2. 提取公历日期
+        date_match = re.search(r"公历：(\d{4})年(\d{1,2})月(\d{1,2})日\s+(\d{1,2})[:：](\d{1,2})", text)
+        if date_match:
+            result["year"] = int(date_match.group(1))
+            result["month"] = int(date_match.group(2))
+            result["day"] = int(date_match.group(3))
+            result["hour"] = int(date_match.group(4))
+            result["minute"] = int(date_match.group(5))
+            
+        # 3. 提取性别
+        if "性别：男" in text or "乾造" in text:
+            result["gender"] = "male"
+        elif "性别：女" in text or "坤造" in text:
+            result["gender"] = "female"
+            
+        return result
 

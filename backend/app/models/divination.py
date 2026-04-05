@@ -298,6 +298,24 @@ class DivinationManager:
         return reports
 
     @classmethod
+    def save_report_feedback(cls, report_id: str, rating: int, comment: Optional[str] = None) -> bool:
+        """保存用户对报告的反馈（用于因果校准）"""
+        report = cls.get_report(report_id)
+        if not report:
+            return False
+        
+        if report.metadata is None:
+            report.metadata = {}
+            
+        report.metadata["user_rating"] = rating
+        report.metadata["user_comment"] = comment
+        report.metadata["calibrated_at"] = datetime.now().isoformat()
+        
+        cls.save_report(report)
+        logger.info(f"报告 {report_id} 已获得用户评价: {rating}")
+        return True
+
+    @classmethod
     def get_global_stats(cls, limit: int = 100) -> Dict[str, Any]:
         """聚合全服运势统计"""
         reports = cls.list_reports(limit=limit)

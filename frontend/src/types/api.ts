@@ -222,22 +222,98 @@ export interface BuildGraphRequest {
 // =============================================================================
 
 /**
- * Birth chart input
+ * Real-time Vibe (backend: /report/vibe)
  */
-export interface BirthChartInput {
-  year: number;
-  month: number;
-  day: number;
-  hour: number;
-  gender: 'male' | 'female';
+export interface RealtimeVibe {
+  timestamp: string;
+  vibe_score: number;
+  current_focus: string;
+  instant_transforms: string[];
+  advice: string;
 }
 
 /**
- * Birth chart
+ * Cyber Poster / Talisman (backend: /v1/system/poster)
  */
-export interface BirthChart {
+export interface VibePoster {
+  title: string;
+  date: string;
+  vibe_score: number;
+  keywords: string[];
+  talisman_svg_params: {
+    core: string;
+    energy_color: string;
+  };
+  motto: string;
+}
+
+/**
+ * Consultation Request (backend: /report/consult)
+ */
+export interface ConsultRequest {
+  message: string;
+  simulation_id?: string;
+  chart_id?: string;
+  chat_history: { role: 'user' | 'assistant'; content: string }[];
+}
+
+/**
+ * Birth chart input (Extended to support raw text pasting)
+ */
+export interface BirthChartInput {
+  year?: number;
+  month?: number;
+  day?: number;
+  hour?: number;
+  minute?: number;
+  gender: 'male' | 'female';
+  name?: string;
+  raw_text?: string; // For Wenmo Tianji pasting
+}
+
+/**
+ * Refined Divination Report (Three-Layer Fusion)
+ */
+export interface DivinationReport {
+  report_id: string;
+  user_name: string;
+  target_year: number;
+  report_type: string;
+  markdown_content: string;
+  metadata?: {
+    overall_judgment?: string;
+    overall_confidence?: number;
+    user_rating?: number;
+    user_comment?: string;
+    [key: string]: unknown;
+  };
+  created_at: string;
+  status: string;
+}
+
+/**
+ * Divination chart summary used by the content center
+ */
+export interface DivinationChartSummary {
   chart_id: string;
-  // ... additional fields from backend
+  birth_info: BirthChartInput;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  analysis?: Record<string, unknown> | null;
+  report_count: number;
+}
+
+// =============================================================================
+// SIMULATION API EXTENSIONS
+// =============================================================================
+
+/**
+ * Simulation Fork Request
+ */
+export interface ForkSimulationRequest {
+  parent_id: string;
+  intervention_config?: Record<string, unknown>;
 }
 
 // =============================================================================

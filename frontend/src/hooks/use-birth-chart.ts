@@ -24,7 +24,14 @@ export function useGenerateChart() {
 
   return useMutation({
     mutationFn: async (input: BirthChartInput) => {
-      const result = await divinationApi.generateChart(input);
+      // If raw_text is provided, pass it as chart_id to the backend (backend logic handles it)
+      const payload = input.raw_text 
+        ? { chart_id: input.raw_text, gender: input.gender }
+        : input;
+        
+      const result = await divinationApi.generateChart(
+        payload as BirthChartInput | { chart_id: string; gender: BirthChartInput['gender'] }
+      );
       if (result.error) {
         throw new Error(result.error);
       }

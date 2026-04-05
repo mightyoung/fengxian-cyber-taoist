@@ -100,6 +100,43 @@ async def _run_parallel_analysis_for_report(chart_data: Dict[str, Any]):
     }
 
 
+@report_bp.route('/vibe', methods=['POST'])
+def get_realtime_vibe():
+    """
+    获取实时气场（此时此刻的运势动态）
+    用于高频交互，对标文墨天机的流分/流秒动态。
+    """
+    try:
+        import asyncio
+        data = request.get_json() or {}
+        chart_id = data.get('chart_id')
+        
+        if not chart_id:
+            return jsonify({"success": False, "error": "请提供命盘ID"}), 400
+            
+        chart = DivinationManager.get_chart(chart_id)
+        if not chart:
+            return jsonify({"success": False, "error": "命盘不存在"}), 404
+            
+        from ..agents.chart_agent import ChartAgent
+        agent = ChartAgent()
+        
+        # 异步调用计算
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        result = loop.run_until_complete(agent.calculate_realtime_vibe(chart.chart_data))
+        loop.close()
+        
+        return jsonify({
+            "success": True,
+            "data": result
+        })
+        
+    except Exception as e:
+        logger.error(f"获取实时气场失败: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
 @report_bp.route('/generate', methods=['POST'])
 def generate_prediction_report():
     """
@@ -137,12 +174,21 @@ def generate_prediction_report():
 
         chart_data = None
         chart_id = data.get("chart_id")
-        if chart_id:
+        
+        # 支持“文墨天机”文本直接输入：如果 chart_id 是长文本且符合格式，直接解析
+        if chart_id and len(chart_id) > 100:
+            from ..agents.chart_agent import parse_chart_from_text_sync
+            chart_data = parse_chart_from_text_sync(chart_id)
+            if chart_data:
+                logger.info(f"成功从粘贴文本解析命盘: {chart_data.get('birth_info', {}).get('name')}")
+        
+        if not chart_data and chart_id:
             chart = DivinationManager.get_chart(chart_id)
             if not chart:
                 return jsonify({"success": False, "error": f"未找到ID为 {chart_id} 的命盘"}), 404
             chart_data = chart.chart_data
-        else:
+        
+        if not chart_data:
             chart_data = data.get("chart")
             if not chart_data:
                 return jsonify({"success": False, "error": "必须提供 chart_id 或 chart 数据"}), 400
@@ -278,6 +324,70 @@ def get_reports_by_chart(chart_id):
             "reports": [r.to_dict() for r in reports]
         }
     })
+
+
+@report_bp.route('/list', methods=['GET'])
+def list_reports():
+    """
+    获取命理报告列表
+
+    Query参数:
+        chart_id: 可选，按命盘筛选
+        limit: 可选，默认100
+        offset: 可选，默认0
+
+    Returns:
+        {
+            "success": true,
+            "data": {
+                "reports": [...],
+                "count": 12
+            }
+        }
+    """
+    try:
+        chart_id = request.args.get('chart_id')
+        limit = request.args.get('limit', default=100, type=int)
+        offset = request.args.get('offset', default=0, type=int)
+
+        if chart_id:
+            reports = DivinationManager.get_reports_by_chart(chart_id)
+        else:
+            reports = DivinationManager.list_reports(limit=limit, offset=offset)
+
+        return jsonify({
+            "success": True,
+            "data": {
+                "reports": [r.to_dict() for r in reports],
+                "count": len(reports),
+            }
+        })
+    except Exception as e:
+        logger.error(f"获取命理报告列表失败: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@report_bp.route('/id/<report_id>/feedback', methods=['POST'])
+def save_report_feedback(report_id):
+    """保存报告反馈（因果校准）"""
+    try:
+        data = request.get_json() or {}
+        rating = data.get('rating')  # 1-5
+        comment = data.get('comment')
+        
+        if rating is None:
+            return jsonify({"success": False, "error": "请提供评分"}), 400
+            
+        success = DivinationManager.save_report_feedback(report_id, rating, comment)
+        if not success:
+            return jsonify({"success": False, "error": "报告不存在"}), 404
+            
+        return jsonify({
+            "success": True,
+            "message": "反馈已收到，正在进行因果校准..."
+        })
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
 
 
 @report_bp.route('/id/<report_id>', methods=['GET'])

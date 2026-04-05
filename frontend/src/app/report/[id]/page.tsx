@@ -4,7 +4,7 @@ import { use } from 'react';
 import Link from 'next/link';
 import { ReportViewerMemoized } from '@/components/report/report-viewer';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, MessageCircle } from 'lucide-react';
 
 interface ReportDetailPageProps {
   params: Promise<{ id: string }>;
@@ -14,7 +14,7 @@ export default function ReportDetailPage({ params }: ReportDetailPageProps) {
   const { id } = use(params);
 
   return (
-    <div className="space-y-6">
+    <div className="relative space-y-6 pb-24">
       <div className="flex items-center gap-4">
         <Link href="/report">
           <Button variant="ghost" size="icon">
@@ -28,6 +28,15 @@ export default function ReportDetailPage({ params }: ReportDetailPageProps) {
       </div>
 
       <ReportViewerMemoized reportId={id} className="min-h-[600px]" />
+
+      {/* Floating Consultation Trigger */}
+      <div className="fixed bottom-8 right-8 z-50">
+        <Link href={`/chat?report_id=${id}`}>
+          <Button className="h-14 w-14 rounded-full bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-slate-900 shadow-2xl animate-pulse-gold group">
+            <MessageCircle className="h-6 w-6 group-hover:scale-110 transition-transform" />
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

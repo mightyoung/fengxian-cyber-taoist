@@ -563,8 +563,13 @@ def list_tasks():
 def get_graph_data(graph_id: str):
     """
     获取图谱数据（节点和边）
+    
+    Query参数:
+        simulation_id: 关联的模拟ID（可选），用于注入星曜特质
     """
     try:
+        simulation_id = request.args.get('simulation_id')
+        
         if not Config.ZEP_API_KEY:
             return jsonify({
                 "success": False,
@@ -573,6 +578,26 @@ def get_graph_data(graph_id: str):
         
         builder = GraphBuilderService(api_key=Config.ZEP_API_KEY)
         graph_data = builder.get_graph_data(graph_id)
+        
+        # 增强数据：注入因果人格标签
+        if simulation_id and "nodes" in graph_data:
+            from ..services.simulation_manager import SimulationManager
+            from ..services.oasis_profile_generator import OasisProfileGenerator
+            
+            manager = SimulationManager()
+            # 获取模拟配置，尝试找到人格映射
+            config = manager.get_simulation_config(simulation_id)
+            if config and "entity_to_traits" in config:
+                traits_map = config["entity_to_traits"]
+                for node in graph_data["nodes"]:
+                    name = node.get("name")
+                    if name in traits_map:
+                        node["astrology_traits"] = traits_map[name]
+                        # 注入描述
+                        node["astrology_desc"] = [
+                            OasisProfileGenerator.ASTROLOGY_TRAITS_MAP.get(t, "") 
+                            for t in traits_map[name]
+                        ]
         
         return jsonify({
             "success": True,

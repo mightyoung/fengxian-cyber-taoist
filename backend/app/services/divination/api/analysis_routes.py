@@ -51,12 +51,21 @@ async def _run_parallel_analysis(chart_data: Dict[str, Any]):
     # 准备数据
     palace_stars = {k: [s.get('name', '') for s in v.get('stars', [])] for k, v in chart_data.get('palaces', {}).items()}
 
+    def safe_run(func, *args):
+        """包装同步分析函数，捕获异常"""
+        try:
+            return func(*args)
+        except Exception as e:
+            import logging
+            logging.getLogger(__name__).error(f"分析子任务 {func.__name__} 失败: {str(e)}")
+            return {"error": str(e), "status": "failed"}
+
     # 并行执行5个独立分析任务 (LLM增强版本)
-    star_task = loop.run_in_executor(None, partial(llm_analyze_stars_sync, chart_data))
-    palace_task = loop.run_in_executor(None, partial(llm_analyze_palaces_sync, chart_data))
-    transform_task = loop.run_in_executor(None, partial(llm_analyze_transforms_sync, chart_data))
-    pattern_task = loop.run_in_executor(None, partial(llm_analyze_patterns_sync, chart_data, palace_stars))
-    timing_task = loop.run_in_executor(None, partial(llm_analyze_timing_sync, chart_data))
+    star_task = loop.run_in_executor(None, partial(safe_run, llm_analyze_stars_sync, chart_data))
+    palace_task = loop.run_in_executor(None, partial(safe_run, llm_analyze_palaces_sync, chart_data))
+    transform_task = loop.run_in_executor(None, partial(safe_run, llm_analyze_transforms_sync, chart_data))
+    pattern_task = loop.run_in_executor(None, partial(safe_run, llm_analyze_patterns_sync, chart_data, palace_stars))
+    timing_task = loop.run_in_executor(None, partial(safe_run, llm_analyze_timing_sync, chart_data))
 
     # 等待所有任务完成
     star_analysis, palace_analysis, transform_analysis, pattern_analysis, timing_analysis = \
@@ -147,28 +156,45 @@ def analyze_with_agents():
         # 并行执行前5个分析任务
         analyses = asyncio.run(_run_parallel_analysis(chart_data))
 
-        # 使用LLM进行综合分析
-        from app.services.divination.agents.synthesis_agent import LLMSynthesisAnalyzer
-        llm_analyzer = LLMSynthesisAnalyzer(chart_data)
-
         # 将分析结果转换为字典
         star_analysis_dict = _to_dict(analyses.get("star_analysis"))
         palace_analysis_dict = _to_dict(analyses.get("palace_analysis"))
         pattern_analysis_dict = _to_dict(analyses.get("pattern_analysis"))
         transform_analysis_dict = _to_dict(analyses.get("transform_analysis"))
-        _to_dict(analyses.get("timing_analysis"))
+        timing_analysis_dict = _to_dict(analyses.get("timing_analysis"))
 
-        # 调用LLM综合分析
-        synthesis_report = llm_analyzer.synthesize_with_llm_sync(
-            star_analysis=star_analysis_dict,
-            palace_analysis=palace_analysis_dict,
-            pattern_analysis=pattern_analysis_dict,
-            transform_analysis=transform_analysis_dict
-        )
+        # 使用LLM进行综合分析
+        synthesis_report = None
+        try:
+            from app.services.divination.agents.synthesis_agent import LLMSynthesisAnalyzer
+            llm_analyzer = LLMSynthesisAnalyzer(chart_data)
+
+            # 调用LLM综合分析
+            synthesis_report = llm_analyzer.synthesize_with_llm_sync(
+                star_analysis=star_analysis_dict,
+                palace_analysis=palace_analysis_dict,
+                pattern_analysis=pattern_analysis_dict,
+                transform_analysis=transform_analysis_dict
+            )
+        except Exception as llm_e:
+            import logging
+            logging.getLogger(__name__).error(f"LLM综合分析失败: {str(llm_e)}")
+            synthesis_report = {
+                "summary": "综合分析暂时不可用（LLM调用失败）",
+                "error": str(llm_e)
+            }
+
         analyses["synthesis_report"] = synthesis_report
 
         # 格式化响应
-        response_data = _format_analysis_response(analyses)
+        response_data = {
+            "star_analysis": star_analysis_dict,
+            "palace_analysis": palace_analysis_dict,
+            "transform_analysis": transform_analysis_dict,
+            "pattern_analysis": pattern_analysis_dict,
+            "timing_analysis": timing_analysis_dict,
+            "synthesis_report": synthesis_report
+        }
 
         return jsonify({
             "success": True,
@@ -253,20 +279,32 @@ def analyze_with_agents_markdown():
 
         # 生成Markdown报告
         from app.services.divination.agents.report_generator import generate_markdown_report_sync
-        report_bundle = generate_markdown_report_sync(
-            chart_data=chart_data,
-            star_analysis=star_analysis_dict,
-            palace_analysis=palace_analysis_dict,
-            pattern_analysis=pattern_analysis_dict,
-            transform_analysis=transform_analysis_dict,
-            timing_analysis=timing_analysis_dict,
-            question=question
-        )
+        try:
+            report_bundle = generate_markdown_report_sync(
+                chart_data=chart_data,
+                star_analysis=star_analysis_dict,
+                palace_analysis=palace_analysis_dict,
+                pattern_analysis=pattern_analysis_dict,
+                transform_analysis=transform_analysis_dict,
+                timing_analysis=timing_analysis_dict,
+                question=question
+            )
 
-        return jsonify({
-            "success": True,
-            "data": report_bundle.to_dict()
-        })
+            return jsonify({
+                "success": True,
+                "data": report_bundle.to_dict()
+            })
+        except Exception as report_e:
+            import logging
+            logging.getLogger(__name__).error(f"Markdown报告生成失败: {str(report_e)}")
+            return jsonify({
+                "success": False,
+                "error": f"报告生成失败: {str(report_e)}",
+                "partial_data": {
+                    "star": star_analysis_dict,
+                    "palace": palace_analysis_dict
+                }
+            }), 500
 
     except Exception as e:
         import traceback
@@ -625,45 +663,27 @@ def analyze_health():
 
         # 转换为可序列化格式
         health_data = {
-            "ji_e_palace_analysis": result.ji_e_palace_analysis,
-            "health_risks": result.health_weaknesses,
-            "protective_factors": result.health_advantages,
-            "health_advice": result.health_advice,
-            "total_health_score": result.total_health_score,
-            "health_level": result.health_level,
-            "ji_e_palace": {
-                "palace_name": result.ji_e_palace.palace_name,
-                "score": result.ji_e_palace.score,
-                "strength_level": result.ji_e_palace.strength_level,
-                "main_stars": result.ji_e_palace.main_stars,
-                "auxiliary_stars": result.ji_e_palace.auxiliary_stars,
-                "sha_stars": result.ji_e_palace.sha_stars,
-                "transform_stars": result.ji_e_palace.transform_stars,
-                "interpretation": result.ji_e_palace.interpretation,
-                "health_indicators": result.ji_e_palace.health_indicators,
-                "risk_factors": result.ji_e_palace.risk_factors,
-                "protective_factors": result.ji_e_palace.protective_factors
-            },
-            "fu_de_palace": {
-                "palace_name": result.fu_de_palace.palace_name,
-                "score": result.fu_de_palace.score,
-                "strength_level": result.fu_de_palace.strength_level,
-                "main_stars": result.fu_de_palace.main_stars,
-                "interpretation": result.fu_de_palace.interpretation
-            },
-            "disease_risks": [
-                {
-                    "disease_name": r.disease_name,
-                    "star_combination": r.star_combination,
-                    "risk_level": r.risk_level,
-                    "category": r.category,
-                    "notes": r.notes
-                }
-                for r in result.disease_risks
-            ],
-            "cancer_warnings": result.cancer_warnings,
-            "health_advantages": result.health_advantages,
-            "health_weaknesses": result.health_weaknesses
+            "inherent_strength": result.inherent_strength,
+            "current_health": result.current_health,
+            "health_level": result.health_level.value,
+            "weak_body_parts": result.weak_body_parts,
+            "risk_factors": result.risk_factors,
+            "seasonal_risks": result.seasonal_risks,
+            "recommendations": result.recommendations,
+            "disease_palace": {
+                "palace_name": result.disease_palace_analysis.palace,
+                "health_score": result.disease_palace_analysis.health_score,
+                "level": result.disease_palace_analysis.level.value,
+                "stars": [
+                    {
+                        "star": s.star,
+                        "is_harmful": s.is_harmful,
+                        "impact": s.impact
+                    } for s in result.disease_palace_analysis.stars
+                ],
+                "risks": result.disease_palace_analysis.risks,
+                "warnings": result.disease_palace_analysis.warnings
+            }
         }
 
         return jsonify({

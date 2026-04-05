@@ -32,7 +32,14 @@ def _get_cache():
 
 
 class LLMClient:
-    """LLM客户端"""
+    """LLM客户端，支持消耗追踪"""
+
+    # 存储全局消耗统计 (借鉴 Claude-Code)
+    usage_stats = {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_calls": 0
+    }
 
     def __init__(
         self,
@@ -102,6 +109,15 @@ class LLMClient:
         # 发送请求
         try:
             response = self.client.chat.completions.create(**kwargs)
+
+            # 记录消耗 (Audit)
+            if hasattr(response, 'usage') and response.usage:
+                LLMClient.usage_stats["prompt_tokens"] += response.usage.prompt_tokens
+                LLMClient.usage_stats["completion_tokens"] += response.usage.completion_tokens
+                LLMClient.usage_stats["total_calls"] += 1
+                finish_reason = response.choices[0].finish_reason if response.choices else "unknown"
+                logger.debug(f"LLM Usage: {response.usage.total_tokens} tokens, finish_reason: {finish_reason}")
+
         except Exception as e:
             logger.error(f"LLM API调用失败: {e}")
             raise
@@ -112,6 +128,10 @@ class LLMClient:
             raise ValueError("LLM返回空响应")
 
         content = response.choices[0].message.content
+        
+        # 记录原始响应（调试用）
+        logger.debug(f"LLM Raw Response: {content}")
+        
         if content is None:
             content = ""
             logger.warning(f"LLM返回None content, choices: {response.choices}")
@@ -132,7 +152,15 @@ class LLMClient:
                     temperature=temperature
                 )
 
-        # 清理thinking tags
+        return content
+
+    @classmethod
+    def get_usage_summary(cls) -> Dict[str, Any]:
+        """获取消耗汇总"""
+        return cls.usage_stats
+
+    def _filter_content(self, content: str) -> str:
+        """过滤模型输出（如移除推理过程标签）"""
         content = re.sub(r'<think>[\s\S]*?</think>', '', content).strip()
         return content
 
@@ -164,6 +192,10 @@ class LLMClient:
         )
         # 清理markdown代码块标记
         cleaned_response = response.strip()
+        
+        # 过滤可能存在的推理过程标签 (如 <think>...</think>)
+        cleaned_response = self._filter_content(cleaned_response)
+        
         cleaned_response = re.sub(r'^```(?:json)?\s*\n?', '', cleaned_response, flags=re.IGNORECASE)
         cleaned_response = re.sub(r'\n?```\s*$', '', cleaned_response)
         cleaned_response = cleaned_response.strip()

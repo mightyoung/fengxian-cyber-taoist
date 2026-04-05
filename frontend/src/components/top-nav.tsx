@@ -14,6 +14,7 @@ import {
   X,
   LogOut,
   Heart,
+  BookOpen,
 } from "lucide-react";
 import { useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
@@ -37,6 +38,12 @@ const navItems = [
     title: "报告",
     href: "/report",
     icon: FileText,
+  },
+  {
+    title: "中心",
+    href: "/insights",
+    icon: BookOpen,
+    tag: "新",
   },
   {
     title: "模拟",
